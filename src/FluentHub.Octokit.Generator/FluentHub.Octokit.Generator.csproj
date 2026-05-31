@@ -5,6 +5,7 @@
 		<OutputType>Exe</OutputType>
 		<LangVersion>latest</LangVersion>
 		<Platforms>x86;x64;arm64</Platforms>
+		<TreatWarningsAsErrors>true</TreatWarningsAsErrors>
 	</PropertyGroup>
 
 	<ItemGroup>
