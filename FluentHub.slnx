@@ -7,10 +7,13 @@
   </Configurations>
 
   <Folder Name="/global/">
+    <File Path=".editorconfig" />
     <File Path=".gitattributes" />
     <File Path=".gitignore" />
+    <File Path="AGENTS.md" />
     <File Path="crowdin.yml" />
     <File Path="LICENSE" />
+    <File Path="Settings.XamlStyler" />
   </Folder>
 
   <Folder Name="/src/">
