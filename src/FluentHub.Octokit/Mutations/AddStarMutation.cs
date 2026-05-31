@@ -2,17 +2,20 @@ namespace FluentHub.Octokit.Mutations
 {
 	public class AddStarMutation
 	{
-		public async Task Execute(ID starrableRepoId)
+		public Task<AddStarPayload> ExecuteAsync(ID starrableRepoId)
 		{
-			var payload = new Mutation()
-			.AddStar(new(new() { StarrableId = starrableRepoId }))
-			.Select(x => new RemoveStarPayload
-			{
-				ClientMutationId = x.ClientMutationId,
-			})
-			.Compile();
+			var mutation = new Mutation()
+				.AddStar(new(new OctokitGraphQLModel.AddStarInput
+				{
+					StarrableId = starrableRepoId,
+				}))
+				.Select(x => new AddStarPayload
+				{
+					ClientMutationId = x.ClientMutationId,
+				})
+				.Compile();
 
-			var response = await App.Connection.Run(payload);
+			return MutationExecutor.RunAsync(mutation);
 		}
 	}
 }

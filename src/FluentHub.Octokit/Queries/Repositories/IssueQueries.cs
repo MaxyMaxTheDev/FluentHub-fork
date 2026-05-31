@@ -104,9 +104,15 @@ namespace FluentHub.Octokit.Queries.Repositories
 				.Select(x => new Issue
 				{
 					Closed = x.Closed,
+					Id = x.Id,
 					Number = x.Number,
+					State = (IssueState)x.State,
+					StateReason = x.StateReason == null ? null : (IssueStateReason?)x.StateReason.Value,
 					Title = x.Title,
 					UpdatedAt = x.UpdatedAt,
+					ViewerCanClose = x.ViewerCanUpdate,
+					ViewerCanReopen = x.ViewerCanUpdate,
+					ViewerCanUpdate = x.ViewerCanUpdate,
 
 					Assignees = x.Assignees(6, null, null, null).Select(assignees => new UserConnection
 					{

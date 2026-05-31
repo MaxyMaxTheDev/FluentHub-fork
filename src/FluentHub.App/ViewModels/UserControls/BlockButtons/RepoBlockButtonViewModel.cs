@@ -1,6 +1,7 @@
 // Copyright (c) 2022-2024 0x5BFA
 // Licensed under the MIT License. See the LICENSE.
 
+using FluentHub.App.Models;
 using FluentHub.Octokit.Mutations;
 using System.Windows.Input;
 using FluentHub.Octokit.Models.v4;
@@ -53,21 +54,22 @@ namespace FluentHub.App.ViewModels.UserControls.BlockButtons
 					// Remove star
 					var removeStarMutation = new RemoveStarMutation();
 
-					await removeStarMutation.Execute(Repository.Id);
+					await removeStarMutation.ExecuteAsync(Repository.Id);
 				}
 				else
 				{
 					// Add star
 					var addStarMutation = new AddStarMutation();
 
-					await addStarMutation.Execute(Repository.Id);
+					await addStarMutation.ExecuteAsync(Repository.Id);
 				}
 
 				Repository.ViewerHasStarred = !Repository.ViewerHasStarred;
 			}
 			catch (Exception ex)
 			{
-
+				var messenger = Ioc.Default.GetRequiredService<IMessenger>();
+				messenger.Send(new UserNotificationMessage("Something went wrong", ex.Message, UserNotificationType.Error));
 			}
 		}
 	}
