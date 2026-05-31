@@ -5,8 +5,25 @@ name: FluentHub CD (Store)
 
 on:
   workflow_dispatch:
+    inputs:
+      submit:
+        description: 'Submit the package to Microsoft Store certification. When false, the submission stays as a draft.'
+        required: true
+        default: false
+        type: boolean
+      flight_id:
+        description: 'Optional Microsoft Store flight ID.'
+        required: false
+        type: string
+      rollout_percentage:
+        description: 'Optional package rollout percentage. Leave empty for the Store default.'
+        required: false
+        type: string
 
 run-name: 'FluentHub CD (Store)'
+
+permissions:
+  contents: read
 
 jobs:
   build:
@@ -26,8 +43,7 @@ jobs:
       APP_PROJECT_PATH:              '${{ github.workspace }}\src\FluentHub.App\FluentHub.App.csproj'
       APP_MANIFEST_PATH:             '${{ github.workspace }}\src\FluentHub.App\Package.appxmanifest'
       APP_CREDENTIALS_PATH:          '${{ github.workspace }}\src\FluentHub.App\AppCredentials.config'
-      STORE_BROKER_STAGING_DIR:      '${{ github.workspace }}\.github\configurations\MicrosoftStore\submission'
-      STORE_BROKER_CONFIG_PATH:      '${{ github.workspace }}\.github\configurations\MicrosoftStore\config.json'
+      STORE_PRODUCT_ID:              "${{ vars.MICROSOFT_STORE_PRODUCT_ID || '9NKB9HX8RJZ3' }}"
 
     steps:
     - name: Checkout the repository
@@ -54,24 +70,66 @@ jobs:
       env:
         GH_CREDENTIALS_SECRET: '${{ secrets.GH_CREDENTIALS_JSON_BASE64 }}'
 
+    - name: Find Store package
+      id: package
+      shell: pwsh
+      run: |
+        $package = Get-ChildItem -Path $env:APP_PACKAGE_DIR -Recurse -File -Include *.msixupload, *.msixbundle, *.msix |
+          Sort-Object `
+            @{
+              Expression = {
+                switch ($_.Extension.ToLowerInvariant())
+                {
+                  ".msixupload" { 0 }
+                  ".msixbundle" { 1 }
+                  ".msix" { 2 }
+                  default { 3 }
+                }
+              }
+              Ascending = $true
+            },
+            @{
+              Expression = "LastWriteTimeUtc"
+              Descending = $true
+            } |
+          Select-Object -First 1
+
+        if ($null -eq $package)
+        {
+          throw "No Store package was found under '$env:APP_PACKAGE_DIR'."
+        }
+
+        "package_path=$($package.FullName)" >> $env:GITHUB_OUTPUT
+        "package_name=$($package.Name)" >> $env:GITHUB_OUTPUT
+        Write-Host "Found Store package: $($package.FullName)"
+
     - name: Upload the packages to the Artifacts
       uses: actions/upload-artifact@v4
       with:
         name: 'Appx Packages (${{ env.CONFIGURATION }}, ${{ env.PLATFORM }})'
-        path: ${{ env.ARTIFACTS_STAGING_DIR }}
+        path: ${{ env.APP_PACKAGE_DIR }}
+        if-no-files-found: error
 
-    #- name: Publish to Microsoft Store
-    #  shell: pwsh
-    #  run: |
-    #    . './scripts/SubmitTo-MicrosoftStore.ps1' `
-    #      -SubmissionDirPath=$env:STORE_BROKER_STAGING_DIR `
-    #      -BrokerConfigPath=$env:STORE_BROKER_CONFIG_PATH `
-    #      -AppxPackagePath=$env:ARTIFACTS_STAGING_DIR `
-    #      -PartnerCenterClientId=$env:PARTNER_CENTER_CLIENT_ID `
-    #      -PartnerCenterClientSecret=$env:PARTNER_CENTER_CLIENT_SECRET `
-    #      -PartnerCenterStoreId=9NKB9HX8RJZ3 `
-    #      -PartnerCenterTenantId=$env:PARTNER_CENTER_TENANT_ID
-    #  env:
-    #    PARTNER_CENTER_CLIENT_ID: ${{ secrets.PARTNER_CENTER_CLIENT_ID }}
-    #    PARTNER_CENTER_CLIENT_SECRET: ${{ secrets.PARTNER_CENTER_CLIENT_SECRET }}
-    #    PARTNER_CENTER_TENANT_ID: ${{ secrets.PARTNER_CENTER_TENANT_ID }}
+    - name: Setup Microsoft Store Developer CLI
+      uses: microsoft/microsoft-store-apppublisher@v1.2
+
+    - name: Publish to Microsoft Store
+      shell: pwsh
+      run: |
+        $submit = [System.Convert]::ToBoolean("${{ inputs.submit }}")
+
+        & "$env:WORKING_DIR\.github\scripts\SubmitTo-MicrosoftStore.ps1" `
+          -StorePackagePath "${{ steps.package.outputs.package_path }}" `
+          -PartnerCenterClientId $env:PARTNER_CENTER_CLIENT_ID `
+          -PartnerCenterClientSecret $env:PARTNER_CENTER_CLIENT_SECRET `
+          -PartnerCenterSellerId $env:PARTNER_CENTER_SELLER_ID `
+          -PartnerCenterStoreId $env:STORE_PRODUCT_ID `
+          -PartnerCenterTenantId $env:PARTNER_CENTER_TENANT_ID `
+          -Submit:$submit `
+          -FlightId "${{ inputs.flight_id }}" `
+          -PackageRolloutPercentage "${{ inputs.rollout_percentage }}"
+      env:
+        PARTNER_CENTER_CLIENT_ID: ${{ secrets.PARTNER_CENTER_CLIENT_ID }}
+        PARTNER_CENTER_CLIENT_SECRET: ${{ secrets.PARTNER_CENTER_CLIENT_SECRET }}
+        PARTNER_CENTER_SELLER_ID: ${{ secrets.PARTNER_CENTER_SELLER_ID }}
+        PARTNER_CENTER_TENANT_ID: ${{ secrets.PARTNER_CENTER_TENANT_ID }}
