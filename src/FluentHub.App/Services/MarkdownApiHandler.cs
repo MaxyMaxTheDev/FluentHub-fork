@@ -11,7 +11,7 @@ namespace FluentHub.App.Services
 			var indexHtml = await FileIO.ReadTextAsync(indexFile);
 
 			RepositoryQueries queries = new();
-			return await queries.GetReadmeHtml(owner, name, branch, theme, indexHtml);
+			return await queries.GetReadmeHtml(owner, name, branch, theme, indexHtml) ?? string.Empty;
 		}
 
 		public async Task<string> GetHtmlAsync(string html, string url, string theme)
@@ -20,7 +20,7 @@ namespace FluentHub.App.Services
 			var index = await FileIO.ReadTextAsync(indexFile);
 
 			MarkdownQueries queries = new();
-			return queries.GetHtml(index, html, url, theme, true);
+			return queries.GetHtml(index, html, url, theme, true) ?? string.Empty;
 		}
 	}
 }

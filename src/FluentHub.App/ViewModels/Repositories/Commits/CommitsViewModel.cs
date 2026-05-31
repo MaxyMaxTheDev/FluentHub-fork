@@ -13,7 +13,7 @@ namespace FluentHub.App.ViewModels.Repositories.Commits
 {
 	public class CommitsViewModel : BaseViewModel
 	{
-		private RepoContextViewModel contextViewModel;
+		private RepoContextViewModel contextViewModel = default!;
 		public RepoContextViewModel ContextViewModel { get => contextViewModel; set => SetProperty(ref contextViewModel, value); }
 
 		private readonly ObservableCollection<CommitBlockButtonViewModel> _items;

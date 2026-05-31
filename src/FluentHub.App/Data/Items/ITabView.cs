@@ -13,7 +13,7 @@ namespace FluentHub.App.Data.Items
 
 		ReadOnlyObservableCollection<ITabViewItem> TabItems { get; }
 
-		ITabViewItem OpenTab(Type page = null, object parameter = null, bool setAsSelected = true);
+		ITabViewItem OpenTab(Type? page = null, object? parameter = null, bool setAsSelected = true);
 
 		bool CloseTab(ITabViewItem tab);
 

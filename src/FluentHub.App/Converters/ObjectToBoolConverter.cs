@@ -8,7 +8,7 @@ namespace FluentHub.App.Converters
 {
 	public class ObjectToBoolConverter : IValueConverter
 	{
-		public object Convert(object value, Type targetType, object parameter, string language)
+		public object Convert(object? value, Type targetType, object? parameter, string language)
 		{
 			if (parameter is string param && string.Compare(param, "invert", true) == 0)
 			{
@@ -54,6 +54,6 @@ namespace FluentHub.App.Converters
 			return value == default ? falseValue : trueValue;
 		}
 
-		public object ConvertBack(object value, Type targetType, object parameter, string language) => throw new NotImplementedException();
+		public object ConvertBack(object? value, Type targetType, object? parameter, string language) => throw new NotImplementedException();
 	}
 }

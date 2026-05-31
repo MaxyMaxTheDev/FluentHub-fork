@@ -11,7 +11,7 @@ namespace FluentHub.App.UserControls
 	public sealed partial class SettingsDisplayControl : UserControl
 	{
 		#region propdp
-		public FrameworkElement SettingsActionableElement { get; set; }
+		public FrameworkElement SettingsActionableElement { get; set; } = default!;
 
 		public static readonly DependencyProperty AdditionalDescriptionContentProperty =
 			DependencyProperty.Register(

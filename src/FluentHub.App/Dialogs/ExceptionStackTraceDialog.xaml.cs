@@ -29,7 +29,7 @@ namespace FluentHub.App.Dialogs
 				TaskException = new();
 			}
 
-			private Exception _taskException;
+			private Exception _taskException = default!;
 			public Exception TaskException { get => _taskException; set => SetProperty(ref _taskException, value); }
 		}
 	}

@@ -15,13 +15,13 @@ namespace FluentHub.App.ViewModels.Repositories.Releases
 {
 	public class ReleasesViewModel : BaseViewModel
 	{
-		private Repository _repository;
+		private Repository _repository = default!;
 		public Repository Repository { get => _repository; set => SetProperty(ref _repository, value); }
 
 		private readonly ObservableCollection<Release> _items;
 		public ReadOnlyObservableCollection<Release> Items { get; }
 
-		private Release _latestRelease;
+		private Release _latestRelease = default!;
 		public Release LatestRelease { get => _latestRelease; set => SetProperty(ref _latestRelease, value); }
 
 		public ICommand GoToReleasePageCommand { get; }

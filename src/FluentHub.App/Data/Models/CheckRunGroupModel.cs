@@ -11,10 +11,10 @@ namespace FluentHub.App.Models
 {
 	public class CheckRunGroupModel
 	{
-		public string AppName { get; set; }
+		public string AppName { get; set; } = default!;
 
-		public string AppDescription { get; set; }
+		public string AppDescription { get; set; } = default!;
 
-		public ObservableCollection<CheckRunItemModel> CheckItems { get; set; }
+		public ObservableCollection<CheckRunItemModel> CheckItems { get; set; } = default!;
 	}
 }

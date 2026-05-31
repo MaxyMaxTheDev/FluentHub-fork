@@ -88,7 +88,7 @@ namespace FluentHub.App.UserControls
 		private void OnCloneButtonPointerReleased(object sender, PointerRoutedEventArgs e)
 			=> SetState(sender as UIElement, "Normal");
 
-		public void SetState(UIElement target, string state)
+		public void SetState(UIElement? target, string state)
 		{
 			if (target != null)
 			{
@@ -115,7 +115,7 @@ namespace FluentHub.App.UserControls
 				return;
 			}
 
-			ViewModel.ContextViewModel.BranchName = ContextViewModel.BranchName = BranchNameSelector.SelectedItem as string;
+			ViewModel.ContextViewModel.BranchName = ContextViewModel.BranchName = BranchNameSelector.SelectedItem as string ?? string.Empty;
 
 			var objType = ViewModel.ContextViewModel.IsFile ? "blob" : "tree";
 			var path = string.IsNullOrEmpty(ViewModel.ContextViewModel.Path) ? $"{ViewModel.ContextViewModel.Path}" : $"/{ViewModel.ContextViewModel.Path}";

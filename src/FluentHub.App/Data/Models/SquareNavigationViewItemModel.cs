@@ -9,7 +9,7 @@ namespace FluentHub.App.Models
 	{
 		public SquareNavigationViewItemModel() { }
 
-		public SquareNavigationViewItemModel(string name, string glyphPrimary, string glyphSecondary, bool isSelected = false, BitmapImage image = null)
+		public SquareNavigationViewItemModel(string name, string glyphPrimary, string glyphSecondary, bool isSelected = false, BitmapImage? image = null)
 		{
 			Name = name;
 			GlyphPrimary = glyphPrimary;
@@ -18,13 +18,13 @@ namespace FluentHub.App.Models
 			Thumbnail = image;
 		}
 
-		private string _name;
+		private string _name = default!;
 		public string Name { get => _name; set => SetProperty(ref _name, value); }
 
-		private string _glyphPrimary;
+		private string _glyphPrimary = default!;
 		public string GlyphPrimary { get => _glyphPrimary; set => SetProperty(ref _glyphPrimary, value); }
 
-		private string _glyphSecondary;
+		private string _glyphSecondary = default!;
 		public string GlyphSecondary { get => _glyphSecondary; set => SetProperty(ref _glyphSecondary, value); }
 
 		private bool _useOcticon;
@@ -33,7 +33,7 @@ namespace FluentHub.App.Models
 		private bool _isSelected;
 		public bool IsSelected { get => _isSelected; set => SetProperty(ref _isSelected, value); }
 
-		private BitmapImage _thumbnail;
-		public BitmapImage Thumbnail { get => _thumbnail; set => SetProperty(ref _thumbnail, value); }
+		private BitmapImage? _thumbnail;
+		public BitmapImage? Thumbnail { get => _thumbnail; set => SetProperty(ref _thumbnail, value); }
 	}
 }

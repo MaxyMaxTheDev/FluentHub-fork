@@ -20,7 +20,7 @@ namespace FluentHub.App.Views
 		protected ITabViewItem SelectedTabViewItem
 			=> _navigationService.TabView.SelectedItem;
 
-		protected ICommand _pageLoadCommand;
+		protected ICommand _pageLoadCommand = default!;
 
 		public LocatablePage(NavigationPageKind pageKind, NavigationPageKey itemKey)
 		{

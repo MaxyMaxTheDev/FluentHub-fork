@@ -12,7 +12,7 @@ namespace FluentHub.App.ViewModels.Repositories.Discussions
 {
 	public class DiscussionViewModel : BaseViewModel
 	{
-		private Discussion _discussion;
+		private Discussion _discussion = default!;
 		public Discussion Discussion { get => _discussion; set => SetProperty(ref _discussion, value); }
 
 		public IAsyncRelayCommand LoadRepositoryDiscussionPageCommand { get; }

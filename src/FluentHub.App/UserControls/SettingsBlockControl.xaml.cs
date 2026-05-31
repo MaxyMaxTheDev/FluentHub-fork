@@ -11,7 +11,7 @@ namespace FluentHub.App.UserControls
 	public sealed partial class SettingsBlockControl : UserControl
 	{
 		#region propdp
-		public FrameworkElement SettingsActionableElement { get; set; }
+		public FrameworkElement SettingsActionableElement { get; set; } = default!;
 
 		public static readonly DependencyProperty ExpandableContentProperty =
 			DependencyProperty.Register(
@@ -98,7 +98,7 @@ namespace FluentHub.App.UserControls
 		}
 		#endregion
 
-		public event RoutedEventHandler Click;
+		public event RoutedEventHandler? Click;
 
 		public SettingsBlockControl() => InitializeComponent();
 

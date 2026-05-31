@@ -7,10 +7,10 @@ namespace FluentHub.App.ViewModels.UserControls.Overview
 {
 	public class PullRequestOverviewViewModel : ObservableObject
 	{
-		private PullRequest _pullRequest;
+		private PullRequest _pullRequest = default!;
 		public PullRequest PullRequest { get => _pullRequest; set => SetProperty(ref _pullRequest, value); }
 
-		private string _selectedTag;
+		private string _selectedTag = default!;
 		public string SelectedTag { get => _selectedTag; set => SetProperty(ref _selectedTag, value); }
 
 		private bool _Loaded;

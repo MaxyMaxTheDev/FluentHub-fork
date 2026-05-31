@@ -19,14 +19,14 @@ namespace FluentHub.App.ViewModels
 	{
 		private readonly Microsoft.UI.Dispatching.DispatcherQueue _dispatcher;
 		private readonly INavigationService _navigationService;
-		private readonly IMessenger _messenger;
-		private readonly ToastService _toastService;
-		private readonly ILogger _logger;
+		private readonly IMessenger? _messenger = default!;
+		private readonly ToastService? _toastService;
+		private readonly ILogger? _logger;
 
-		private UserNotificationMessage _lastNotification;
+		private UserNotificationMessage _lastNotification = default!;
 		public UserNotificationMessage LastNotification { get => _lastNotification; private set => SetProperty(ref _lastNotification, value); }
 
-		private Octokit.Models.v4.User _signedInUser;
+		private Octokit.Models.v4.User _signedInUser = default!;
 		public Octokit.Models.v4.User SignedInUser { get => _signedInUser; private set => SetProperty(ref _signedInUser, value); }
 
 		private bool _taskIsInProgress;
@@ -38,7 +38,7 @@ namespace FluentHub.App.ViewModels
 		private int _unreadCount;
 		public int UnreadCount { get => _unreadCount; private set => SetProperty(ref _unreadCount, value); }
 
-		private string _searchTerm;
+		private string _searchTerm = default!;
 		public string SearchTerm { get => _searchTerm; set => SetProperty(ref _searchTerm, value); }
 
 		public bool FailedToLoadUserAvatar { get; private set; }
@@ -46,8 +46,8 @@ namespace FluentHub.App.ViewModels
 		private readonly ObservableCollection<SearchQueryModel> _autoSuggestionItems;
 		public ReadOnlyObservableCollection<SearchQueryModel> AutoSuggestionItems;
 
-		private readonly ObservableCollection<SquareNavigationViewItemModel> _navViewItems;
-		public ReadOnlyObservableCollection<SquareNavigationViewItemModel> NavViewItems;
+		private readonly ObservableCollection<SquareNavigationViewItemModel> _navViewItems = default!;
+		public ReadOnlyObservableCollection<SquareNavigationViewItemModel> NavViewItems = default!;
 
 		private readonly ObservableCollection<Repository> _repositories;
 		public ReadOnlyObservableCollection<Repository> Repositories { get; }
@@ -63,16 +63,16 @@ namespace FluentHub.App.ViewModels
 		public ICommand GoForwardCommand { get; private set; }
 		public ICommand ReloadCommand { get; private set; }
 
-		public ICommand GoHomeCommand { get; private set; }
-		public ICommand GoNotificationsCommand { get; private set; }
-		public ICommand GoActivitiesCommand { get; private set; }
-		public ICommand GoExplorerCommand { get; private set; }
-		public ICommand GoMarketplaceCommand { get; private set; }
-		public ICommand GoProfileCommand { get; private set; }
+		public ICommand GoHomeCommand { get; private set; } = default!;
+		public ICommand GoNotificationsCommand { get; private set; } = default!;
+		public ICommand GoActivitiesCommand { get; private set; } = default!;
+		public ICommand GoExplorerCommand { get; private set; } = default!;
+		public ICommand GoMarketplaceCommand { get; private set; } = default!;
+		public ICommand GoProfileCommand { get; private set; } = default!;
 
 		public IAsyncRelayCommand LoadSignedInUserCommand { get; }
 
-		public MainPageViewModel(INavigationService navigationService, IMessenger notificationMessenger = null, ToastService toastService = null, ILogger logger = null)
+		public MainPageViewModel(INavigationService navigationService, IMessenger? notificationMessenger = null, ToastService? toastService = null, ILogger? logger = null)
 		{
 			// To Access the UI thread later.
 			_dispatcher = Microsoft.UI.Dispatching.DispatcherQueue.GetForCurrentThread();
@@ -109,20 +109,29 @@ namespace FluentHub.App.ViewModels
 		}
 
 		#region Command methods
-		private void AddNewTabAccelerator(KeyboardAcceleratorInvokedEventArgs e)
+		private void AddNewTabAccelerator(KeyboardAcceleratorInvokedEventArgs? e)
 		{
+			if (e is null)
+				return;
+
 			_navigationService.OpenTab<Views.Viewers.DashBoardPage>();
 			e.Handled = true;
 		}
 
-		private void CloseTabAccelerator(KeyboardAcceleratorInvokedEventArgs e)
+		private void CloseTabAccelerator(KeyboardAcceleratorInvokedEventArgs? e)
 		{
+			if (e is null)
+				return;
+
 			_navigationService.CloseTab(_navigationService.TabView.SelectedItem.Guid);
 			e.Handled = true;
 		}
 
-		private void GoToNextTabAccelerator(KeyboardAcceleratorInvokedEventArgs e)
+		private void GoToNextTabAccelerator(KeyboardAcceleratorInvokedEventArgs? e)
 		{
+			if (e is null)
+				return;
+
 			if (_navigationService.TabView.SelectedIndex == _navigationService.TabView.TabItems.Count - 1)
 			{
 				_navigationService.TabView.SelectedIndex = 0;
@@ -135,8 +144,11 @@ namespace FluentHub.App.ViewModels
 			e.Handled = true;
 		}
 
-		private void GoToPreviousTabAccelerator(KeyboardAcceleratorInvokedEventArgs e)
+		private void GoToPreviousTabAccelerator(KeyboardAcceleratorInvokedEventArgs? e)
 		{
+			if (e is null)
+				return;
+
 			if (_navigationService.TabView.SelectedIndex == _navigationService.TabView.TabItems.Count - 1)
 			{
 				_navigationService.TabView.SelectedIndex = 0;
@@ -149,14 +161,20 @@ namespace FluentHub.App.ViewModels
 			e.Handled = true;
 		}
 
-		private void AddNewTabWithMouseAccelerator(KeyboardAcceleratorInvokedEventArgs e)
+		private void AddNewTabWithMouseAccelerator(KeyboardAcceleratorInvokedEventArgs? e)
 		{
+			if (e is null)
+				return;
+
 			_navigationService.OpenTab<Views.Viewers.DashBoardPage>();
 			e.Handled = true;
 		}
 
-		private void CloseTabWithMouseAccelerator(KeyboardAcceleratorInvokedEventArgs e)
+		private void CloseTabWithMouseAccelerator(KeyboardAcceleratorInvokedEventArgs? e)
 		{
+			if (e is null)
+				return;
+
 			_navigationService.CloseTab(_navigationService.TabView.SelectedItem.Guid);
 			e.Handled = true;
 		}

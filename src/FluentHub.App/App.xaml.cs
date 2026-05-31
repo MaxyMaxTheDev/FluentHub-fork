@@ -23,7 +23,7 @@ namespace FluentHub.App
 		public new static App Current
 			=> (App)Application.Current;
 
-		public static SettingsViewModel AppSettings { get; set; }
+		public static SettingsViewModel AppSettings { get; set; } = default!;
 
 		public static string AppVersion =
 			$"{Windows.ApplicationModel.Package.Current.Id.Version.Major}." +
@@ -110,7 +110,7 @@ namespace FluentHub.App
 		private async void OnUnhandledException(object sender, Microsoft.UI.Xaml.UnhandledExceptionEventArgs e)
 			=> await AppUnhandledException(e.Exception);
 
-		private async void OnUnobservedException(object sender, UnobservedTaskExceptionEventArgs e)
+		private async void OnUnobservedException(object? sender, UnobservedTaskExceptionEventArgs e)
 			=> await AppUnhandledException(e.Exception);
 
 		private async Task AppUnhandledException(Exception ex)

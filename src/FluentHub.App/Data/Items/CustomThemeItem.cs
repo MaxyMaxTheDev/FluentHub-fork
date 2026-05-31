@@ -5,11 +5,11 @@ namespace FluentHub.App.Models
 {
 	public class CustomThemeItem
 	{
-		public string Name { get; set; }
+		public string Name { get; set; } = default!;
 
-		public string Path { get; set; }
+		public string Path { get; set; } = default!;
 
-		public string AbsolutePath { get; set; }
+		public string AbsolutePath { get; set; } = default!;
 
 		public string Key { get => Name; }
 

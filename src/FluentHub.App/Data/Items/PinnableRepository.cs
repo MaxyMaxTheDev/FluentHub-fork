@@ -9,6 +9,6 @@ namespace FluentHub.App.Models
 	{
 		public bool IsPinned { get; set; }
 
-		public Repository PinnableItem { get; set; }
+		public Repository PinnableItem { get; set; } = default!;
 	}
 }

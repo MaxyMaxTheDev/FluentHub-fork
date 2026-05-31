@@ -18,13 +18,13 @@ namespace FluentHub.App.Services
 
 		void Disconnect();
 
-		void Navigate(Type page, object parameter = null, NavigationTransitionInfo transitionInfo = null);
+		void Navigate(Type page, object? parameter = null, NavigationTransitionInfo? transitionInfo = null);
 
-		void Navigate<T>(object parameter = null, NavigationTransitionInfo transitionInfo = null) where T : Page;
+		void Navigate<T>(object? parameter = null, NavigationTransitionInfo? transitionInfo = null) where T : Page;
 
-		Guid OpenTab(Type page, object parameter = null);
+		Guid OpenTab(Type page, object? parameter = null);
 
-		Guid OpenTab<T>(object parameter = null) where T : Page;
+		Guid OpenTab<T>(object? parameter = null) where T : Page;
 
 		void CloseTab(Guid tabId);
 

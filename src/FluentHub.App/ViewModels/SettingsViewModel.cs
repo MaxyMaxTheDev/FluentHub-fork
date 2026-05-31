@@ -70,7 +70,10 @@ namespace FluentHub.App.ViewModels
 					{
 						Name = "Default"
 					}))
-				);
+				) ?? new CustomThemeItem()
+				{
+					Name = "Default"
+				};
 			set => Set(Newtonsoft.Json.JsonConvert.SerializeObject(value));
 		}
 
@@ -94,7 +97,7 @@ namespace FluentHub.App.ViewModels
 
 		public DefaultLanguageModel DefaultLanguage
 		{
-			get => DefaultLanguages.FirstOrDefault(dl => dl.ID == ApplicationLanguages.PrimaryLanguageOverride) ?? DefaultLanguages.FirstOrDefault();
+			get => DefaultLanguages.FirstOrDefault(dl => dl.ID == ApplicationLanguages.PrimaryLanguageOverride) ?? DefaultLanguages[0];
 			set => ApplicationLanguages.PrimaryLanguageOverride = value.ID;
 		}
 
@@ -105,7 +108,7 @@ namespace FluentHub.App.ViewModels
 
 		#region Read and Save
 
-		public TValue Get<TValue>(TValue defaultValue, [CallerMemberName] string propertyName = null)
+		public TValue Get<TValue>(TValue defaultValue, [CallerMemberName] string? propertyName = null)
 		{
 			propertyName = propertyName ??
 					   throw new ArgumentNullException(nameof(propertyName), "Cannot store property of unnamed.");
@@ -117,13 +120,12 @@ namespace FluentHub.App.ViewModels
 				if (value is not TValue tValue)
 				{
 					// Put the corrected value in settings.
-					TValue originalValue = default;
-					Set(originalValue, propertyName);
+					Set(defaultValue, propertyName);
 
-					return originalValue;
+					return defaultValue;
 				}
 
-				return (TValue)value;
+				return tValue;
 			}
 
 			localSettings.Values[propertyName] = defaultValue;
@@ -131,9 +133,12 @@ namespace FluentHub.App.ViewModels
 			return defaultValue;
 		}
 
-		public bool Set<TValue>(TValue value, [CallerMemberName] string propertyName = null)
+		public bool Set<TValue>(TValue value, [CallerMemberName] string? propertyName = null)
 		{
-			TValue originalValue = default;
+			propertyName = propertyName ??
+					   throw new ArgumentNullException(nameof(propertyName), "Cannot store property of unnamed.");
+
+			TValue originalValue = value;
 
 			if (localSettings.Values.ContainsKey(propertyName))
 			{

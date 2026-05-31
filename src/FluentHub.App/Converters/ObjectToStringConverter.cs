@@ -8,13 +8,13 @@ namespace FluentHub.App.Converters
 {
 	public class ObjectToStringConverter : IValueConverter
 	{
-		public object Convert(object value, Type targetType, object parameter, string language)
+		public object Convert(object? value, Type targetType, object? parameter, string language)
 		{
 			// TODO: Support format strings with 'parameter'
 
-			return value?.ToString();
+			return value?.ToString() ?? string.Empty;
 		}
 
-		public object ConvertBack(object value, Type targetType, object parameter, string language) => throw new NotImplementedException();
+		public object ConvertBack(object? value, Type targetType, object? parameter, string language) => throw new NotImplementedException();
 	}
 }

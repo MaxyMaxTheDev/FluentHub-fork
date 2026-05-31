@@ -29,42 +29,42 @@ namespace FluentHub.App.UserControls.PrimerControls
 				{
 					default:
 					case "IssueClosed":
-						Context.StatusColor = Application.Current.Resources["PrimerDoneEmphasis"] as SolidColorBrush;
+						Context.StatusColor = GetStatusBrush("PrimerDoneEmphasis");
 						Context.StatusText = "Closed";
 						Context.StatusGlyph = "\uE9E6";
 						break;
 					case "IssueClosedNotPlanned":
-						Context.StatusColor = Application.Current.Resources["PrimerNeutralEmphasis"] as SolidColorBrush;
+						Context.StatusColor = GetStatusBrush("PrimerNeutralEmphasis");
 						Context.StatusText = "Closed";
 						Context.StatusGlyph = "\uE984";
 						break;
 					case "IssueDraft":
-						Context.StatusColor = Application.Current.Resources["PrimerNeutralEmphasis"] as SolidColorBrush;
+						Context.StatusColor = GetStatusBrush("PrimerNeutralEmphasis");
 						Context.StatusText = "Draft";
 						Context.StatusGlyph = "\uE9E8";
 						break;
 					case "IssueOpen":
-						Context.StatusColor = Application.Current.Resources["PrimerSuccessEmphasis"] as SolidColorBrush;
+						Context.StatusColor = GetStatusBrush("PrimerSuccessEmphasis");
 						Context.StatusText = "Open";
 						Context.StatusGlyph = "\uE9EA";
 						break;
 					case "PullClosed":
-						Context.StatusColor = Application.Current.Resources["PrimerDangerEmphasis"] as SolidColorBrush;
+						Context.StatusColor = GetStatusBrush("PrimerDangerEmphasis");
 						Context.StatusText = "Closed";
 						Context.StatusGlyph = "\uE9C1";
 						break;
 					case "PullDraft":
-						Context.StatusColor = Application.Current.Resources["PrimerNeutralEmphasis"] as SolidColorBrush;
+						Context.StatusColor = GetStatusBrush("PrimerNeutralEmphasis");
 						Context.StatusText = "Draft";
 						Context.StatusGlyph = "\uE9C3";
 						break;
 					case "PullMerged":
-						Context.StatusColor = Application.Current.Resources["PrimerDoneEmphasis"] as SolidColorBrush;
+						Context.StatusColor = GetStatusBrush("PrimerDoneEmphasis");
 						Context.StatusText = "Merged";
 						Context.StatusGlyph = "\uE9BD";
 						break;
 					case "PullOpen":
-						Context.StatusColor = Application.Current.Resources["PrimerSuccessEmphasis"] as SolidColorBrush;
+						Context.StatusColor = GetStatusBrush("PrimerSuccessEmphasis");
 						Context.StatusText = "Open";
 						Context.StatusGlyph = "\uE9BF";
 						break;
@@ -109,6 +109,9 @@ namespace FluentHub.App.UserControls.PrimerControls
 			InitializeComponent();
 		}
 
+		private static SolidColorBrush GetStatusBrush(string resourceKey)
+			=> Application.Current.Resources[resourceKey] as SolidColorBrush ?? new SolidColorBrush();
+
 		private class ObservableContext : ObservableObject
 		{
 			public ObservableContext()
@@ -117,16 +120,16 @@ namespace FluentHub.App.UserControls.PrimerControls
 				StatusColor = new();
 			}
 
-			private string _statusGlyph;
+			private string _statusGlyph = default!;
 			public string StatusGlyph { get => _statusGlyph; set => SetProperty(ref _statusGlyph, value); }
 
-			private string _statusText;
+			private string _statusText = default!;
 			public string StatusText { get => _statusText; set => SetProperty(ref _statusText, value); }
 
 			private Thickness _padding;
 			public Thickness Padding { get => _padding; set => SetProperty(ref _padding, value); }
 
-			private SolidColorBrush _statusColor;
+			private SolidColorBrush _statusColor = default!;
 			public SolidColorBrush StatusColor { get => _statusColor; set => SetProperty(ref _statusColor, value); }
 		}
 	}

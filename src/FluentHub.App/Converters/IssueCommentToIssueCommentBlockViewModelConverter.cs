@@ -8,9 +8,10 @@ namespace FluentHub.App.Converters
 {
 	public class IssueCommentToIssueCommentBlockViewModelConverter : IValueConverter
 	{
-		public object Convert(object value, Type targetType, object parameter, string language)
+		public object Convert(object? value, Type targetType, object? parameter, string language)
 		{
-			var ic = value as IssueComment;
+			if (value is not IssueComment ic)
+				return new ViewModels.UserControls.IssueCommentBlockViewModel();
 
 			var issueCommentBlockViewModel = new ViewModels.UserControls.IssueCommentBlockViewModel()
 			{
@@ -18,7 +19,7 @@ namespace FluentHub.App.Converters
 			};
 
 			// Parse reactions nodes
-			foreach (var reaction in ic.Reactions.Nodes)
+			foreach (var reaction in (ic.Reactions?.Nodes ?? Enumerable.Empty<Reaction?>()).OfType<Reaction>())
 			{
 				_ = reaction.Content switch
 				{
@@ -36,7 +37,7 @@ namespace FluentHub.App.Converters
 			return issueCommentBlockViewModel;
 		}
 
-		public object ConvertBack(object value, Type targetType, object parameter, string language)
+		public object ConvertBack(object? value, Type targetType, object? parameter, string language)
 			=> throw new NotImplementedException();
 	}
 }

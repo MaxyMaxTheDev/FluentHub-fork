@@ -12,10 +12,10 @@ namespace FluentHub.App.ViewModels.Repositories.Projects
 {
 	public class ProjectViewModel : BaseViewModel
 	{
-		private RepositoryOverviewViewModel _repositoryOverviewViewModel;
+		private RepositoryOverviewViewModel _repositoryOverviewViewModel = default!;
 		public RepositoryOverviewViewModel RepositoryOverviewViewModel { get => _repositoryOverviewViewModel; set => SetProperty(ref _repositoryOverviewViewModel, value); }
 
-		private Project _project;
+		private Project _project = default!;
 		public Project Project { get => _project; set => SetProperty(ref _project, value); }
 
 		public IAsyncRelayCommand LoadRepositoryProjectPageCommand { get; }

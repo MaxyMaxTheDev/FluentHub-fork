@@ -12,7 +12,7 @@ namespace FluentHub.App.ViewModels.UserControls.BlockButtons
 		}
 
 		#region Fields and Properties
-		private Issue _issueItem;
+		private Issue _issueItem = default!;
 		public Issue IssueItem { get => _issueItem; set => SetProperty(ref _issueItem, value); }
 
 		private bool _compactMode;

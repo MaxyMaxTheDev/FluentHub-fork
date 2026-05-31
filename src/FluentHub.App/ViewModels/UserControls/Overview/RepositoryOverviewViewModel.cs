@@ -8,21 +8,21 @@ namespace FluentHub.App.ViewModels.UserControls.Overview
 {
 	public class RepositoryOverviewViewModel : ObservableObject
 	{
-		private string _repositoryOwnerLogin;
+		private string _repositoryOwnerLogin = default!;
 		public string RepositoryOwnerLogin { get => _repositoryOwnerLogin; set => SetProperty(ref _repositoryOwnerLogin, value); }
 
-		private string _repositoryName;
+		private string _repositoryName = default!;
 		public string RepositoryName { get => _repositoryName; set => SetProperty(ref _repositoryName, value); }
 
-		private string _selectedTag;
+		private string _selectedTag = default!;
 		public string SelectedTag { get => _selectedTag; set => SetProperty(ref _selectedTag, value); }
 
-		private Repository _repository;
+		private Repository _repository = default!;
 		public Repository Repository { get => _repository; set => SetProperty(ref _repository, value); }
 
-		public static Repository StoredRepository;
+		public static Repository StoredRepository = default!;
 
-		private string _viewerSubscriptionState;
+		private string _viewerSubscriptionState = default!;
 		public string ViewerSubscriptionState { get => _viewerSubscriptionState; set => SetProperty(ref _viewerSubscriptionState, value); }
 
 		public ICommand GoOwnerProfileCommand { get; private set; }

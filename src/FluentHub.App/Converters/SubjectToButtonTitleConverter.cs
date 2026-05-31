@@ -8,49 +8,37 @@ namespace FluentHub.App.Converters
 {
 	public class SubjectToButtonTitleConverter : IValueConverter
 	{
-		public object Convert(object value, Type targetType, object parameter, string language)
+		public object Convert(object? value, Type targetType, object? parameter, string language)
 		{
-			string result = null;
-			var type = value.GetType().Name;
-
-			switch (type)
+			switch (value)
 			{
-				case "Issue":
+				case Issue issue:
 					{
-						Issue issue = value as Issue;
-
 						if (issue.Repository == null)
 							return $"(unknown) / (unknown) #{issue.Number}";
 
-						result = $"{issue.Repository.Owner.Login} / {issue.Repository.Name} #{issue.Number}";
+						return $"{issue.Repository.Owner.Login} / {issue.Repository.Name} #{issue.Number}";
 					}
-					break;
-				case "PullRequest":
+				case PullRequest pullRequest:
 					{
-						PullRequest pullRequest = value as PullRequest;
-
 						if (pullRequest.Repository == null)
 							return $"(unknown) / (unknown) #{pullRequest.Number}";
 
-						result = $"{pullRequest.Repository.Owner.Login} / {pullRequest.Repository.Name} #{pullRequest.Number}";
+						return $"{pullRequest.Repository.Owner.Login} / {pullRequest.Repository.Name} #{pullRequest.Number}";
 					}
-					break;
-				case "Discussion":
+				case Discussion discussion:
 					{
-						Discussion discussion = value as Discussion;
-
 						if (discussion.Repository == null)
 							return $"(unknown) / (unknown) #{discussion.Number}";
 
-						result = $"{discussion.Repository.Owner.Login} / {discussion.Repository.Name} #{discussion.Number}";
+						return $"{discussion.Repository.Owner.Login} / {discussion.Repository.Name} #{discussion.Number}";
 					}
-					break;
+				default:
+					return string.Empty;
 			}
-
-			return result;
 		}
 
-		public object ConvertBack(object value, Type targetType, object parameter, string language)
+		public object ConvertBack(object? value, Type targetType, object? parameter, string language)
 			=> throw new NotImplementedException();
 	}
 }

@@ -13,13 +13,13 @@ namespace FluentHub.App.ViewModels.Repositories.Releases
 {
 	public class ReleaseViewModel : BaseViewModel
 	{
-		private Repository _repository;
+		private Repository _repository = default!;
 		public Repository Repository { get => _repository; set => SetProperty(ref _repository, value); }
 
-		private string _tagName;
+		private string _tagName = default!;
 		public string TagName{ get => _tagName; set => SetProperty(ref _tagName, value); }
 
-		private Release _singleRelease;
+		private Release _singleRelease = default!;
 		public Release SingleRelease { get => _singleRelease; set => SetProperty(ref _singleRelease, value); }
 
 		public IAsyncRelayCommand LoadRepositoryReleasePageCommand { get; }

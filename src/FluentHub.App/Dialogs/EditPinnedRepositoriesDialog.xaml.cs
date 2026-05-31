@@ -10,16 +10,16 @@ namespace FluentHub.App.Dialogs
 {
 	public sealed partial class EditPinnedRepositoriesDialog : ContentDialog
 	{
-		public EditPinnedRepositoriesDialog(string login = null)
+		public EditPinnedRepositoriesDialog(string? login = null)
 		{
 			InitializeComponent();
 
 			ViewModel = Ioc.Default.GetRequiredService<EditPinnedRepositoriesDialogViewModel>();
 
-			ViewModel.Login = login;
+			ViewModel.Login = login ?? string.Empty;
 		}
 
-		private readonly INavigationService navigationService;
+		private readonly INavigationService navigationService = default!;
 		public EditPinnedRepositoriesDialogViewModel ViewModel { get; }
 
 		private void OnPrimaryButtonClick(ContentDialog sender, ContentDialogButtonClickEventArgs args)

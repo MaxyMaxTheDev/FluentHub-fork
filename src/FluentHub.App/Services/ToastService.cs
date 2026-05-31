@@ -1,5 +1,5 @@
 using FluentHub.App.Utils;
-﻿using Microsoft.Windows.AppNotifications;
+using Microsoft.Windows.AppNotifications;
 using Microsoft.Windows.AppNotifications.Builder;
 using System.Globalization;
 using Windows.Data.Xml.Dom;
@@ -9,11 +9,11 @@ namespace FluentHub.App.Services
 {
 	public class ToastService
 	{
-		public ToastService(ILogger logger = null) => _logger = logger;
+		public ToastService(ILogger? logger = null) => _logger = logger;
 
-		private readonly ILogger _logger;
+		private readonly ILogger? _logger;
 
-		public void ShowToastNotification(string title, string text, string activationArgs = "", string appLogoOverrideImage = null, string heroImage = null, string inlineImage = null)
+		public void ShowToastNotification(string title, string text, string activationArgs = "", string? appLogoOverrideImage = null, string? heroImage = null, string? inlineImage = null)
 		{
 			try
 			{
@@ -55,7 +55,7 @@ namespace FluentHub.App.Services
 					throw new ArgumentNullException(nameof(number));
 				// Get the blank badge XML payload for a badge glyph
 				badgeXml = BadgeUpdateManager.GetTemplateContent(BadgeTemplateType.BadgeNumber);
-				badgeGlyphValue = number.ToString();
+				badgeGlyphValue = number.Value.ToString(CultureInfo.InvariantCulture);
 			}
 			else
 			{
@@ -64,7 +64,9 @@ namespace FluentHub.App.Services
 			}
 
 			// Set the value of the badge in the XML to our glyph value
-			XmlElement badgeElement = (XmlElement)badgeXml.SelectSingleNode("/badge");
+			if (badgeXml.SelectSingleNode("/badge") is not XmlElement badgeElement)
+				throw new InvalidOperationException("Badge XML did not contain a badge element.");
+
 			badgeElement.SetAttribute("value", badgeGlyphValue);
 
 			// Create the badge notification

@@ -12,7 +12,7 @@ namespace FluentHub.App.ViewModels.Repositories.Issues
 {
 	public class IssueViewModel : BaseViewModel
 	{
-		private Issue _issueItem;
+		private Issue _issueItem = default!;
 		public Issue IssueItem { get => _issueItem; private set => SetProperty(ref _issueItem, value); }
 
 		private readonly ObservableCollection<object> _timelineItems;

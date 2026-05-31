@@ -7,7 +7,7 @@ namespace FluentHub.App.Models
 {
 	public class MergedCalendarDays
 	{
-		public string Color { get; set; }
+		public string Color { get; set; } = default!;
 
 		public int ContributionCount { get; set; }
 

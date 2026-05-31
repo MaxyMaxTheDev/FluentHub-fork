@@ -10,13 +10,13 @@ namespace FluentHub.App.Dialogs
 {
 	public sealed partial class UserProfileEditor : ContentDialog
 	{
-		public UserProfileEditor(string login = null)
+		public UserProfileEditor(string? login = null)
 		{
 			InitializeComponent();
 
 			ViewModel = Ioc.Default.GetRequiredService<EditUserProfileViewModel>();
 
-			ViewModel.Login = login;
+			ViewModel.Login = login ?? string.Empty;
 		}
 
 		public EditUserProfileViewModel ViewModel { get; }

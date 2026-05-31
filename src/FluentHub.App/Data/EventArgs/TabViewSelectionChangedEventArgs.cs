@@ -9,9 +9,9 @@ namespace FluentHub.App.Data.EventArgs
 	{
 		public ITabViewItem NewSelectedItem { get; }
 
-		public ITabViewItem OldSelectedItem { get; }
+		public ITabViewItem? OldSelectedItem { get; }
 
-		public NavigationTransitionInfo RecommendedNavigationTransitionInfo { get; }
+		public NavigationTransitionInfo? RecommendedNavigationTransitionInfo { get; }
 
 		public TabViewSelectionChangedEventArgs(ITabViewItem newSelectedItem)
 		{

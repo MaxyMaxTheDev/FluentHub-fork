@@ -7,16 +7,16 @@ namespace FluentHub.App.Models
 {
 	public class FolderCardItem : ObservableObject
 	{
-		private BitmapImage _thumbnail;
+		private BitmapImage _thumbnail = default!;
 		public BitmapImage Thumbnail { get => _thumbnail; set => SetProperty(ref _thumbnail, value); }
 
-		private string _text;
+		private string _text = default!;
 		public string Text { get => _text; set => SetProperty(ref _text, value); }
 
-		private string _path;
+		private string _path = default!;
 		public string Path { get => _path; set => SetProperty(ref _path, value); }
 
-		private string _tag;
+		private string _tag = default!;
 		public string Tag { get => _tag; set => SetProperty(ref _tag, value); }
 	}
 }

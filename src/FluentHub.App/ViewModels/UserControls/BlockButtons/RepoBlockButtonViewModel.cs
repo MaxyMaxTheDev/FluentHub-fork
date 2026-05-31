@@ -9,7 +9,7 @@ namespace FluentHub.App.ViewModels.UserControls.BlockButtons
 {
 	public class RepoBlockButtonViewModel : ObservableObject
 	{
-		private Repository _item;
+		private Repository _item = default!;
 		public Repository Repository { get => _item; set => SetProperty(ref _item, value); }
 
 		private bool _displayDetails;

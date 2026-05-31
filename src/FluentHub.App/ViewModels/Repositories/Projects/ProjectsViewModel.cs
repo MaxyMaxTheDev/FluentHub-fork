@@ -14,7 +14,7 @@ namespace FluentHub.App.ViewModels.Repositories.Projects
 {
 	public class ProjectsViewModel : BaseViewModel
 	{
-		private RepositoryOverviewViewModel _repositoryOverviewViewModel;
+		private RepositoryOverviewViewModel _repositoryOverviewViewModel = default!;
 		public RepositoryOverviewViewModel RepositoryOverviewViewModel { get => _repositoryOverviewViewModel; set => SetProperty(ref _repositoryOverviewViewModel, value); }
 
 		private readonly ObservableCollection<ProjectBlockButtonViewModel> _items;

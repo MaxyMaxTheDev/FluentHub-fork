@@ -4,13 +4,13 @@ namespace FluentHub.App.ViewModels.Repositories
 {
 	public class RepoContextViewModel : ObservableObject
 	{
-		private Repository _repository;
+		private Repository _repository = default!;
 		public Repository Repository { get => _repository; set => SetProperty(ref _repository, value); }
 
-		private string _branchName;
+		private string _branchName = default!;
 		public string BranchName { get => _branchName; set => SetProperty(ref _branchName, value); }
 
-		private string _path;
+		private string _path = default!;
 		public string Path { get => _path; set => SetProperty(ref _path, value); }
 
 		private bool _isDir;

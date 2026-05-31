@@ -12,7 +12,7 @@ namespace FluentHub.App.ViewModels.Searches
 {
 	public class IssuesViewModel : ObservableObject
 	{
-		public IssuesViewModel(IMessenger messenger = null, ILogger logger = null)
+		public IssuesViewModel(IMessenger? messenger = null, ILogger? logger = null)
 		{
 			_messenger = messenger;
 			_logger = logger;
@@ -24,21 +24,21 @@ namespace FluentHub.App.ViewModels.Searches
 		}
 
 		#region Fields and Properties
-		private readonly ILogger _logger;
-		private readonly IMessenger _messenger;
+		private readonly ILogger? _logger;
+		private readonly IMessenger? _messenger;
 
 		private int _loadedItemCount = 0;
 		private int _loadedPageCount = 0;
 		private bool _loadedToTheEnd = false;
 		private const int _itemCountPerPage = 30;
 
-		private string _searchTerm;
+		private string _searchTerm = default!;
 		public string SearchTerm { get => _searchTerm; set => SetProperty(ref _searchTerm, value); }
 
 		private readonly ObservableCollection<IssueBlockButtonViewModel> _resultItems;
 		public ReadOnlyObservableCollection<IssueBlockButtonViewModel> ResultItems { get; }
 
-		private Exception _taskException;
+		private Exception _taskException = default!;
 		public Exception TaskException { get => _taskException; set => SetProperty(ref _taskException, value); }
 
 		public IAsyncRelayCommand LoadSearchIssuesPageCommand { get; }

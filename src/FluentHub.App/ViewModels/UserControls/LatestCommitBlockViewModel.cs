@@ -9,7 +9,7 @@ namespace FluentHub.App.ViewModels.UserControls
 {
 	public class LatestCommitBlockViewModel : ObservableObject
 	{
-		public LatestCommitBlockViewModel(IMessenger messenger = null, ILogger logger = null)
+		public LatestCommitBlockViewModel(IMessenger? messenger = null, ILogger? logger = null)
 		{
 			_messenger = messenger;
 			_logger = logger;
@@ -18,13 +18,13 @@ namespace FluentHub.App.ViewModels.UserControls
 		}
 
 		#region Fields and Properties
-		private readonly ILogger _logger;
-		private readonly IMessenger _messenger;
+		private readonly ILogger? _logger;
+		private readonly IMessenger? _messenger;
 
-		private RepoContextViewModel _contextViewModel;
+		private RepoContextViewModel _contextViewModel = default!;
 		public RepoContextViewModel ContextViewModel { get => _contextViewModel; set => SetProperty(ref _contextViewModel, value); }
 
-		private Commit _latestCommit;
+		private Commit _latestCommit = default!;
 		public Commit LatestCommit { get => _latestCommit; set => SetProperty(ref _latestCommit, value); }
 
 		private int _totalCommitCount;
@@ -44,8 +44,8 @@ namespace FluentHub.App.ViewModels.UserControls
 					ContextViewModel.BranchName,
 					ContextViewModel.Path);
 
-				TotalCommitCount = response.History.TotalCount;
-				LatestCommit = response.History.Nodes.FirstOrDefault();
+				TotalCommitCount = response.History?.TotalCount ?? 0;
+				LatestCommit = response.History?.Nodes?.FirstOrDefault() ?? default!;
 			}
 			catch (Exception ex)
 			{

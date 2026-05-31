@@ -9,38 +9,38 @@ namespace FluentHub.App.Models
 {
 	public class TimelineItemSelector : DataTemplateSelector
 	{
-		public DataTemplate AddedToProjectEventDataTemplate { get; set; }
-		public DataTemplate AssignedEventDataTemplate { get; set; }
-		public DataTemplate ClosedEventDataTemplate { get; set; }
-		public DataTemplate CommentDeletedEventDataTemplate { get; set; }
-		public DataTemplate ConnectedEventDataTemplate { get; set; }
-		public DataTemplate ConvertedToDiscussionEventDataTemplate { get; set; }
-		public DataTemplate ConvertedNoteToIssueEventDataTemplate { get; set; }
-		public DataTemplate CrossReferencedEventDataTemplate { get; set; }
-		public DataTemplate DemilestonedEventDataTemplate { get; set; }
-		public DataTemplate DisconnectedEventDataTemplate { get; set; }
-		public DataTemplate IssueCommentDataTemplate { get; set; }
-		public DataTemplate LabeledEventDataTemplate { get; set; }
-		public DataTemplate LockedEventDataTemplate { get; set; }
-		public DataTemplate MarkedAsDuplicateEventDataTemplate { get; set; }
+		public DataTemplate AddedToProjectEventDataTemplate { get; set; } = default!;
+		public DataTemplate AssignedEventDataTemplate { get; set; } = default!;
+		public DataTemplate ClosedEventDataTemplate { get; set; } = default!;
+		public DataTemplate CommentDeletedEventDataTemplate { get; set; } = default!;
+		public DataTemplate ConnectedEventDataTemplate { get; set; } = default!;
+		public DataTemplate ConvertedToDiscussionEventDataTemplate { get; set; } = default!;
+		public DataTemplate ConvertedNoteToIssueEventDataTemplate { get; set; } = default!;
+		public DataTemplate CrossReferencedEventDataTemplate { get; set; } = default!;
+		public DataTemplate DemilestonedEventDataTemplate { get; set; } = default!;
+		public DataTemplate DisconnectedEventDataTemplate { get; set; } = default!;
+		public DataTemplate IssueCommentDataTemplate { get; set; } = default!;
+		public DataTemplate LabeledEventDataTemplate { get; set; } = default!;
+		public DataTemplate LockedEventDataTemplate { get; set; } = default!;
+		public DataTemplate MarkedAsDuplicateEventDataTemplate { get; set; } = default!;
 		//public DataTemplate MentionedEventDataTemplate { get; set; }
-		public DataTemplate MilestonedEventDataTemplate { get; set; }
-		public DataTemplate MovedColumnsInProjectEventDataTemplate { get; set; }
-		public DataTemplate PinnedEventDataTemplate { get; set; }
-		public DataTemplate ReferencedEventDataTemplate { get; set; }
-		public DataTemplate RemovedFromProjectEventDataTemplate { get; set; }
-		public DataTemplate RenamedTitleEventDataTemplate { get; set; }
-		public DataTemplate ReopenedEventDataTemplate { get; set; }
+		public DataTemplate MilestonedEventDataTemplate { get; set; } = default!;
+		public DataTemplate MovedColumnsInProjectEventDataTemplate { get; set; } = default!;
+		public DataTemplate PinnedEventDataTemplate { get; set; } = default!;
+		public DataTemplate ReferencedEventDataTemplate { get; set; } = default!;
+		public DataTemplate RemovedFromProjectEventDataTemplate { get; set; } = default!;
+		public DataTemplate RenamedTitleEventDataTemplate { get; set; } = default!;
+		public DataTemplate ReopenedEventDataTemplate { get; set; } = default!;
 		//public DataTemplate SubscribedEventDataTemplate { get; set; }
-		public DataTemplate TransferredEventDataTemplate { get; set; }
-		public DataTemplate UnassignedEventDataTemplate { get; set; }
-		public DataTemplate UnlabeledEventDataTemplate { get; set; }
-		public DataTemplate UnlockedEventDataTemplate { get; set; }
-		public DataTemplate UnmarkedAsDuplicateEventDataTemplate { get; set; }
-		public DataTemplate UnpinnedEventDataTemplate { get; set; }
+		public DataTemplate TransferredEventDataTemplate { get; set; } = default!;
+		public DataTemplate UnassignedEventDataTemplate { get; set; } = default!;
+		public DataTemplate UnlabeledEventDataTemplate { get; set; } = default!;
+		public DataTemplate UnlockedEventDataTemplate { get; set; } = default!;
+		public DataTemplate UnmarkedAsDuplicateEventDataTemplate { get; set; } = default!;
+		public DataTemplate UnpinnedEventDataTemplate { get; set; } = default!;
 		//public DataTemplate UnsubscribedEventDataTemplate { get; set; }
-		public DataTemplate UserBlockedEventDataTemplate { get; set; }
-		public DataTemplate DefaultDataTemplate { get; set; }
+		public DataTemplate UserBlockedEventDataTemplate { get; set; } = default!;
+		public DataTemplate DefaultDataTemplate { get; set; } = default!;
 
 		protected override DataTemplate SelectTemplateCore(object item)
 		{

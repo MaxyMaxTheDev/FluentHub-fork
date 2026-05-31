@@ -28,12 +28,12 @@ namespace FluentHub.App.UserControls
 		}
 		#endregion
 
-		private string _repoGitUrl { get; set; }
-		private string _repoUrl { get; set; }
+		private string _repoGitUrl { get; set; } = default!;
+		private string _repoUrl { get; set; } = default!;
 
-		private string _cloneUrl;
-		private string _sshUrl;
-		private string _gitUrl;
+		private string _cloneUrl = default!;
+		private string _sshUrl = default!;
+		private string _gitUrl = default!;
 
 		public GitCloneFlyout() => InitializeComponent();
 

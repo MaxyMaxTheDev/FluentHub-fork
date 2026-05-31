@@ -9,10 +9,10 @@ namespace FluentHub.App.ViewModels.Repositories.Codes
 {
 	public class DetailsLayoutViewModel : BaseViewModel
 	{
-		private RepoContextViewModel contextViewModel;
+		private RepoContextViewModel contextViewModel = default!;
 		public RepoContextViewModel ContextViewModel { get => contextViewModel; set => SetProperty(ref contextViewModel, value); }
 
-		private string _currentPath;
+		private string _currentPath = default!;
 		public string CurrentPath { get => _currentPath; set => SetProperty(ref _currentPath, value); }
 
 		private int _branchesTotalCount;

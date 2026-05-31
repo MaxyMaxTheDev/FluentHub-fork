@@ -27,38 +27,38 @@ namespace FluentHub.App.ViewModels
 		protected const int _itemCountPerPage = 30;
 
 		// Provided for v4 API response
-		protected PageInfo _lastPageInfo;
+		protected PageInfo _lastPageInfo = default!;
 
-		protected string _currentTaskingMethodName;
+		protected string _currentTaskingMethodName = default!;
 
 		protected ITabViewItem SelectedTabViewItem
 			=> _navigation.TabView.SelectedItem;
 
-		protected string _login;
+		protected string _login = default!;
 		public string Login { get => _login; set => SetProperty(ref _login, value); }
 
-		protected string _name;
+		protected string _name = default!;
 		public string Name { get => _name; set => SetProperty(ref _name, value); }
 
 		protected int _number;
 		public int Number { get => _number; set => SetProperty(ref _number, value); }
 
-		private User _user;
+		private User _user = default!;
 		public User User { get => _user; set => SetProperty(ref _user, value); }
 
-		private Repository _repository;
+		private Repository _repository = default!;
 		public Repository Repository { get => _repository; set => SetProperty(ref _repository, value); }
 
-		private UserProfileOverviewViewModel _userProfileOverviewViewModel;
+		private UserProfileOverviewViewModel _userProfileOverviewViewModel = default!;
 		public UserProfileOverviewViewModel UserProfileOverviewViewModel { get => _userProfileOverviewViewModel; set => SetProperty(ref _userProfileOverviewViewModel, value); }
 
-		private Organization _organization;
+		private Organization _organization = default!;
 		public Organization Organization { get => _organization; set => SetProperty(ref _organization, value); }
 
-		private OrganizationProfileOverviewViewModel _organizationProfileOverviewViewModel;
+		private OrganizationProfileOverviewViewModel _organizationProfileOverviewViewModel = default!;
 		public OrganizationProfileOverviewViewModel OrganizationProfileOverviewViewModel { get => _organizationProfileOverviewViewModel; set => SetProperty(ref _organizationProfileOverviewViewModel, value); }
 
-		private Exception _taskException;
+		private Exception _taskException = default!;
 		public Exception TaskException { get => _taskException; set => SetProperty(ref _taskException, value); }
 
 		protected bool _IsTaskFaulted;
@@ -78,8 +78,8 @@ namespace FluentHub.App.ViewModels
 			_navigation = Ioc.Default.GetRequiredService<INavigationService>();
 
 			var parameter = _navigation.TabView.SelectedItem.NavigationBar.Context;
-			Login = parameter.PrimaryText;
-			Name = parameter.SecondaryText;
+			Login = parameter.PrimaryText ?? string.Empty;
+			Name = parameter.SecondaryText ?? string.Empty;
 			Number = parameter.Number;
 		}
 
@@ -156,7 +156,7 @@ namespace FluentHub.App.ViewModels
 			_loadedItemCount = 0;
 			_loadedPageCount = 0;
 			_loadedToTheEnd = false;
-			_lastPageInfo = null;
+			_lastPageInfo = default!;
 		}
 	}
 }

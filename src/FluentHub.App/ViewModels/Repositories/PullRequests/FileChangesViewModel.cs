@@ -10,10 +10,10 @@ namespace FluentHub.App.ViewModels.Repositories.PullRequests
 {
 	public class FileChangesViewModel : BaseViewModel
 	{
-		private PullRequestOverviewViewModel _pullRequestOverviewViewModel;
+		private PullRequestOverviewViewModel _pullRequestOverviewViewModel = default!;
 		public PullRequestOverviewViewModel PullRequestOverviewViewModel { get => _pullRequestOverviewViewModel; set => SetProperty(ref _pullRequestOverviewViewModel, value); }
 
-		private PullRequest pullItem;
+		private PullRequest pullItem = default!;
 		public PullRequest PullItem { get => pullItem; private set => SetProperty(ref pullItem, value); }
 
 		private readonly ObservableCollection<DiffBlockViewModel> _diffViewModels;

@@ -18,7 +18,7 @@ namespace FluentHub.App.Helpers
 
 		[DllImport("kernel32.dll", CharSet = CharSet.Unicode)]
 		public static extern IntPtr CreateEvent(IntPtr lpEventAttributes, bool bManualReset,
-				bool bInitialState, string lpName);
+				bool bInitialState, string? lpName);
 
 		[DllImport("kernel32.dll")]
 		public static extern bool SetEvent(IntPtr hEvent);

@@ -29,11 +29,11 @@ namespace FluentHub.App.ViewModels.AppSettings
 			}
 		}
 
-		public ReadOnlyCollection<DefaultLanguageModel> DefaultLanguages { get; private set; }
+		public ReadOnlyCollection<DefaultLanguageModel> DefaultLanguages { get; private set; } = default!;
 
-		public ReadOnlyCollection<string> Themes { get; set; }
+		public ReadOnlyCollection<string> Themes { get; set; } = default!;
 
-		private User _user;
+		private User _user = default!;
 		public User User { get => _user; set => SetProperty(ref _user, value); }
 
 		private int _selectedThemeIndex;
@@ -69,7 +69,7 @@ namespace FluentHub.App.ViewModels.AppSettings
 		private bool _showRestartMessage;
 		public bool ShowRestartMessage { get => _showRestartMessage; set => SetProperty(ref _showRestartMessage, value); }
 
-		private AppSettingsOverviewViewModel _appSettingsOverviewViewModel;
+		private AppSettingsOverviewViewModel _appSettingsOverviewViewModel = default!;
 		public AppSettingsOverviewViewModel AppSettingsOverviewViewModel { get => _appSettingsOverviewViewModel; set => SetProperty(ref _appSettingsOverviewViewModel, value); }
 
 		public ICommand LoadGeneralPageCommand { get; }

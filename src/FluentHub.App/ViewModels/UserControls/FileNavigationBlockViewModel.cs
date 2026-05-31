@@ -8,7 +8,7 @@ namespace FluentHub.App.ViewModels.UserControls
 {
 	public class FileNavigationBlockViewModel : ObservableObject
 	{
-		public FileNavigationBlockViewModel(IMessenger messenger = null, ILogger logger = null)
+		public FileNavigationBlockViewModel(IMessenger? messenger = null, ILogger? logger = null)
 		{
 			_messenger = messenger;
 			_logger = logger;
@@ -19,12 +19,12 @@ namespace FluentHub.App.ViewModels.UserControls
 		}
 
 		#region Fields and Properties
-		private readonly ILogger _logger;
-		private readonly IMessenger _messenger;
+		private readonly ILogger? _logger;
+		private readonly IMessenger? _messenger;
 
 		public ObservableCollection<string> BranchNames;
 
-		private RepoContextViewModel contextViewModel;
+		private RepoContextViewModel contextViewModel = default!;
 		public RepoContextViewModel ContextViewModel { get => contextViewModel; set => SetProperty(ref contextViewModel, value); }
 
 		public IAsyncRelayCommand LoadBranchNameAllCommand { get; }

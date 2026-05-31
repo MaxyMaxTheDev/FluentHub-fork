@@ -7,20 +7,20 @@ namespace FluentHub.App.ViewModels.Dialogs
 {
 	public class EditUserProfileViewModel : ObservableObject
 	{
-		public EditUserProfileViewModel(IMessenger messenger = null, ILogger logger = null)
+		public EditUserProfileViewModel(IMessenger? messenger = null, ILogger? logger = null)
 		{
 			_logger = logger;
 			_messenger = messenger;
 		}
 
 		#region Fields and Properties
-		private readonly ILogger _logger;
-		private readonly IMessenger _messenger;
+		private readonly ILogger? _logger;
+		private readonly IMessenger? _messenger;
 
-		private string _login;
+		private string _login = default!;
 		public string Login { get => _login; set => SetProperty(ref _login, value); }
 
-		private User _userInfo;
+		private User _userInfo = default!;
 		public User UserInfo
 		{
 			get => _userInfo;

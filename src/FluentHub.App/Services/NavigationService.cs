@@ -10,18 +10,18 @@ namespace FluentHub.App.Services
 {
 	public class NavigationService : ObservableObject, INavigationService
 	{
-		public NavigationService(ILogger logger = null)
+		public NavigationService(ILogger? logger = null)
 		{
 			_logger = logger;
 		}
 
-		private readonly ILogger _logger;
+		private readonly ILogger? _logger;
 
 		private static readonly SuppressNavigationTransitionInfo _navigationMode = new();
 
-		public Type CurrentPage { get; set; }
+		public Type CurrentPage { get; set; } = default!;
 
-		public ITabView TabView { get; private set; }
+		public ITabView TabView { get; private set; } = default!;
 
 		public bool IsConfigured { get; private set; }
 
@@ -32,7 +32,7 @@ namespace FluentHub.App.Services
 			_logger?.Info("NavigationService configured");
 		}
 
-		public void Navigate(Type page, object parameter = null, NavigationTransitionInfo transitionInfo = null)
+		public void Navigate(Type page, object? parameter = null, NavigationTransitionInfo? transitionInfo = null)
 		{
 			EnsureConfigured();
 
@@ -46,12 +46,12 @@ namespace FluentHub.App.Services
 			CurrentPage = page;
 		}
 
-		public void Navigate<T>(object parameter = null, NavigationTransitionInfo transitionInfo = null) where T : Page
+		public void Navigate<T>(object? parameter = null, NavigationTransitionInfo? transitionInfo = null) where T : Page
 		{
 			Navigate(typeof(T), parameter, transitionInfo ?? _navigationMode);
 		}
 
-		public Guid OpenTab(Type page, object parameter)
+		public Guid OpenTab(Type page, object? parameter)
 		{
 			EnsureConfigured();
 
@@ -60,7 +60,7 @@ namespace FluentHub.App.Services
 			return item.Guid;
 		}
 
-		public Guid OpenTab<T>(object parameter = null) where T : Page
+		public Guid OpenTab<T>(object? parameter = null) where T : Page
 		{
 			return OpenTab(typeof(T), parameter);
 		}
@@ -120,7 +120,7 @@ namespace FluentHub.App.Services
 
 		public void Disconnect()
 		{
-			TabView = null;
+			TabView = default!;
 			IsConfigured = false;
 			_logger?.Info("NavigationService disconnected");
 		}

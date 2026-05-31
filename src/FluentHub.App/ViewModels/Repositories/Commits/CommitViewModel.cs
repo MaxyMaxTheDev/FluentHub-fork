@@ -13,7 +13,7 @@ namespace FluentHub.App.ViewModels.Repositories.Commits
 {
 	public class CommitViewModel : BaseViewModel
 	{
-		private Commit _commitItem;
+		private Commit _commitItem = default!;
 		public Commit CommitItem { get => _commitItem; set => SetProperty(ref _commitItem, value); }
 
 		private readonly ObservableCollection<DiffBlockViewModel> _diffViewModels;

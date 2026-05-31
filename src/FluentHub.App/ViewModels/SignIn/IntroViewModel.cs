@@ -14,7 +14,7 @@ namespace FluentHub.App.ViewModels.SignIn
 	{
 		private readonly ILogger _logger;
 		private readonly IMessenger _messenger;
-		private CancellationTokenSource _deviceAuthorizationCancellationTokenSource;
+		private CancellationTokenSource _deviceAuthorizationCancellationTokenSource = default!;
 
 		private bool _authorizedSuccessfully;
 		public bool AuthorizedSuccessfully
@@ -30,7 +30,7 @@ namespace FluentHub.App.ViewModels.SignIn
 			set => SetProperty(ref _UrlWasLaunched, value);
 		}
 
-		private Exception _taskException;
+		private Exception _taskException = default!;
 		public Exception TaskException { get => _taskException; set => SetProperty(ref _taskException, value); }
 
 		protected bool _IsTaskFaulted;
@@ -39,7 +39,7 @@ namespace FluentHub.App.ViewModels.SignIn
 		protected bool _IsTaskLoading;
 		public bool IsTaskLoading { get => _IsTaskLoading; set => SetProperty(ref _IsTaskLoading, value); }
 
-		private string _deviceUserCode;
+		private string _deviceUserCode = default!;
 		public string DeviceUserCode
 		{
 			get => _deviceUserCode;
@@ -50,14 +50,14 @@ namespace FluentHub.App.ViewModels.SignIn
 			}
 		}
 
-		private string _deviceVerificationUri;
+		private string _deviceVerificationUri = default!;
 		public string DeviceVerificationUri
 		{
 			get => _deviceVerificationUri;
 			set => SetProperty(ref _deviceVerificationUri, value);
 		}
 
-		private string _deviceAuthorizationStatus;
+		private string _deviceAuthorizationStatus = default!;
 		public string DeviceAuthorizationStatus
 		{
 			get => _deviceAuthorizationStatus;

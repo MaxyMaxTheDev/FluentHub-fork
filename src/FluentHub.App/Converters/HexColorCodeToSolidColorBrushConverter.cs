@@ -9,9 +9,11 @@ namespace FluentHub.App.Converters
 {
 	public class HexColorCodeToSolidColorBrushConverter : IValueConverter
 	{
-		public object Convert(object value, Type targetType, object parameter, string language)
+		public object Convert(object? value, Type targetType, object? parameter, string language)
 		{
 			var hexCode = value as string;
+			if (string.IsNullOrWhiteSpace(hexCode))
+				return new SolidColorBrush(Color.FromArgb(0, 0, 0, 0));
 
 			string hexCodeWithAlpha;
 
@@ -39,7 +41,7 @@ namespace FluentHub.App.Converters
 				System.Convert.ToByte(hexCodeWithAlpha.Substring(7, 2), 16)));
 		}
 
-		public object ConvertBack(object value, Type targetType, object parameter, string language)
+		public object ConvertBack(object? value, Type targetType, object? parameter, string language)
 			=> throw new NotImplementedException();
 	}
 }

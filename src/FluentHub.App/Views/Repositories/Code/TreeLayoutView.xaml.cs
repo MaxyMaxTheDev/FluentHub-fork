@@ -14,7 +14,7 @@ namespace FluentHub.App.Views.Repositories.Code
 {
 	public sealed partial class TreeLayoutView : LocatablePage
 	{
-		private static Repository RepositoryCache { get; set; }
+		private static Repository RepositoryCache { get; set; } = default!;
 
 		public TreeLayoutViewModel ViewModel { get; }
 
@@ -76,8 +76,8 @@ namespace FluentHub.App.Views.Repositories.Code
 
 	class ExplorerItemTemplateSelector : DataTemplateSelector
 	{
-		public DataTemplate FolderTemplate { get; set; }
-		public DataTemplate FileTemplate { get; set; }
+		public DataTemplate FolderTemplate { get; set; } = default!;
+		public DataTemplate FileTemplate { get; set; } = default!;
 
 		protected override DataTemplate SelectTemplateCore(object item)
 		{

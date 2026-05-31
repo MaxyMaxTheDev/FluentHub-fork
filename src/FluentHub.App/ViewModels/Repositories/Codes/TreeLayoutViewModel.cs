@@ -11,10 +11,10 @@ namespace FluentHub.App.ViewModels.Repositories.Codes
 		private bool _blobSelected;
 		public bool BlobSelected { get => _blobSelected; set => SetProperty(ref _blobSelected, value); }
 
-		private RepoContextViewModel _contextViewModel;
+		private RepoContextViewModel _contextViewModel = default!;
 		public RepoContextViewModel ContextViewModel { get => _contextViewModel; set => SetProperty(ref _contextViewModel, value); }
 
-		private RepoContextViewModel _selectedContextViewModel;
+		private RepoContextViewModel _selectedContextViewModel = default!;
 		public RepoContextViewModel SelectedContextViewModel { get => _selectedContextViewModel; set => SetProperty(ref _selectedContextViewModel, value); }
 
 		private readonly ObservableCollection<TreeLayoutPageModel> _items;

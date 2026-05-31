@@ -5,7 +5,7 @@ namespace FluentHub.App.Models
 {
 	public class AccountModel
 	{
-		public string Login { get; set; }
+		public string Login { get; set; } = default!;
 
 		public bool IsViewer { get; set; }
 	}

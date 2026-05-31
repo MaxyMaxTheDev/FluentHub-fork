@@ -12,13 +12,13 @@ namespace FluentHub.App.ViewModels.Searches
 {
 	public class CodeViewModel : BaseViewModel
 	{
-		private string _searchTerm;
+		private string _searchTerm = default!;
 		public string SearchTerm { get => _searchTerm; set => SetProperty(ref _searchTerm, value); }
 
 		private readonly ObservableCollection<FluentHub.Octokit.Models.v3.Searches.SearchCode> _resultItems;
 		public ReadOnlyObservableCollection<FluentHub.Octokit.Models.v3.Searches.SearchCode> ResultItems { get; }
 
-		private Exception _taskException;
+		private Exception _taskException = default!;
 		public Exception TaskException { get => _taskException; set => SetProperty(ref _taskException, value); }
 
 		public IAsyncRelayCommand LoadSearchCodePageCommand { get; }

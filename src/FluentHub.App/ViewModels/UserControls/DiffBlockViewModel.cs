@@ -6,25 +6,25 @@ namespace FluentHub.App.ViewModels.UserControls
 {
 	public class DiffBlockViewModel : ObservableObject
 	{
-		private OctokitOriginal.GitHubCommitFile _changedFile;
+		private OctokitOriginal.GitHubCommitFile _changedFile = default!;
 		public OctokitOriginal.GitHubCommitFile ChangedFile { get => _changedFile; set => SetProperty(ref _changedFile, value); }
 
-		private OctokitOriginal.PullRequestFile _changedPullRequestFile;
+		private OctokitOriginal.PullRequestFile _changedPullRequestFile = default!;
 		public OctokitOriginal.PullRequestFile ChangedPullRequestFile { get => _changedPullRequestFile; set => SetProperty(ref _changedPullRequestFile, value); }
 
 		private bool _isVaildDiff;
 		public bool IsValidDiff { get => _isVaildDiff; set => SetProperty(ref _isVaildDiff, value); }
 
-		private string _oldLineText;
+		private string _oldLineText = default!;
 		public string OldLineText { get => _oldLineText; set => SetProperty(ref _oldLineText, value); }
 
-		private string _newLineText;
+		private string _newLineText = default!;
 		public string NewLineText { get => _newLineText; set => SetProperty(ref _newLineText, value); }
 
-		private string _fitstLetters;
+		private string _fitstLetters = default!;
 		public string FirstLetters { get => _fitstLetters; set => SetProperty(ref _fitstLetters, value); }
 
-		public string _patchRemovedfFirstLetters;
+		public string _patchRemovedfFirstLetters = default!;
 		public string PatchRemovedfFirstLetters { get => _patchRemovedfFirstLetters; set => SetProperty(ref _patchRemovedfFirstLetters, value); }
 
 		private bool _blockIsExpanded;

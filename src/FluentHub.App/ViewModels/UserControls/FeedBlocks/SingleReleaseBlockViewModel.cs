@@ -6,7 +6,7 @@ namespace FluentHub.App.ViewModels.UserControls.FeedBlocks
 {
 	public class SingleReleaseBlockViewModel :ObservableObject
 	{
-		private ReleaseEventPayload _releaseEventPayload;
+		private ReleaseEventPayload _releaseEventPayload = default!;
 		public ReleaseEventPayload ReleaseEventPayload { get => _releaseEventPayload; set => SetProperty(ref _releaseEventPayload, value); }
 	}
 }

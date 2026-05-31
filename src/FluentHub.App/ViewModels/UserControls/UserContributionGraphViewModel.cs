@@ -16,10 +16,10 @@ namespace FluentHub.App.ViewModels.UserControls
 			MergedCalendar = new(_mergedCalendar);
 		}
 
-		private string _login;
+		private string _login = default!;
 		public string Login { get => _login; set => SetProperty(ref _login, value); }
 
-		private ContributionCalendar _calendar;
+		private ContributionCalendar _calendar = default!;
 		public ContributionCalendar Calendar { get => _calendar; set => SetProperty(ref _calendar, value); }
 
 		private readonly ObservableCollection<MergedCalendarDays> _mergedCalendar;

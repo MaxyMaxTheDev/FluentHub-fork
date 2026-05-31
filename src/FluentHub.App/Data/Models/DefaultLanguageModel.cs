@@ -12,7 +12,7 @@ namespace FluentHub.App.Models
 
 		public string Name { get; set; }
 
-		public DefaultLanguageModel(string id)
+		public DefaultLanguageModel(string? id)
 		{
 			if (!string.IsNullOrEmpty(id))
 			{

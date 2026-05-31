@@ -15,7 +15,7 @@ namespace FluentHub.App.ViewModels.Users
 		private readonly ObservableCollection<RepoBlockButtonViewModel> _pinnableRepositories;
 		public ReadOnlyObservableCollection<RepoBlockButtonViewModel> PinnableRepositories { get; }
 
-		private RepoContextViewModel _contextViewModel;
+		private RepoContextViewModel _contextViewModel = default!;
 		public RepoContextViewModel ContextViewModel { get => _contextViewModel; set => SetProperty(ref _contextViewModel, value); }
 
 		public IAsyncRelayCommand LoadUserOverviewCommand { get; }

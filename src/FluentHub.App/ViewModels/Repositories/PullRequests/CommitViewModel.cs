@@ -10,13 +10,13 @@ namespace FluentHub.App.ViewModels.Repositories.PullRequests
 {
 	public class CommitViewModel : BaseViewModel
 	{
-		private PullRequestOverviewViewModel _pullRequestOverviewViewModel;
+		private PullRequestOverviewViewModel _pullRequestOverviewViewModel = default!;
 		public PullRequestOverviewViewModel PullRequestOverviewViewModel { get => _pullRequestOverviewViewModel; set => SetProperty(ref _pullRequestOverviewViewModel, value); }
 
-		private PullRequest _pullRequest;
+		private PullRequest _pullRequest = default!;
 		public PullRequest PullRequest { get => _pullRequest; set => SetProperty(ref _pullRequest, value); }
 
-		private Commit _commitItem;
+		private Commit _commitItem = default!;
 		public Commit CommitItem { get => _commitItem; set => SetProperty(ref _commitItem, value); }
 
 		private readonly ObservableCollection<DiffBlockViewModel> _diffViewModels;

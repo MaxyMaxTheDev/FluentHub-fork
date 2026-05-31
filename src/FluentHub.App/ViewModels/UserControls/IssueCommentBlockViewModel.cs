@@ -9,11 +9,11 @@ namespace FluentHub.App.ViewModels.UserControls
 {
 	public class IssueCommentBlockViewModel : ObservableObject
 	{
-		private readonly ILogger _logger;
+		private readonly ILogger? _logger;
 
-		private readonly IMessenger _messenger;
+		private readonly IMessenger? _messenger;
 
-		private IssueComment _issueComment;
+		private IssueComment _issueComment = default!;
 		public IssueComment IssueComment { get => _issueComment; set => SetProperty(ref _issueComment, value); }
 
 		private int _thumbsUpCount;
@@ -40,7 +40,7 @@ namespace FluentHub.App.ViewModels.UserControls
 		private int _eyesCount;
 		public int EyesCount { get => _eyesCount; set => SetProperty(ref _eyesCount, value); }
 
-		public IssueCommentBlockViewModel(IMessenger messenger = null, ILogger logger = null)
+		public IssueCommentBlockViewModel(IMessenger? messenger = null, ILogger? logger = null)
 		{
 			_messenger = messenger;
 			_logger = logger;

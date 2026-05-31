@@ -12,7 +12,7 @@ namespace FluentHub.App.ViewModels.UserControls.BlockButtons
 		}
 
 		#region Fields and Properties
-		private PullRequest _pullItem;
+		private PullRequest _pullItem = default!;
 		public PullRequest PullItem { get => _pullItem; set => SetProperty(ref _pullItem, value); }
 		#endregion
 

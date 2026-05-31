@@ -9,17 +9,17 @@ namespace FluentHub.App.ViewModels.UserControls
 {
 	public class ReadmeContentBlockViewModel : ObservableObject
 	{
-		public ReadmeContentBlockViewModel(IMessenger messenger = null, ILogger logger = null)
+		public ReadmeContentBlockViewModel(IMessenger? messenger = null, ILogger? logger = null)
 		{
 			_messenger = messenger;
 			_logger = logger;
 		}
 
 		#region Fields and Properties
-		private readonly ILogger _logger;
-		private readonly IMessenger _messenger;
+		private readonly ILogger? _logger;
+		private readonly IMessenger? _messenger;
 
-		private RepoContextViewModel contextViewModel;
+		private RepoContextViewModel contextViewModel = default!;
 		public RepoContextViewModel ContextViewModel { get => contextViewModel; set => SetProperty(ref contextViewModel, value); }
 
 		private bool _managedToLoadReadmeContents;

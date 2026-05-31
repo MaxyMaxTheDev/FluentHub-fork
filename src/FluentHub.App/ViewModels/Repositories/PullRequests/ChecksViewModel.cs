@@ -9,16 +9,16 @@ namespace FluentHub.App.ViewModels.Repositories.PullRequests
 {
 	public class ChecksViewModel : BaseViewModel
 	{
-		private PullRequestOverviewViewModel _pullRequestOverviewViewModel;
+		private PullRequestOverviewViewModel _pullRequestOverviewViewModel = default!;
 		public PullRequestOverviewViewModel PullRequestOverviewViewModel { get => _pullRequestOverviewViewModel; set => SetProperty(ref _pullRequestOverviewViewModel, value); }
 
-		private PullRequest pullItem;
+		private PullRequest pullItem = default!;
 		public PullRequest PullItem { get => pullItem; private set => SetProperty(ref pullItem, value); }
 
 		private readonly ObservableCollection<CheckSuite> _items;
 		public ReadOnlyObservableCollection<CheckSuite> Items { get; }
 
-		private CheckRun _selectedCheckRun;
+		private CheckRun _selectedCheckRun = default!;
 		public CheckRun SelectedCheckRun { get => _selectedCheckRun; set => SetProperty(ref _selectedCheckRun, value); }
 
 		public IAsyncRelayCommand LoadRepositoryPullRequestChecksPageCommand { get; }

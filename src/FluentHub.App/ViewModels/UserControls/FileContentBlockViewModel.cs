@@ -13,29 +13,29 @@ namespace FluentHub.App.ViewModels.UserControls
 {
 	public class FileContentBlockViewModel : ObservableObject
 	{
-		public FileContentBlockViewModel(IMessenger messenger = null, ILogger logger = null)
+		public FileContentBlockViewModel(IMessenger? messenger = null, ILogger? logger = null)
 		{
 			_messenger = messenger;
 			_logger = logger;
 		}
 
 		#region Fields and Properties
-		private readonly ILogger _logger;
-		private readonly IMessenger _messenger;
+		private readonly ILogger? _logger;
+		private readonly IMessenger? _messenger;
 
-		private RepoContextViewModel contextViewModel;
+		private RepoContextViewModel contextViewModel = default!;
 		public RepoContextViewModel ContextViewModel { get => contextViewModel; set => SetProperty(ref contextViewModel, value); }
 
-		private Blob _blob;
+		private Blob _blob = default!;
 		public Blob Blob { get => _blob; set => SetProperty(ref _blob, value); }
 
-		private string _formattedFileDetails;
+		private string _formattedFileDetails = default!;
 		public string FormattedFileDetails { get => _formattedFileDetails; set => SetProperty(ref _formattedFileDetails, value); }
 
-		private string _formattedFileSize;
+		private string _formattedFileSize = default!;
 		public string FormattedFileSize { get => _formattedFileSize; set => SetProperty(ref _formattedFileSize, value); }
 
-		private string _lineText;
+		private string _lineText = default!;
 		public string LineText { get => _lineText; set => SetProperty(ref _lineText, value); }
 		#endregion
 

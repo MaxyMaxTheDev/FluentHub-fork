@@ -6,7 +6,7 @@ namespace FluentHub.App.ViewModels.Dialogs
 {
 	public class EditPinnedRepositoriesDialogViewModel : ObservableObject
 	{
-		public EditPinnedRepositoriesDialogViewModel(IMessenger messenger = null, ILogger logger = null)
+		public EditPinnedRepositoriesDialogViewModel(IMessenger? messenger = null, ILogger? logger = null)
 		{
 			_logger = logger;
 			_messenger = messenger;
@@ -16,10 +16,10 @@ namespace FluentHub.App.ViewModels.Dialogs
 		}
 
 		#region Fields and Properties
-		private readonly ILogger _logger;
-		private readonly IMessenger _messenger;
+		private readonly ILogger? _logger;
+		private readonly IMessenger? _messenger;
 
-		private string _login;
+		private string _login = default!;
 		public string Login { get => _login; set => SetProperty(ref _login, value); }
 
 		private readonly ObservableCollection<PinnableRepository> _pinnableItems;

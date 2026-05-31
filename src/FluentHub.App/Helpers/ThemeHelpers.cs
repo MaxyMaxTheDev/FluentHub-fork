@@ -14,11 +14,11 @@ namespace FluentHub.App.Helpers
 	public static class ThemeHelpers
 	{
 		private const string selectedAppThemeKey = "SelectedAppTheme";
-		private static Window currentApplicationWindow;
-		private static AppWindowTitleBar titleBar;
+		private static Window currentApplicationWindow = default!;
+		private static AppWindowTitleBar titleBar = default!;
 
 		// Keep reference so it does not get optimized/garbage collected
-		public static UISettings UiSettings;
+		public static UISettings UiSettings = default!;
 
 		/// <summary>
 		/// Gets or sets (with LocalSettings persistence) the RequestedTheme of the root element.

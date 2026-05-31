@@ -12,10 +12,10 @@ namespace FluentHub.App.ViewModels.UserControls.BlockButtons
 		{
 		}
 
-		private Commit _commitItem;
+		private Commit _commitItem = default!;
 		public Commit CommitItem { get => _commitItem; set => SetProperty(ref _commitItem, value); }
 
-		private PullRequest _pullRequest;
+		private PullRequest _pullRequest = default!;
 		public PullRequest PullRequest { get => _pullRequest; set => SetProperty(ref _pullRequest, value); }
 	}
 }
