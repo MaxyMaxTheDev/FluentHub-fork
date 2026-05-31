@@ -1,9 +1,9 @@
 {
   "profiles": {
-    "FluentHub.App (Package)": {
+    "Run (Packaged)": {
       "commandName": "MsixPackage"
     },
-    "FluentHub.App (Unpackaged)": {
+    "Run (Unpackaged)": {
       "commandName": "Project"
     }
   }
