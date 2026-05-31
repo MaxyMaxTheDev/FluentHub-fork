@@ -1,4 +1,4 @@
-﻿{
+{
   "profiles": {
     "FluentHub.App (Package)": {
       "commandName": "MsixPackage"

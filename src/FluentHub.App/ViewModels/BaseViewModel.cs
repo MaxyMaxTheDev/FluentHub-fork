@@ -1,4 +1,4 @@
-﻿using FluentHub.Octokit.Queries.Repositories;
+using FluentHub.Octokit.Queries.Repositories;
 using FluentHub.App.Helpers;
 using FluentHub.App.Models;
 using FluentHub.App.Services;

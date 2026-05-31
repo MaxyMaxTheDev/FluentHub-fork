@@ -1,4 +1,4 @@
-﻿namespace FluentHub.Octokit.Mutations
+namespace FluentHub.Octokit.Mutations
 {
 	public class AddStarMutation
 	{

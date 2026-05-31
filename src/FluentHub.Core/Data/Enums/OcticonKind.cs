@@ -1,4 +1,4 @@
-﻿// Copyright (c) 0x5BFA
+// Copyright (c) 0x5BFA
 // Licensed under the MIT License. See the LICENSE.
 
 //------------------------------------------------------------------------------

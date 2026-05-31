@@ -1,4 +1,4 @@
-﻿using GraphQL;
+using GraphQL;
 using Newtonsoft.Json.Linq;
 
 namespace FluentHub.Octokit.Queries.Users

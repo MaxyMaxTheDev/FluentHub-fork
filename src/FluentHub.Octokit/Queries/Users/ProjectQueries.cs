@@ -1,4 +1,4 @@
-﻿using Octokit.GraphQL.Core;
+using Octokit.GraphQL.Core;
 
 namespace FluentHub.Octokit.Queries.Users
 {

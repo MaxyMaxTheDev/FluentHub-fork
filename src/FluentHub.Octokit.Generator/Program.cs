@@ -1,4 +1,4 @@
-﻿// Copyright (c) 2022-2024 0x5BFA
+// Copyright (c) 2022-2024 0x5BFA
 // Licensed under the MIT License. See the LICENSE.
 
 using Octokit.GraphQL;
@@ -16,6 +16,8 @@ namespace FluentHub.Octokit.ModelGenerator
 		private readonly static string rootNamespace = "FluentHub.Octokit";
 
 		private readonly static string entityNamespace = "FluentHub.Octokit.Models.v4";
+
+		private readonly static Encoding generatedFileEncoding = new UTF8Encoding(encoderShouldEmitUTF8Identifier: false);
 
 		static async Task<int> Main(string[] args)
 		{
@@ -128,7 +130,15 @@ namespace FluentHub.Octokit.ModelGenerator
 			if (!string.IsNullOrWhiteSpace(outputDirectory))
 				Directory.CreateDirectory(outputDirectory);
 
-			File.WriteAllText(outputPath, file.Content);
+			File.WriteAllText(outputPath, NormalizeLineEndings(file.Content), generatedFileEncoding);
+		}
+
+		private static string NormalizeLineEndings(string content)
+		{
+			return content
+				.Replace("\r\n", "\n")
+				.Replace("\r", "\n")
+				.Replace("\n", "\r\n");
 		}
 
 		private static string GetSafeCombinedPath(string rootPath, string relativePath)

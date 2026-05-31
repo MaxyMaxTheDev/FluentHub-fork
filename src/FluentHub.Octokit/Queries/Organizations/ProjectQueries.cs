@@ -1,4 +1,4 @@
-﻿namespace FluentHub.Octokit.Queries.Organizations
+namespace FluentHub.Octokit.Queries.Organizations
 {
 	public class ProjectQueries
 	{

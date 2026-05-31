@@ -1,4 +1,4 @@
-﻿namespace FluentHub.Octokit.Models.v3.Searches
+namespace FluentHub.Octokit.Models.v3.Searches
 {
 	public class SearchCode
 	{
