@@ -22,7 +22,7 @@ namespace FluentHub.Octokit.Models.v4
 		Public,
 
 		/// <summary>
-		/// The repository is visible only to users in the same business.
+		/// The repository is visible only to users in the same enterprise.
 		/// </summary>
 		[EnumMember(Value = "INTERNAL")]
 		Internal,

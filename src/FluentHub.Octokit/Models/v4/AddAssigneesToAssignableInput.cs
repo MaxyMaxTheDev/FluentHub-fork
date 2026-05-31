@@ -11,7 +11,7 @@ namespace FluentHub.Octokit.Models.v4
 		/// <summary>
 		/// A unique identifier for the client performing the mutation.
 		/// </summary>
-		public string? ClientMutationId { get; set; }
+		public string ClientMutationId { get; set; }
 
 		/// <summary>
 		/// The id of the assignable object to add assignees to.
@@ -19,8 +19,13 @@ namespace FluentHub.Octokit.Models.v4
 		public ID AssignableId { get; set; }
 
 		/// <summary>
-		/// The id of users to add as assignees.
+		/// The ids of actors (users or bots) to add as assignees.
 		/// </summary>
-		public List<ID>? AssigneeIds { get; set; }
+		public List<ID> AssigneeIds { get; set; }
+
+		/// <summary>
+		/// Configuration for assigning Copilot to this issue.
+		/// </summary>
+		public AgentAssignmentInput AgentAssignment { get; set; }
 	}
 }

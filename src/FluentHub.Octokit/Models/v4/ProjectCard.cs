@@ -14,76 +14,89 @@ namespace FluentHub.Octokit.Models.v4
 		/// in a pending state and has yet to be associated with a column. Once cards are
 		/// associated with a column, they will not become pending in the future.
 		/// </summary>
-		public ProjectColumn? Column { get; set; }
+		[Obsolete(@"Projects (classic) is being deprecated in favor of the new Projects experience, see: https://github.blog/changelog/2024-05-23-sunset-notice-projects-classic/. Removal on 2025-04-01 UTC.")]
+		public ProjectColumn Column { get; set; }
 
 		/// <summary>
 		/// The card content item
 		/// </summary>
-		public ProjectCardItem? Content { get; set; }
+		[Obsolete(@"Projects (classic) is being deprecated in favor of the new Projects experience, see: https://github.blog/changelog/2024-05-23-sunset-notice-projects-classic/. Removal on 2025-04-01 UTC.")]
+		public ProjectCardItem Content { get; set; }
 
 		/// <summary>
 		/// Identifies the date and time when the object was created.
 		/// </summary>
+		[Obsolete(@"Projects (classic) is being deprecated in favor of the new Projects experience, see: https://github.blog/changelog/2024-05-23-sunset-notice-projects-classic/. Removal on 2025-04-01 UTC.")]
 		public DateTimeOffset CreatedAt { get; set; }
 
 		/// <summary>
 		/// Humanized string of "Identifies the date and time when the object was created."
 		/// <summary>
-		public string? CreatedAtHumanized { get; set; }
+		public string CreatedAtHumanized { get; set; }
 
 		/// <summary>
 		/// The actor who created this card
 		/// </summary>
-		public IActor? Creator { get; set; }
+		[Obsolete(@"Projects (classic) is being deprecated in favor of the new Projects experience, see: https://github.blog/changelog/2024-05-23-sunset-notice-projects-classic/. Removal on 2025-04-01 UTC.")]
+		public IActor Creator { get; set; }
 
 		/// <summary>
 		/// Identifies the primary key from the database.
 		/// </summary>
+		[Obsolete(@"Projects (classic) is being deprecated in favor of the new Projects experience, see: https://github.blog/changelog/2024-05-23-sunset-notice-projects-classic/. Removal on 2025-04-01 UTC.")]
 		public int? DatabaseId { get; set; }
 
 		/// <summary>
 		/// The Node ID of the ProjectCard object
 		/// </summary>
+		[Obsolete(@"Projects (classic) is being deprecated in favor of the new Projects experience, see: https://github.blog/changelog/2024-05-23-sunset-notice-projects-classic/. Removal on 2025-04-01 UTC.")]
 		public ID Id { get; set; }
 
 		/// <summary>
 		/// Whether the card is archived
 		/// </summary>
+		[Obsolete(@"Projects (classic) is being deprecated in favor of the new Projects experience, see: https://github.blog/changelog/2024-05-23-sunset-notice-projects-classic/. Removal on 2025-04-01 UTC.")]
 		public bool IsArchived { get; set; }
 
 		/// <summary>
 		/// The card note
 		/// </summary>
-		public string? Note { get; set; }
+		[Obsolete(@"Projects (classic) is being deprecated in favor of the new Projects experience, see: https://github.blog/changelog/2024-05-23-sunset-notice-projects-classic/. Removal on 2025-04-01 UTC.")]
+		public string Note { get; set; }
 
 		/// <summary>
 		/// The project that contains this card.
 		/// </summary>
-		public Project? Project { get; set; }
+		[Obsolete(@"Projects (classic) is being deprecated in favor of the new Projects experience, see: https://github.blog/changelog/2024-05-23-sunset-notice-projects-classic/. Removal on 2025-04-01 UTC.")]
+		public Project Project { get; set; }
 
 		/// <summary>
 		/// The HTTP path for this card
 		/// </summary>
-		public string? ResourcePath { get; set; }
+		[Obsolete(@"Projects (classic) is being deprecated in favor of the new Projects experience, see: https://github.blog/changelog/2024-05-23-sunset-notice-projects-classic/. Removal on 2025-04-01 UTC.")]
+		public string ResourcePath { get; set; }
 
 		/// <summary>
 		/// The state of ProjectCard
 		/// </summary>
+		[Obsolete(@"Projects (classic) is being deprecated in favor of the new Projects experience, see: https://github.blog/changelog/2024-05-23-sunset-notice-projects-classic/. Removal on 2025-04-01 UTC.")]
 		public ProjectCardState? State { get; set; }
 
 		/// <summary>
 		/// Identifies the date and time when the object was last updated.
 		/// </summary>
+		[Obsolete(@"Projects (classic) is being deprecated in favor of the new Projects experience, see: https://github.blog/changelog/2024-05-23-sunset-notice-projects-classic/. Removal on 2025-04-01 UTC.")]
 		public DateTimeOffset UpdatedAt { get; set; }
 
 		/// <summary>
 		/// Humanized string of "Identifies the date and time when the object was last updated."
 		/// <summary>
-		public string? UpdatedAtHumanized { get; set; }
+		public string UpdatedAtHumanized { get; set; }
 
 		/// <summary>
 		/// The HTTP URL for this card
 		/// </summary>
-		public string? Url { get; set; }
+		[Obsolete(@"Projects (classic) is being deprecated in favor of the new Projects experience, see: https://github.blog/changelog/2024-05-23-sunset-notice-projects-classic/. Removal on 2025-04-01 UTC.")]
+		public string Url { get; set; }
 	}
 }

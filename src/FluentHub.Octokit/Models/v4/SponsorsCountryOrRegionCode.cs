@@ -1288,6 +1288,12 @@ namespace FluentHub.Octokit.Models.v4
 		Ch,
 
 		/// <summary>
+		/// Syria
+		/// </summary>
+		[EnumMember(Value = "SY")]
+		Sy,
+
+		/// <summary>
 		/// Taiwan
 		/// </summary>
 		[EnumMember(Value = "TW")]

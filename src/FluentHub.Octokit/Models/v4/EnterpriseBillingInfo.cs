@@ -14,8 +14,9 @@ namespace FluentHub.Octokit.Models.v4
 		public int AllLicensableUsersCount { get; set; }
 
 		/// <summary>
-		/// The number of data packs used by all organizations owned by the enterprise.
+		/// The number of data packs used by all organizations owned by the enterprise. Data packs are deprecated, always returns 0.
 		/// </summary>
+		[Obsolete(@"LFS data packs have been removed. Always returns 0.")]
 		public int AssetPacks { get; set; }
 
 		/// <summary>

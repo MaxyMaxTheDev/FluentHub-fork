@@ -4,14 +4,14 @@
 namespace FluentHub.Octokit.Models.v4
 {
 	/// <summary>
-	/// A team or app that has the ability to bypass a rules defined on a ruleset
+	/// A team, app or user that has the ability to bypass rules defined on a ruleset
 	/// </summary>
 	public class RepositoryRulesetBypassActor
 	{
 		/// <summary>
 		/// The actor that can bypass rules.
 		/// </summary>
-		public BypassActor? Actor { get; set; }
+		public BypassActor Actor { get; set; }
 
 		/// <summary>
 		/// The mode for the bypass actor
@@ -22,6 +22,16 @@ namespace FluentHub.Octokit.Models.v4
 		/// This actor represents the ability for a deploy key to bypass
 		/// </summary>
 		public bool DeployKey { get; set; }
+
+		/// <summary>
+		/// This actor represents the ability for an enterprise owner to bypass
+		/// </summary>
+		public bool EnterpriseOwner { get; set; }
+
+		/// <summary>
+		/// This actor represents the ability for an enterprise role to bypass
+		/// </summary>
+		public bool EnterpriseRole { get; set; }
 
 		/// <summary>
 		/// The Node ID of the RepositoryRulesetBypassActor object
@@ -41,11 +51,11 @@ namespace FluentHub.Octokit.Models.v4
 		/// <summary>
 		/// If the actor is a repository role, the repository role's name that can bypass
 		/// </summary>
-		public string? RepositoryRoleName { get; set; }
+		public string RepositoryRoleName { get; set; }
 
 		/// <summary>
 		/// Identifies the ruleset associated with the allowed actor
 		/// </summary>
-		public RepositoryRuleset? RepositoryRuleset { get; set; }
+		public RepositoryRuleset RepositoryRuleset { get; set; }
 	}
 }

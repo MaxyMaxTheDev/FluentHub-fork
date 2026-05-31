@@ -9,14 +9,14 @@ namespace FluentHub.Octokit.Models.v4
 	public class DraftPullRequestReviewThread
 	{
 		/// <summary>
-		/// Path to the file being commented on.
+		/// Path to the file being commented on. Required if not using positioning.
 		/// </summary>
-		public string? Path { get; set; }
+		public string Path { get; set; }
 
 		/// <summary>
-		/// The line of the blob to which the thread refers. The end of the line range for multi-line comments.
+		/// The line of the blob to which the thread refers. The end of the line range for multi-line comments. Required if not using positioning.
 		/// </summary>
-		public int Line { get; set; }
+		public int? Line { get; set; }
 
 		/// <summary>
 		/// The side of the diff on which the line resides. For multi-line comments, this is the side for the end of the line range.
@@ -36,6 +36,6 @@ namespace FluentHub.Octokit.Models.v4
 		/// <summary>
 		/// Body of the comment to leave.
 		/// </summary>
-		public string? Body { get; set; }
+		public string Body { get; set; }
 	}
 }

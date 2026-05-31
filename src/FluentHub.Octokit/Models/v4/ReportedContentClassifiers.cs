@@ -44,5 +44,11 @@ namespace FluentHub.Octokit.Models.v4
 		/// </summary>
 		[EnumMember(Value = "RESOLVED")]
 		Resolved,
+
+		/// <summary>
+		/// A low quality piece of content
+		/// </summary>
+		[EnumMember(Value = "LOW_QUALITY")]
+		LowQuality,
 	}
 }

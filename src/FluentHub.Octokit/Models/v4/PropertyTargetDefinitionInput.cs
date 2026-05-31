@@ -11,11 +11,16 @@ namespace FluentHub.Octokit.Models.v4
 		/// <summary>
 		/// The name of the property
 		/// </summary>
-		public string? Name { get; set; }
+		public string Name { get; set; }
 
 		/// <summary>
 		/// The values to match for
 		/// </summary>
-		public List<string>? PropertyValues { get; set; }
+		public List<string> PropertyValues { get; set; }
+
+		/// <summary>
+		/// The source of the property. Choose 'custom' or 'system'. Defaults to 'custom' if not specified
+		/// </summary>
+		public string Source { get; set; }
 	}
 }

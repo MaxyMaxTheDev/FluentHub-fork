@@ -20,5 +20,11 @@ namespace FluentHub.Octokit.Models.v4
 		/// </summary>
 		[EnumMember(Value = "BILLING_MANAGER")]
 		BillingManager,
+
+		/// <summary>
+		/// Unaffiliated member of the enterprise account without an admin role.
+		/// </summary>
+		[EnumMember(Value = "UNAFFILIATED")]
+		Unaffiliated,
 	}
 }

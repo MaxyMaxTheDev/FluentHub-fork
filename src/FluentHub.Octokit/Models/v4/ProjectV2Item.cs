@@ -9,9 +9,9 @@ namespace FluentHub.Octokit.Models.v4
 	public class ProjectV2Item
 	{
 		/// <summary>
-		/// The content of the referenced draft issue, issue, or pull request
+		/// The content of the referenced draft issue, issue, pull request
 		/// </summary>
-		public ProjectV2ItemContent? Content { get; set; }
+		public ProjectV2ItemContent Content { get; set; }
 
 		/// <summary>
 		/// Identifies the date and time when the object was created.
@@ -21,23 +21,24 @@ namespace FluentHub.Octokit.Models.v4
 		/// <summary>
 		/// Humanized string of "Identifies the date and time when the object was created."
 		/// <summary>
-		public string? CreatedAtHumanized { get; set; }
+		public string CreatedAtHumanized { get; set; }
 
 		/// <summary>
 		/// The actor who created the item.
 		/// </summary>
-		public IActor? Creator { get; set; }
+		public IActor Creator { get; set; }
 
 		/// <summary>
 		/// Identifies the primary key from the database.
 		/// </summary>
+		[Obsolete(@"`databaseId` will be removed because it does not support 64-bit signed integer identifiers. Use `fullDatabaseId` instead. Removal on 2025-04-01 UTC.")]
 		public int? DatabaseId { get; set; }
 
 		/// <summary>
 		/// The field value of the first project field which matches the 'name' argument that is set on the item.
 		/// </summary>
 		/// <param name="name">The name of the field to return the field value of</param>
-		public ProjectV2ItemFieldValue? FieldValueByName { get; set; }
+		public ProjectV2ItemFieldValue FieldValueByName { get; set; }
 
 		/// <summary>
 		/// The field values that are set on the item.
@@ -47,12 +48,12 @@ namespace FluentHub.Octokit.Models.v4
 		/// <param name="last">Returns the last _n_ elements from the list.</param>
 		/// <param name="before">Returns the elements in the list that come before the specified cursor.</param>
 		/// <param name="orderBy">Ordering options for project v2 item field values returned from the connection</param>
-		public ProjectV2ItemFieldValueConnection? FieldValues { get; set; }
+		public ProjectV2ItemFieldValueConnection FieldValues { get; set; }
 
 		/// <summary>
 		/// Identifies the primary key from the database as a BigInt.
 		/// </summary>
-		public string? FullDatabaseId { get; set; }
+		public string FullDatabaseId { get; set; }
 
 		/// <summary>
 		/// The Node ID of the ProjectV2Item object
@@ -67,7 +68,7 @@ namespace FluentHub.Octokit.Models.v4
 		/// <summary>
 		/// The project that contains this item.
 		/// </summary>
-		public ProjectV2? Project { get; set; }
+		public ProjectV2 Project { get; set; }
 
 		/// <summary>
 		/// The type of the item.
@@ -82,6 +83,6 @@ namespace FluentHub.Octokit.Models.v4
 		/// <summary>
 		/// Humanized string of "Identifies the date and time when the object was last updated."
 		/// <summary>
-		public string? UpdatedAtHumanized { get; set; }
+		public string UpdatedAtHumanized { get; set; }
 	}
 }

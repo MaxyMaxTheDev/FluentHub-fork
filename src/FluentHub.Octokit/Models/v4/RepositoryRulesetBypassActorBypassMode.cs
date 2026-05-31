@@ -20,5 +20,11 @@ namespace FluentHub.Octokit.Models.v4
 		/// </summary>
 		[EnumMember(Value = "PULL_REQUEST")]
 		PullRequest,
+
+		/// <summary>
+		/// The actor is exempt from rules without generating a pass / fail result
+		/// </summary>
+		[EnumMember(Value = "EXEMPT")]
+		Exempt,
 	}
 }

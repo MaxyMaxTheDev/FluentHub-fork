@@ -27,8 +27,9 @@ namespace FluentHub.Octokit.Models.v4
 		/// <param name="after">Returns the elements in the list that come after the specified cursor.</param>
 		/// <param name="last">Returns the last _n_ elements from the list.</param>
 		/// <param name="before">Returns the elements in the list that come before the specified cursor.</param>
+		/// <param name="minPermissionLevel">Filter projects based on user role.</param>
 		/// <param name="orderBy">How to order the returned projects.</param>
-		/// <param name="query">A project to search for under the the owner.</param>
+		/// <param name="query">A project to search for under the owner.</param>
 		ProjectV2Connection ProjectsV2 { get; set; }
 	}
 }
@@ -39,9 +40,9 @@ namespace FluentHub.Octokit.Models.v4
 	{
 		public ID Id { get; set; }
 
-		public ProjectV2? ProjectV2 { get; set; }
+		public ProjectV2 ProjectV2 { get; set; }
 
-		public ProjectV2Connection? ProjectsV2 { get; set; }
+		public ProjectV2Connection ProjectsV2 { get; set; }
 	}
 }
 

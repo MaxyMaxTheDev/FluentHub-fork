@@ -14,18 +14,27 @@ namespace FluentHub.Octokit.Models.v4
 		public LockReason? ActiveLockReason { get; set; }
 
 		/// <summary>
+		/// A list of actors assigned to this object.
+		/// </summary>
+		/// <param name="first">Returns the first _n_ elements from the list.</param>
+		/// <param name="after">Returns the elements in the list that come after the specified cursor.</param>
+		/// <param name="last">Returns the last _n_ elements from the list.</param>
+		/// <param name="before">Returns the elements in the list that come before the specified cursor.</param>
+		public AssigneeConnection AssignedActors { get; set; }
+
+		/// <summary>
 		/// A list of Users assigned to this object.
 		/// </summary>
 		/// <param name="first">Returns the first _n_ elements from the list.</param>
 		/// <param name="after">Returns the elements in the list that come after the specified cursor.</param>
 		/// <param name="last">Returns the last _n_ elements from the list.</param>
 		/// <param name="before">Returns the elements in the list that come before the specified cursor.</param>
-		public UserConnection? Assignees { get; set; }
+		public UserConnection Assignees { get; set; }
 
 		/// <summary>
 		/// The actor who authored the comment.
 		/// </summary>
-		public IActor? Author { get; set; }
+		public IActor Author { get; set; }
 
 		/// <summary>
 		/// Author's association with the subject of the comment.
@@ -33,29 +42,49 @@ namespace FluentHub.Octokit.Models.v4
 		public CommentAuthorAssociation AuthorAssociation { get; set; }
 
 		/// <summary>
+		/// A list of issues that are blocking this issue.
+		/// </summary>
+		/// <param name="first">Returns the first _n_ elements from the list.</param>
+		/// <param name="after">Returns the elements in the list that come after the specified cursor.</param>
+		/// <param name="last">Returns the last _n_ elements from the list.</param>
+		/// <param name="before">Returns the elements in the list that come before the specified cursor.</param>
+		/// <param name="orderBy">Ordering options for dependencies</param>
+		public IssueConnection BlockedBy { get; set; }
+
+		/// <summary>
+		/// A list of issues that this issue is blocking.
+		/// </summary>
+		/// <param name="first">Returns the first _n_ elements from the list.</param>
+		/// <param name="after">Returns the elements in the list that come after the specified cursor.</param>
+		/// <param name="last">Returns the last _n_ elements from the list.</param>
+		/// <param name="before">Returns the elements in the list that come before the specified cursor.</param>
+		/// <param name="orderBy">Ordering options for dependencies</param>
+		public IssueConnection Blocking { get; set; }
+
+		/// <summary>
 		/// Identifies the body of the issue.
 		/// </summary>
-		public string? Body { get; set; }
+		public string Body { get; set; }
 
 		/// <summary>
 		/// The body rendered to HTML.
 		/// </summary>
-		public string? BodyHTML { get; set; }
+		public string BodyHTML { get; set; }
 
 		/// <summary>
 		/// The http path for this issue body
 		/// </summary>
-		public string? BodyResourcePath { get; set; }
+		public string BodyResourcePath { get; set; }
 
 		/// <summary>
 		/// Identifies the body of the issue rendered to text.
 		/// </summary>
-		public string? BodyText { get; set; }
+		public string BodyText { get; set; }
 
 		/// <summary>
 		/// The http URL for this issue body
 		/// </summary>
-		public string? BodyUrl { get; set; }
+		public string BodyUrl { get; set; }
 
 		/// <summary>
 		/// Indicates if the object is closed (definition of closed may depend on type)
@@ -70,7 +99,19 @@ namespace FluentHub.Octokit.Models.v4
 		/// <summary>
 		/// Humanized string of "Identifies the date and time when the object was closed."
 		/// <summary>
-		public string? ClosedAtHumanized { get; set; }
+		public string ClosedAtHumanized { get; set; }
+
+		/// <summary>
+		/// List of open pull requests referenced from this issue
+		/// </summary>
+		/// <param name="first">Returns the first _n_ elements from the list.</param>
+		/// <param name="after">Returns the elements in the list that come after the specified cursor.</param>
+		/// <param name="last">Returns the last _n_ elements from the list.</param>
+		/// <param name="before">Returns the elements in the list that come before the specified cursor.</param>
+		/// <param name="includeClosedPrs">Include closed PRs in results</param>
+		/// <param name="orderByState">Return results ordered by state</param>
+		/// <param name="userLinkedOnly">Return only manually linked PRs</param>
+		public PullRequestConnection ClosedByPullRequestsReferences { get; set; }
 
 		/// <summary>
 		/// A list of comments associated with the Issue.
@@ -80,7 +121,7 @@ namespace FluentHub.Octokit.Models.v4
 		/// <param name="last">Returns the last _n_ elements from the list.</param>
 		/// <param name="before">Returns the elements in the list that come before the specified cursor.</param>
 		/// <param name="orderBy">Ordering options for issue comments returned from the connection.</param>
-		public IssueCommentConnection? Comments { get; set; }
+		public IssueCommentConnection Comments { get; set; }
 
 		/// <summary>
 		/// Identifies the date and time when the object was created.
@@ -90,7 +131,7 @@ namespace FluentHub.Octokit.Models.v4
 		/// <summary>
 		/// Humanized string of "Identifies the date and time when the object was created."
 		/// <summary>
-		public string? CreatedAtHumanized { get; set; }
+		public string CreatedAtHumanized { get; set; }
 
 		/// <summary>
 		/// Check if this comment was created via an email reply.
@@ -103,20 +144,25 @@ namespace FluentHub.Octokit.Models.v4
 		public int? DatabaseId { get; set; }
 
 		/// <summary>
+		/// A reference to the original issue that this issue has been marked as a duplicate of.
+		/// </summary>
+		public Issue DuplicateOf { get; set; }
+
+		/// <summary>
 		/// The actor who edited the comment.
 		/// </summary>
-		public IActor? Editor { get; set; }
+		public IActor Editor { get; set; }
 
 		/// <summary>
 		/// Identifies the primary key from the database as a BigInt.
 		/// </summary>
-		public string? FullDatabaseId { get; set; }
+		public string FullDatabaseId { get; set; }
 
 		/// <summary>
 		/// The hovercard information for this issue
 		/// </summary>
 		/// <param name="includeNotificationContexts">Whether or not to include notification contexts</param>
-		public Hovercard? Hovercard { get; set; }
+		public Hovercard Hovercard { get; set; }
 
 		/// <summary>
 		/// The Node ID of the Issue object
@@ -139,6 +185,25 @@ namespace FluentHub.Octokit.Models.v4
 		public bool? IsReadByViewer { get; set; }
 
 		/// <summary>
+		/// Summary of the state of an issue's dependencies
+		/// </summary>
+		public IssueDependenciesSummary IssueDependenciesSummary { get; set; }
+
+		/// <summary>
+		/// Fields that are set on this issue
+		/// </summary>
+		/// <param name="first">Returns the first _n_ elements from the list.</param>
+		/// <param name="after">Returns the elements in the list that come after the specified cursor.</param>
+		/// <param name="last">Returns the last _n_ elements from the list.</param>
+		/// <param name="before">Returns the elements in the list that come before the specified cursor.</param>
+		public IssueFieldValueConnection IssueFieldValues { get; set; }
+
+		/// <summary>
+		/// The issue type for this Issue
+		/// </summary>
+		public IssueType IssueType { get; set; }
+
+		/// <summary>
 		/// A list of labels associated with the object.
 		/// </summary>
 		/// <param name="first">Returns the first _n_ elements from the list.</param>
@@ -146,7 +211,7 @@ namespace FluentHub.Octokit.Models.v4
 		/// <param name="last">Returns the last _n_ elements from the list.</param>
 		/// <param name="before">Returns the elements in the list that come before the specified cursor.</param>
 		/// <param name="orderBy">Ordering options for labels returned from the connection.</param>
-		public LabelConnection? Labels { get; set; }
+		public LabelConnection Labels { get; set; }
 
 		/// <summary>
 		/// The moment the editor made the last edit
@@ -156,7 +221,7 @@ namespace FluentHub.Octokit.Models.v4
 		/// <summary>
 		/// Humanized string of "The moment the editor made the last edit"
 		/// <summary>
-		public string? LastEditedAtHumanized { get; set; }
+		public string LastEditedAtHumanized { get; set; }
 
 		/// <summary>
 		/// Branches linked to this issue.
@@ -165,7 +230,7 @@ namespace FluentHub.Octokit.Models.v4
 		/// <param name="after">Returns the elements in the list that come after the specified cursor.</param>
 		/// <param name="last">Returns the last _n_ elements from the list.</param>
 		/// <param name="before">Returns the elements in the list that come before the specified cursor.</param>
-		public LinkedBranchConnection? LinkedBranches { get; set; }
+		public LinkedBranchConnection LinkedBranches { get; set; }
 
 		/// <summary>
 		/// `true` if the object is locked
@@ -175,12 +240,17 @@ namespace FluentHub.Octokit.Models.v4
 		/// <summary>
 		/// Identifies the milestone associated with the issue.
 		/// </summary>
-		public Milestone? Milestone { get; set; }
+		public Milestone Milestone { get; set; }
 
 		/// <summary>
 		/// Identifies the issue number.
 		/// </summary>
 		public int Number { get; set; }
+
+		/// <summary>
+		/// The parent entity of the issue.
+		/// </summary>
+		public Issue Parent { get; set; }
 
 		/// <summary>
 		/// A list of Users that are participating in the Issue conversation.
@@ -189,7 +259,12 @@ namespace FluentHub.Octokit.Models.v4
 		/// <param name="after">Returns the elements in the list that come after the specified cursor.</param>
 		/// <param name="last">Returns the last _n_ elements from the list.</param>
 		/// <param name="before">Returns the elements in the list that come before the specified cursor.</param>
-		public UserConnection? Participants { get; set; }
+		public UserConnection Participants { get; set; }
+
+		/// <summary>
+		/// The pinned comment for this issue.
+		/// </summary>
+		public PinnedIssueComment PinnedIssueComment { get; set; }
 
 		/// <summary>
 		/// List of project cards associated with this issue.
@@ -199,7 +274,7 @@ namespace FluentHub.Octokit.Models.v4
 		/// <param name="last">Returns the last _n_ elements from the list.</param>
 		/// <param name="before">Returns the elements in the list that come before the specified cursor.</param>
 		/// <param name="archivedStates">A list of archived states to filter the cards by</param>
-		public ProjectCardConnection? ProjectCards { get; set; }
+		public ProjectCardConnection ProjectCards { get; set; }
 
 		/// <summary>
 		/// List of project items associated with this issue.
@@ -209,13 +284,13 @@ namespace FluentHub.Octokit.Models.v4
 		/// <param name="last">Returns the last _n_ elements from the list.</param>
 		/// <param name="before">Returns the elements in the list that come before the specified cursor.</param>
 		/// <param name="includeArchived">Include archived items.</param>
-		public ProjectV2ItemConnection? ProjectItems { get; set; }
+		public ProjectV2ItemConnection ProjectItems { get; set; }
 
 		/// <summary>
 		/// Find a project by number.
 		/// </summary>
 		/// <param name="number">The project number.</param>
-		public ProjectV2? ProjectV2 { get; set; }
+		public ProjectV2 ProjectV2 { get; set; }
 
 		/// <summary>
 		/// A list of projects under the owner.
@@ -224,9 +299,10 @@ namespace FluentHub.Octokit.Models.v4
 		/// <param name="after">Returns the elements in the list that come after the specified cursor.</param>
 		/// <param name="last">Returns the last _n_ elements from the list.</param>
 		/// <param name="before">Returns the elements in the list that come before the specified cursor.</param>
+		/// <param name="minPermissionLevel">Filter projects based on user role.</param>
 		/// <param name="orderBy">How to order the returned projects.</param>
-		/// <param name="query">A project to search for under the the owner.</param>
-		public ProjectV2Connection? ProjectsV2 { get; set; }
+		/// <param name="query">A project to search for under the owner.</param>
+		public ProjectV2Connection ProjectsV2 { get; set; }
 
 		/// <summary>
 		/// Identifies when the comment was published at.
@@ -236,12 +312,12 @@ namespace FluentHub.Octokit.Models.v4
 		/// <summary>
 		/// Humanized string of "Identifies when the comment was published at."
 		/// <summary>
-		public string? PublishedAtHumanized { get; set; }
+		public string PublishedAtHumanized { get; set; }
 
 		/// <summary>
 		/// A list of reactions grouped by content left on the subject.
 		/// </summary>
-		public List<ReactionGroup>? ReactionGroups { get; set; }
+		public List<ReactionGroup> ReactionGroups { get; set; }
 
 		/// <summary>
 		/// A list of Reactions left on the Issue.
@@ -252,17 +328,17 @@ namespace FluentHub.Octokit.Models.v4
 		/// <param name="before">Returns the elements in the list that come before the specified cursor.</param>
 		/// <param name="content">Allows filtering Reactions by emoji.</param>
 		/// <param name="orderBy">Allows specifying the order in which reactions are returned.</param>
-		public ReactionConnection? Reactions { get; set; }
+		public ReactionConnection Reactions { get; set; }
 
 		/// <summary>
 		/// The repository associated with this node.
 		/// </summary>
-		public Repository? Repository { get; set; }
+		public Repository Repository { get; set; }
 
 		/// <summary>
 		/// The HTTP path for this issue
 		/// </summary>
-		public string? ResourcePath { get; set; }
+		public string ResourcePath { get; set; }
 
 		/// <summary>
 		/// Identifies the state of the issue.
@@ -272,7 +348,32 @@ namespace FluentHub.Octokit.Models.v4
 		/// <summary>
 		/// Identifies the reason for the issue state.
 		/// </summary>
+		/// <param name="enableDuplicate">Whether or not to return state reason for duplicates **Upcoming Change on 2025-10-01 UTC** **Description:** `enableDuplicate` will be removed. **Reason:** The state reason for duplicate issue is now returned by default.</param>
 		public IssueStateReason? StateReason { get; set; }
+
+		/// <summary>
+		/// A list of sub-issues associated with the Issue.
+		/// </summary>
+		/// <param name="first">Returns the first _n_ elements from the list.</param>
+		/// <param name="after">Returns the elements in the list that come after the specified cursor.</param>
+		/// <param name="last">Returns the last _n_ elements from the list.</param>
+		/// <param name="before">Returns the elements in the list that come before the specified cursor.</param>
+		public IssueConnection SubIssues { get; set; }
+
+		/// <summary>
+		/// Summary of the state of an issue's sub-issues
+		/// </summary>
+		public SubIssuesSummary SubIssuesSummary { get; set; }
+
+		/// <summary>
+		/// A list of suggested actors to assign to this object
+		/// </summary>
+		/// <param name="first">Returns the first _n_ elements from the list.</param>
+		/// <param name="after">Returns the elements in the list that come after the specified cursor.</param>
+		/// <param name="last">Returns the last _n_ elements from the list.</param>
+		/// <param name="before">Returns the elements in the list that come before the specified cursor.</param>
+		/// <param name="query">If provided, searches users by login or profile name</param>
+		public AssigneeConnection SuggestedActors { get; set; }
 
 		/// <summary>
 		/// A list of events, comments, commits, etc. associated with the issue.
@@ -282,7 +383,7 @@ namespace FluentHub.Octokit.Models.v4
 		/// <param name="last">Returns the last _n_ elements from the list.</param>
 		/// <param name="before">Returns the elements in the list that come before the specified cursor.</param>
 		/// <param name="since">Allows filtering timeline events by a `since` timestamp.</param>
-		public IssueTimelineConnection? Timeline { get; set; }
+		public IssueTimelineConnection Timeline { get; set; }
 
 		/// <summary>
 		/// A list of events, comments, commits, etc. associated with the issue.
@@ -294,17 +395,17 @@ namespace FluentHub.Octokit.Models.v4
 		/// <param name="itemTypes">Filter timeline items by type.</param>
 		/// <param name="since">Filter timeline items by a `since` timestamp.</param>
 		/// <param name="skip">Skips the first _n_ elements in the list.</param>
-		public IssueTimelineItemsConnection? TimelineItems { get; set; }
+		public IssueTimelineItemsConnection TimelineItems { get; set; }
 
 		/// <summary>
 		/// Identifies the issue title.
 		/// </summary>
-		public string? Title { get; set; }
+		public string Title { get; set; }
 
 		/// <summary>
 		/// Identifies the issue title rendered to HTML.
 		/// </summary>
-		public string? TitleHTML { get; set; }
+		public string TitleHTML { get; set; }
 
 		/// <summary>
 		/// A list of issues that track this issue
@@ -313,7 +414,7 @@ namespace FluentHub.Octokit.Models.v4
 		/// <param name="after">Returns the elements in the list that come after the specified cursor.</param>
 		/// <param name="last">Returns the last _n_ elements from the list.</param>
 		/// <param name="before">Returns the elements in the list that come before the specified cursor.</param>
-		public IssueConnection? TrackedInIssues { get; set; }
+		public IssueConnection TrackedInIssues { get; set; }
 
 		/// <summary>
 		/// A list of issues tracked inside the current issue
@@ -322,7 +423,7 @@ namespace FluentHub.Octokit.Models.v4
 		/// <param name="after">Returns the elements in the list that come after the specified cursor.</param>
 		/// <param name="last">Returns the last _n_ elements from the list.</param>
 		/// <param name="before">Returns the elements in the list that come before the specified cursor.</param>
-		public IssueConnection? TrackedIssues { get; set; }
+		public IssueConnection TrackedIssues { get; set; }
 
 		/// <summary>
 		/// The number of tracked issues for this issue
@@ -338,12 +439,12 @@ namespace FluentHub.Octokit.Models.v4
 		/// <summary>
 		/// Humanized string of "Identifies the date and time when the object was last updated."
 		/// <summary>
-		public string? UpdatedAtHumanized { get; set; }
+		public string UpdatedAtHumanized { get; set; }
 
 		/// <summary>
 		/// The HTTP URL for this issue
 		/// </summary>
-		public string? Url { get; set; }
+		public string Url { get; set; }
 
 		/// <summary>
 		/// A list of edits to this content.
@@ -352,7 +453,7 @@ namespace FluentHub.Octokit.Models.v4
 		/// <param name="after">Returns the elements in the list that come after the specified cursor.</param>
 		/// <param name="last">Returns the last _n_ elements from the list.</param>
 		/// <param name="before">Returns the elements in the list that come before the specified cursor.</param>
-		public UserContentEditConnection? UserContentEdits { get; set; }
+		public UserContentEditConnection UserContentEdits { get; set; }
 
 		/// <summary>
 		/// Indicates if the object can be closed by the viewer.
@@ -365,6 +466,11 @@ namespace FluentHub.Octokit.Models.v4
 		public bool ViewerCanDelete { get; set; }
 
 		/// <summary>
+		/// Indicates if the viewer can edit labels for this object.
+		/// </summary>
+		public bool ViewerCanLabel { get; set; }
+
+		/// <summary>
 		/// Can user react to this subject
 		/// </summary>
 		public bool ViewerCanReact { get; set; }
@@ -373,6 +479,11 @@ namespace FluentHub.Octokit.Models.v4
 		/// Indicates if the object can be reopened by the viewer.
 		/// </summary>
 		public bool ViewerCanReopen { get; set; }
+
+		/// <summary>
+		/// Check if the current viewer can set fields on the issue.
+		/// </summary>
+		public bool? ViewerCanSetFields { get; set; }
 
 		/// <summary>
 		/// Check if the viewer is able to change their subscription status for the repository.
@@ -387,7 +498,7 @@ namespace FluentHub.Octokit.Models.v4
 		/// <summary>
 		/// Reasons why the current viewer can not update this comment.
 		/// </summary>
-		public List<CommentCannotUpdateReason>? ViewerCannotUpdateReasons { get; set; }
+		public List<CommentCannotUpdateReason> ViewerCannotUpdateReasons { get; set; }
 
 		/// <summary>
 		/// Did the viewer author this comment.

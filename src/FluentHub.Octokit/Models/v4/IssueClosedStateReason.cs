@@ -20,5 +20,11 @@ namespace FluentHub.Octokit.Models.v4
 		/// </summary>
 		[EnumMember(Value = "NOT_PLANNED")]
 		NotPlanned,
+
+		/// <summary>
+		/// An issue that has been closed as a duplicate
+		/// </summary>
+		[EnumMember(Value = "DUPLICATE")]
+		Duplicate,
 	}
 }

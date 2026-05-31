@@ -12,12 +12,14 @@ namespace FluentHub.Octokit.Models.v4
 		/// <summary>
 		/// A project card that is archived
 		/// </summary>
+		[Obsolete(@"Projects (classic) is being deprecated in favor of the new Projects experience, see: https://github.blog/changelog/2024-05-23-sunset-notice-projects-classic/. Removal on 2025-04-01 UTC.")]
 		[EnumMember(Value = "ARCHIVED")]
 		Archived,
 
 		/// <summary>
 		/// A project card that is not archived
 		/// </summary>
+		[Obsolete(@"Projects (classic) is being deprecated in favor of the new Projects experience, see: https://github.blog/changelog/2024-05-23-sunset-notice-projects-classic/. Removal on 2025-04-01 UTC.")]
 		[EnumMember(Value = "NOT_ARCHIVED")]
 		NotArchived,
 	}

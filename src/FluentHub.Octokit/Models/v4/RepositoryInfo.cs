@@ -60,6 +60,11 @@ namespace FluentHub.Octokit.Models.v4
 		bool HasProjectsEnabled { get; set; }
 
 		/// <summary>
+		/// Indicates if the repository has the pull requests feature enabled.
+		/// </summary>
+		bool HasPullRequestsEnabled { get; set; }
+
+		/// <summary>
 		/// Indicates if the repository displays a Sponsor button for financial contributions.
 		/// </summary>
 		bool HasSponsorshipsEnabled { get; set; }
@@ -145,6 +150,11 @@ namespace FluentHub.Octokit.Models.v4
 		IRepositoryOwner Owner { get; set; }
 
 		/// <summary>
+		/// The policy controlling who can create pull requests in this repository.
+		/// </summary>
+		PullRequestCreationPolicy? PullRequestCreationPolicy { get; set; }
+
+		/// <summary>
 		/// Identifies the date and time when the repository was last pushed to.
 		/// </summary>
 		DateTimeOffset? PushedAt { get; set; }
@@ -198,15 +208,15 @@ namespace FluentHub.Octokit.Models.v4
 	{
 		public DateTimeOffset? ArchivedAt { get; set; }
 
-		public string? ArchivedAtHumanized { get; set; }
+		public string ArchivedAtHumanized { get; set; }
 
 		public DateTimeOffset CreatedAt { get; set; }
 
-		public string? CreatedAtHumanized { get; set; }
+		public string CreatedAtHumanized { get; set; }
 
-		public string? Description { get; set; }
+		public string Description { get; set; }
 
-		public string? DescriptionHTML { get; set; }
+		public string DescriptionHTML { get; set; }
 
 		public int ForkCount { get; set; }
 
@@ -216,11 +226,13 @@ namespace FluentHub.Octokit.Models.v4
 
 		public bool HasProjectsEnabled { get; set; }
 
+		public bool HasPullRequestsEnabled { get; set; }
+
 		public bool HasSponsorshipsEnabled { get; set; }
 
 		public bool HasWikiEnabled { get; set; }
 
-		public string? HomepageUrl { get; set; }
+		public string HomepageUrl { get; set; }
 
 		public bool IsArchived { get; set; }
 
@@ -236,33 +248,35 @@ namespace FluentHub.Octokit.Models.v4
 
 		public bool IsTemplate { get; set; }
 
-		public License? LicenseInfo { get; set; }
+		public License LicenseInfo { get; set; }
 
 		public RepositoryLockReason? LockReason { get; set; }
 
-		public string? MirrorUrl { get; set; }
+		public string MirrorUrl { get; set; }
 
-		public string? Name { get; set; }
+		public string Name { get; set; }
 
-		public string? NameWithOwner { get; set; }
+		public string NameWithOwner { get; set; }
 
-		public string? OpenGraphImageUrl { get; set; }
+		public string OpenGraphImageUrl { get; set; }
 
-		public IRepositoryOwner? Owner { get; set; }
+		public IRepositoryOwner Owner { get; set; }
+
+		public PullRequestCreationPolicy? PullRequestCreationPolicy { get; set; }
 
 		public DateTimeOffset? PushedAt { get; set; }
 
-		public string? PushedAtHumanized { get; set; }
+		public string PushedAtHumanized { get; set; }
 
-		public string? ResourcePath { get; set; }
+		public string ResourcePath { get; set; }
 
-		public string? ShortDescriptionHTML { get; set; }
+		public string ShortDescriptionHTML { get; set; }
 
 		public DateTimeOffset UpdatedAt { get; set; }
 
-		public string? UpdatedAtHumanized { get; set; }
+		public string UpdatedAtHumanized { get; set; }
 
-		public string? Url { get; set; }
+		public string Url { get; set; }
 
 		public bool UsesCustomOpenGraphImage { get; set; }
 

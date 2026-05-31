@@ -20,5 +20,17 @@ namespace FluentHub.Octokit.Models.v4
 		/// </summary>
 		[EnumMember(Value = "UPDATED_AT")]
 		UpdatedAt,
+
+		/// <summary>
+		/// Order advisories by EPSS percentage
+		/// </summary>
+		[EnumMember(Value = "EPSS_PERCENTAGE")]
+		EpssPercentage,
+
+		/// <summary>
+		/// Order advisories by EPSS percentile
+		/// </summary>
+		[EnumMember(Value = "EPSS_PERCENTILE")]
+		EpssPercentile,
 	}
 }

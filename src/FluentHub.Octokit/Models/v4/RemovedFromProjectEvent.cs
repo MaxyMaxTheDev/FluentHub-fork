@@ -11,7 +11,7 @@ namespace FluentHub.Octokit.Models.v4
 		/// <summary>
 		/// Identifies the actor who performed the event.
 		/// </summary>
-		public IActor? Actor { get; set; }
+		public IActor Actor { get; set; }
 
 		/// <summary>
 		/// Identifies the date and time when the object was created.
@@ -21,11 +21,12 @@ namespace FluentHub.Octokit.Models.v4
 		/// <summary>
 		/// Humanized string of "Identifies the date and time when the object was created."
 		/// <summary>
-		public string? CreatedAtHumanized { get; set; }
+		public string CreatedAtHumanized { get; set; }
 
 		/// <summary>
 		/// Identifies the primary key from the database.
 		/// </summary>
+		[Obsolete(@"Projects (classic) is being deprecated in favor of the new Projects experience, see: https://github.blog/changelog/2024-05-23-sunset-notice-projects-classic/. Removal on 2025-04-01 UTC.")]
 		public int? DatabaseId { get; set; }
 
 		/// <summary>
@@ -36,11 +37,13 @@ namespace FluentHub.Octokit.Models.v4
 		/// <summary>
 		/// Project referenced by event.
 		/// </summary>
-		public Project? Project { get; set; }
+		[Obsolete(@"Projects (classic) is being deprecated in favor of the new Projects experience, see: https://github.blog/changelog/2024-05-23-sunset-notice-projects-classic/. Removal on 2025-04-01 UTC.")]
+		public Project Project { get; set; }
 
 		/// <summary>
 		/// Column name referenced by this project event.
 		/// </summary>
-		public string? ProjectColumnName { get; set; }
+		[Obsolete(@"Projects (classic) is being deprecated in favor of the new Projects experience, see: https://github.blog/changelog/2024-05-23-sunset-notice-projects-classic/. Removal on 2025-04-01 UTC.")]
+		public string ProjectColumnName { get; set; }
 	}
 }

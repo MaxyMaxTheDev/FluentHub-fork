@@ -9,6 +9,11 @@ namespace FluentHub.Octokit.Models.v4
 	public class App
 	{
 		/// <summary>
+		/// The client ID of the app.
+		/// </summary>
+		public string ClientId { get; set; }
+
+		/// <summary>
 		/// Identifies the date and time when the object was created.
 		/// </summary>
 		public DateTimeOffset CreatedAt { get; set; }
@@ -16,7 +21,7 @@ namespace FluentHub.Octokit.Models.v4
 		/// <summary>
 		/// Humanized string of "Identifies the date and time when the object was created."
 		/// <summary>
-		public string? CreatedAtHumanized { get; set; }
+		public string CreatedAtHumanized { get; set; }
 
 		/// <summary>
 		/// Identifies the primary key from the database.
@@ -26,7 +31,7 @@ namespace FluentHub.Octokit.Models.v4
 		/// <summary>
 		/// The description of the app.
 		/// </summary>
-		public string? Description { get; set; }
+		public string Description { get; set; }
 
 		/// <summary>
 		/// The Node ID of the App object
@@ -41,28 +46,28 @@ namespace FluentHub.Octokit.Models.v4
 		/// <param name="last">Returns the last _n_ elements from the list.</param>
 		/// <param name="before">Returns the elements in the list that come before the specified cursor.</param>
 		/// <param name="orderBy">Ordering options for IP allow list entries returned.</param>
-		public IpAllowListEntryConnection? IpAllowListEntries { get; set; }
+		public IpAllowListEntryConnection IpAllowListEntries { get; set; }
 
 		/// <summary>
 		/// The hex color code, without the leading '#', for the logo background.
 		/// </summary>
-		public string? LogoBackgroundColor { get; set; }
+		public string LogoBackgroundColor { get; set; }
 
 		/// <summary>
 		/// A URL pointing to the app's logo.
 		/// </summary>
 		/// <param name="size">The size of the resulting image.</param>
-		public string? LogoUrl { get; set; }
+		public string LogoUrl { get; set; }
 
 		/// <summary>
 		/// The name of the app.
 		/// </summary>
-		public string? Name { get; set; }
+		public string Name { get; set; }
 
 		/// <summary>
 		/// A slug based on the name of the app for use in URLs.
 		/// </summary>
-		public string? Slug { get; set; }
+		public string Slug { get; set; }
 
 		/// <summary>
 		/// Identifies the date and time when the object was last updated.
@@ -72,11 +77,11 @@ namespace FluentHub.Octokit.Models.v4
 		/// <summary>
 		/// Humanized string of "Identifies the date and time when the object was last updated."
 		/// <summary>
-		public string? UpdatedAtHumanized { get; set; }
+		public string UpdatedAtHumanized { get; set; }
 
 		/// <summary>
 		/// The URL to the app's homepage.
 		/// </summary>
-		public string? Url { get; set; }
+		public string Url { get; set; }
 	}
 }

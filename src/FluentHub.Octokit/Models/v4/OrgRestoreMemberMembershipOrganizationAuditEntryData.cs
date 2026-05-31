@@ -11,21 +11,25 @@ namespace FluentHub.Octokit.Models.v4
 		/// <summary>
 		/// The Organization associated with the Audit Entry.
 		/// </summary>
-		public Organization? Organization { get; set; }
+		[Obsolete(@"The GraphQL audit-log is deprecated. Please use the REST API instead. Removal on 2026-04-01 UTC.")]
+		public Organization Organization { get; set; }
 
 		/// <summary>
 		/// The name of the Organization.
 		/// </summary>
-		public string? OrganizationName { get; set; }
+		[Obsolete(@"The GraphQL audit-log is deprecated. Please use the REST API instead. Removal on 2026-04-01 UTC.")]
+		public string OrganizationName { get; set; }
 
 		/// <summary>
 		/// The HTTP path for the organization
 		/// </summary>
-		public string? OrganizationResourcePath { get; set; }
+		[Obsolete(@"The GraphQL audit-log is deprecated. Please use the REST API instead. Removal on 2026-04-01 UTC.")]
+		public string OrganizationResourcePath { get; set; }
 
 		/// <summary>
 		/// The HTTP URL for the organization
 		/// </summary>
-		public string? OrganizationUrl { get; set; }
+		[Obsolete(@"The GraphQL audit-log is deprecated. Please use the REST API instead. Removal on 2026-04-01 UTC.")]
+		public string OrganizationUrl { get; set; }
 	}
 }

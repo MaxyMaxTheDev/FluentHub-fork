@@ -15,7 +15,7 @@ namespace FluentHub.Octokit.Models.v4
 		bool IsMinimized { get; set; }
 
 		/// <summary>
-		/// Returns why the comment was minimized. One of `abuse`, `off-topic`, `outdated`, `resolved`, `duplicate` and `spam`. Note that the case and formatting of these values differs from the inputs to the `MinimizeComment` mutation.
+		/// Returns why the comment was minimized. One of `abuse`, `off-topic`, `outdated`, `resolved`, `duplicate`, `spam`, and `low-quality`. Note that the case and formatting of these values differs from the inputs to the `MinimizeComment` mutation.
 		/// </summary>
 		string MinimizedReason { get; set; }
 
@@ -23,6 +23,11 @@ namespace FluentHub.Octokit.Models.v4
 		/// Check if the current viewer can minimize this object.
 		/// </summary>
 		bool ViewerCanMinimize { get; set; }
+
+		/// <summary>
+		/// Check if the current viewer can unminimize this object.
+		/// </summary>
+		bool ViewerCanUnminimize { get; set; }
 	}
 }
 
@@ -32,9 +37,11 @@ namespace FluentHub.Octokit.Models.v4
 	{
 		public bool IsMinimized { get; set; }
 
-		public string? MinimizedReason { get; set; }
+		public string MinimizedReason { get; set; }
 
 		public bool ViewerCanMinimize { get; set; }
+
+		public bool ViewerCanUnminimize { get; set; }
 	}
 }
 

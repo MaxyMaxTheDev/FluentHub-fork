@@ -32,5 +32,11 @@ namespace FluentHub.Octokit.Models.v4
 		/// </summary>
 		[EnumMember(Value = "CRITICAL")]
 		Critical,
+
+		/// <summary>
+		/// Unknown.
+		/// </summary>
+		[EnumMember(Value = "UNKNOWN")]
+		Unknown,
 	}
 }

@@ -9,9 +9,14 @@ namespace FluentHub.Octokit.Models.v4
 	public class RequiredStatusChecksParametersInput
 	{
 		/// <summary>
+		/// Allow repositories and branches to be created if a check would otherwise prohibit it.
+		/// </summary>
+		public bool? DoNotEnforceOnCreate { get; set; }
+
+		/// <summary>
 		/// Status checks that are required.
 		/// </summary>
-		public List<StatusCheckConfigurationInput>? RequiredStatusChecks { get; set; }
+		public List<StatusCheckConfigurationInput> RequiredStatusChecks { get; set; }
 
 		/// <summary>
 		/// Whether pull requests targeting a matching branch must be tested with the latest code. This setting will not take effect unless at least one status check is enabled.

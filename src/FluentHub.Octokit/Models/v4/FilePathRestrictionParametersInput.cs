@@ -4,13 +4,13 @@
 namespace FluentHub.Octokit.Models.v4
 {
 	/// <summary>
-	/// Prevent commits that include changes in specified file paths from being pushed to the commit graph. NOTE: This rule is in beta and subject to change
+	/// Prevent commits that include changes in specified file and folder paths from being pushed to the commit graph. This includes absolute paths that contain file names.
 	/// </summary>
 	public class FilePathRestrictionParametersInput
 	{
 		/// <summary>
 		/// The file paths that are restricted from being pushed to the commit graph.
 		/// </summary>
-		public List<string>? RestrictedFilePaths { get; set; }
+		public List<string> RestrictedFilePaths { get; set; }
 	}
 }

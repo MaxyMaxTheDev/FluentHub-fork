@@ -70,6 +70,12 @@ namespace FluentHub.Octokit.Models.v4
 		Youtube,
 
 		/// <summary>
+		/// Decentralized microblogging social platform.
+		/// </summary>
+		[EnumMember(Value = "BLUESKY")]
+		Bluesky,
+
+		/// <summary>
 		/// JavaScript package registry.
 		/// </summary>
 		[EnumMember(Value = "NPM")]

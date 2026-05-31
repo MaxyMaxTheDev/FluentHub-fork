@@ -4,7 +4,7 @@
 namespace FluentHub.Octokit.Models.v4
 {
 	/// <summary>
-	/// Prevent commits that exceed a specified file size limit from being pushed to the commit. NOTE: This rule is in beta and subject to change
+	/// Prevent commits with individual files that exceed the specified limit from being pushed to the commit graph.
 	/// </summary>
 	public class MaxFileSizeParameters
 	{

@@ -20,5 +20,11 @@ namespace FluentHub.Octokit.Models.v4
 		/// </summary>
 		[EnumMember(Value = "CREATED_AT")]
 		CreatedAt,
+
+		/// <summary>
+		/// Order labels by issue count
+		/// </summary>
+		[EnumMember(Value = "ISSUE_COUNT")]
+		IssueCount,
 	}
 }

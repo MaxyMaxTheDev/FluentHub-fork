@@ -92,5 +92,41 @@ namespace FluentHub.Octokit.Models.v4
 		/// </summary>
 		[EnumMember(Value = "TRACKED_BY")]
 		TrackedBy,
+
+		/// <summary>
+		/// Issue type
+		/// </summary>
+		[EnumMember(Value = "ISSUE_TYPE")]
+		IssueType,
+
+		/// <summary>
+		/// Parent issue
+		/// </summary>
+		[EnumMember(Value = "PARENT_ISSUE")]
+		ParentIssue,
+
+		/// <summary>
+		/// Sub-issues progress
+		/// </summary>
+		[EnumMember(Value = "SUB_ISSUES_PROGRESS")]
+		SubIssuesProgress,
+
+		/// <summary>
+		/// Created
+		/// </summary>
+		[EnumMember(Value = "CREATED")]
+		Created,
+
+		/// <summary>
+		/// Updated
+		/// </summary>
+		[EnumMember(Value = "UPDATED")]
+		Updated,
+
+		/// <summary>
+		/// Closed
+		/// </summary>
+		[EnumMember(Value = "CLOSED")]
+		Closed,
 	}
 }

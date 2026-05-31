@@ -18,6 +18,11 @@ namespace FluentHub.Octokit.Models.v4
 		/// <param name="before">Returns the elements in the list that come before the specified cursor.</param>
 		/// <param name="orderBy">Ordering options for labels returned from the connection.</param>
 		LabelConnection Labels { get; set; }
+
+		/// <summary>
+		/// Indicates if the viewer can edit labels for this object.
+		/// </summary>
+		bool ViewerCanLabel { get; set; }
 	}
 }
 
@@ -25,7 +30,9 @@ namespace FluentHub.Octokit.Models.v4
 {
 	public class Labelable : ILabelable
 	{
-		public LabelConnection? Labels { get; set; }
+		public LabelConnection Labels { get; set; }
+
+		public bool ViewerCanLabel { get; set; }
 	}
 }
 

@@ -4,7 +4,7 @@
 namespace FluentHub.Octokit.Models.v4
 {
 	/// <summary>
-	/// The targets supported for rulesets. NOTE: The push target is in beta and subject to change.
+	/// The targets supported for rulesets.
 	/// </summary>
 	[JsonConverter(typeof(StringEnumConverter))]
 	public enum RepositoryRulesetTarget
@@ -26,5 +26,11 @@ namespace FluentHub.Octokit.Models.v4
 		/// </summary>
 		[EnumMember(Value = "PUSH")]
 		Push,
+
+		/// <summary>
+		/// repository
+		/// </summary>
+		[EnumMember(Value = "REPOSITORY")]
+		Repository,
 	}
 }

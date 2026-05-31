@@ -80,31 +80,44 @@ namespace FluentHub.Octokit.Models.v4
 {
 	public class AuditEntry : IAuditEntry
 	{
-		public string? Action { get; set; }
+		[Obsolete(@"The GraphQL audit-log is deprecated. Please use the REST API instead. Removal on 2026-04-01 UTC.")]
+		public string Action { get; set; }
 
-		public AuditEntryActor? Actor { get; set; }
+		[Obsolete(@"The GraphQL audit-log is deprecated. Please use the REST API instead. Removal on 2026-04-01 UTC.")]
+		public AuditEntryActor Actor { get; set; }
 
-		public string? ActorIp { get; set; }
+		[Obsolete(@"The GraphQL audit-log is deprecated. Please use the REST API instead. Removal on 2026-04-01 UTC.")]
+		public string ActorIp { get; set; }
 
-		public ActorLocation? ActorLocation { get; set; }
+		[Obsolete(@"The GraphQL audit-log is deprecated. Please use the REST API instead. Removal on 2026-04-01 UTC.")]
+		public ActorLocation ActorLocation { get; set; }
 
-		public string? ActorLogin { get; set; }
+		[Obsolete(@"The GraphQL audit-log is deprecated. Please use the REST API instead. Removal on 2026-04-01 UTC.")]
+		public string ActorLogin { get; set; }
 
-		public string? ActorResourcePath { get; set; }
+		[Obsolete(@"The GraphQL audit-log is deprecated. Please use the REST API instead. Removal on 2026-04-01 UTC.")]
+		public string ActorResourcePath { get; set; }
 
-		public string? ActorUrl { get; set; }
+		[Obsolete(@"The GraphQL audit-log is deprecated. Please use the REST API instead. Removal on 2026-04-01 UTC.")]
+		public string ActorUrl { get; set; }
 
-		public string? CreatedAt { get; set; }
+		[Obsolete(@"The GraphQL audit-log is deprecated. Please use the REST API instead. Removal on 2026-04-01 UTC.")]
+		public string CreatedAt { get; set; }
 
+		[Obsolete(@"The GraphQL audit-log is deprecated. Please use the REST API instead. Removal on 2026-04-01 UTC.")]
 		public OperationType? OperationType { get; set; }
 
-		public User? User { get; set; }
+		[Obsolete(@"The GraphQL audit-log is deprecated. Please use the REST API instead. Removal on 2026-04-01 UTC.")]
+		public User User { get; set; }
 
-		public string? UserLogin { get; set; }
+		[Obsolete(@"The GraphQL audit-log is deprecated. Please use the REST API instead. Removal on 2026-04-01 UTC.")]
+		public string UserLogin { get; set; }
 
-		public string? UserResourcePath { get; set; }
+		[Obsolete(@"The GraphQL audit-log is deprecated. Please use the REST API instead. Removal on 2026-04-01 UTC.")]
+		public string UserResourcePath { get; set; }
 
-		public string? UserUrl { get; set; }
+		[Obsolete(@"The GraphQL audit-log is deprecated. Please use the REST API instead. Removal on 2026-04-01 UTC.")]
+		public string UserUrl { get; set; }
 	}
 }
 

@@ -28,6 +28,12 @@ namespace FluentHub.Octokit.Models.v4
 		AddedToProjectEvent,
 
 		/// <summary>
+		/// Represents a 'added_to_project_v2' event on a given issue or pull request.
+		/// </summary>
+		[EnumMember(Value = "ADDED_TO_PROJECT_V2_EVENT")]
+		AddedToProjectV2Event,
+
+		/// <summary>
 		/// Represents an 'assigned' event on any assignable object.
 		/// </summary>
 		[EnumMember(Value = "ASSIGNED_EVENT")]
@@ -50,6 +56,12 @@ namespace FluentHub.Octokit.Models.v4
 		/// </summary>
 		[EnumMember(Value = "CONNECTED_EVENT")]
 		ConnectedEvent,
+
+		/// <summary>
+		/// Represents a 'converted_from_draft' event on a given issue or pull request.
+		/// </summary>
+		[EnumMember(Value = "CONVERTED_FROM_DRAFT_EVENT")]
+		ConvertedFromDraftEvent,
 
 		/// <summary>
 		/// Represents a 'converted_note_to_issue' event on a given issue or pull request.
@@ -118,6 +130,12 @@ namespace FluentHub.Octokit.Models.v4
 		PinnedEvent,
 
 		/// <summary>
+		/// Represents a 'project_v2_item_status_changed' event on a given issue or pull request.
+		/// </summary>
+		[EnumMember(Value = "PROJECT_V2_ITEM_STATUS_CHANGED_EVENT")]
+		ProjectV2ItemStatusChangedEvent,
+
+		/// <summary>
 		/// Represents a 'referenced' event on a given `ReferencedSubject`.
 		/// </summary>
 		[EnumMember(Value = "REFERENCED_EVENT")]
@@ -128,6 +146,12 @@ namespace FluentHub.Octokit.Models.v4
 		/// </summary>
 		[EnumMember(Value = "REMOVED_FROM_PROJECT_EVENT")]
 		RemovedFromProjectEvent,
+
+		/// <summary>
+		/// Represents a 'removed_from_project_v2' event on a given issue or pull request.
+		/// </summary>
+		[EnumMember(Value = "REMOVED_FROM_PROJECT_V2_EVENT")]
+		RemovedFromProjectV2Event,
 
 		/// <summary>
 		/// Represents a 'renamed' event on a given issue or pull request
@@ -194,5 +218,101 @@ namespace FluentHub.Octokit.Models.v4
 		/// </summary>
 		[EnumMember(Value = "UNSUBSCRIBED_EVENT")]
 		UnsubscribedEvent,
+
+		/// <summary>
+		/// Represents a 'issue_comment_pinned' event on a given issue.
+		/// </summary>
+		[EnumMember(Value = "ISSUE_COMMENT_PINNED_EVENT")]
+		IssueCommentPinnedEvent,
+
+		/// <summary>
+		/// Represents a 'issue_comment_unpinned' event on a given issue.
+		/// </summary>
+		[EnumMember(Value = "ISSUE_COMMENT_UNPINNED_EVENT")]
+		IssueCommentUnpinnedEvent,
+
+		/// <summary>
+		/// Represents a 'issue_type_added' event on a given issue.
+		/// </summary>
+		[EnumMember(Value = "ISSUE_TYPE_ADDED_EVENT")]
+		IssueTypeAddedEvent,
+
+		/// <summary>
+		/// Represents a 'issue_type_removed' event on a given issue.
+		/// </summary>
+		[EnumMember(Value = "ISSUE_TYPE_REMOVED_EVENT")]
+		IssueTypeRemovedEvent,
+
+		/// <summary>
+		/// Represents a 'issue_type_changed' event on a given issue.
+		/// </summary>
+		[EnumMember(Value = "ISSUE_TYPE_CHANGED_EVENT")]
+		IssueTypeChangedEvent,
+
+		/// <summary>
+		/// Represents a 'issue_field_added' event on a given issue.
+		/// </summary>
+		[EnumMember(Value = "ISSUE_FIELD_ADDED_EVENT")]
+		IssueFieldAddedEvent,
+
+		/// <summary>
+		/// Represents a 'issue_field_removed' event on a given issue.
+		/// </summary>
+		[EnumMember(Value = "ISSUE_FIELD_REMOVED_EVENT")]
+		IssueFieldRemovedEvent,
+
+		/// <summary>
+		/// Represents a 'issue_field_changed' event on a given issue.
+		/// </summary>
+		[EnumMember(Value = "ISSUE_FIELD_CHANGED_EVENT")]
+		IssueFieldChangedEvent,
+
+		/// <summary>
+		/// Represents a 'sub_issue_added' event on a given issue.
+		/// </summary>
+		[EnumMember(Value = "SUB_ISSUE_ADDED_EVENT")]
+		SubIssueAddedEvent,
+
+		/// <summary>
+		/// Represents a 'sub_issue_removed' event on a given issue.
+		/// </summary>
+		[EnumMember(Value = "SUB_ISSUE_REMOVED_EVENT")]
+		SubIssueRemovedEvent,
+
+		/// <summary>
+		/// Represents a 'parent_issue_added' event on a given issue.
+		/// </summary>
+		[EnumMember(Value = "PARENT_ISSUE_ADDED_EVENT")]
+		ParentIssueAddedEvent,
+
+		/// <summary>
+		/// Represents a 'parent_issue_removed' event on a given issue.
+		/// </summary>
+		[EnumMember(Value = "PARENT_ISSUE_REMOVED_EVENT")]
+		ParentIssueRemovedEvent,
+
+		/// <summary>
+		/// Represents a 'blocked_by_added' event on a given issue.
+		/// </summary>
+		[EnumMember(Value = "BLOCKED_BY_ADDED_EVENT")]
+		BlockedByAddedEvent,
+
+		/// <summary>
+		/// Represents a 'blocking_added' event on a given issue.
+		/// </summary>
+		[EnumMember(Value = "BLOCKING_ADDED_EVENT")]
+		BlockingAddedEvent,
+
+		/// <summary>
+		/// Represents a 'blocked_by_removed' event on a given issue.
+		/// </summary>
+		[EnumMember(Value = "BLOCKED_BY_REMOVED_EVENT")]
+		BlockedByRemovedEvent,
+
+		/// <summary>
+		/// Represents a 'blocking_removed' event on a given issue.
+		/// </summary>
+		[EnumMember(Value = "BLOCKING_REMOVED_EVENT")]
+		BlockingRemovedEvent,
 	}
 }

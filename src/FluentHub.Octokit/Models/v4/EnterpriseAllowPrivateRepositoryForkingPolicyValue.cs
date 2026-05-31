@@ -40,7 +40,7 @@ namespace FluentHub.Octokit.Models.v4
 		UserAccounts,
 
 		/// <summary>
-		/// Members can fork a repository to their user account or an organization, either inside or outside of this enterprise.
+		/// Members can fork a repository to their user account or an organization, either inside or outside of this enterprise. Internal repositories can only be forked inside of this enterprise.
 		/// </summary>
 		[EnumMember(Value = "EVERYWHERE")]
 		Everywhere,

@@ -9,8 +9,13 @@ namespace FluentHub.Octokit.Models.v4
 	public class WorkflowsParametersInput
 	{
 		/// <summary>
+		/// Allow repositories and branches to be created if a check would otherwise prohibit it.
+		/// </summary>
+		public bool? DoNotEnforceOnCreate { get; set; }
+
+		/// <summary>
 		/// Workflows that must pass for this rule to pass.
 		/// </summary>
-		public List<WorkflowFileReferenceInput>? Workflows { get; set; }
+		public List<WorkflowFileReferenceInput> Workflows { get; set; }
 	}
 }

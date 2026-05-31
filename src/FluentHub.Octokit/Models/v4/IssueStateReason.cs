@@ -26,5 +26,11 @@ namespace FluentHub.Octokit.Models.v4
 		/// </summary>
 		[EnumMember(Value = "COMPLETED")]
 		Completed,
+
+		/// <summary>
+		/// An issue that has been closed as a duplicate.
+		/// </summary>
+		[EnumMember(Value = "DUPLICATE")]
+		Duplicate,
 	}
 }

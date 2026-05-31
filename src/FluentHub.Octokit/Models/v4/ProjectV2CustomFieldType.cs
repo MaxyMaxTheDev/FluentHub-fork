@@ -32,5 +32,11 @@ namespace FluentHub.Octokit.Models.v4
 		/// </summary>
 		[EnumMember(Value = "DATE")]
 		Date,
+
+		/// <summary>
+		/// Iteration
+		/// </summary>
+		[EnumMember(Value = "ITERATION")]
+		Iteration,
 	}
 }

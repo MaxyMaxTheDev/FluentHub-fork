@@ -53,16 +53,20 @@ namespace FluentHub.Octokit.Models.v4
 {
 	public class ProjectOwner : IProjectOwner
 	{
+		[Obsolete(@"Projects (classic) is being deprecated in favor of the new Projects experience, see: https://github.blog/changelog/2024-05-23-sunset-notice-projects-classic/. Removal on 2025-04-01 UTC.")]
 		public ID Id { get; set; }
 
-		public Project? Project { get; set; }
+		public Project Project { get; set; }
 
-		public ProjectConnection? Projects { get; set; }
+		public ProjectConnection Projects { get; set; }
 
-		public string? ProjectsResourcePath { get; set; }
+		[Obsolete(@"Projects (classic) is being deprecated in favor of the new Projects experience, see: https://github.blog/changelog/2024-05-23-sunset-notice-projects-classic/. Removal on 2025-04-01 UTC.")]
+		public string ProjectsResourcePath { get; set; }
 
-		public string? ProjectsUrl { get; set; }
+		[Obsolete(@"Projects (classic) is being deprecated in favor of the new Projects experience, see: https://github.blog/changelog/2024-05-23-sunset-notice-projects-classic/. Removal on 2025-04-01 UTC.")]
+		public string ProjectsUrl { get; set; }
 
+		[Obsolete(@"Projects (classic) is being deprecated in favor of the new Projects experience, see: https://github.blog/changelog/2024-05-23-sunset-notice-projects-classic/. Removal on 2025-04-01 UTC.")]
 		public bool ViewerCanCreateProjects { get; set; }
 	}
 }

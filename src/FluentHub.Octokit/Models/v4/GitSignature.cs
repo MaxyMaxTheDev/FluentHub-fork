@@ -40,6 +40,16 @@ namespace FluentHub.Octokit.Models.v4
 		GitSignatureState State { get; set; }
 
 		/// <summary>
+		/// The date the signature was verified, if valid
+		/// </summary>
+		DateTimeOffset? VerifiedAt { get; set; }
+
+		/// <summary>
+		/// Humanized string of "The date the signature was verified, if valid"
+		/// <summary>
+		string VerifiedAtHumanized { get; set; }
+
+		/// <summary>
 		/// True if the signature was made with GitHub's signing key.
 		/// </summary>
 		bool WasSignedByGitHub { get; set; }
@@ -50,17 +60,21 @@ namespace FluentHub.Octokit.Models.v4
 {
 	public class GitSignature : IGitSignature
 	{
-		public string? Email { get; set; }
+		public string Email { get; set; }
 
 		public bool IsValid { get; set; }
 
-		public string? Payload { get; set; }
+		public string Payload { get; set; }
 
-		public string? Signature { get; set; }
+		public string Signature { get; set; }
 
-		public User? Signer { get; set; }
+		public User Signer { get; set; }
 
 		public GitSignatureState State { get; set; }
+
+		public DateTimeOffset? VerifiedAt { get; set; }
+
+		public string VerifiedAtHumanized { get; set; }
 
 		public bool WasSignedByGitHub { get; set; }
 	}

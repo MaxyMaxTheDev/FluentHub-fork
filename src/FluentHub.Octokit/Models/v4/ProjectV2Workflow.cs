@@ -16,17 +16,23 @@ namespace FluentHub.Octokit.Models.v4
 		/// <summary>
 		/// Humanized string of "Identifies the date and time when the object was created."
 		/// <summary>
-		public string? CreatedAtHumanized { get; set; }
+		public string CreatedAtHumanized { get; set; }
 
 		/// <summary>
 		/// Identifies the primary key from the database.
 		/// </summary>
+		[Obsolete(@"`databaseId` will be removed because it does not support 64-bit signed integer identifiers. Use `fullDatabaseId` instead. Removal on 2025-04-01 UTC.")]
 		public int? DatabaseId { get; set; }
 
 		/// <summary>
 		/// Whether the workflow is enabled.
 		/// </summary>
 		public bool Enabled { get; set; }
+
+		/// <summary>
+		/// Identifies the primary key from the database as a BigInt.
+		/// </summary>
+		public string FullDatabaseId { get; set; }
 
 		/// <summary>
 		/// The Node ID of the ProjectV2Workflow object
@@ -36,7 +42,7 @@ namespace FluentHub.Octokit.Models.v4
 		/// <summary>
 		/// The name of the workflow.
 		/// </summary>
-		public string? Name { get; set; }
+		public string Name { get; set; }
 
 		/// <summary>
 		/// The number of the workflow.
@@ -46,7 +52,7 @@ namespace FluentHub.Octokit.Models.v4
 		/// <summary>
 		/// The project that contains this workflow.
 		/// </summary>
-		public ProjectV2? Project { get; set; }
+		public ProjectV2 Project { get; set; }
 
 		/// <summary>
 		/// Identifies the date and time when the object was last updated.
@@ -56,6 +62,6 @@ namespace FluentHub.Octokit.Models.v4
 		/// <summary>
 		/// Humanized string of "Identifies the date and time when the object was last updated."
 		/// <summary>
-		public string? UpdatedAtHumanized { get; set; }
+		public string UpdatedAtHumanized { get; set; }
 	}
 }

@@ -16,6 +16,24 @@ namespace FluentHub.Octokit.Models.v4
 		Issue,
 
 		/// <summary>
+		/// Returns results matching issues in repositories.
+		/// </summary>
+		[EnumMember(Value = "ISSUE_ADVANCED")]
+		IssueAdvanced,
+
+		/// <summary>
+		/// Returns results matching issues using semantic search.
+		/// </summary>
+		[EnumMember(Value = "ISSUE_SEMANTIC")]
+		IssueSemantic,
+
+		/// <summary>
+		/// Returns results matching issues using hybrid (lexical + semantic) search.
+		/// </summary>
+		[EnumMember(Value = "ISSUE_HYBRID")]
+		IssueHybrid,
+
+		/// <summary>
 		/// Returns results matching repositories.
 		/// </summary>
 		[EnumMember(Value = "REPOSITORY")]

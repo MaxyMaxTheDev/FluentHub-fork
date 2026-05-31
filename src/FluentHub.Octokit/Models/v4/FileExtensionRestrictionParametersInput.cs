@@ -4,13 +4,13 @@
 namespace FluentHub.Octokit.Models.v4
 {
 	/// <summary>
-	/// Prevent commits that include files with specified file extensions from being pushed to the commit graph. NOTE: This rule is in beta and subject to change
+	/// Prevent commits that include files with specified file extensions from being pushed to the commit graph.
 	/// </summary>
 	public class FileExtensionRestrictionParametersInput
 	{
 		/// <summary>
 		/// The file extensions that are restricted from being pushed to the commit graph.
 		/// </summary>
-		public List<string>? RestrictedFileExtensions { get; set; }
+		public List<string> RestrictedFileExtensions { get; set; }
 	}
 }

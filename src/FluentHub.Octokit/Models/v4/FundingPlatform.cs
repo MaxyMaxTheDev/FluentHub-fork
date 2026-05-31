@@ -76,6 +76,12 @@ namespace FluentHub.Octokit.Models.v4
 		BuyMeACoffee,
 
 		/// <summary>
+		/// thanks.dev funding platform.
+		/// </summary>
+		[EnumMember(Value = "THANKS_DEV")]
+		ThanksDev,
+
+		/// <summary>
 		/// Custom funding platform.
 		/// </summary>
 		[EnumMember(Value = "CUSTOM")]

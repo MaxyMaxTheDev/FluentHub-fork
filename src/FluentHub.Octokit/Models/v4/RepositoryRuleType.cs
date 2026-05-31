@@ -142,40 +142,10 @@ namespace FluentHub.Octokit.Models.v4
 		TagNamePattern,
 
 		/// <summary>
-		/// Prevent commits that include changes in specified file paths from being pushed to the commit graph. NOTE: Thie rule is in beta and subject to change
-		/// </summary>
-		[EnumMember(Value = "FILE_PATH_RESTRICTION")]
-		FilePathRestriction,
-
-		/// <summary>
-		/// Prevent commits that include file paths that exceed a specified character limit from being pushed to the commit graph. NOTE: Thie rule is in beta and subject to change
-		/// </summary>
-		[EnumMember(Value = "MAX_FILE_PATH_LENGTH")]
-		MaxFilePathLength,
-
-		/// <summary>
-		/// Prevent commits that include files with specified file extensions from being pushed to the commit graph. NOTE: Thie rule is in beta and subject to change
-		/// </summary>
-		[EnumMember(Value = "FILE_EXTENSION_RESTRICTION")]
-		FileExtensionRestriction,
-
-		/// <summary>
-		/// Prevent commits that exceed a specified file size limit from being pushed to the commit. NOTE: Thie rule is in beta and subject to change
-		/// </summary>
-		[EnumMember(Value = "MAX_FILE_SIZE")]
-		MaxFileSize,
-
-		/// <summary>
 		/// Require all changes made to a targeted branch to pass the specified workflows before they can be merged.
 		/// </summary>
 		[EnumMember(Value = "WORKFLOWS")]
 		Workflows,
-
-		/// <summary>
-		/// Secret scanning
-		/// </summary>
-		[EnumMember(Value = "SECRET_SCANNING")]
-		SecretScanning,
 
 		/// <summary>
 		/// Workflow files cannot be modified.
@@ -188,5 +158,41 @@ namespace FluentHub.Octokit.Models.v4
 		/// </summary>
 		[EnumMember(Value = "CODE_SCANNING")]
 		CodeScanning,
+
+		/// <summary>
+		/// Request Copilot code review for new pull requests automatically if the author has access to Copilot code review and their premium requests quota has not reached the limit.
+		/// </summary>
+		[EnumMember(Value = "COPILOT_CODE_REVIEW")]
+		CopilotCodeReview,
+
+		/// <summary>
+		/// Prevent commits that include changes in specified file and folder paths from being pushed to the commit graph. This includes absolute paths that contain file names.
+		/// </summary>
+		[EnumMember(Value = "FILE_PATH_RESTRICTION")]
+		FilePathRestriction,
+
+		/// <summary>
+		/// Prevent commits that include file paths that exceed the specified character limit from being pushed to the commit graph.
+		/// </summary>
+		[EnumMember(Value = "MAX_FILE_PATH_LENGTH")]
+		MaxFilePathLength,
+
+		/// <summary>
+		/// Prevent commits that include files with specified file extensions from being pushed to the commit graph.
+		/// </summary>
+		[EnumMember(Value = "FILE_EXTENSION_RESTRICTION")]
+		FileExtensionRestriction,
+
+		/// <summary>
+		/// Prevent commits with individual files that exceed the specified limit from being pushed to the commit graph.
+		/// </summary>
+		[EnumMember(Value = "MAX_FILE_SIZE")]
+		MaxFileSize,
+
+		/// <summary>
+		/// Secret scanning
+		/// </summary>
+		[EnumMember(Value = "SECRET_SCANNING")]
+		SecretScanning,
 	}
 }
