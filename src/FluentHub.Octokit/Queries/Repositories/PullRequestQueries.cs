@@ -30,12 +30,12 @@ namespace FluentHub.Octokit.Queries.Repositories
 					before,
 					baseRefName,
 					headRefName,
-					labels is not null ? new OctokitGraphQLCore.Arg<IEnumerable<string>>(labels) : null,
+					labels is not null ? new OctokitGraphQLCore.Arg<IEnumerable<string>>(labels) : null!,
 					orderBy,
-					states is not null ? new OctokitGraphQLCore.Arg<IEnumerable<OctokitGraphQLModel.PullRequestState>>(states) : null)
+					states is not null ? new OctokitGraphQLCore.Arg<IEnumerable<OctokitGraphQLModel.PullRequestState>>(states) : null!)
 				.Select(connection => new PullRequestConnection
 				{
-					Edges = connection.Edges.Select(edge => new PullRequestEdge
+					Edges = connection.Edges.Select(edge => (PullRequestEdge?)new PullRequestEdge
 					{
 						Node = edge.Node.Select(x => new PullRequest
 						{
@@ -79,7 +79,7 @@ namespace FluentHub.Octokit.Queries.Repositories
 
 							Labels = x.Labels(10, null, null, null, null).Select(labels => new LabelConnection
 							{
-								Nodes = labels.Nodes.Select(y => new Label
+								Nodes = labels.Nodes.Select(y => (Label?)new Label
 								{
 									Color = y.Color,
 									Description = y.Description,
@@ -89,7 +89,7 @@ namespace FluentHub.Octokit.Queries.Repositories
 
 							Reviews = x.Reviews(null, null, 1, null, null, null).Select(reviews => new PullRequestReviewConnection
 							{
-								Nodes = reviews.Nodes.Select(y => new PullRequestReview
+								Nodes = reviews.Nodes.Select(y => (PullRequestReview?)new PullRequestReview
 								{
 									State = (PullRequestReviewState)y.State,
 								}).ToList().DefaultIfEmpty().ToList(),
@@ -97,7 +97,7 @@ namespace FluentHub.Octokit.Queries.Repositories
 
 							Commits = x.Commits(null, null, 1, null).Select(commits => new PullRequestCommitConnection
 							{
-								Nodes = commits.Nodes.Select(y => new PullRequestCommit
+								Nodes = commits.Nodes.Select(y => (PullRequestCommit?)new PullRequestCommit
 								{
 									Commit = y.Commit.Select(commit => new Commit
 									{
@@ -126,7 +126,10 @@ namespace FluentHub.Octokit.Queries.Repositories
 			var result = new OctokitQueryResult()
 			{
 				PageInfo = response.PageInfo,
-				Response = response.Edges.Select(x => x.Node).ToList(),
+				Response = response.Edges?
+					.Where(x => x?.Node is not null)
+					.Select(x => x!.Node!)
+					.ToList() ?? [],
 			};
 
 			return result;
@@ -154,7 +157,7 @@ namespace FluentHub.Octokit.Queries.Repositories
 
 					Assignees = x.Assignees(6, null, null, null).Select(assignees => new UserConnection
 					{
-						Nodes = assignees.Nodes.Select(y => new User
+						Nodes = assignees.Nodes.Select(y => (User?)new User
 						{
 							AvatarUrl = y.AvatarUrl(500),
 							Login = y.Login,
@@ -173,7 +176,7 @@ namespace FluentHub.Octokit.Queries.Repositories
 					{
 						TotalCount = commits.TotalCount,
 
-						Nodes = commits.Nodes.Select(y => new PullRequestCommit
+						Nodes = commits.Nodes.Select(y => (PullRequestCommit?)new PullRequestCommit
 						{
 							Commit = y.Commit.Select(commit => new Commit
 							{
@@ -204,7 +207,7 @@ namespace FluentHub.Octokit.Queries.Repositories
 
 					Labels = x.Labels(10, null, null, null, null).Select(labels => new LabelConnection
 					{
-						Nodes = labels.Nodes.Select(y => new Label
+						Nodes = labels.Nodes.Select(y => (Label?)new Label
 						{
 							Color = y.Color,
 							Description = y.Description,
@@ -216,7 +219,7 @@ namespace FluentHub.Octokit.Queries.Repositories
 
 					LatestReviews = x.LatestReviews(15, null, null, null).Select(latestReviews => new PullRequestReviewConnection
 					{
-						Nodes = latestReviews.Nodes.Select(latestReview => new PullRequestReview
+						Nodes = latestReviews.Nodes.Select(latestReview => (PullRequestReview?)new PullRequestReview
 						{
 							Author = latestReview.Author.Select(author => new Actor
 							{
@@ -238,7 +241,7 @@ namespace FluentHub.Octokit.Queries.Repositories
 
 					Participants = x.Participants(6, null, null, null).Select(participants => new UserConnection
 					{
-						Nodes = participants.Nodes.Select(y => new User
+						Nodes = participants.Nodes.Select(y => (User?)new User
 						{
 							AvatarUrl = y.AvatarUrl(500),
 							Login = y.Login,
@@ -249,7 +252,7 @@ namespace FluentHub.Octokit.Queries.Repositories
 
 					ProjectCards = x.ProjectCards(6, null, null, null, null).Select(projects => new ProjectCardConnection
 					{
-						Nodes = projects.Nodes.Select(y => new ProjectCard
+						Nodes = projects.Nodes.Select(y => (ProjectCard?)new ProjectCard
 						{
 							Note = y.Note,
 						})
@@ -273,7 +276,7 @@ namespace FluentHub.Octokit.Queries.Repositories
 
 					ReviewRequests = x.ReviewRequests(15, null, null, null).Select(reviewRequests => new ReviewRequestConnection
 					{
-						Nodes = reviewRequests.Nodes.Select(reviewRequest => new ReviewRequest
+						Nodes = reviewRequests.Nodes.Select(reviewRequest => (ReviewRequest?)new ReviewRequest
 						{
 							RequestedReviewer = reviewRequest.RequestedReviewer.Select(requestedReviewer => new RequestedReviewer
 							{
@@ -292,7 +295,7 @@ namespace FluentHub.Octokit.Queries.Repositories
 
 					Reviews = x.Reviews(null, null, 1, null, null, null).Select(reviews => new PullRequestReviewConnection
 					{
-						Nodes = reviews.Nodes.Select(y => new PullRequestReview
+						Nodes = reviews.Nodes.Select(y => (PullRequestReview?)new PullRequestReview
 						{
 							State = (PullRequestReviewState)y.State,
 						})
@@ -337,7 +340,7 @@ namespace FluentHub.Octokit.Queries.Repositories
 
 					Reactions = x.Reactions(100, null, null, null, null, null).Select(reactions => new ReactionConnection
 					{
-						Nodes = reactions.Nodes.Select(reaction => new Reaction
+						Nodes = reactions.Nodes.Select(reaction => (Reaction?)new Reaction
 						{
 							Content = (ReactionContent)reaction.Content,
 

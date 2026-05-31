@@ -67,37 +67,45 @@ query {{
 
 			var response2 = await App.GraphQLHttpClient.SendQueryAsync<object>(request2);
 			List<Commit> zippedData = new();
+			(List<TreeEntry> Files, List<Commit> Commits) pre = (response1.ToList(), zippedData);
 
 			var json = response2.Data as JToken;
+			if (json is null)
+				return pre;
+
 			var errors = json["errors"];
 
 			if (errors is not null)
 			{
-				(List<TreeEntry> Files, List<Commit> Commits) pre = (response1.ToList(), zippedData);
-
 				return pre;
 			}
 
 			var target = json
-				.Children<JProperty>().FirstOrDefault(x => x.Name == "repository").Value
-				.Children<JProperty>().FirstOrDefault(x => x.Name == "ref").Value
-				.Children<JProperty>().FirstOrDefault(x => x.Name == "target").Value;
+				.Children<JProperty>().FirstOrDefault(x => x.Name == "repository")?.Value
+				.Children<JProperty>().FirstOrDefault(x => x.Name == "ref")?.Value
+				.Children<JProperty>().FirstOrDefault(x => x.Name == "target")?.Value;
+
+			if (target is null)
+				return pre;
 
 			for (int index = 0; index < response1.ToList().Count; index++)
 			{
-				var history = target.Children<JProperty>().FirstOrDefault(x => x.Name == $"history{index}").Value;
+				var history = target.Children<JProperty>().FirstOrDefault(x => x.Name == $"history{index}")?.Value;
 
-				var item = history.Children<JProperty>().FirstOrDefault(x => x.Name == "nodes").Value.Children().FirstOrDefault();
+				var item = history?.Children<JProperty>().FirstOrDefault(x => x.Name == "nodes")?.Value.Children().FirstOrDefault();
+				if (item is null)
+					continue;
 
 				var properties = item.Children<JProperty>();
-				var message = properties.FirstOrDefault(x => x.Name == "message").Value.ToString();
-				var committedDate = properties.FirstOrDefault(x => x.Name == "committedDate").Value.ToString();
+				var message = properties.FirstOrDefault(x => x.Name == "message")?.Value.ToString() ?? string.Empty;
+				var committedDate = properties.FirstOrDefault(x => x.Name == "committedDate")?.Value.ToString();
+				DateTimeOffset.TryParse(committedDate, out var parsedCommittedDate);
 
 				zippedData.Add(new()
 				{
 					Message = message,
-					CommittedDate = DateTimeOffset.Parse(committedDate),
-					CommittedDateHumanized = DateTimeOffset.Parse(committedDate).Humanize()
+					CommittedDate = parsedCommittedDate,
+					CommittedDateHumanized = parsedCommittedDate.Humanize()
 				});
 			}
 

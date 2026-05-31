@@ -73,7 +73,7 @@ namespace FluentHub.Octokit.Queries.Repositories
 					CreatedAt = y.CreatedAt,
 					CreatedAtHumanized = y.CreatedAt.Humanize(null, null),
 					Id = y.Id,
-					StateReason = (IssueStateReason)y.StateReason,
+					StateReason = (IssueStateReason?)y.StateReason,
 
 					Actor = y.Actor.Select(actor => new Actor
 					{
@@ -474,7 +474,7 @@ namespace FluentHub.Octokit.Queries.Repositories
 
 					Reactions = y.Reactions(100, null, null, null, null, null).Select(reactions => new ReactionConnection
 					{
-						Nodes = reactions.Nodes.Select(reaction => new Reaction
+						Nodes = reactions.Nodes.Select(reaction => (Reaction?)new Reaction
 						{
 							Content = (ReactionContent)reaction.Content,
 
@@ -514,7 +514,7 @@ namespace FluentHub.Octokit.Queries.Repositories
 					CreatedAt = y.CreatedAt,
 					CreatedAtHumanized = y.CreatedAt.Humanize(null, null),
 					Id = y.Id,
-					LockReason = (LockReason)y.LockReason,
+					LockReason = (LockReason?)y.LockReason,
 
 					Actor = y.Actor.Select(actor => new Actor
 					{
@@ -688,7 +688,7 @@ namespace FluentHub.Octokit.Queries.Repositories
 					CreatedAt = y.CreatedAt,
 					CreatedAtHumanized = y.CreatedAt.Humanize(null, null),
 					Id = y.Id,
-					StateReason = (IssueStateReason)y.StateReason,
+					StateReason = (IssueStateReason?)y.StateReason,
 
 					Actor = y.Actor.Select(actor => new Actor
 					{

@@ -14,7 +14,7 @@ namespace FluentHub.Octokit.Queries.Users
 				.Organizations(first, after, last, before)
 				.Select(connection => new OrganizationConnection
 				{
-					Edges = connection.Edges.Select(edge => new OrganizationEdge
+					Edges = connection.Edges.Select(edge => (OrganizationEdge?)new OrganizationEdge
 					{
 						Node = edge.Node.Select(x => new Organization
 						{
@@ -40,7 +40,10 @@ namespace FluentHub.Octokit.Queries.Users
 			var result = new OctokitQueryResult()
 			{
 				PageInfo = response.PageInfo,
-				Response = response.Edges.Select(x => x.Node).ToList(),
+				Response = response.Edges?
+					.Where(x => x?.Node is not null)
+					.Select(x => x!.Node!)
+					.ToList() ?? [],
 			};
 
 			return result;

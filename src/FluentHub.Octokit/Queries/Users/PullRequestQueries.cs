@@ -31,12 +31,12 @@ namespace FluentHub.Octokit.Queries.Users
 					before,
 					baseRefName,
 					headRefName,
-					labels is null ? null : new Arg<IEnumerable<string>>(labels),
+					labels is null ? null! : new Arg<IEnumerable<string>>(labels),
 					orderBy,
-					states is null ? null : new Arg<IEnumerable<OctokitGraphQLModel.PullRequestState>>(states))
+					states is null ? null! : new Arg<IEnumerable<OctokitGraphQLModel.PullRequestState>>(states))
 				.Select(connection => new PullRequestConnection
 				{
-					Edges = connection.Edges.Select(edge => new PullRequestEdge
+					Edges = connection.Edges.Select(edge => (PullRequestEdge?)new PullRequestEdge
 					{
 						Node = edge.Node.Select(x => new PullRequest
 						{
@@ -84,7 +84,7 @@ namespace FluentHub.Octokit.Queries.Users
 
 							Labels = x.Labels(10, null, null, null, null).Select(labels => new LabelConnection
 							{
-								Nodes = labels.Nodes.Select(y => new Label
+								Nodes = labels.Nodes.Select(y => (Label?)new Label
 								{
 									Color = y.Color,
 									Description = y.Description,
@@ -96,7 +96,7 @@ namespace FluentHub.Octokit.Queries.Users
 
 							Reviews = x.Reviews(null, null, 1, null, null, null).Select(reviews => new PullRequestReviewConnection
 							{
-								Nodes = reviews.Nodes.Select(y => new PullRequestReview
+								Nodes = reviews.Nodes.Select(y => (PullRequestReview?)new PullRequestReview
 								{
 									State = (PullRequestReviewState)y.State,
 								})
@@ -106,7 +106,7 @@ namespace FluentHub.Octokit.Queries.Users
 
 							Commits = x.Commits(null, null, 1, null).Select(commits => new PullRequestCommitConnection
 							{
-								Nodes = commits.Nodes.Select(y => new PullRequestCommit
+								Nodes = commits.Nodes.Select(y => (PullRequestCommit?)new PullRequestCommit
 								{
 									Commit = y.Commit.Select(commit => new Commit
 									{
@@ -139,7 +139,10 @@ namespace FluentHub.Octokit.Queries.Users
 			var result = new OctokitQueryResult()
 			{
 				PageInfo = response.PageInfo,
-				Response = response.Edges.Select(x => x.Node).ToList(),
+				Response = response.Edges?
+					.Where(x => x?.Node is not null)
+					.Select(x => x!.Node!)
+					.ToList() ?? [],
 			};
 
 			return result;

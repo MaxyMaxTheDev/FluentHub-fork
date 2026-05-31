@@ -34,15 +34,15 @@ namespace FluentHub.Octokit.Queries.Users
 					after,
 					last,
 					before,
-					affiliations is null ? null : new OctokitGraphQLCore.Arg<IEnumerable<OctokitGraphQLModel.RepositoryAffiliation?>>(affiliations),
+					affiliations is null ? null! : new OctokitGraphQLCore.Arg<IEnumerable<OctokitGraphQLModel.RepositoryAffiliation?>>(affiliations),
 					isFork,
 					isLocked,
 					orderBy,
-					ownerAffiliations is null ? null : new OctokitGraphQLCore.Arg<IEnumerable<OctokitGraphQLModel.RepositoryAffiliation?>>(ownerAffiliations),
+					ownerAffiliations is null ? null! : new OctokitGraphQLCore.Arg<IEnumerable<OctokitGraphQLModel.RepositoryAffiliation?>>(ownerAffiliations),
 					privacy)
 				.Select(connection => new RepositoryConnection
 				{
-					Edges = connection.Edges.Select(edge => new RepositoryEdge
+					Edges = connection.Edges.Select(edge => (RepositoryEdge?)new RepositoryEdge
 					{
 						Node = edge.Node.Select(x => new Repository
 						{
@@ -108,7 +108,10 @@ namespace FluentHub.Octokit.Queries.Users
 			var result = new OctokitQueryResult()
 			{
 				PageInfo = response.PageInfo,
-				Response = response.Edges.Select(x => x.Node).ToList(),
+				Response = response.Edges?
+					.Where(x => x?.Node is not null)
+					.Select(x => x!.Node!)
+					.ToList() ?? [],
 			};
 
 			return result;

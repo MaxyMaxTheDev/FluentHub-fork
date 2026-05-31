@@ -34,7 +34,7 @@ namespace FluentHub.Octokit.Queries.Users
 					ownedByViewer)
 				.Select(connection => new RepositoryConnection
 				{
-					Edges = connection.Edges.Select(edge => new RepositoryEdge
+					Edges = connection.Edges.Select(edge => (RepositoryEdge?)new RepositoryEdge
 					{
 						Node = edge.Node.Select(x => new Repository
 						{
@@ -99,7 +99,10 @@ namespace FluentHub.Octokit.Queries.Users
 			var result = new OctokitQueryResult()
 			{
 				PageInfo = response.PageInfo,
-				Response = response.Edges.Select(x => x.Node).ToList(),
+				Response = response.Edges?
+					.Where(x => x?.Node is not null)
+					.Select(x => x!.Node!)
+					.ToList() ?? [],
 			};
 
 			return result;

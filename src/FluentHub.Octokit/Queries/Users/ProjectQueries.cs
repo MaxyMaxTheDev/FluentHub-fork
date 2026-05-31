@@ -21,12 +21,12 @@ namespace FluentHub.Octokit.Queries.Users
 					after,
 					last,
 					before,
-					orderBy is null ? null : new Arg<OctokitGraphQLModel.ProjectOrder>(orderBy),
+					orderBy is null ? null! : new Arg<OctokitGraphQLModel.ProjectOrder>(orderBy),
 					search,
-					states is null ? null : new Arg<IEnumerable<OctokitGraphQLModel.ProjectState>>(states))
+					states is null ? null! : new Arg<IEnumerable<OctokitGraphQLModel.ProjectState>>(states))
 				.Select(connection => new ProjectConnection
 				{
-					Edges = connection.Edges.Select(edge => new ProjectEdge
+					Edges = connection.Edges.Select(edge => (ProjectEdge?)new ProjectEdge
 					{
 						Node = edge.Node.Select(x => new Project
 						{
@@ -72,7 +72,10 @@ namespace FluentHub.Octokit.Queries.Users
 			var result = new OctokitQueryResult()
 			{
 				PageInfo = response.PageInfo,
-				Response = response.Edges.Select(x => x.Node).ToList(),
+				Response = response.Edges?
+					.Where(x => x?.Node is not null)
+					.Select(x => x!.Node!)
+					.ToList() ?? [],
 			};
 
 			return result;

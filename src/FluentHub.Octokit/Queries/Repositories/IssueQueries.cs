@@ -28,12 +28,12 @@ namespace FluentHub.Octokit.Queries.Repositories
 					last,
 					before,
 					filterBy,
-					labels is not null ? new OctokitGraphQLCore.Arg<IEnumerable<string>>(labels) : null,
+					labels is not null ? new OctokitGraphQLCore.Arg<IEnumerable<string>>(labels) : null!,
 					orderBy,
-					states is not null ? new OctokitGraphQLCore.Arg<IEnumerable<OctokitGraphQLModel.IssueState>>(states) : null)
+					states is not null ? new OctokitGraphQLCore.Arg<IEnumerable<OctokitGraphQLModel.IssueState>>(states) : null!)
 				.Select(connection => new IssueConnection
 				{
-					Edges = connection.Edges.Select(edge => new IssueEdge
+					Edges = connection.Edges.Select(edge => (IssueEdge?)new IssueEdge
 					{
 						Node = edge.Node.Select(x => new Issue
 						{
@@ -62,7 +62,7 @@ namespace FluentHub.Octokit.Queries.Repositories
 
 							Labels = x.Labels(10, null, null, null, null).Select(labels => new LabelConnection
 							{
-								Nodes = labels.Nodes.Select(y => new Label
+								Nodes = labels.Nodes.Select(y => (Label?)new Label
 								{
 									Color = y.Color,
 									Description = y.Description,
@@ -87,7 +87,10 @@ namespace FluentHub.Octokit.Queries.Repositories
 			var result = new OctokitQueryResult()
 			{
 				PageInfo = response.PageInfo,
-				Response = response.Edges.Select(x => x.Node).ToList(),
+				Response = response.Edges?
+					.Where(x => x?.Node is not null)
+					.Select(x => x!.Node!)
+					.ToList() ?? [],
 			};
 
 			return result;
@@ -107,7 +110,7 @@ namespace FluentHub.Octokit.Queries.Repositories
 
 					Assignees = x.Assignees(6, null, null, null).Select(assignees => new UserConnection
 					{
-						Nodes = assignees.Nodes.Select(y => new User
+						Nodes = assignees.Nodes.Select(y => (User?)new User
 						{
 							AvatarUrl = y.AvatarUrl(500),
 							Login = y.Login,
@@ -124,7 +127,7 @@ namespace FluentHub.Octokit.Queries.Repositories
 
 					Labels = x.Labels(10, null, null, null, null).Select(labels => new LabelConnection
 					{
-						Nodes = labels.Nodes.Select(y => new Label
+						Nodes = labels.Nodes.Select(y => (Label?)new Label
 						{
 							Color = y.Color,
 							Description = y.Description,
@@ -143,7 +146,7 @@ namespace FluentHub.Octokit.Queries.Repositories
 
 					Participants = x.Participants(6, null, null, null).Select(participants => new UserConnection
 					{
-						Nodes = participants.Nodes.Select(y => new User
+						Nodes = participants.Nodes.Select(y => (User?)new User
 						{
 							AvatarUrl = y.AvatarUrl(500),
 							Login = y.Login,
@@ -154,7 +157,7 @@ namespace FluentHub.Octokit.Queries.Repositories
 
 					ProjectCards = x.ProjectCards(6, null, null, null, null).Select(projects => new ProjectCardConnection
 					{
-						Nodes = projects.Nodes.Select(y => new ProjectCard
+						Nodes = projects.Nodes.Select(y => (ProjectCard?)new ProjectCard
 						{
 							Note = y.Note,
 						})
@@ -213,7 +216,7 @@ namespace FluentHub.Octokit.Queries.Repositories
 
 					Reactions = x.Reactions(100, null, null, null, null, null).Select(reactions => new ReactionConnection
 					{
-						Nodes = reactions.Nodes.Select(reaction => new Reaction
+						Nodes = reactions.Nodes.Select(reaction => (Reaction?)new Reaction
 						{
 							Content = (ReactionContent)reaction.Content,
 
@@ -270,7 +273,7 @@ namespace FluentHub.Octokit.Queries.Repositories
 
 					Labels = x.Issue.Labels(10, null, null, null, null).Select(labels => new LabelConnection
 					{
-						Nodes = labels.Nodes.Select(y => new Label
+						Nodes = labels.Nodes.Select(y => (Label?)new Label
 						{
 							Color = y.Color,
 							Description = y.Description,

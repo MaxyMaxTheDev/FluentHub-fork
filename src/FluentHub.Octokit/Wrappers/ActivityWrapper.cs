@@ -16,13 +16,14 @@ namespace FluentHub.Octokit.Wrappers
 
 			foreach (var item in response)
 			{
+				var repoNameParts = item.Repo?.Name.Split('/');
 				Repository itemRep = new()
 				{
-					Name = item.Repo?.Name.Split('/')[1],
+					Name = repoNameParts?.ElementAtOrDefault(1) ?? string.Empty,
 					Owner = new RepositoryOwner()
 					{
-						AvatarUrl = item.Repo?.Owner?.AvatarUrl,
-						Login = item.Repo?.Name.Split('/')[0],
+						AvatarUrl = item.Repo?.Owner?.AvatarUrl ?? string.Empty,
+						Login = repoNameParts?.ElementAtOrDefault(0) ?? string.Empty,
 					}
 				};
 
@@ -35,9 +36,9 @@ namespace FluentHub.Octokit.Wrappers
 
 				Organization itemOrganization = new()
 				{
-					AvatarUrl = item.Org?.AvatarUrl,
-					Login = item.Org?.Login,
-					Name = item.Org?.Name
+					AvatarUrl = item.Org?.AvatarUrl ?? string.Empty,
+					Login = item.Org?.Login ?? string.Empty,
+					Name = item.Org?.Name ?? string.Empty
 				};
 
 				Activity indivisual = new()
@@ -136,7 +137,7 @@ namespace FluentHub.Octokit.Wrappers
 									Closed = issueEventPayload.Issue.ClosedAt is not null,
 									Number = issueEventPayload.Issue.Number,
 									Title = issueEventPayload.Issue.Title,
-									UpdatedAt = (DateTimeOffset)issueEventPayload.Issue.UpdatedAt,
+									UpdatedAt = issueEventPayload.Issue.UpdatedAt.GetValueOrDefault(),
 									UpdatedAtHumanized = issueEventPayload.Issue.UpdatedAt.Humanize(null, null),
 
 									Repository = itemRep,

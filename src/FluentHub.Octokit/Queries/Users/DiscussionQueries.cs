@@ -24,7 +24,7 @@ namespace FluentHub.Octokit.Queries.Users
 					repositoryId)
 				.Select(connection => new DiscussionConnection
 				{
-					Edges = connection.Edges.Select(edge => new DiscussionEdge
+					Edges = connection.Edges.Select(edge => (DiscussionEdge?)new DiscussionEdge
 					{
 						Node = edge.Node.Select(x => new Discussion
 						{
@@ -78,7 +78,10 @@ namespace FluentHub.Octokit.Queries.Users
 			var result = new OctokitQueryResult()
 			{
 				PageInfo = response.PageInfo,
-				Response = response.Edges.Select(x => x.Node).ToList(),
+				Response = response.Edges?
+					.Where(x => x?.Node is not null)
+					.Select(x => x!.Node!)
+					.ToList() ?? [],
 			};
 
 			return result;

@@ -21,13 +21,13 @@ namespace FluentHub.Octokit.Queries.Repositories
 					after,
 					last,
 					before,
-					names is not null ? new OctokitGraphQLCore.Arg<IEnumerable<string>>(names) : null,
+					names is not null ? new OctokitGraphQLCore.Arg<IEnumerable<string>>(names) : null!,
 					orderBy,
 					packageType,
 					repositoryId)
 				.Select(connection => new PackageConnection
 				{
-					Edges = connection.Edges.Select(edge => new PackageEdge
+					Edges = connection.Edges.Select(edge => (PackageEdge?)new PackageEdge
 					{
 						Node = edge.Node.Select(x => new Package
 						{
@@ -72,7 +72,10 @@ namespace FluentHub.Octokit.Queries.Repositories
 			var result = new OctokitQueryResult()
 			{
 				PageInfo = response.PageInfo,
-				Response = response.Edges.Select(x => x.Node).ToList(),
+				Response = response.Edges?
+					.Where(x => x?.Node is not null)
+					.Select(x => x!.Node!)
+					.ToList() ?? [],
 			};
 
 			return result;

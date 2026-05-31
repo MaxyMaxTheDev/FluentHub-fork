@@ -517,7 +517,7 @@ namespace FluentHub.Octokit.Queries.Repositories
 
 					Reactions = y.Reactions(100, null, null, null, null, null).Select(reactions => new ReactionConnection
 					{
-						Nodes = reactions.Nodes.Select(reaction => new Reaction
+						Nodes = reactions.Nodes.Select(reaction => (Reaction?)new Reaction
 						{
 							Content = (ReactionContent)reaction.Content,
 
@@ -561,7 +561,7 @@ namespace FluentHub.Octokit.Queries.Repositories
 
 					CreatedAt = y.CreatedAt,
 
-					LockReason = (LockReason)y.LockReason,
+					LockReason = (LockReason?)y.LockReason,
 				})
 				.MarkedAsDuplicateEvent(y => new MarkedAsDuplicateEvent
 				{
@@ -799,7 +799,7 @@ namespace FluentHub.Octokit.Queries.Repositories
 					})
 					.SingleOrDefault(),
 
-					StateReason = (IssueStateReason)y.StateReason,
+					StateReason = (IssueStateReason?)y.StateReason,
 
 					CreatedAt = y.CreatedAt,
 				})

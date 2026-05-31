@@ -11,7 +11,7 @@ namespace FluentHub.Octokit.Wrappers
 	{
 		public List<Notification> WrapAsync(IReadOnlyList<OctokitV3.Notification> response)
 		{
-			return null;
+			return [];
 		}
 	}
 }

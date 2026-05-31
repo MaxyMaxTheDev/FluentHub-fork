@@ -23,7 +23,7 @@ namespace FluentHub.Octokit.Queries.Repositories
 					orderBy)
 				.Select(connection => new DiscussionConnection
 				{
-					Edges = connection.Edges.Select(edge => new DiscussionEdge
+					Edges = connection.Edges.Select(edge => (DiscussionEdge?)new DiscussionEdge
 					{
 						Node = edge.Node.Select(x => new Discussion
 						{
@@ -75,7 +75,10 @@ namespace FluentHub.Octokit.Queries.Repositories
 			var result = new OctokitQueryResult()
 			{
 				PageInfo = response.PageInfo,
-				Response = response.Edges.Select(x => x.Node).ToList(),
+				Response = response.Edges?
+					.Where(x => x?.Node is not null)
+					.Select(x => x!.Node!)
+					.ToList() ?? [],
 			};
 
 			return result;
@@ -88,7 +91,7 @@ namespace FluentHub.Octokit.Queries.Repositories
 				.Discussion(number)
 				.Select(x => new Discussion
 				{
-					ActiveLockReason = (LockReason)x.ActiveLockReason,
+					ActiveLockReason = (LockReason?)x.ActiveLockReason,
 					AnswerChosenAt = x.AnswerChosenAt,
 					AuthorAssociation = (CommentAuthorAssociation)x.AuthorAssociation,
 					BodyHTML = x.BodyHTML,
@@ -111,7 +114,7 @@ namespace FluentHub.Octokit.Queries.Repositories
 					ViewerCanUpvote = x.ViewerCanUpvote,
 					ViewerDidAuthor = x.ViewerDidAuthor,
 					ViewerHasUpvoted = x.ViewerHasUpvoted,
-					ViewerSubscription = (SubscriptionState)x.ViewerSubscription,
+					ViewerSubscription = (SubscriptionState?)x.ViewerSubscription,
 
 					Category = x.Category.Select(category => new DiscussionCategory
 					{

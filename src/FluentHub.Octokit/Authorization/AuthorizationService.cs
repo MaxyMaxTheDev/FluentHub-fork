@@ -2,6 +2,7 @@
 // Licensed under the MIT License. See the LICENSE.
 
 using System.Net.Http;
+using System.Text.Json.Serialization;
 
 namespace FluentHub.Octokit.Authorization
 {
@@ -33,9 +34,11 @@ namespace FluentHub.Octokit.Authorization
 
 		public async Task<DeviceAuthorizationResponse> RequestDeviceAuthorizationAsync(OctokitSecrets secrets)
 		{
+			var clientId = secrets.ClientId ?? throw new InvalidOperationException("GitHub OAuth client id is not configured.");
+
 			using FormUrlEncodedContent content = new(new Dictionary<string, string>
 			{
-				["client_id"] = secrets.ClientId,
+				["client_id"] = clientId,
 				["scope"] = string.Join(" ", Scopes),
 			});
 
@@ -47,7 +50,9 @@ namespace FluentHub.Octokit.Authorization
 
 			using HttpResponseMessage response = await HttpClient.SendAsync(request);
 			string json = await response.Content.ReadAsStringAsync();
-			var deviceAuthorization = JsonConvert.DeserializeObject<DeviceAuthorizationResponse>(json);
+			var deviceAuthorization = System.Text.Json.JsonSerializer.Deserialize(
+				json,
+				GitHubDeviceFlowJsonContext.Default.DeviceAuthorizationResponse);
 
 			if (deviceAuthorization is null)
 				throw new InvalidOperationException("GitHub device authorization response was empty.");
@@ -60,9 +65,11 @@ namespace FluentHub.Octokit.Authorization
 
 		public async Task<string> RequestDeviceAccessTokenAsync(string deviceCode, OctokitSecrets secrets)
 		{
+			var clientId = secrets.ClientId ?? throw new InvalidOperationException("GitHub OAuth client id is not configured.");
+
 			using FormUrlEncodedContent content = new(new Dictionary<string, string>
 			{
-				["client_id"] = secrets.ClientId,
+				["client_id"] = clientId,
 				["device_code"] = deviceCode,
 				["grant_type"] = DeviceCodeGrantType,
 			});
@@ -75,7 +82,9 @@ namespace FluentHub.Octokit.Authorization
 
 			using HttpResponseMessage response = await HttpClient.SendAsync(request);
 			string json = await response.Content.ReadAsStringAsync();
-			var token = JsonConvert.DeserializeObject<DeviceAccessTokenResponse>(json);
+			var token = System.Text.Json.JsonSerializer.Deserialize(
+				json,
+				GitHubDeviceFlowJsonContext.Default.DeviceAccessTokenResponse);
 
 			if (token is null)
 				throw new InvalidOperationException("GitHub access token response was empty.");
@@ -106,42 +115,48 @@ namespace FluentHub.Octokit.Authorization
 
 	public class DeviceFlowResponse
 	{
-		[JsonProperty("error")]
+		[JsonPropertyName("error")]
 		public string Error { get; set; } = string.Empty;
 
-		[JsonProperty("error_description")]
+		[JsonPropertyName("error_description")]
 		public string ErrorDescription { get; set; } = string.Empty;
 
-		[JsonProperty("interval")]
+		[JsonPropertyName("interval")]
 		public int? Interval { get; set; }
 	}
 
 	public class DeviceAuthorizationResponse : DeviceFlowResponse
 	{
-		[JsonProperty("device_code")]
+		[JsonPropertyName("device_code")]
 		public string DeviceCode { get; set; } = string.Empty;
 
-		[JsonProperty("user_code")]
+		[JsonPropertyName("user_code")]
 		public string UserCode { get; set; } = string.Empty;
 
-		[JsonProperty("verification_uri")]
+		[JsonPropertyName("verification_uri")]
 		public string VerificationUri { get; set; } = string.Empty;
 
-		[JsonProperty("expires_in")]
+		[JsonPropertyName("expires_in")]
 		public int ExpiresIn { get; set; }
 
 	}
 
 	public class DeviceAccessTokenResponse : DeviceFlowResponse
 	{
-		[JsonProperty("access_token")]
+		[JsonPropertyName("access_token")]
 		public string AccessToken { get; set; } = string.Empty;
 
-		[JsonProperty("token_type")]
+		[JsonPropertyName("token_type")]
 		public string TokenType { get; set; } = string.Empty;
 
-		[JsonProperty("scope")]
+		[JsonPropertyName("scope")]
 		public string Scope { get; set; } = string.Empty;
+	}
+
+	[JsonSerializable(typeof(DeviceAuthorizationResponse))]
+	[JsonSerializable(typeof(DeviceAccessTokenResponse))]
+	internal partial class GitHubDeviceFlowJsonContext : JsonSerializerContext
+	{
 	}
 
 	public class DeviceAuthorizationPendingException : Exception

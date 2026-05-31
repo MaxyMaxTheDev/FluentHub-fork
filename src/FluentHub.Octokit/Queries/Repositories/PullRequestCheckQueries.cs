@@ -13,7 +13,7 @@ namespace FluentHub.Octokit.Queries.Repositories
 				{
 					CheckSuites = y.CheckSuites(20, null, null, null, null).Select(suites => new CheckSuiteConnection
 					{
-						Nodes = suites.Nodes.Select(suite => new CheckSuite
+						Nodes = suites.Nodes.Select(suite => (CheckSuite?)new CheckSuite
 						{
 							App = suite.App.Select(app => new Models.v4.App
 							{
@@ -25,10 +25,10 @@ namespace FluentHub.Octokit.Queries.Repositories
 
 							CheckRuns = suite.CheckRuns(10, null, null, null, null).Select(runs => new CheckRunConnection
 							{
-								Nodes = runs.Nodes.Select(run => new CheckRun
+								Nodes = runs.Nodes.Select(run => (CheckRun?)new CheckRun
 								{
 									Name = run.Name,
-									Conclusion = (CheckConclusionState)run.Conclusion,
+									Conclusion = (CheckConclusionState?)run.Conclusion,
 									Status = (CheckStatusState)run.Status,
 									DetailsUrl = run.DetailsUrl,
 									Title = run.Title,
@@ -76,7 +76,10 @@ namespace FluentHub.Octokit.Queries.Repositories
 
 			var result = await App.Connection.Run(query);
 
-			return result.ToList().First().CheckSuites.Nodes;
+			return result.ToList().FirstOrDefault()?.CheckSuites?.Nodes?
+				.Where(suite => suite is not null)
+				.Select(suite => suite!)
+				.ToList() ?? [];
 		}
 	}
 }

@@ -89,7 +89,7 @@ namespace FluentHub.Octokit.Queries.Repositories
 					IsEmpty = x.IsEmpty,
 					IsPrivate = x.IsPrivate,
 					IsTemplate = x.IsTemplate,
-					ViewerSubscription = (SubscriptionState)x.ViewerSubscription,
+					ViewerSubscription = (SubscriptionState?)x.ViewerSubscription,
 					Name = x.Name,
 					Description = x.Description,
 					StargazerCount = x.StargazerCount,
@@ -163,7 +163,7 @@ namespace FluentHub.Octokit.Queries.Repositories
 
 					Languages = x.Languages(10, null, null, null, null).Select(langConection => new LanguageConnection
 					{
-						Nodes = langConection.Nodes.Select(lang => new Language
+						Nodes = langConection.Nodes.Select(lang => (Language?)new Language
 						{
 							Color = lang.Color,
 							Name = lang.Name,
@@ -203,7 +203,7 @@ namespace FluentHub.Octokit.Queries.Repositories
 						IsEmpty = x.IsEmpty,
 						IsPrivate = x.IsPrivate,
 						IsTemplate = x.IsTemplate,
-						ViewerSubscription = (SubscriptionState)x.ViewerSubscription,
+						ViewerSubscription = (SubscriptionState?)x.ViewerSubscription,
 						Name = x.Name,
 						Description = x.Description,
 						StargazerCount = x.StargazerCount,
@@ -270,7 +270,7 @@ namespace FluentHub.Octokit.Queries.Repositories
 
 						Languages = x.Languages(10, null, null, null, null).Select(langConection => new LanguageConnection
 						{
-							Nodes = langConection.Nodes.Select(lang => new Language
+							Nodes = langConection.Nodes.Select(lang => (Language?)new Language
 							{
 								Color = lang.Color,
 								Name = lang.Name,
@@ -351,7 +351,7 @@ namespace FluentHub.Octokit.Queries.Repositories
 			return branchNames;
 		}
 
-		public async Task<string> GetReadmeHtml(string owner, string name, string branch, string theme, string index)
+		public async Task<string?> GetReadmeHtml(string owner, string name, string branch, string theme, string index)
 		{
 			string bodyHtml;
 

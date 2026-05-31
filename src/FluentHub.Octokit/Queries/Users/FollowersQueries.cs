@@ -14,7 +14,7 @@ namespace FluentHub.Octokit.Queries.Users
 				.Followers(first, after, last, before)
 				.Select(connection => new FollowerConnection
 				{
-					Edges = connection.Edges.Select(edge => new UserEdge
+					Edges = connection.Edges.Select(edge => (UserEdge?)new UserEdge
 					{
 						Node = edge.Node.Select(x => new User
 						{
@@ -43,7 +43,10 @@ namespace FluentHub.Octokit.Queries.Users
 			var result = new OctokitQueryResult()
 			{
 				PageInfo = response.PageInfo,
-				Response = response.Edges.Select(x => x.Node).ToList(),
+				Response = response.Edges?
+					.Where(x => x?.Node is not null)
+					.Select(x => x!.Node!)
+					.ToList() ?? [],
 			};
 
 			return result;

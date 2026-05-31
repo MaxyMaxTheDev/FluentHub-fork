@@ -23,10 +23,10 @@ namespace FluentHub.Octokit.Queries.Users
 
 			var query = new Query()
 				.User(login)
-				.Issues(first, after, last, before, filterBy, labels is null ? null : new Arg<IEnumerable<string>>(labels), orderBy, states is null ? null : new Arg<IEnumerable<OctokitGraphQLModel.IssueState>>(states))
+				.Issues(first, after, last, before, filterBy, labels is null ? null! : new Arg<IEnumerable<string>>(labels), orderBy, states is null ? null! : new Arg<IEnumerable<OctokitGraphQLModel.IssueState>>(states))
 				.Select(connection => new IssueConnection
 				{
-					Edges = connection.Edges.Select(edge => new IssueEdge
+					Edges = connection.Edges.Select(edge => (IssueEdge?)new IssueEdge
 					{
 						Node = edge.Node.Select(x => new Issue
 						{
@@ -58,7 +58,7 @@ namespace FluentHub.Octokit.Queries.Users
 
 							Labels = x.Labels(10, null, null, null, null).Select(labels => new LabelConnection
 							{
-								Nodes = labels.Nodes.Select(y => new Label
+								Nodes = labels.Nodes.Select(y => (Label?)new Label
 								{
 									Color = y.Color,
 									Description = y.Description,
@@ -85,7 +85,10 @@ namespace FluentHub.Octokit.Queries.Users
 			var result = new OctokitQueryResult()
 			{
 				PageInfo = response.PageInfo,
-				Response = response.Edges.Select(x => x.Node).ToList(),
+				Response = response.Edges?
+					.Where(x => x?.Node is not null)
+					.Select(x => x!.Node!)
+					.ToList() ?? [],
 			};
 
 			return result;

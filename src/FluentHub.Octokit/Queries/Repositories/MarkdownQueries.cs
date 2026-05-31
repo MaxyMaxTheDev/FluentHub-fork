@@ -1,10 +1,13 @@
-using System.Net;
+using System.Net.Http;
+using System.Net.Http.Headers;
 using System.Text.RegularExpressions;
 
 namespace FluentHub.Octokit.Queries.Repositories
 {
 	public class MarkdownQueries
 	{
+		private static readonly HttpClient HttpClient = new();
+
 		public string GetHtml(string index, string markdown, string missedPath, string theme, bool isHtml)
 		{
 			// Get rwa html string
@@ -23,19 +26,19 @@ namespace FluentHub.Octokit.Queries.Repositories
 
 		private string GetRawHtml(string markdown)
 		{
-			WebClient wc = new WebClient();
+			using var request = new HttpRequestMessage(HttpMethod.Post, "https://api.github.com/markdown/raw")
+			{
+				Content = new StringContent(markdown, Encoding.UTF8, "text/plain"),
+			};
 
-			wc.Headers["Content-Type"] = "text/plain";
-			wc.Headers["User-agent"] = "FluentHub";
-			wc.Headers["Authorization"] = "token " + App.AccessToken;
-			wc.Headers["Mode"] = "GFM";
+			request.Headers.UserAgent.ParseAdd("FluentHub");
+			request.Headers.Authorization = new AuthenticationHeaderValue("token", App.AccessToken);
+			request.Headers.Add("Mode", "GFM");
 
-			var response = wc.UploadData("https://api.github.com/markdown/raw", "POST", Encoding.UTF8.GetBytes(markdown));
-			wc.Dispose();
+			using var response = HttpClient.Send(request);
+			response.EnsureSuccessStatusCode();
 
-			string data = Encoding.UTF8.GetString(response);
-
-			return data;
+			return response.Content.ReadAsStringAsync().GetAwaiter().GetResult();
 		}
 
 		private string CorrectRelativePaths(string html, string missedPath)

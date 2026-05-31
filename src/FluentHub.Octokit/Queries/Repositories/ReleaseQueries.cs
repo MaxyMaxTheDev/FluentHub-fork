@@ -21,7 +21,7 @@ namespace FluentHub.Octokit.Queries.Repositories
 				.Releases(first, after, last, before, orderBy)
 				.Select(connection => new ReleaseConnection
 				{
-					Edges = connection.Edges.Select(edge => new ReleaseEdge
+					Edges = connection.Edges.Select(edge => (ReleaseEdge?)new ReleaseEdge
 					{
 						Node = edge.Node.Select(x => new Release
 						{
@@ -57,7 +57,10 @@ namespace FluentHub.Octokit.Queries.Repositories
 			var result = new OctokitQueryResult()
 			{
 				PageInfo = response.PageInfo,
-				Response = response.Edges.Select(x => x.Node).ToList(),
+				Response = response.Edges?
+					.Where(x => x?.Node is not null)
+					.Select(x => x!.Node!)
+					.ToList() ?? [],
 			};
 
 			return result;
@@ -88,7 +91,7 @@ namespace FluentHub.Octokit.Queries.Repositories
 
 					ReleaseAssets = x.ReleaseAssets(10, null, null, null, null).Select(assets => new ReleaseAssetConnection
 					{
-						Nodes = assets.Nodes.Select(asset => new ReleaseAsset
+						Nodes = assets.Nodes.Select(asset => (ReleaseAsset?)new ReleaseAsset
 						{
 							Name = asset.Name,
 							ContentType = asset.ContentType,

@@ -22,13 +22,13 @@ namespace FluentHub.Octokit.Queries.Users
 					after,
 					last,
 					before,
-					names is null ? null : new Arg<IEnumerable<string>>(names!),
-					orderBy is null ? null : new Arg<OctokitGraphQLModel.PackageOrder>(orderBy!),
+					names is null ? null! : new Arg<IEnumerable<string>>(names!),
+					orderBy is null ? null! : new Arg<OctokitGraphQLModel.PackageOrder>(orderBy!),
 					packageType is null ? null : new Arg<OctokitGraphQLModel.PackageType>((OctokitGraphQLModel.PackageType)packageType),
 					repositoryId)
 				.Select(connection => new PackageConnection
 				{
-					Edges = connection.Edges.Select(edge => new PackageEdge
+					Edges = connection.Edges.Select(edge => (PackageEdge?)new PackageEdge
 					{
 						Node = edge.Node.Select(x => new Package
 						{
@@ -73,7 +73,10 @@ namespace FluentHub.Octokit.Queries.Users
 			var result = new OctokitQueryResult()
 			{
 				PageInfo = response.PageInfo,
-				Response = response.Edges.Select(x => x.Node).ToList(),
+				Response = response.Edges?
+					.Where(x => x?.Node is not null)
+					.Select(x => x!.Node!)
+					.ToList() ?? [],
 			};
 
 			return result;

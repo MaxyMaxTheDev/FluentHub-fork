@@ -5,13 +5,16 @@ namespace FluentHub.Octokit.Queries.Users
 {
 	public class NotificationQueries
 	{
-		public async Task<List<Notification>> GetAllAsync(OctokitV3.NotificationsRequest request = null, OctokitV3.ApiOptions options = null)
+		public async Task<List<Notification>> GetAllAsync(OctokitV3.NotificationsRequest? request = null, OctokitV3.ApiOptions? options = null)
 		{
 			var response = await App.Client.Activity.Notifications.GetAllForCurrent(request, options);
 
 			List<Notification> notifications = new();
 			foreach (var item in response)
 			{
+				if (item.Subject is null || item.Repository is null)
+					continue;
+
 				Notification indivisual = new()
 				{
 					Id = Convert.ToInt64(item.Id),
@@ -28,8 +31,8 @@ namespace FluentHub.Octokit.Queries.Users
 						Name = item.Repository.Name,
 						Owner = new RepositoryOwner()
 						{
-							AvatarUrl = item.Repository.Owner.AvatarUrl,
-							Login = item.Repository.Owner.Login,
+							AvatarUrl = item.Repository.Owner?.AvatarUrl ?? string.Empty,
+							Login = item.Repository.Owner?.Login ?? string.Empty,
 						},
 					},
 				};
@@ -63,20 +66,20 @@ namespace FluentHub.Octokit.Queries.Users
 					_ => "",
 				};
 
-				var urlItems = item.Subject.Url?.Split('/').ToList();
+				var itemNumber = item.Subject.Url?.Split('/').LastOrDefault();
 
 				switch (item.Subject?.Type)
 				{
 					case "Issue":
 						{
 							indivisual.Subject.Type = NotificationSubjectType.Issue;
-							indivisual.Subject.Number = Convert.ToInt32(urlItems.LastOrDefault());
+							indivisual.Subject.Number = Convert.ToInt32(itemNumber);
 							break;
 						}
 					case "PullRequest":
 						{
 							indivisual.Subject.Type = NotificationSubjectType.PullRequest;
-							indivisual.Subject.Number = Convert.ToInt32(urlItems.LastOrDefault());
+							indivisual.Subject.Number = Convert.ToInt32(itemNumber);
 							break;
 						}
 					case "Discussion":
@@ -124,6 +127,12 @@ namespace FluentHub.Octokit.Queries.Users
 
 			foreach (var notification in notifications)
 			{
+				if (notification.Subject is null || notification.Repository?.Owner is null)
+				{
+					index++;
+					continue;
+				}
+
 				switch (notification.Subject.Type)
 				{
 					//case NotificationSubjectType.Discussion:
@@ -170,17 +179,20 @@ repo{index}: repository(name: ""{notification.Repository.Name}"", owner: ""{noti
 			return ItemFragments;
 		}
 
-		private List<Repository> ParseGraphQLJsonResponse(JToken token, int itemCount)
+		private List<Repository> ParseGraphQLJsonResponse(JToken? token, int itemCount)
 		{
 			List<Repository> repositories = new();
 
-			if (token["errors"] != null)
+			if (token is null)
+				return repositories;
+
+			if (token["errors"] is JToken errors && errors.FirstOrDefault() is JToken error)
 			{
-				var error = token["errors"];
+				var location = error["locations"]?.FirstOrDefault();
 				throw new OctokitGraphQLCore.Deserializers.ResponseDeserializerException(
-					(string)error["message"],
-					(int)error["locations"][0]["line"],
-					(int)error["locations"][0]["column"]);
+					error["message"]?.ToString() ?? "GraphQL notification query failed.",
+					location?["line"]?.Value<int>() ?? 0,
+					location?["column"]?.Value<int>() ?? 0);
 			}
 
 			for (int index = 0; index < itemCount; index++)
@@ -200,10 +212,10 @@ repo{index}: repository(name: ""{notification.Repository.Name}"", owner: ""{noti
 				// HasValues because issue can be empty
 				if (issue != null && issue.HasValues)
 				{
-					Enum.TryParse(issue["state"].ToString(), true, out IssueState state);
-					Enum.TryParse(issue["stateReason"].ToString(), true, out IssueStateReason stateReason);
-					var id = new ID(issue["id"].ToString());
-					int.TryParse(issue["number"].ToString(), out int number);
+					Enum.TryParse(issue["state"]?.ToString(), true, out IssueState state);
+					Enum.TryParse(issue["stateReason"]?.ToString(), true, out IssueStateReason stateReason);
+					var id = new ID(issue["id"]?.ToString() ?? string.Empty);
+					int.TryParse(issue["number"]?.ToString(), out int number);
 
 					repositories.Add(new()
 					{
@@ -218,10 +230,10 @@ repo{index}: repository(name: ""{notification.Repository.Name}"", owner: ""{noti
 				}
 				else if (pullRequest != null && pullRequest.HasValues)
 				{
-					Enum.TryParse(pullRequest["state"].ToString(), true, out PullRequestState state);
-					var id = new ID(pullRequest["id"].ToString());
-					int.TryParse(pullRequest["number"].ToString(), out int number);
-					bool.TryParse(pullRequest["isDraft"].ToString(), out bool isDraft);
+					Enum.TryParse(pullRequest["state"]?.ToString(), true, out PullRequestState state);
+					var id = new ID(pullRequest["id"]?.ToString() ?? string.Empty);
+					int.TryParse(pullRequest["number"]?.ToString(), out int number);
+					bool.TryParse(pullRequest["isDraft"]?.ToString(), out bool isDraft);
 
 					repositories.Add(new()
 					{
@@ -245,7 +257,7 @@ repo{index}: repository(name: ""{notification.Repository.Name}"", owner: ""{noti
 			return repositories;
 		}
 
-		private List<Notification> MapRepositoriesToNotifications(List<Notification> notifications, IReadOnlyList<Repository> repositories)
+		private List<Notification>? MapRepositoriesToNotifications(List<Notification> notifications, IReadOnlyList<Repository> repositories)
 		{
 			int index = 0;
 
@@ -257,6 +269,9 @@ repo{index}: repository(name: ""{notification.Repository.Name}"", owner: ""{noti
 
 			foreach (var item in zippedData)
 			{
+				if (item.Notification.Subject is null)
+					continue;
+
 				switch (item.Notification.Subject.Type)
 				{
 					//case NotificationSubjectType.Discussion:

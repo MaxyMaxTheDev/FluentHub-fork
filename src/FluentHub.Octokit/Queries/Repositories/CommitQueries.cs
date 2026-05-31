@@ -34,7 +34,7 @@ namespace FluentHub.Octokit.Queries.Repositories
 					until)
 				.Select(connection => new CommitHistoryConnection
 				{
-					Edges = connection.Edges.Select(edge => new CommitEdge
+					Edges = connection.Edges.Select(edge => (CommitEdge?)new CommitEdge
 					{
 						Node = edge.Node.Select(x => new Commit
 						{
@@ -100,7 +100,10 @@ namespace FluentHub.Octokit.Queries.Repositories
 			var result = new OctokitQueryResult()
 			{
 				PageInfo = response.PageInfo,
-				Response = response.Edges.Select(x => x.Node).ToList(),
+				Response = response.Edges?
+					.Where(x => x?.Node is not null)
+					.Select(x => x!.Node!)
+					.ToList() ?? [],
 			};
 
 			return result;
@@ -120,7 +123,7 @@ namespace FluentHub.Octokit.Queries.Repositories
 				{
 					History = commit.History(1, null, null, null, null, path, null, null).Select(history => new CommitHistoryConnection
 					{
-						Nodes = history.Nodes.Select(y => new Commit
+						Nodes = history.Nodes.Select(y => (Commit?)new Commit
 						{
 							AbbreviatedOid = y.AbbreviatedOid,
 							Additions = y.Additions,
