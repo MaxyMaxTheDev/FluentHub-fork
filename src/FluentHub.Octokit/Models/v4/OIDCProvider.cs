@@ -1,6 +1,8 @@
 // Copyright (c) 2022-2024 0x5BFA
 // Licensed under the MIT License. See the LICENSE.
 
+#nullable enable
+
 namespace FluentHub.Octokit.Models.v4
 {
 	/// <summary>
@@ -11,7 +13,7 @@ namespace FluentHub.Octokit.Models.v4
 		/// <summary>
 		/// The enterprise this identity provider belongs to.
 		/// </summary>
-		public Enterprise Enterprise { get; set; }
+		public Enterprise? Enterprise { get; set; }
 
 		/// <summary>
 		/// ExternalIdentities provisioned by this identity provider.
@@ -23,7 +25,7 @@ namespace FluentHub.Octokit.Models.v4
 		/// <param name="login">Filter to external identities with the users login</param>
 		/// <param name="membersOnly">Filter to external identities with valid org membership only</param>
 		/// <param name="userName">Filter to external identities with the users userName/NameID attribute</param>
-		public ExternalIdentityConnection ExternalIdentities { get; set; }
+		public ExternalIdentityConnection ExternalIdentities { get; set; } = default!;
 
 		/// <summary>
 		/// The Node ID of the OIDCProvider object
@@ -38,6 +40,6 @@ namespace FluentHub.Octokit.Models.v4
 		/// <summary>
 		/// The id of the tenant this provider is attached to
 		/// </summary>
-		public string TenantId { get; set; }
+		public string TenantId { get; set; } = default!;
 	}
 }

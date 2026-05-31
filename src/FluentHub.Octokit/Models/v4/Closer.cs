@@ -1,6 +1,8 @@
 // Copyright (c) 2022-2024 0x5BFA
 // Licensed under the MIT License. See the LICENSE.
 
+#nullable enable
+
 namespace FluentHub.Octokit.Models.v4
 {
 	/// <summary>
@@ -11,16 +13,16 @@ namespace FluentHub.Octokit.Models.v4
 		/// <summary>
 		/// Represents a Git commit.
 		/// </summary>
-		public Commit Commit { get; set; }
+		public Commit? Commit { get; set; }
 
 		/// <summary>
 		/// New projects that manage issues, pull requests and drafts using tables and boards.
 		/// </summary>
-		public ProjectV2 ProjectV2 { get; set; }
+		public ProjectV2? ProjectV2 { get; set; }
 
 		/// <summary>
 		/// A repository pull request.
 		/// </summary>
-		public PullRequest PullRequest { get; set; }
+		public PullRequest? PullRequest { get; set; }
 	}
 }

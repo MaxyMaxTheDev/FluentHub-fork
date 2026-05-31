@@ -1,6 +1,8 @@
 // Copyright (c) 2022-2024 0x5BFA
 // Licensed under the MIT License. See the LICENSE.
 
+#nullable enable
+
 namespace FluentHub.Octokit.Models.v4
 {
 	/// <summary>
@@ -16,12 +18,12 @@ namespace FluentHub.Octokit.Models.v4
 		/// <summary>
 		/// The text value, for a text field
 		/// </summary>
-		public string TextValue { get; set; }
+		public string? TextValue { get; set; }
 
 		/// <summary>
 		/// The date value, for a date field
 		/// </summary>
-		public string DateValue { get; set; }
+		public string? DateValue { get; set; }
 
 		/// <summary>
 		/// The ID of the selected option, for a single select field

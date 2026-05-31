@@ -1,6 +1,8 @@
 // Copyright (c) 2022-2024 0x5BFA
 // Licensed under the MIT License. See the LICENSE.
 
+#nullable enable
+
 namespace FluentHub.Octokit.Models.v4
 {
 	/// <summary>
@@ -15,13 +17,13 @@ namespace FluentHub.Octokit.Models.v4
 		/// associated with a column, they will not become pending in the future.
 		/// </summary>
 		[Obsolete(@"Projects (classic) is being deprecated in favor of the new Projects experience, see: https://github.blog/changelog/2024-05-23-sunset-notice-projects-classic/. Removal on 2025-04-01 UTC.")]
-		public ProjectColumn Column { get; set; }
+		public ProjectColumn? Column { get; set; }
 
 		/// <summary>
 		/// The card content item
 		/// </summary>
 		[Obsolete(@"Projects (classic) is being deprecated in favor of the new Projects experience, see: https://github.blog/changelog/2024-05-23-sunset-notice-projects-classic/. Removal on 2025-04-01 UTC.")]
-		public ProjectCardItem Content { get; set; }
+		public ProjectCardItem? Content { get; set; }
 
 		/// <summary>
 		/// Identifies the date and time when the object was created.
@@ -32,13 +34,13 @@ namespace FluentHub.Octokit.Models.v4
 		/// <summary>
 		/// Humanized string of "Identifies the date and time when the object was created."
 		/// <summary>
-		public string CreatedAtHumanized { get; set; }
+		public string? CreatedAtHumanized { get; set; }
 
 		/// <summary>
 		/// The actor who created this card
 		/// </summary>
 		[Obsolete(@"Projects (classic) is being deprecated in favor of the new Projects experience, see: https://github.blog/changelog/2024-05-23-sunset-notice-projects-classic/. Removal on 2025-04-01 UTC.")]
-		public IActor Creator { get; set; }
+		public IActor? Creator { get; set; }
 
 		/// <summary>
 		/// Identifies the primary key from the database.
@@ -62,19 +64,19 @@ namespace FluentHub.Octokit.Models.v4
 		/// The card note
 		/// </summary>
 		[Obsolete(@"Projects (classic) is being deprecated in favor of the new Projects experience, see: https://github.blog/changelog/2024-05-23-sunset-notice-projects-classic/. Removal on 2025-04-01 UTC.")]
-		public string Note { get; set; }
+		public string? Note { get; set; }
 
 		/// <summary>
 		/// The project that contains this card.
 		/// </summary>
 		[Obsolete(@"Projects (classic) is being deprecated in favor of the new Projects experience, see: https://github.blog/changelog/2024-05-23-sunset-notice-projects-classic/. Removal on 2025-04-01 UTC.")]
-		public Project Project { get; set; }
+		public Project Project { get; set; } = default!;
 
 		/// <summary>
 		/// The HTTP path for this card
 		/// </summary>
 		[Obsolete(@"Projects (classic) is being deprecated in favor of the new Projects experience, see: https://github.blog/changelog/2024-05-23-sunset-notice-projects-classic/. Removal on 2025-04-01 UTC.")]
-		public string ResourcePath { get; set; }
+		public string ResourcePath { get; set; } = default!;
 
 		/// <summary>
 		/// The state of ProjectCard
@@ -91,12 +93,12 @@ namespace FluentHub.Octokit.Models.v4
 		/// <summary>
 		/// Humanized string of "Identifies the date and time when the object was last updated."
 		/// <summary>
-		public string UpdatedAtHumanized { get; set; }
+		public string? UpdatedAtHumanized { get; set; }
 
 		/// <summary>
 		/// The HTTP URL for this card
 		/// </summary>
 		[Obsolete(@"Projects (classic) is being deprecated in favor of the new Projects experience, see: https://github.blog/changelog/2024-05-23-sunset-notice-projects-classic/. Removal on 2025-04-01 UTC.")]
-		public string Url { get; set; }
+		public string Url { get; set; } = default!;
 	}
 }

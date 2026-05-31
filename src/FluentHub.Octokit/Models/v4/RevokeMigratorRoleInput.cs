@@ -1,6 +1,8 @@
 // Copyright (c) 2022-2024 0x5BFA
 // Licensed under the MIT License. See the LICENSE.
 
+#nullable enable
+
 namespace FluentHub.Octokit.Models.v4
 {
 	/// <summary>
@@ -11,7 +13,7 @@ namespace FluentHub.Octokit.Models.v4
 		/// <summary>
 		/// A unique identifier for the client performing the mutation.
 		/// </summary>
-		public string ClientMutationId { get; set; }
+		public string? ClientMutationId { get; set; }
 
 		/// <summary>
 		/// The ID of the organization that the user/team belongs to.
@@ -21,7 +23,7 @@ namespace FluentHub.Octokit.Models.v4
 		/// <summary>
 		/// The user login or Team slug to revoke the migrator role from.
 		/// </summary>
-		public string Actor { get; set; }
+		public string Actor { get; set; } = default!;
 
 		/// <summary>
 		/// Specifies the type of the actor, can be either USER or TEAM.

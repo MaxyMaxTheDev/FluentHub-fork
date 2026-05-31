@@ -1,6 +1,8 @@
 // Copyright (c) 2022-2024 0x5BFA
 // Licensed under the MIT License. See the LICENSE.
 
+#nullable enable
+
 namespace FluentHub.Octokit.Models.v4
 {
 
@@ -12,17 +14,17 @@ namespace FluentHub.Octokit.Models.v4
 		/// <summary>
 		/// The HTTP path for this enterprise.
 		/// </summary>
-		string EnterpriseResourcePath { get; set; }
+		string? EnterpriseResourcePath { get; set; }
 
 		/// <summary>
 		/// The slug of the enterprise.
 		/// </summary>
-		string EnterpriseSlug { get; set; }
+		string? EnterpriseSlug { get; set; }
 
 		/// <summary>
 		/// The HTTP URL for this enterprise.
 		/// </summary>
-		string EnterpriseUrl { get; set; }
+		string? EnterpriseUrl { get; set; }
 	}
 }
 
@@ -30,11 +32,11 @@ namespace FluentHub.Octokit.Models.v4
 {
 	public class EnterpriseAuditEntryData : IEnterpriseAuditEntryData
 	{
-		public string EnterpriseResourcePath { get; set; }
+		public string? EnterpriseResourcePath { get; set; }
 
-		public string EnterpriseSlug { get; set; }
+		public string? EnterpriseSlug { get; set; }
 
-		public string EnterpriseUrl { get; set; }
+		public string? EnterpriseUrl { get; set; }
 	}
 }
 

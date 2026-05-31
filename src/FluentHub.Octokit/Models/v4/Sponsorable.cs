@@ -1,6 +1,8 @@
 // Copyright (c) 2022-2024 0x5BFA
 // Licensed under the MIT License. See the LICENSE.
 
+#nullable enable
+
 namespace FluentHub.Octokit.Models.v4
 {
 
@@ -85,19 +87,19 @@ namespace FluentHub.Octokit.Models.v4
 		/// <summary>
 		/// The GitHub Sponsors listing for this user or organization.
 		/// </summary>
-		SponsorsListing SponsorsListing { get; set; }
+		SponsorsListing? SponsorsListing { get; set; }
 
 		/// <summary>
 		/// The sponsorship from the viewer to this user/organization; that is, the sponsorship where you're the sponsor.
 		/// </summary>
 		/// <param name="activeOnly">Whether to return the sponsorship only if it's still active. Pass false to get the viewer's sponsorship back even if it has been cancelled.</param>
-		Sponsorship SponsorshipForViewerAsSponsor { get; set; }
+		Sponsorship? SponsorshipForViewerAsSponsor { get; set; }
 
 		/// <summary>
 		/// The sponsorship from this user/organization to the viewer; that is, the sponsorship you're receiving.
 		/// </summary>
 		/// <param name="activeOnly">Whether to return the sponsorship only if it's still active. Pass false to get the sponsorship back even if it has been cancelled.</param>
-		Sponsorship SponsorshipForViewerAsSponsorable { get; set; }
+		Sponsorship? SponsorshipForViewerAsSponsorable { get; set; }
 
 		/// <summary>
 		/// List of sponsorship updates sent from this sponsorable to sponsors.
@@ -165,27 +167,27 @@ namespace FluentHub.Octokit.Models.v4
 
 		public bool IsSponsoringViewer { get; set; }
 
-		public SponsorAndLifetimeValueConnection LifetimeReceivedSponsorshipValues { get; set; }
+		public SponsorAndLifetimeValueConnection LifetimeReceivedSponsorshipValues { get; set; } = default!;
 
 		public int MonthlyEstimatedSponsorsIncomeInCents { get; set; }
 
-		public SponsorConnection Sponsoring { get; set; }
+		public SponsorConnection Sponsoring { get; set; } = default!;
 
-		public SponsorConnection Sponsors { get; set; }
+		public SponsorConnection Sponsors { get; set; } = default!;
 
-		public SponsorsActivityConnection SponsorsActivities { get; set; }
+		public SponsorsActivityConnection SponsorsActivities { get; set; } = default!;
 
-		public SponsorsListing SponsorsListing { get; set; }
+		public SponsorsListing? SponsorsListing { get; set; }
 
-		public Sponsorship SponsorshipForViewerAsSponsor { get; set; }
+		public Sponsorship? SponsorshipForViewerAsSponsor { get; set; }
 
-		public Sponsorship SponsorshipForViewerAsSponsorable { get; set; }
+		public Sponsorship? SponsorshipForViewerAsSponsorable { get; set; }
 
-		public SponsorshipNewsletterConnection SponsorshipNewsletters { get; set; }
+		public SponsorshipNewsletterConnection SponsorshipNewsletters { get; set; } = default!;
 
-		public SponsorshipConnection SponsorshipsAsMaintainer { get; set; }
+		public SponsorshipConnection SponsorshipsAsMaintainer { get; set; } = default!;
 
-		public SponsorshipConnection SponsorshipsAsSponsor { get; set; }
+		public SponsorshipConnection SponsorshipsAsSponsor { get; set; } = default!;
 
 		public int? TotalSponsorshipAmountAsSponsorInCents { get; set; }
 

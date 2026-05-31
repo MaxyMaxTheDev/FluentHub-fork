@@ -1,6 +1,8 @@
 // Copyright (c) 2022-2024 0x5BFA
 // Licensed under the MIT License. See the LICENSE.
 
+#nullable enable
+
 namespace FluentHub.Octokit.Models.v4
 {
 	/// <summary>
@@ -11,7 +13,7 @@ namespace FluentHub.Octokit.Models.v4
 		/// <summary>
 		/// A unique identifier for the client performing the mutation.
 		/// </summary>
-		public string ClientMutationId { get; set; }
+		public string? ClientMutationId { get; set; }
 
 		/// <summary>
 		/// The ID of the deleted workflow.
@@ -21,6 +23,6 @@ namespace FluentHub.Octokit.Models.v4
 		/// <summary>
 		/// The project the deleted workflow was in.
 		/// </summary>
-		public ProjectV2 ProjectV2 { get; set; }
+		public ProjectV2? ProjectV2 { get; set; }
 	}
 }

@@ -1,6 +1,8 @@
 // Copyright (c) 2022-2024 0x5BFA
 // Licensed under the MIT License. See the LICENSE.
 
+#nullable enable
+
 namespace FluentHub.Octokit.Models.v4
 {
 	/// <summary>
@@ -11,17 +13,17 @@ namespace FluentHub.Octokit.Models.v4
 		/// <summary>
 		/// A unique identifier for the client performing the mutation.
 		/// </summary>
-		public string ClientMutationId { get; set; }
+		public string? ClientMutationId { get; set; }
 
 		/// <summary>
 		/// The updated description of the custom property.
 		/// </summary>
-		public string Description { get; set; }
+		public string? Description { get; set; }
 
 		/// <summary>
 		/// The updated allowed values for the custom property.
 		/// </summary>
-		public List<string> AllowedValues { get; set; }
+		public List<string>? AllowedValues { get; set; }
 
 		/// <summary>
 		/// Whether the updated custom property is required.
@@ -31,12 +33,12 @@ namespace FluentHub.Octokit.Models.v4
 		/// <summary>
 		/// The updated default value for the custom property if the property is required.
 		/// </summary>
-		public string DefaultValue { get; set; }
+		public string? DefaultValue { get; set; }
 
 		/// <summary>
 		/// The regex pattern that the value of the custom property must match, if the `value_type` is `string`.
 		/// </summary>
-		public string Regex { get; set; }
+		public string? Regex { get; set; }
 
 		/// <summary>
 		/// The global relay id of the source of the custom property.

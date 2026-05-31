@@ -1,6 +1,8 @@
 // Copyright (c) 2022-2024 0x5BFA
 // Licensed under the MIT License. See the LICENSE.
 
+#nullable enable
+
 namespace FluentHub.Octokit.Models.v4
 {
 	/// <summary>
@@ -11,17 +13,17 @@ namespace FluentHub.Octokit.Models.v4
 		/// <summary>
 		/// Identifies the actor who performed the event.
 		/// </summary>
-		public IActor Actor { get; set; }
+		public IActor? Actor { get; set; }
 
 		/// <summary>
 		/// Object that was closed.
 		/// </summary>
-		public IClosable Closable { get; set; }
+		public IClosable Closable { get; set; } = default!;
 
 		/// <summary>
 		/// Object which triggered the creation of this event.
 		/// </summary>
-		public Closer Closer { get; set; }
+		public Closer? Closer { get; set; }
 
 		/// <summary>
 		/// Identifies the date and time when the object was created.
@@ -31,12 +33,12 @@ namespace FluentHub.Octokit.Models.v4
 		/// <summary>
 		/// Humanized string of "Identifies the date and time when the object was created."
 		/// <summary>
-		public string CreatedAtHumanized { get; set; }
+		public string? CreatedAtHumanized { get; set; }
 
 		/// <summary>
 		/// The issue or pull request that this issue was marked as a duplicate of.
 		/// </summary>
-		public IssueOrPullRequest DuplicateOf { get; set; }
+		public IssueOrPullRequest? DuplicateOf { get; set; }
 
 		/// <summary>
 		/// The Node ID of the ClosedEvent object
@@ -46,7 +48,7 @@ namespace FluentHub.Octokit.Models.v4
 		/// <summary>
 		/// The HTTP path for this closed event.
 		/// </summary>
-		public string ResourcePath { get; set; }
+		public string ResourcePath { get; set; } = default!;
 
 		/// <summary>
 		/// The reason the issue state was changed to closed.
@@ -56,6 +58,6 @@ namespace FluentHub.Octokit.Models.v4
 		/// <summary>
 		/// The HTTP URL for this closed event.
 		/// </summary>
-		public string Url { get; set; }
+		public string Url { get; set; } = default!;
 	}
 }

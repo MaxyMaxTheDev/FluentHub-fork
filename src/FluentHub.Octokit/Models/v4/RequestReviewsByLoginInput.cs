@@ -1,6 +1,8 @@
 // Copyright (c) 2022-2024 0x5BFA
 // Licensed under the MIT License. See the LICENSE.
 
+#nullable enable
+
 namespace FluentHub.Octokit.Models.v4
 {
 	/// <summary>
@@ -11,7 +13,7 @@ namespace FluentHub.Octokit.Models.v4
 		/// <summary>
 		/// A unique identifier for the client performing the mutation.
 		/// </summary>
-		public string ClientMutationId { get; set; }
+		public string? ClientMutationId { get; set; }
 
 		/// <summary>
 		/// The Node ID of the pull request to modify.
@@ -21,17 +23,17 @@ namespace FluentHub.Octokit.Models.v4
 		/// <summary>
 		/// The login strings of the users to request reviews from.
 		/// </summary>
-		public List<string> UserLogins { get; set; }
+		public List<string>? UserLogins { get; set; }
 
 		/// <summary>
 		/// The logins of the bots to request reviews from, including the [bot] suffix (e.g., 'copilot-pull-request-reviewer[bot]').
 		/// </summary>
-		public List<string> BotLogins { get; set; }
+		public List<string>? BotLogins { get; set; }
 
 		/// <summary>
 		/// The slugs of the teams to request reviews from (format: 'org/team-slug').
 		/// </summary>
-		public List<string> TeamSlugs { get; set; }
+		public List<string>? TeamSlugs { get; set; }
 
 		/// <summary>
 		/// Add users to the set rather than replace.

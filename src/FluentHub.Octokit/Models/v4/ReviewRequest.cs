@@ -1,6 +1,8 @@
 // Copyright (c) 2022-2024 0x5BFA
 // Licensed under the MIT License. See the LICENSE.
 
+#nullable enable
+
 namespace FluentHub.Octokit.Models.v4
 {
 	/// <summary>
@@ -26,11 +28,11 @@ namespace FluentHub.Octokit.Models.v4
 		/// <summary>
 		/// Identifies the pull request associated with this review request.
 		/// </summary>
-		public PullRequest PullRequest { get; set; }
+		public PullRequest PullRequest { get; set; } = default!;
 
 		/// <summary>
 		/// The reviewer that is requested.
 		/// </summary>
-		public RequestedReviewer RequestedReviewer { get; set; }
+		public RequestedReviewer? RequestedReviewer { get; set; }
 	}
 }

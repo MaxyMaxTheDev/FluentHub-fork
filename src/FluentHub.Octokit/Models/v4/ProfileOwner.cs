@@ -1,6 +1,8 @@
 // Copyright (c) 2022-2024 0x5BFA
 // Licensed under the MIT License. See the LICENSE.
 
+#nullable enable
+
 namespace FluentHub.Octokit.Models.v4
 {
 
@@ -18,7 +20,7 @@ namespace FluentHub.Octokit.Models.v4
 		/// <summary>
 		/// The public profile email.
 		/// </summary>
-		string Email { get; set; }
+		string? Email { get; set; }
 
 		/// <summary>
 		/// The Node ID of the ProfileOwner object
@@ -33,7 +35,7 @@ namespace FluentHub.Octokit.Models.v4
 		/// <summary>
 		/// The public profile location.
 		/// </summary>
-		string Location { get; set; }
+		string? Location { get; set; }
 
 		/// <summary>
 		/// The username used to login.
@@ -43,7 +45,7 @@ namespace FluentHub.Octokit.Models.v4
 		/// <summary>
 		/// The public profile name.
 		/// </summary>
-		string Name { get; set; }
+		string? Name { get; set; }
 
 		/// <summary>
 		/// A list of repositories and gists this profile owner can pin to their profile.
@@ -78,7 +80,7 @@ namespace FluentHub.Octokit.Models.v4
 		/// <summary>
 		/// The public profile website URL.
 		/// </summary>
-		string WebsiteUrl { get; set; }
+		string? WebsiteUrl { get; set; }
 	}
 }
 
@@ -88,27 +90,27 @@ namespace FluentHub.Octokit.Models.v4
 	{
 		public bool AnyPinnableItems { get; set; }
 
-		public string Email { get; set; }
+		public string? Email { get; set; }
 
 		public ID Id { get; set; }
 
-		public ProfileItemShowcase ItemShowcase { get; set; }
+		public ProfileItemShowcase ItemShowcase { get; set; } = default!;
 
-		public string Location { get; set; }
+		public string? Location { get; set; }
 
-		public string Login { get; set; }
+		public string Login { get; set; } = default!;
 
-		public string Name { get; set; }
+		public string? Name { get; set; }
 
-		public PinnableItemConnection PinnableItems { get; set; }
+		public PinnableItemConnection PinnableItems { get; set; } = default!;
 
-		public PinnableItemConnection PinnedItems { get; set; }
+		public PinnableItemConnection PinnedItems { get; set; } = default!;
 
 		public int PinnedItemsRemaining { get; set; }
 
 		public bool ViewerCanChangePinnedItems { get; set; }
 
-		public string WebsiteUrl { get; set; }
+		public string? WebsiteUrl { get; set; }
 	}
 }
 

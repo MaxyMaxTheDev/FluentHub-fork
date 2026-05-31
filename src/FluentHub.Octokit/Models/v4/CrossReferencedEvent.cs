@@ -1,6 +1,8 @@
 // Copyright (c) 2022-2024 0x5BFA
 // Licensed under the MIT License. See the LICENSE.
 
+#nullable enable
+
 namespace FluentHub.Octokit.Models.v4
 {
 	/// <summary>
@@ -11,7 +13,7 @@ namespace FluentHub.Octokit.Models.v4
 		/// <summary>
 		/// Identifies the actor who performed the event.
 		/// </summary>
-		public IActor Actor { get; set; }
+		public IActor? Actor { get; set; }
 
 		/// <summary>
 		/// Identifies the date and time when the object was created.
@@ -21,7 +23,7 @@ namespace FluentHub.Octokit.Models.v4
 		/// <summary>
 		/// Humanized string of "Identifies the date and time when the object was created."
 		/// <summary>
-		public string CreatedAtHumanized { get; set; }
+		public string? CreatedAtHumanized { get; set; }
 
 		/// <summary>
 		/// The Node ID of the CrossReferencedEvent object
@@ -41,27 +43,27 @@ namespace FluentHub.Octokit.Models.v4
 		/// <summary>
 		/// Humanized string of "Identifies when the reference was made."
 		/// <summary>
-		public string ReferencedAtHumanized { get; set; }
+		public string? ReferencedAtHumanized { get; set; }
 
 		/// <summary>
 		/// The HTTP path for this pull request.
 		/// </summary>
-		public string ResourcePath { get; set; }
+		public string ResourcePath { get; set; } = default!;
 
 		/// <summary>
 		/// Issue or pull request that made the reference.
 		/// </summary>
-		public ReferencedSubject Source { get; set; }
+		public ReferencedSubject Source { get; set; } = default!;
 
 		/// <summary>
 		/// Issue or pull request to which the reference was made.
 		/// </summary>
-		public ReferencedSubject Target { get; set; }
+		public ReferencedSubject Target { get; set; } = default!;
 
 		/// <summary>
 		/// The HTTP URL for this pull request.
 		/// </summary>
-		public string Url { get; set; }
+		public string Url { get; set; } = default!;
 
 		/// <summary>
 		/// Checks if the target will be closed when the source is merged.

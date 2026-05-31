@@ -1,6 +1,8 @@
 // Copyright (c) 2022-2024 0x5BFA
 // Licensed under the MIT License. See the LICENSE.
 
+#nullable enable
+
 namespace FluentHub.Octokit.Models.v4
 {
 	/// <summary>
@@ -11,21 +13,21 @@ namespace FluentHub.Octokit.Models.v4
 		/// <summary>
 		/// Identifies the actor who performed the event.
 		/// </summary>
-		public IActor Actor { get; set; }
+		public IActor? Actor { get; set; }
 
 		/// <summary>
 		/// A unique identifier for the client performing the mutation.
 		/// </summary>
-		public string ClientMutationId { get; set; }
+		public string? ClientMutationId { get; set; }
 
 		/// <summary>
 		/// The pull request that is getting requests.
 		/// </summary>
-		public PullRequest PullRequest { get; set; }
+		public PullRequest? PullRequest { get; set; }
 
 		/// <summary>
 		/// The edge from the pull request to the requested reviewers.
 		/// </summary>
-		public UserEdge RequestedReviewersEdge { get; set; }
+		public UserEdge? RequestedReviewersEdge { get; set; }
 	}
 }

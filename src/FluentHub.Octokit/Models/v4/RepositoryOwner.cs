@@ -1,6 +1,8 @@
 // Copyright (c) 2022-2024 0x5BFA
 // Licensed under the MIT License. See the LICENSE.
 
+#nullable enable
+
 namespace FluentHub.Octokit.Models.v4
 {
 
@@ -48,7 +50,7 @@ namespace FluentHub.Octokit.Models.v4
 		/// </summary>
 		/// <param name="name">Name of Repository to find.</param>
 		/// <param name="followRenames">Follow repository renames. If disabled, a repository referenced by its old name will return an error.</param>
-		Repository Repository { get; set; }
+		Repository? Repository { get; set; }
 
 		/// <summary>
 		/// The HTTP URL for the owner.
@@ -66,19 +68,19 @@ namespace FluentHub.Octokit.Models.v4
 {
 	public class RepositoryOwner : IRepositoryOwner
 	{
-		public string AvatarUrl { get; set; }
+		public string AvatarUrl { get; set; } = default!;
 
 		public ID Id { get; set; }
 
-		public string Login { get; set; }
+		public string Login { get; set; } = default!;
 
-		public RepositoryConnection Repositories { get; set; }
+		public RepositoryConnection Repositories { get; set; } = default!;
 
-		public Repository Repository { get; set; }
+		public Repository? Repository { get; set; }
 
-		public string ResourcePath { get; set; }
+		public string ResourcePath { get; set; } = default!;
 
-		public string Url { get; set; }
+		public string Url { get; set; } = default!;
 	}
 }
 

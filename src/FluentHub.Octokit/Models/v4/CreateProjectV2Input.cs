@@ -1,6 +1,8 @@
 // Copyright (c) 2022-2024 0x5BFA
 // Licensed under the MIT License. See the LICENSE.
 
+#nullable enable
+
 namespace FluentHub.Octokit.Models.v4
 {
 	/// <summary>
@@ -11,7 +13,7 @@ namespace FluentHub.Octokit.Models.v4
 		/// <summary>
 		/// A unique identifier for the client performing the mutation.
 		/// </summary>
-		public string ClientMutationId { get; set; }
+		public string? ClientMutationId { get; set; }
 
 		/// <summary>
 		/// The owner ID to create the project under.
@@ -21,7 +23,7 @@ namespace FluentHub.Octokit.Models.v4
 		/// <summary>
 		/// The title of the project.
 		/// </summary>
-		public string Title { get; set; }
+		public string Title { get; set; } = default!;
 
 		/// <summary>
 		/// The repository to link the project to.

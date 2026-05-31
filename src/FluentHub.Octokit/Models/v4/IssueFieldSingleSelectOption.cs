@@ -1,6 +1,8 @@
 // Copyright (c) 2022-2024 0x5BFA
 // Licensed under the MIT License. See the LICENSE.
 
+#nullable enable
+
 namespace FluentHub.Octokit.Models.v4
 {
 	/// <summary>
@@ -21,12 +23,12 @@ namespace FluentHub.Octokit.Models.v4
 		/// <summary>
 		/// The option's plain-text description.
 		/// </summary>
-		public string Description { get; set; }
+		public string? Description { get; set; }
 
 		/// <summary>
 		/// Identifies the primary key from the database as a BigInt.
 		/// </summary>
-		public string FullDatabaseId { get; set; }
+		public string? FullDatabaseId { get; set; }
 
 		/// <summary>
 		/// The Node ID of the IssueFieldSingleSelectOption object
@@ -36,7 +38,7 @@ namespace FluentHub.Octokit.Models.v4
 		/// <summary>
 		/// The option's name.
 		/// </summary>
-		public string Name { get; set; }
+		public string Name { get; set; } = default!;
 
 		/// <summary>
 		/// The option's priority order.

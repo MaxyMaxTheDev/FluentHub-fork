@@ -1,6 +1,8 @@
 // Copyright (c) 2022-2024 0x5BFA
 // Licensed under the MIT License. See the LICENSE.
 
+#nullable enable
+
 namespace FluentHub.Octokit.Models.v4
 {
 	/// <summary>
@@ -11,7 +13,7 @@ namespace FluentHub.Octokit.Models.v4
 		/// <summary>
 		/// The field that contains this value.
 		/// </summary>
-		public ProjectV2FieldConfiguration Field { get; set; }
+		public ProjectV2FieldConfiguration Field { get; set; } = default!;
 
 		/// <summary>
 		/// Labels value of a field
@@ -20,6 +22,6 @@ namespace FluentHub.Octokit.Models.v4
 		/// <param name="after">Returns the elements in the list that come after the specified cursor.</param>
 		/// <param name="last">Returns the last _n_ elements from the list.</param>
 		/// <param name="before">Returns the elements in the list that come before the specified cursor.</param>
-		public LabelConnection Labels { get; set; }
+		public LabelConnection? Labels { get; set; }
 	}
 }

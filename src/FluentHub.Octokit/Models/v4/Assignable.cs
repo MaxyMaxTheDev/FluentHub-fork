@@ -1,6 +1,8 @@
 // Copyright (c) 2022-2024 0x5BFA
 // Licensed under the MIT License. See the LICENSE.
 
+#nullable enable
+
 namespace FluentHub.Octokit.Models.v4
 {
 
@@ -43,11 +45,11 @@ namespace FluentHub.Octokit.Models.v4
 {
 	public class Assignable : IAssignable
 	{
-		public AssigneeConnection AssignedActors { get; set; }
+		public AssigneeConnection AssignedActors { get; set; } = default!;
 
-		public UserConnection Assignees { get; set; }
+		public UserConnection Assignees { get; set; } = default!;
 
-		public AssigneeConnection SuggestedActors { get; set; }
+		public AssigneeConnection SuggestedActors { get; set; } = default!;
 	}
 }
 

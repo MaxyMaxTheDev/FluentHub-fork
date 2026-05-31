@@ -1,6 +1,8 @@
 // Copyright (c) 2022-2024 0x5BFA
 // Licensed under the MIT License. See the LICENSE.
 
+#nullable enable
+
 namespace FluentHub.Octokit.Models.v4
 {
 	/// <summary>
@@ -21,7 +23,7 @@ namespace FluentHub.Octokit.Models.v4
 		/// <summary>
 		/// Humanized string of "Identifies when the reaction was created."
 		/// <summary>
-		public string CreatedAtHumanized { get; set; }
+		public string? CreatedAtHumanized { get; set; }
 
 		/// <summary>
 		/// Reactors to the reaction subject with the emotion represented by this reaction group.
@@ -30,12 +32,12 @@ namespace FluentHub.Octokit.Models.v4
 		/// <param name="after">Returns the elements in the list that come after the specified cursor.</param>
 		/// <param name="last">Returns the last _n_ elements from the list.</param>
 		/// <param name="before">Returns the elements in the list that come before the specified cursor.</param>
-		public ReactorConnection Reactors { get; set; }
+		public ReactorConnection Reactors { get; set; } = default!;
 
 		/// <summary>
 		/// The subject that was reacted to.
 		/// </summary>
-		public IReactable Subject { get; set; }
+		public IReactable Subject { get; set; } = default!;
 
 		/// <summary>
 		/// Users who have reacted to the reaction subject with the emotion represented by this reaction group
@@ -44,7 +46,7 @@ namespace FluentHub.Octokit.Models.v4
 		/// <param name="after">Returns the elements in the list that come after the specified cursor.</param>
 		/// <param name="last">Returns the last _n_ elements from the list.</param>
 		/// <param name="before">Returns the elements in the list that come before the specified cursor.</param>
-		public ReactingUserConnection Users { get; set; }
+		public ReactingUserConnection Users { get; set; } = default!;
 
 		/// <summary>
 		/// Whether or not the authenticated user has left a reaction on the subject.

@@ -1,6 +1,8 @@
 // Copyright (c) 2022-2024 0x5BFA
 // Licensed under the MIT License. See the LICENSE.
 
+#nullable enable
+
 namespace FluentHub.Octokit.Models.v4
 {
 	/// <summary>
@@ -16,16 +18,16 @@ namespace FluentHub.Octokit.Models.v4
 		/// <summary>
 		/// Humanized string of "Identifies the date and time when the object was created."
 		/// <summary>
-		public string CreatedAtHumanized { get; set; }
+		public string? CreatedAtHumanized { get; set; }
 
 		/// <summary>
 		/// The last commit the viewer has seen.
 		/// </summary>
-		public Commit LastSeenCommit { get; set; }
+		public Commit LastSeenCommit { get; set; } = default!;
 
 		/// <summary>
 		/// The pull request to which the marker belongs.
 		/// </summary>
-		public PullRequest PullRequest { get; set; }
+		public PullRequest PullRequest { get; set; } = default!;
 	}
 }

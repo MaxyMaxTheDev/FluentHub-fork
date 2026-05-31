@@ -1,6 +1,8 @@
 // Copyright (c) 2022-2024 0x5BFA
 // Licensed under the MIT License. See the LICENSE.
 
+#nullable enable
+
 namespace FluentHub.Octokit.Models.v4
 {
 	/// <summary>
@@ -11,16 +13,16 @@ namespace FluentHub.Octokit.Models.v4
 		/// <summary>
 		/// The text to be displayed on a button in the web UI.
 		/// </summary>
-		public string Label { get; set; }
+		public string Label { get; set; } = default!;
 
 		/// <summary>
 		/// A short explanation of what this action would do.
 		/// </summary>
-		public string Description { get; set; }
+		public string Description { get; set; } = default!;
 
 		/// <summary>
 		/// A reference for the action on the integrator's system. 
 		/// </summary>
-		public string Identifier { get; set; }
+		public string Identifier { get; set; } = default!;
 	}
 }

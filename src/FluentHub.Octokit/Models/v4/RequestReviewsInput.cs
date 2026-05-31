@@ -1,6 +1,8 @@
 // Copyright (c) 2022-2024 0x5BFA
 // Licensed under the MIT License. See the LICENSE.
 
+#nullable enable
+
 namespace FluentHub.Octokit.Models.v4
 {
 	/// <summary>
@@ -11,7 +13,7 @@ namespace FluentHub.Octokit.Models.v4
 		/// <summary>
 		/// A unique identifier for the client performing the mutation.
 		/// </summary>
-		public string ClientMutationId { get; set; }
+		public string? ClientMutationId { get; set; }
 
 		/// <summary>
 		/// The Node ID of the pull request to modify.
@@ -21,17 +23,17 @@ namespace FluentHub.Octokit.Models.v4
 		/// <summary>
 		/// The Node IDs of the user to request.
 		/// </summary>
-		public List<ID> UserIds { get; set; }
+		public List<ID>? UserIds { get; set; }
 
 		/// <summary>
 		/// The Node IDs of the bot to request.
 		/// </summary>
-		public List<ID> BotIds { get; set; }
+		public List<ID>? BotIds { get; set; }
 
 		/// <summary>
 		/// The Node IDs of the team to request.
 		/// </summary>
-		public List<ID> TeamIds { get; set; }
+		public List<ID>? TeamIds { get; set; }
 
 		/// <summary>
 		/// Add users to the set rather than replace.

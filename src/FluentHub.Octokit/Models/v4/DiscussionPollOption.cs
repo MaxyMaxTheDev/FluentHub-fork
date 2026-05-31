@@ -1,6 +1,8 @@
 // Copyright (c) 2022-2024 0x5BFA
 // Licensed under the MIT License. See the LICENSE.
 
+#nullable enable
+
 namespace FluentHub.Octokit.Models.v4
 {
 	/// <summary>
@@ -16,12 +18,12 @@ namespace FluentHub.Octokit.Models.v4
 		/// <summary>
 		/// The text for this option.
 		/// </summary>
-		public string Option { get; set; }
+		public string Option { get; set; } = default!;
 
 		/// <summary>
 		/// The discussion poll that this option belongs to.
 		/// </summary>
-		public DiscussionPoll Poll { get; set; }
+		public DiscussionPoll? Poll { get; set; }
 
 		/// <summary>
 		/// The total number of votes that have been cast for this option.

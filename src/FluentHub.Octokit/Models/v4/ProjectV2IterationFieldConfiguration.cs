@@ -1,6 +1,8 @@
 // Copyright (c) 2022-2024 0x5BFA
 // Licensed under the MIT License. See the LICENSE.
 
+#nullable enable
+
 namespace FluentHub.Octokit.Models.v4
 {
 	/// <summary>
@@ -11,7 +13,7 @@ namespace FluentHub.Octokit.Models.v4
 		/// <summary>
 		/// The iteration's completed iterations
 		/// </summary>
-		public List<ProjectV2IterationFieldIteration> CompletedIterations { get; set; }
+		public List<ProjectV2IterationFieldIteration> CompletedIterations { get; set; } = default!;
 
 		/// <summary>
 		/// The iteration's duration in days
@@ -21,7 +23,7 @@ namespace FluentHub.Octokit.Models.v4
 		/// <summary>
 		/// The iteration's iterations
 		/// </summary>
-		public List<ProjectV2IterationFieldIteration> Iterations { get; set; }
+		public List<ProjectV2IterationFieldIteration> Iterations { get; set; } = default!;
 
 		/// <summary>
 		/// The iteration's start day of the week

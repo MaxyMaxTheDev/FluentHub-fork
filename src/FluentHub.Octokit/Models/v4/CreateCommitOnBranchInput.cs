@@ -1,6 +1,8 @@
 // Copyright (c) 2022-2024 0x5BFA
 // Licensed under the MIT License. See the LICENSE.
 
+#nullable enable
+
 namespace FluentHub.Octokit.Models.v4
 {
 	/// <summary>
@@ -11,26 +13,26 @@ namespace FluentHub.Octokit.Models.v4
 		/// <summary>
 		/// A unique identifier for the client performing the mutation.
 		/// </summary>
-		public string ClientMutationId { get; set; }
+		public string? ClientMutationId { get; set; }
 
 		/// <summary>
 		/// The Ref to be updated.  Must be a branch.
 		/// </summary>
-		public CommittableBranch Branch { get; set; }
+		public CommittableBranch Branch { get; set; } = default!;
 
 		/// <summary>
 		/// A description of changes to files in this commit.
 		/// </summary>
-		public FileChanges FileChanges { get; set; }
+		public FileChanges? FileChanges { get; set; }
 
 		/// <summary>
 		/// The commit message the be included with the commit.
 		/// </summary>
-		public CommitMessage Message { get; set; }
+		public CommitMessage Message { get; set; } = default!;
 
 		/// <summary>
 		/// The git commit oid expected at the head of the branch prior to the commit
 		/// </summary>
-		public string ExpectedHeadOid { get; set; }
+		public string ExpectedHeadOid { get; set; } = default!;
 	}
 }

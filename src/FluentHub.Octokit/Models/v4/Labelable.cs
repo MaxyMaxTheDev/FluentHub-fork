@@ -1,6 +1,8 @@
 // Copyright (c) 2022-2024 0x5BFA
 // Licensed under the MIT License. See the LICENSE.
 
+#nullable enable
+
 namespace FluentHub.Octokit.Models.v4
 {
 
@@ -17,7 +19,7 @@ namespace FluentHub.Octokit.Models.v4
 		/// <param name="last">Returns the last _n_ elements from the list.</param>
 		/// <param name="before">Returns the elements in the list that come before the specified cursor.</param>
 		/// <param name="orderBy">Ordering options for labels returned from the connection.</param>
-		LabelConnection Labels { get; set; }
+		LabelConnection? Labels { get; set; }
 
 		/// <summary>
 		/// Indicates if the viewer can edit labels for this object.
@@ -30,7 +32,7 @@ namespace FluentHub.Octokit.Models.v4
 {
 	public class Labelable : ILabelable
 	{
-		public LabelConnection Labels { get; set; }
+		public LabelConnection? Labels { get; set; }
 
 		public bool ViewerCanLabel { get; set; }
 	}

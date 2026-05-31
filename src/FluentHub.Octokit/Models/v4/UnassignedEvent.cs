@@ -1,6 +1,8 @@
 // Copyright (c) 2022-2024 0x5BFA
 // Licensed under the MIT License. See the LICENSE.
 
+#nullable enable
+
 namespace FluentHub.Octokit.Models.v4
 {
 	/// <summary>
@@ -11,17 +13,17 @@ namespace FluentHub.Octokit.Models.v4
 		/// <summary>
 		/// Identifies the actor who performed the event.
 		/// </summary>
-		public IActor Actor { get; set; }
+		public IActor? Actor { get; set; }
 
 		/// <summary>
 		/// Identifies the assignable associated with the event.
 		/// </summary>
-		public IAssignable Assignable { get; set; }
+		public IAssignable Assignable { get; set; } = default!;
 
 		/// <summary>
 		/// Identifies the user or mannequin that was unassigned.
 		/// </summary>
-		public Assignee Assignee { get; set; }
+		public Assignee? Assignee { get; set; }
 
 		/// <summary>
 		/// Identifies the date and time when the object was created.
@@ -31,7 +33,7 @@ namespace FluentHub.Octokit.Models.v4
 		/// <summary>
 		/// Humanized string of "Identifies the date and time when the object was created."
 		/// <summary>
-		public string CreatedAtHumanized { get; set; }
+		public string? CreatedAtHumanized { get; set; }
 
 		/// <summary>
 		/// The Node ID of the UnassignedEvent object
@@ -42,6 +44,6 @@ namespace FluentHub.Octokit.Models.v4
 		/// Identifies the subject (user) who was unassigned.
 		/// </summary>
 		[Obsolete(@"Assignees can now be mannequins. Use the `assignee` field instead. Removal on 2020-01-01 UTC.")]
-		public User User { get; set; }
+		public User? User { get; set; }
 	}
 }

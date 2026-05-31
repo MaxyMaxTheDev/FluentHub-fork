@@ -1,6 +1,8 @@
 // Copyright (c) 2022-2024 0x5BFA
 // Licensed under the MIT License. See the LICENSE.
 
+#nullable enable
+
 namespace FluentHub.Octokit.Models.v4
 {
 	/// <summary>
@@ -11,17 +13,17 @@ namespace FluentHub.Octokit.Models.v4
 		/// <summary>
 		/// Identifies the actor who performed the event.
 		/// </summary>
-		public IActor Actor { get; set; }
+		public IActor? Actor { get; set; }
 
 		/// <summary>
 		/// Identifies the after commit SHA for the 'base_ref_force_pushed' event.
 		/// </summary>
-		public Commit AfterCommit { get; set; }
+		public Commit? AfterCommit { get; set; }
 
 		/// <summary>
 		/// Identifies the before commit SHA for the 'base_ref_force_pushed' event.
 		/// </summary>
-		public Commit BeforeCommit { get; set; }
+		public Commit? BeforeCommit { get; set; }
 
 		/// <summary>
 		/// Identifies the date and time when the object was created.
@@ -31,7 +33,7 @@ namespace FluentHub.Octokit.Models.v4
 		/// <summary>
 		/// Humanized string of "Identifies the date and time when the object was created."
 		/// <summary>
-		public string CreatedAtHumanized { get; set; }
+		public string? CreatedAtHumanized { get; set; }
 
 		/// <summary>
 		/// The Node ID of the BaseRefForcePushedEvent object
@@ -41,11 +43,11 @@ namespace FluentHub.Octokit.Models.v4
 		/// <summary>
 		/// PullRequest referenced by event.
 		/// </summary>
-		public PullRequest PullRequest { get; set; }
+		public PullRequest PullRequest { get; set; } = default!;
 
 		/// <summary>
 		/// Identifies the fully qualified ref name for the 'base_ref_force_pushed' event.
 		/// </summary>
-		public Ref Ref { get; set; }
+		public Ref? Ref { get; set; }
 	}
 }

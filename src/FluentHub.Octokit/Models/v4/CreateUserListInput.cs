@@ -1,6 +1,8 @@
 // Copyright (c) 2022-2024 0x5BFA
 // Licensed under the MIT License. See the LICENSE.
 
+#nullable enable
+
 namespace FluentHub.Octokit.Models.v4
 {
 	/// <summary>
@@ -11,17 +13,17 @@ namespace FluentHub.Octokit.Models.v4
 		/// <summary>
 		/// A unique identifier for the client performing the mutation.
 		/// </summary>
-		public string ClientMutationId { get; set; }
+		public string? ClientMutationId { get; set; }
 
 		/// <summary>
 		/// The name of the new list
 		/// </summary>
-		public string Name { get; set; }
+		public string Name { get; set; } = default!;
 
 		/// <summary>
 		/// A description of the list
 		/// </summary>
-		public string Description { get; set; }
+		public string? Description { get; set; }
 
 		/// <summary>
 		/// Whether or not the list is private

@@ -1,6 +1,8 @@
 // Copyright (c) 2022-2024 0x5BFA
 // Licensed under the MIT License. See the LICENSE.
 
+#nullable enable
+
 namespace FluentHub.Octokit.Models.v4
 {
 	/// <summary>
@@ -11,16 +13,16 @@ namespace FluentHub.Octokit.Models.v4
 		/// <summary>
 		/// A unique identifier for the client performing the mutation.
 		/// </summary>
-		public string ClientMutationId { get; set; }
+		public string? ClientMutationId { get; set; }
 
 		/// <summary>
 		/// The invitation that was canceled.
 		/// </summary>
-		public EnterpriseMemberInvitation Invitation { get; set; }
+		public EnterpriseMemberInvitation? Invitation { get; set; }
 
 		/// <summary>
 		/// A message confirming the result of canceling an member invitation.
 		/// </summary>
-		public string Message { get; set; }
+		public string? Message { get; set; }
 	}
 }

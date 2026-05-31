@@ -1,6 +1,8 @@
 // Copyright (c) 2022-2024 0x5BFA
 // Licensed under the MIT License. See the LICENSE.
 
+#nullable enable
+
 namespace FluentHub.Octokit.Models.v4
 {
 	/// <summary>
@@ -11,12 +13,12 @@ namespace FluentHub.Octokit.Models.v4
 		/// <summary>
 		/// The author of the newsletter.
 		/// </summary>
-		public User Author { get; set; }
+		public User? Author { get; set; }
 
 		/// <summary>
 		/// The contents of the newsletter, the message the sponsorable wanted to give.
 		/// </summary>
-		public string Body { get; set; }
+		public string Body { get; set; } = default!;
 
 		/// <summary>
 		/// Identifies the date and time when the object was created.
@@ -26,7 +28,7 @@ namespace FluentHub.Octokit.Models.v4
 		/// <summary>
 		/// Humanized string of "Identifies the date and time when the object was created."
 		/// <summary>
-		public string CreatedAtHumanized { get; set; }
+		public string? CreatedAtHumanized { get; set; }
 
 		/// <summary>
 		/// The Node ID of the SponsorshipNewsletter object
@@ -41,12 +43,12 @@ namespace FluentHub.Octokit.Models.v4
 		/// <summary>
 		/// The user or organization this newsletter is from.
 		/// </summary>
-		public ISponsorable Sponsorable { get; set; }
+		public ISponsorable Sponsorable { get; set; } = default!;
 
 		/// <summary>
 		/// The subject of the newsletter, what it's about.
 		/// </summary>
-		public string Subject { get; set; }
+		public string Subject { get; set; } = default!;
 
 		/// <summary>
 		/// Identifies the date and time when the object was last updated.
@@ -56,6 +58,6 @@ namespace FluentHub.Octokit.Models.v4
 		/// <summary>
 		/// Humanized string of "Identifies the date and time when the object was last updated."
 		/// <summary>
-		public string UpdatedAtHumanized { get; set; }
+		public string? UpdatedAtHumanized { get; set; }
 	}
 }

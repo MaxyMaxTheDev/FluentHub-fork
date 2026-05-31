@@ -1,6 +1,8 @@
 // Copyright (c) 2022-2024 0x5BFA
 // Licensed under the MIT License. See the LICENSE.
 
+#nullable enable
+
 namespace FluentHub.Octokit.Models.v4
 {
 
@@ -26,7 +28,7 @@ namespace FluentHub.Octokit.Models.v4
 {
 	public class RepositoryDiscussionCommentAuthor : IRepositoryDiscussionCommentAuthor
 	{
-		public DiscussionCommentConnection RepositoryDiscussionComments { get; set; }
+		public DiscussionCommentConnection RepositoryDiscussionComments { get; set; } = default!;
 	}
 }
 

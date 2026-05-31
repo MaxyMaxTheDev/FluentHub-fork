@@ -1,6 +1,8 @@
 // Copyright (c) 2022-2024 0x5BFA
 // Licensed under the MIT License. See the LICENSE.
 
+#nullable enable
+
 namespace FluentHub.Octokit.Models.v4
 {
 	/// <summary>
@@ -11,7 +13,7 @@ namespace FluentHub.Octokit.Models.v4
 		/// <summary>
 		/// The name of the option.
 		/// </summary>
-		public string Name { get; set; }
+		public string Name { get; set; } = default!;
 
 		/// <summary>
 		/// The color associated with the option.
@@ -21,7 +23,7 @@ namespace FluentHub.Octokit.Models.v4
 		/// <summary>
 		/// A description of the option.
 		/// </summary>
-		public string Description { get; set; }
+		public string? Description { get; set; }
 
 		/// <summary>
 		/// The priority of the option in the list.

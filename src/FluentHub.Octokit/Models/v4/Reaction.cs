@@ -1,6 +1,8 @@
 // Copyright (c) 2022-2024 0x5BFA
 // Licensed under the MIT License. See the LICENSE.
 
+#nullable enable
+
 namespace FluentHub.Octokit.Models.v4
 {
 	/// <summary>
@@ -21,7 +23,7 @@ namespace FluentHub.Octokit.Models.v4
 		/// <summary>
 		/// Humanized string of "Identifies the date and time when the object was created."
 		/// <summary>
-		public string CreatedAtHumanized { get; set; }
+		public string? CreatedAtHumanized { get; set; }
 
 		/// <summary>
 		/// Identifies the primary key from the database.
@@ -36,11 +38,11 @@ namespace FluentHub.Octokit.Models.v4
 		/// <summary>
 		/// The reactable piece of content
 		/// </summary>
-		public IReactable Reactable { get; set; }
+		public IReactable Reactable { get; set; } = default!;
 
 		/// <summary>
 		/// Identifies the user who created this reaction.
 		/// </summary>
-		public User User { get; set; }
+		public User? User { get; set; }
 	}
 }

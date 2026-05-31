@@ -1,6 +1,8 @@
 // Copyright (c) 2022-2024 0x5BFA
 // Licensed under the MIT License. See the LICENSE.
 
+#nullable enable
+
 namespace FluentHub.Octokit.Models.v4
 {
 	/// <summary>
@@ -16,7 +18,7 @@ namespace FluentHub.Octokit.Models.v4
 		/// <summary>
 		/// Humanized string of "The date the announcement was created"
 		/// <summary>
-		public string CreatedAtHumanized { get; set; }
+		public string? CreatedAtHumanized { get; set; }
 
 		/// <summary>
 		/// The expiration date of the announcement, if any
@@ -26,7 +28,7 @@ namespace FluentHub.Octokit.Models.v4
 		/// <summary>
 		/// Humanized string of "The expiration date of the announcement, if any"
 		/// <summary>
-		public string ExpiresAtHumanized { get; set; }
+		public string? ExpiresAtHumanized { get; set; }
 
 		/// <summary>
 		/// Whether the announcement can be dismissed by the user
@@ -36,6 +38,6 @@ namespace FluentHub.Octokit.Models.v4
 		/// <summary>
 		/// The text of the announcement
 		/// </summary>
-		public string Message { get; set; }
+		public string? Message { get; set; }
 	}
 }

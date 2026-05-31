@@ -1,6 +1,8 @@
 // Copyright (c) 2022-2024 0x5BFA
 // Licensed under the MIT License. See the LICENSE.
 
+#nullable enable
+
 namespace FluentHub.Octokit.Models.v4
 {
 	/// <summary>
@@ -11,32 +13,32 @@ namespace FluentHub.Octokit.Models.v4
 		/// <summary>
 		/// List issues assigned to given name. Pass in `null` for issues with no assigned user, and `*` for issues assigned to any user.
 		/// </summary>
-		public string Assignee { get; set; }
+		public string? Assignee { get; set; }
 
 		/// <summary>
 		/// List issues created by given name.
 		/// </summary>
-		public string CreatedBy { get; set; }
+		public string? CreatedBy { get; set; }
 
 		/// <summary>
 		/// List issues where the list of label names exist on the issue.
 		/// </summary>
-		public List<string> Labels { get; set; }
+		public List<string>? Labels { get; set; }
 
 		/// <summary>
 		/// List issues where the given name is mentioned in the issue.
 		/// </summary>
-		public string Mentioned { get; set; }
+		public string? Mentioned { get; set; }
 
 		/// <summary>
 		/// List issues by given milestone argument. If an string representation of an integer is passed, it should refer to a milestone by its database ID. Pass in `null` for issues with no milestone, and `*` for issues that are assigned to any milestone.
 		/// </summary>
-		public string Milestone { get; set; }
+		public string? Milestone { get; set; }
 
 		/// <summary>
 		/// List issues by given milestone argument. If an string representation of an integer is passed, it should refer to a milestone by its number field. Pass in `null` for issues with no milestone, and `*` for issues that are assigned to any milestone.
 		/// </summary>
-		public string MilestoneNumber { get; set; }
+		public string? MilestoneNumber { get; set; }
 
 		/// <summary>
 		/// List issues that have been updated at or after the given date.
@@ -46,12 +48,12 @@ namespace FluentHub.Octokit.Models.v4
 		/// <summary>
 		/// List issues filtered by the list of states given.
 		/// </summary>
-		public List<IssueState> States { get; set; }
+		public List<IssueState>? States { get; set; }
 
 		/// <summary>
 		/// List issues filtered by the type given, only supported by searches on repositories.
 		/// </summary>
-		public string Type { get; set; }
+		public string? Type { get; set; }
 
 		/// <summary>
 		/// List issues subscribed to by viewer.

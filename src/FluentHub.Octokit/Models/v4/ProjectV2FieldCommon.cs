@@ -1,6 +1,8 @@
 // Copyright (c) 2022-2024 0x5BFA
 // Licensed under the MIT License. See the LICENSE.
 
+#nullable enable
+
 namespace FluentHub.Octokit.Models.v4
 {
 
@@ -17,7 +19,7 @@ namespace FluentHub.Octokit.Models.v4
 		/// <summary>
 		/// Humanized string of "Identifies the date and time when the object was created."
 		/// <summary>
-		string CreatedAtHumanized { get; set; }
+		string? CreatedAtHumanized { get; set; }
 
 		/// <summary>
 		/// The field's type.
@@ -52,7 +54,7 @@ namespace FluentHub.Octokit.Models.v4
 		/// <summary>
 		/// Humanized string of "Identifies the date and time when the object was last updated."
 		/// <summary>
-		string UpdatedAtHumanized { get; set; }
+		string? UpdatedAtHumanized { get; set; }
 	}
 }
 
@@ -62,7 +64,7 @@ namespace FluentHub.Octokit.Models.v4
 	{
 		public DateTimeOffset CreatedAt { get; set; }
 
-		public string CreatedAtHumanized { get; set; }
+		public string? CreatedAtHumanized { get; set; }
 
 		public ProjectV2FieldType DataType { get; set; }
 
@@ -70,13 +72,13 @@ namespace FluentHub.Octokit.Models.v4
 
 		public ID Id { get; set; }
 
-		public string Name { get; set; }
+		public string Name { get; set; } = default!;
 
-		public ProjectV2 Project { get; set; }
+		public ProjectV2 Project { get; set; } = default!;
 
 		public DateTimeOffset UpdatedAt { get; set; }
 
-		public string UpdatedAtHumanized { get; set; }
+		public string? UpdatedAtHumanized { get; set; }
 	}
 }
 

@@ -1,6 +1,8 @@
 // Copyright (c) 2022-2024 0x5BFA
 // Licensed under the MIT License. See the LICENSE.
 
+#nullable enable
+
 namespace FluentHub.Octokit.Models.v4
 {
 	/// <summary>
@@ -16,7 +18,7 @@ namespace FluentHub.Octokit.Models.v4
 		/// <summary>
 		/// Humanized string of "The time the currently active limit expires."
 		/// <summary>
-		public string ExpiresAtHumanized { get; set; }
+		public string? ExpiresAtHumanized { get; set; }
 
 		/// <summary>
 		/// The current limit that is enabled on this object.

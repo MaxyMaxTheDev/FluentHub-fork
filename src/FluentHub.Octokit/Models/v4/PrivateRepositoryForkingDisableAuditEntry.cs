@@ -1,6 +1,8 @@
 // Copyright (c) 2022-2024 0x5BFA
 // Licensed under the MIT License. See the LICENSE.
 
+#nullable enable
+
 namespace FluentHub.Octokit.Models.v4
 {
 	/// <summary>
@@ -12,64 +14,64 @@ namespace FluentHub.Octokit.Models.v4
 		/// The action name
 		/// </summary>
 		[Obsolete(@"The GraphQL audit-log is deprecated. Please use the REST API instead. Removal on 2026-04-01 UTC.")]
-		public string Action { get; set; }
+		public string Action { get; set; } = default!;
 
 		/// <summary>
 		/// The user who initiated the action
 		/// </summary>
 		[Obsolete(@"The GraphQL audit-log is deprecated. Please use the REST API instead. Removal on 2026-04-01 UTC.")]
-		public AuditEntryActor Actor { get; set; }
+		public AuditEntryActor? Actor { get; set; }
 
 		/// <summary>
 		/// The IP address of the actor
 		/// </summary>
 		[Obsolete(@"The GraphQL audit-log is deprecated. Please use the REST API instead. Removal on 2026-04-01 UTC.")]
-		public string ActorIp { get; set; }
+		public string? ActorIp { get; set; }
 
 		/// <summary>
 		/// A readable representation of the actor's location
 		/// </summary>
 		[Obsolete(@"The GraphQL audit-log is deprecated. Please use the REST API instead. Removal on 2026-04-01 UTC.")]
-		public ActorLocation ActorLocation { get; set; }
+		public ActorLocation? ActorLocation { get; set; }
 
 		/// <summary>
 		/// The username of the user who initiated the action
 		/// </summary>
 		[Obsolete(@"The GraphQL audit-log is deprecated. Please use the REST API instead. Removal on 2026-04-01 UTC.")]
-		public string ActorLogin { get; set; }
+		public string? ActorLogin { get; set; }
 
 		/// <summary>
 		/// The HTTP path for the actor.
 		/// </summary>
 		[Obsolete(@"The GraphQL audit-log is deprecated. Please use the REST API instead. Removal on 2026-04-01 UTC.")]
-		public string ActorResourcePath { get; set; }
+		public string? ActorResourcePath { get; set; }
 
 		/// <summary>
 		/// The HTTP URL for the actor.
 		/// </summary>
 		[Obsolete(@"The GraphQL audit-log is deprecated. Please use the REST API instead. Removal on 2026-04-01 UTC.")]
-		public string ActorUrl { get; set; }
+		public string? ActorUrl { get; set; }
 
 		/// <summary>
 		/// The time the action was initiated
 		/// </summary>
 		[Obsolete(@"The GraphQL audit-log is deprecated. Please use the REST API instead. Removal on 2026-04-01 UTC.")]
-		public string CreatedAt { get; set; }
+		public string CreatedAt { get; set; } = default!;
 
 		/// <summary>
 		/// The HTTP path for this enterprise.
 		/// </summary>
-		public string EnterpriseResourcePath { get; set; }
+		public string? EnterpriseResourcePath { get; set; }
 
 		/// <summary>
 		/// The slug of the enterprise.
 		/// </summary>
-		public string EnterpriseSlug { get; set; }
+		public string? EnterpriseSlug { get; set; }
 
 		/// <summary>
 		/// The HTTP URL for this enterprise.
 		/// </summary>
-		public string EnterpriseUrl { get; set; }
+		public string? EnterpriseUrl { get; set; }
 
 		/// <summary>
 		/// The Node ID of the PrivateRepositoryForkingDisableAuditEntry object
@@ -86,68 +88,68 @@ namespace FluentHub.Octokit.Models.v4
 		/// The Organization associated with the Audit Entry.
 		/// </summary>
 		[Obsolete(@"The GraphQL audit-log is deprecated. Please use the REST API instead. Removal on 2026-04-01 UTC.")]
-		public Organization Organization { get; set; }
+		public Organization? Organization { get; set; }
 
 		/// <summary>
 		/// The name of the Organization.
 		/// </summary>
 		[Obsolete(@"The GraphQL audit-log is deprecated. Please use the REST API instead. Removal on 2026-04-01 UTC.")]
-		public string OrganizationName { get; set; }
+		public string? OrganizationName { get; set; }
 
 		/// <summary>
 		/// The HTTP path for the organization
 		/// </summary>
 		[Obsolete(@"The GraphQL audit-log is deprecated. Please use the REST API instead. Removal on 2026-04-01 UTC.")]
-		public string OrganizationResourcePath { get; set; }
+		public string? OrganizationResourcePath { get; set; }
 
 		/// <summary>
 		/// The HTTP URL for the organization
 		/// </summary>
 		[Obsolete(@"The GraphQL audit-log is deprecated. Please use the REST API instead. Removal on 2026-04-01 UTC.")]
-		public string OrganizationUrl { get; set; }
+		public string? OrganizationUrl { get; set; }
 
 		/// <summary>
 		/// The repository associated with the action
 		/// </summary>
-		public Repository Repository { get; set; }
+		public Repository? Repository { get; set; }
 
 		/// <summary>
 		/// The name of the repository
 		/// </summary>
-		public string RepositoryName { get; set; }
+		public string? RepositoryName { get; set; }
 
 		/// <summary>
 		/// The HTTP path for the repository
 		/// </summary>
-		public string RepositoryResourcePath { get; set; }
+		public string? RepositoryResourcePath { get; set; }
 
 		/// <summary>
 		/// The HTTP URL for the repository
 		/// </summary>
-		public string RepositoryUrl { get; set; }
+		public string? RepositoryUrl { get; set; }
 
 		/// <summary>
 		/// The user affected by the action
 		/// </summary>
 		[Obsolete(@"The GraphQL audit-log is deprecated. Please use the REST API instead. Removal on 2026-04-01 UTC.")]
-		public User User { get; set; }
+		public User? User { get; set; }
 
 		/// <summary>
 		/// For actions involving two users, the actor is the initiator and the user is the affected user.
 		/// </summary>
 		[Obsolete(@"The GraphQL audit-log is deprecated. Please use the REST API instead. Removal on 2026-04-01 UTC.")]
-		public string UserLogin { get; set; }
+		public string? UserLogin { get; set; }
 
 		/// <summary>
 		/// The HTTP path for the user.
 		/// </summary>
 		[Obsolete(@"The GraphQL audit-log is deprecated. Please use the REST API instead. Removal on 2026-04-01 UTC.")]
-		public string UserResourcePath { get; set; }
+		public string? UserResourcePath { get; set; }
 
 		/// <summary>
 		/// The HTTP URL for the user.
 		/// </summary>
 		[Obsolete(@"The GraphQL audit-log is deprecated. Please use the REST API instead. Removal on 2026-04-01 UTC.")]
-		public string UserUrl { get; set; }
+		public string? UserUrl { get; set; }
 	}
 }

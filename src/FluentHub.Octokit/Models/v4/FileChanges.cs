@@ -1,6 +1,8 @@
 // Copyright (c) 2022-2024 0x5BFA
 // Licensed under the MIT License. See the LICENSE.
 
+#nullable enable
+
 namespace FluentHub.Octokit.Models.v4
 {
 	/// <summary>
@@ -101,11 +103,11 @@ namespace FluentHub.Octokit.Models.v4
 		/// <summary>
 		/// Files to delete.
 		/// </summary>
-		public List<FileDeletion> Deletions { get; set; }
+		public List<FileDeletion>? Deletions { get; set; }
 
 		/// <summary>
 		/// File to add or change.
 		/// </summary>
-		public List<FileAddition> Additions { get; set; }
+		public List<FileAddition>? Additions { get; set; }
 	}
 }

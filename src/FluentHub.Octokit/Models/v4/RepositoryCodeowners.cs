@@ -1,6 +1,8 @@
 // Copyright (c) 2022-2024 0x5BFA
 // Licensed under the MIT License. See the LICENSE.
 
+#nullable enable
+
 namespace FluentHub.Octokit.Models.v4
 {
 	/// <summary>
@@ -11,6 +13,6 @@ namespace FluentHub.Octokit.Models.v4
 		/// <summary>
 		/// Any problems that were encountered while parsing the `CODEOWNERS` file.
 		/// </summary>
-		public List<RepositoryCodeownersError> Errors { get; set; }
+		public List<RepositoryCodeownersError> Errors { get; set; } = default!;
 	}
 }

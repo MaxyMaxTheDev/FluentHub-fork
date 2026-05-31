@@ -1,6 +1,8 @@
 // Copyright (c) 2022-2024 0x5BFA
 // Licensed under the MIT License. See the LICENSE.
 
+#nullable enable
+
 namespace FluentHub.Octokit.Models.v4
 {
 	/// <summary>
@@ -11,11 +13,11 @@ namespace FluentHub.Octokit.Models.v4
 		/// <summary>
 		/// The days of contributions in this week.
 		/// </summary>
-		public List<ContributionCalendarDay> ContributionDays { get; set; }
+		public List<ContributionCalendarDay> ContributionDays { get; set; } = default!;
 
 		/// <summary>
 		/// The date of the earliest square in this week.
 		/// </summary>
-		public string FirstDay { get; set; }
+		public string FirstDay { get; set; } = default!;
 	}
 }

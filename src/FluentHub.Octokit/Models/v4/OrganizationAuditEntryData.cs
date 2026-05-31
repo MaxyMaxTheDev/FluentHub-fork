@@ -1,6 +1,8 @@
 // Copyright (c) 2022-2024 0x5BFA
 // Licensed under the MIT License. See the LICENSE.
 
+#nullable enable
+
 namespace FluentHub.Octokit.Models.v4
 {
 
@@ -12,22 +14,22 @@ namespace FluentHub.Octokit.Models.v4
 		/// <summary>
 		/// The Organization associated with the Audit Entry.
 		/// </summary>
-		Organization Organization { get; set; }
+		Organization? Organization { get; set; }
 
 		/// <summary>
 		/// The name of the Organization.
 		/// </summary>
-		string OrganizationName { get; set; }
+		string? OrganizationName { get; set; }
 
 		/// <summary>
 		/// The HTTP path for the organization
 		/// </summary>
-		string OrganizationResourcePath { get; set; }
+		string? OrganizationResourcePath { get; set; }
 
 		/// <summary>
 		/// The HTTP URL for the organization
 		/// </summary>
-		string OrganizationUrl { get; set; }
+		string? OrganizationUrl { get; set; }
 	}
 }
 
@@ -36,16 +38,16 @@ namespace FluentHub.Octokit.Models.v4
 	public class OrganizationAuditEntryData : IOrganizationAuditEntryData
 	{
 		[Obsolete(@"The GraphQL audit-log is deprecated. Please use the REST API instead. Removal on 2026-04-01 UTC.")]
-		public Organization Organization { get; set; }
+		public Organization? Organization { get; set; }
 
 		[Obsolete(@"The GraphQL audit-log is deprecated. Please use the REST API instead. Removal on 2026-04-01 UTC.")]
-		public string OrganizationName { get; set; }
+		public string? OrganizationName { get; set; }
 
 		[Obsolete(@"The GraphQL audit-log is deprecated. Please use the REST API instead. Removal on 2026-04-01 UTC.")]
-		public string OrganizationResourcePath { get; set; }
+		public string? OrganizationResourcePath { get; set; }
 
 		[Obsolete(@"The GraphQL audit-log is deprecated. Please use the REST API instead. Removal on 2026-04-01 UTC.")]
-		public string OrganizationUrl { get; set; }
+		public string? OrganizationUrl { get; set; }
 	}
 }
 

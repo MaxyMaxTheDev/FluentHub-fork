@@ -1,6 +1,8 @@
 // Copyright (c) 2022-2024 0x5BFA
 // Licensed under the MIT License. See the LICENSE.
 
+#nullable enable
+
 namespace FluentHub.Octokit.Models.v4
 {
 	/// <summary>
@@ -29,11 +31,11 @@ namespace FluentHub.Octokit.Models.v4
 		/// <summary>
 		/// The nameWithOwner of the repository to commit to.
 		/// </summary>
-		public string RepositoryNameWithOwner { get; set; }
+		public string? RepositoryNameWithOwner { get; set; }
 
 		/// <summary>
 		/// The unqualified name of the branch to append the commit to.
 		/// </summary>
-		public string BranchName { get; set; }
+		public string? BranchName { get; set; }
 	}
 }

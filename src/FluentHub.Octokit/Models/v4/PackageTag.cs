@@ -1,6 +1,8 @@
 // Copyright (c) 2022-2024 0x5BFA
 // Licensed under the MIT License. See the LICENSE.
 
+#nullable enable
+
 namespace FluentHub.Octokit.Models.v4
 {
 	/// <summary>
@@ -16,11 +18,11 @@ namespace FluentHub.Octokit.Models.v4
 		/// <summary>
 		/// Identifies the tag name of the version.
 		/// </summary>
-		public string Name { get; set; }
+		public string Name { get; set; } = default!;
 
 		/// <summary>
 		/// Version that the tag is associated with.
 		/// </summary>
-		public PackageVersion Version { get; set; }
+		public PackageVersion? Version { get; set; }
 	}
 }

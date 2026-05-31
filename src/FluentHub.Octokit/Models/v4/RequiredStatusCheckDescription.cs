@@ -1,6 +1,8 @@
 // Copyright (c) 2022-2024 0x5BFA
 // Licensed under the MIT License. See the LICENSE.
 
+#nullable enable
+
 namespace FluentHub.Octokit.Models.v4
 {
 	/// <summary>
@@ -11,11 +13,11 @@ namespace FluentHub.Octokit.Models.v4
 		/// <summary>
 		/// The App that must provide this status in order for it to be accepted.
 		/// </summary>
-		public App App { get; set; }
+		public App? App { get; set; }
 
 		/// <summary>
 		/// The name of this status.
 		/// </summary>
-		public string Context { get; set; }
+		public string Context { get; set; } = default!;
 	}
 }

@@ -1,6 +1,8 @@
 // Copyright (c) 2022-2024 0x5BFA
 // Licensed under the MIT License. See the LICENSE.
 
+#nullable enable
+
 namespace FluentHub.Octokit.Models.v4
 {
 	/// <summary>
@@ -21,7 +23,7 @@ namespace FluentHub.Octokit.Models.v4
 		/// <summary>
 		/// A list of edges.
 		/// </summary>
-		public List<SearchResultItemEdge> Edges { get; set; }
+		public List<SearchResultItemEdge?>? Edges { get; set; }
 
 		/// <summary>
 		/// The total number of issues that matched the search query. Regardless of the total number of matches, a maximum of 1,000 results will be available across all types.
@@ -36,17 +38,17 @@ namespace FluentHub.Octokit.Models.v4
 		/// <summary>
 		/// When a semantic or hybrid search falls back to lexical, the reasons why the fallback occurred.
 		/// </summary>
-		public List<LexicalFallbackReason> LexicalFallbackReason { get; set; }
+		public List<LexicalFallbackReason>? LexicalFallbackReason { get; set; }
 
 		/// <summary>
 		/// A list of nodes.
 		/// </summary>
-		public List<SearchResultItem> Nodes { get; set; }
+		public List<SearchResultItem?>? Nodes { get; set; }
 
 		/// <summary>
 		/// Information to aid in pagination.
 		/// </summary>
-		public PageInfo PageInfo { get; set; }
+		public PageInfo PageInfo { get; set; } = default!;
 
 		/// <summary>
 		/// The total number of repositories that matched the search query. Regardless of the total number of matches, a maximum of 1,000 results will be available across all types.

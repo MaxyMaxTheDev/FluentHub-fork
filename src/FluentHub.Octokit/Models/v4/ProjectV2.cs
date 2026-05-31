@@ -1,6 +1,8 @@
 // Copyright (c) 2022-2024 0x5BFA
 // Licensed under the MIT License. See the LICENSE.
 
+#nullable enable
+
 namespace FluentHub.Octokit.Models.v4
 {
 	/// <summary>
@@ -21,7 +23,7 @@ namespace FluentHub.Octokit.Models.v4
 		/// <summary>
 		/// Humanized string of "Identifies the date and time when the object was closed."
 		/// <summary>
-		public string ClosedAtHumanized { get; set; }
+		public string? ClosedAtHumanized { get; set; }
 
 		/// <summary>
 		/// Identifies the date and time when the object was created.
@@ -31,12 +33,12 @@ namespace FluentHub.Octokit.Models.v4
 		/// <summary>
 		/// Humanized string of "Identifies the date and time when the object was created."
 		/// <summary>
-		public string CreatedAtHumanized { get; set; }
+		public string? CreatedAtHumanized { get; set; }
 
 		/// <summary>
 		/// The actor who originally created the project.
 		/// </summary>
-		public IActor Creator { get; set; }
+		public IActor? Creator { get; set; }
 
 		/// <summary>
 		/// Identifies the primary key from the database.
@@ -48,7 +50,7 @@ namespace FluentHub.Octokit.Models.v4
 		/// A field of the project
 		/// </summary>
 		/// <param name="name">The name of the field</param>
-		public ProjectV2FieldConfiguration Field { get; set; }
+		public ProjectV2FieldConfiguration? Field { get; set; }
 
 		/// <summary>
 		/// List of fields and their constraints in the project
@@ -58,12 +60,12 @@ namespace FluentHub.Octokit.Models.v4
 		/// <param name="last">Returns the last _n_ elements from the list.</param>
 		/// <param name="before">Returns the elements in the list that come before the specified cursor.</param>
 		/// <param name="orderBy">Ordering options for project v2 fields returned from the connection</param>
-		public ProjectV2FieldConfigurationConnection Fields { get; set; }
+		public ProjectV2FieldConfigurationConnection Fields { get; set; } = default!;
 
 		/// <summary>
 		/// Identifies the primary key from the database as a BigInt.
 		/// </summary>
-		public string FullDatabaseId { get; set; }
+		public string? FullDatabaseId { get; set; }
 
 		/// <summary>
 		/// The Node ID of the ProjectV2 object
@@ -79,7 +81,7 @@ namespace FluentHub.Octokit.Models.v4
 		/// <param name="before">Returns the elements in the list that come before the specified cursor.</param>
 		/// <param name="orderBy">Ordering options for project v2 items returned from the connection</param>
 		/// <param name="query">Search query for filtering items</param>
-		public ProjectV2ItemConnection Items { get; set; }
+		public ProjectV2ItemConnection Items { get; set; } = default!;
 
 		/// <summary>
 		/// The project's number.
@@ -89,7 +91,7 @@ namespace FluentHub.Octokit.Models.v4
 		/// <summary>
 		/// The project's owner. Currently limited to organizations and users.
 		/// </summary>
-		public IProjectV2Owner Owner { get; set; }
+		public IProjectV2Owner Owner { get; set; } = default!;
 
 		/// <summary>
 		/// Returns true if the project is public.
@@ -99,7 +101,7 @@ namespace FluentHub.Octokit.Models.v4
 		/// <summary>
 		/// The project's readme.
 		/// </summary>
-		public string Readme { get; set; }
+		public string? Readme { get; set; }
 
 		/// <summary>
 		/// The repositories the project is linked to.
@@ -109,17 +111,17 @@ namespace FluentHub.Octokit.Models.v4
 		/// <param name="last">Returns the last _n_ elements from the list.</param>
 		/// <param name="before">Returns the elements in the list that come before the specified cursor.</param>
 		/// <param name="orderBy">Ordering options for repositories returned from the connection</param>
-		public RepositoryConnection Repositories { get; set; }
+		public RepositoryConnection Repositories { get; set; } = default!;
 
 		/// <summary>
 		/// The HTTP path for this project
 		/// </summary>
-		public string ResourcePath { get; set; }
+		public string ResourcePath { get; set; } = default!;
 
 		/// <summary>
 		/// The project's short description.
 		/// </summary>
-		public string ShortDescription { get; set; }
+		public string? ShortDescription { get; set; }
 
 		/// <summary>
 		/// List of the status updates in the project.
@@ -129,7 +131,7 @@ namespace FluentHub.Octokit.Models.v4
 		/// <param name="last">Returns the last _n_ elements from the list.</param>
 		/// <param name="before">Returns the elements in the list that come before the specified cursor.</param>
 		/// <param name="orderBy">Order for connection</param>
-		public ProjectV2StatusUpdateConnection StatusUpdates { get; set; }
+		public ProjectV2StatusUpdateConnection StatusUpdates { get; set; } = default!;
 
 		/// <summary>
 		/// The teams the project is linked to.
@@ -139,7 +141,7 @@ namespace FluentHub.Octokit.Models.v4
 		/// <param name="last">Returns the last _n_ elements from the list.</param>
 		/// <param name="before">Returns the elements in the list that come before the specified cursor.</param>
 		/// <param name="orderBy">Ordering options for teams returned from this connection.</param>
-		public TeamConnection Teams { get; set; }
+		public TeamConnection Teams { get; set; } = default!;
 
 		/// <summary>
 		/// Returns true if this project is a template.
@@ -149,7 +151,7 @@ namespace FluentHub.Octokit.Models.v4
 		/// <summary>
 		/// The project's name.
 		/// </summary>
-		public string Title { get; set; }
+		public string Title { get; set; } = default!;
 
 		/// <summary>
 		/// Identifies the date and time when the object was last updated.
@@ -159,18 +161,18 @@ namespace FluentHub.Octokit.Models.v4
 		/// <summary>
 		/// Humanized string of "Identifies the date and time when the object was last updated."
 		/// <summary>
-		public string UpdatedAtHumanized { get; set; }
+		public string? UpdatedAtHumanized { get; set; }
 
 		/// <summary>
 		/// The HTTP URL for this project
 		/// </summary>
-		public string Url { get; set; }
+		public string Url { get; set; } = default!;
 
 		/// <summary>
 		/// A view of the project
 		/// </summary>
 		/// <param name="number">The number of a view belonging to the project</param>
-		public ProjectV2View View { get; set; }
+		public ProjectV2View? View { get; set; }
 
 		/// <summary>
 		/// Indicates if the object can be closed by the viewer.
@@ -195,13 +197,13 @@ namespace FluentHub.Octokit.Models.v4
 		/// <param name="last">Returns the last _n_ elements from the list.</param>
 		/// <param name="before">Returns the elements in the list that come before the specified cursor.</param>
 		/// <param name="orderBy">Ordering options for project v2 views returned from the connection</param>
-		public ProjectV2ViewConnection Views { get; set; }
+		public ProjectV2ViewConnection Views { get; set; } = default!;
 
 		/// <summary>
 		/// A workflow of the project
 		/// </summary>
 		/// <param name="number">The number of a workflow belonging to the project</param>
-		public ProjectV2Workflow Workflow { get; set; }
+		public ProjectV2Workflow? Workflow { get; set; }
 
 		/// <summary>
 		/// List of the workflows in the project
@@ -211,6 +213,6 @@ namespace FluentHub.Octokit.Models.v4
 		/// <param name="last">Returns the last _n_ elements from the list.</param>
 		/// <param name="before">Returns the elements in the list that come before the specified cursor.</param>
 		/// <param name="orderBy">Ordering options for project v2 workflows returned from the connection</param>
-		public ProjectV2WorkflowConnection Workflows { get; set; }
+		public ProjectV2WorkflowConnection Workflows { get; set; } = default!;
 	}
 }

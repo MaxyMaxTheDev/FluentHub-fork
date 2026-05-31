@@ -1,6 +1,8 @@
 // Copyright (c) 2022-2024 0x5BFA
 // Licensed under the MIT License. See the LICENSE.
 
+#nullable enable
+
 namespace FluentHub.Octokit.Models.v4
 {
 	/// <summary>
@@ -16,16 +18,16 @@ namespace FluentHub.Octokit.Models.v4
 		/// <summary>
 		/// The amount in USD, formatted as a string.
 		/// </summary>
-		public string FormattedAmount { get; set; }
+		public string FormattedAmount { get; set; } = default!;
 
 		/// <summary>
 		/// The sponsor's GitHub account.
 		/// </summary>
-		public ISponsorable Sponsor { get; set; }
+		public ISponsorable Sponsor { get; set; } = default!;
 
 		/// <summary>
 		/// The maintainer's GitHub account.
 		/// </summary>
-		public ISponsorable Sponsorable { get; set; }
+		public ISponsorable Sponsorable { get; set; } = default!;
 	}
 }

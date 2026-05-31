@@ -1,6 +1,8 @@
 // Copyright (c) 2022-2024 0x5BFA
 // Licensed under the MIT License. See the LICENSE.
 
+#nullable enable
+
 namespace FluentHub.Octokit.Models.v4
 {
 	/// <summary>
@@ -11,7 +13,7 @@ namespace FluentHub.Octokit.Models.v4
 		/// <summary>
 		/// A unique identifier for the client performing the mutation.
 		/// </summary>
-		public string ClientMutationId { get; set; }
+		public string? ClientMutationId { get; set; }
 
 		/// <summary>
 		/// The Node ID of the pull request to modify.
@@ -21,12 +23,12 @@ namespace FluentHub.Octokit.Models.v4
 		/// <summary>
 		/// The commit OID the review pertains to.
 		/// </summary>
-		public string CommitOID { get; set; }
+		public string? CommitOID { get; set; }
 
 		/// <summary>
 		/// The contents of the review body comment.
 		/// </summary>
-		public string Body { get; set; }
+		public string? Body { get; set; }
 
 		/// <summary>
 		/// The event to perform on the pull request review.
@@ -39,11 +41,11 @@ namespace FluentHub.Octokit.Models.v4
 		/// **Description:** `comments` will be removed. use the `threads` argument instead
 		/// **Reason:** We are deprecating comment fields that use diff-relative positioning
 		/// </summary>
-		public List<DraftPullRequestReviewComment> Comments { get; set; }
+		public List<DraftPullRequestReviewComment?>? Comments { get; set; }
 
 		/// <summary>
 		/// The review line comment threads.
 		/// </summary>
-		public List<DraftPullRequestReviewThread> Threads { get; set; }
+		public List<DraftPullRequestReviewThread?>? Threads { get; set; }
 	}
 }

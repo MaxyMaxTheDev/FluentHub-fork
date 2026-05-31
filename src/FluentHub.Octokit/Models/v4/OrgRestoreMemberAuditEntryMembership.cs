@@ -1,6 +1,8 @@
 // Copyright (c) 2022-2024 0x5BFA
 // Licensed under the MIT License. See the LICENSE.
 
+#nullable enable
+
 namespace FluentHub.Octokit.Models.v4
 {
 	/// <summary>
@@ -11,16 +13,16 @@ namespace FluentHub.Octokit.Models.v4
 		/// <summary>
 		/// Metadata for an organization membership for org.restore_member actions
 		/// </summary>
-		public OrgRestoreMemberMembershipOrganizationAuditEntryData OrgRestoreMemberMembershipOrganizationAuditEntryData { get; set; }
+		public OrgRestoreMemberMembershipOrganizationAuditEntryData? OrgRestoreMemberMembershipOrganizationAuditEntryData { get; set; }
 
 		/// <summary>
 		/// Metadata for a repository membership for org.restore_member actions
 		/// </summary>
-		public OrgRestoreMemberMembershipRepositoryAuditEntryData OrgRestoreMemberMembershipRepositoryAuditEntryData { get; set; }
+		public OrgRestoreMemberMembershipRepositoryAuditEntryData? OrgRestoreMemberMembershipRepositoryAuditEntryData { get; set; }
 
 		/// <summary>
 		/// Metadata for a team membership for org.restore_member actions
 		/// </summary>
-		public OrgRestoreMemberMembershipTeamAuditEntryData OrgRestoreMemberMembershipTeamAuditEntryData { get; set; }
+		public OrgRestoreMemberMembershipTeamAuditEntryData? OrgRestoreMemberMembershipTeamAuditEntryData { get; set; }
 	}
 }

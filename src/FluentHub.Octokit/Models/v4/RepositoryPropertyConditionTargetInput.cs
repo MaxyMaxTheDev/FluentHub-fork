@@ -1,6 +1,8 @@
 // Copyright (c) 2022-2024 0x5BFA
 // Licensed under the MIT License. See the LICENSE.
 
+#nullable enable
+
 namespace FluentHub.Octokit.Models.v4
 {
 	/// <summary>
@@ -11,11 +13,11 @@ namespace FluentHub.Octokit.Models.v4
 		/// <summary>
 		/// Array of repository properties that must not match.
 		/// </summary>
-		public List<PropertyTargetDefinitionInput> Exclude { get; set; }
+		public List<PropertyTargetDefinitionInput> Exclude { get; set; } = default!;
 
 		/// <summary>
 		/// Array of repository properties that must match
 		/// </summary>
-		public List<PropertyTargetDefinitionInput> Include { get; set; }
+		public List<PropertyTargetDefinitionInput> Include { get; set; } = default!;
 	}
 }

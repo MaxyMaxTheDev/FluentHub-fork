@@ -1,6 +1,8 @@
 // Copyright (c) 2022-2024 0x5BFA
 // Licensed under the MIT License. See the LICENSE.
 
+#nullable enable
+
 namespace FluentHub.Octokit.Models.v4
 {
 
@@ -17,7 +19,7 @@ namespace FluentHub.Octokit.Models.v4
 		/// <summary>
 		/// Returns why the comment was minimized. One of `abuse`, `off-topic`, `outdated`, `resolved`, `duplicate`, `spam`, and `low-quality`. Note that the case and formatting of these values differs from the inputs to the `MinimizeComment` mutation.
 		/// </summary>
-		string MinimizedReason { get; set; }
+		string? MinimizedReason { get; set; }
 
 		/// <summary>
 		/// Check if the current viewer can minimize this object.
@@ -37,7 +39,7 @@ namespace FluentHub.Octokit.Models.v4
 	{
 		public bool IsMinimized { get; set; }
 
-		public string MinimizedReason { get; set; }
+		public string? MinimizedReason { get; set; }
 
 		public bool ViewerCanMinimize { get; set; }
 

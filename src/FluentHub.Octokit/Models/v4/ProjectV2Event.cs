@@ -1,6 +1,8 @@
 // Copyright (c) 2022-2024 0x5BFA
 // Licensed under the MIT License. See the LICENSE.
 
+#nullable enable
+
 namespace FluentHub.Octokit.Models.v4
 {
 
@@ -12,7 +14,7 @@ namespace FluentHub.Octokit.Models.v4
 		/// <summary>
 		/// Project referenced by event.
 		/// </summary>
-		ProjectV2 Project { get; set; }
+		ProjectV2? Project { get; set; }
 
 		/// <summary>
 		/// Did this event result from workflow automation?
@@ -25,7 +27,7 @@ namespace FluentHub.Octokit.Models.v4
 {
 	public class ProjectV2Event : IProjectV2Event
 	{
-		public ProjectV2 Project { get; set; }
+		public ProjectV2? Project { get; set; }
 
 		public bool WasAutomated { get; set; }
 	}

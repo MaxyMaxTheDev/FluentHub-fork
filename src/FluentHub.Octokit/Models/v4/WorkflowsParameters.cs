@@ -1,6 +1,8 @@
 // Copyright (c) 2022-2024 0x5BFA
 // Licensed under the MIT License. See the LICENSE.
 
+#nullable enable
+
 namespace FluentHub.Octokit.Models.v4
 {
 	/// <summary>
@@ -16,6 +18,6 @@ namespace FluentHub.Octokit.Models.v4
 		/// <summary>
 		/// Workflows that must pass for this rule to pass.
 		/// </summary>
-		public List<WorkflowFileReference> Workflows { get; set; }
+		public List<WorkflowFileReference> Workflows { get; set; } = default!;
 	}
 }

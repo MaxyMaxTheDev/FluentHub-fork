@@ -1,6 +1,8 @@
 // Copyright (c) 2022-2024 0x5BFA
 // Licensed under the MIT License. See the LICENSE.
 
+#nullable enable
+
 namespace FluentHub.Octokit.Models.v4
 {
 	/// <summary>
@@ -11,7 +13,7 @@ namespace FluentHub.Octokit.Models.v4
 		/// <summary>
 		/// A unique identifier for the client performing the mutation.
 		/// </summary>
-		public string ClientMutationId { get; set; }
+		public string? ClientMutationId { get; set; }
 
 		/// <summary>
 		/// The id of the assignable object to replace the assignees for.
@@ -21,16 +23,16 @@ namespace FluentHub.Octokit.Models.v4
 		/// <summary>
 		/// The ids of the actors to replace the existing assignees. May be used as an alternative to or in conjunction with actorLogins.
 		/// </summary>
-		public List<ID> ActorIds { get; set; }
+		public List<ID>? ActorIds { get; set; }
 
 		/// <summary>
 		/// The usernames of the actors to replace the existing assignees. May be used as an alternative to or in conjunction with actorIds. For bots, use the login format with [bot] suffix (e.g., 'my-app[bot]').
 		/// </summary>
-		public List<string> ActorLogins { get; set; }
+		public List<string>? ActorLogins { get; set; }
 
 		/// <summary>
 		/// Configuration for assigning an AI agent to this issue.
 		/// </summary>
-		public AgentAssignmentInput AgentAssignment { get; set; }
+		public AgentAssignmentInput? AgentAssignment { get; set; }
 	}
 }

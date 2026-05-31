@@ -1,6 +1,8 @@
 // Copyright (c) 2022-2024 0x5BFA
 // Licensed under the MIT License. See the LICENSE.
 
+#nullable enable
+
 namespace FluentHub.Octokit.Models.v4
 {
 	/// <summary>
@@ -16,7 +18,7 @@ namespace FluentHub.Octokit.Models.v4
 		/// <summary>
 		/// Status checks that are required.
 		/// </summary>
-		public List<StatusCheckConfiguration> RequiredStatusChecks { get; set; }
+		public List<StatusCheckConfiguration> RequiredStatusChecks { get; set; } = default!;
 
 		/// <summary>
 		/// Whether pull requests targeting a matching branch must be tested with the latest code. This setting will not take effect unless at least one status check is enabled.

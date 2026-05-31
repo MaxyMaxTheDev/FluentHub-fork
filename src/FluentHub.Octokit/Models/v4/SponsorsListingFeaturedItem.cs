@@ -1,6 +1,8 @@
 // Copyright (c) 2022-2024 0x5BFA
 // Licensed under the MIT License. See the LICENSE.
 
+#nullable enable
+
 namespace FluentHub.Octokit.Models.v4
 {
 	/// <summary>
@@ -16,17 +18,17 @@ namespace FluentHub.Octokit.Models.v4
 		/// <summary>
 		/// Humanized string of "Identifies the date and time when the object was created."
 		/// <summary>
-		public string CreatedAtHumanized { get; set; }
+		public string? CreatedAtHumanized { get; set; }
 
 		/// <summary>
 		/// Will either be a description from the sponsorable maintainer about why they featured this item, or the item's description itself, such as a user's bio from their GitHub profile page.
 		/// </summary>
-		public string Description { get; set; }
+		public string? Description { get; set; }
 
 		/// <summary>
 		/// The record that is featured on the GitHub Sponsors profile.
 		/// </summary>
-		public SponsorsListingFeatureableItem Featureable { get; set; }
+		public SponsorsListingFeatureableItem Featureable { get; set; } = default!;
 
 		/// <summary>
 		/// The Node ID of the SponsorsListingFeaturedItem object
@@ -41,7 +43,7 @@ namespace FluentHub.Octokit.Models.v4
 		/// <summary>
 		/// The GitHub Sponsors profile that features this record.
 		/// </summary>
-		public SponsorsListing SponsorsListing { get; set; }
+		public SponsorsListing SponsorsListing { get; set; } = default!;
 
 		/// <summary>
 		/// Identifies the date and time when the object was last updated.
@@ -51,6 +53,6 @@ namespace FluentHub.Octokit.Models.v4
 		/// <summary>
 		/// Humanized string of "Identifies the date and time when the object was last updated."
 		/// <summary>
-		public string UpdatedAtHumanized { get; set; }
+		public string? UpdatedAtHumanized { get; set; }
 	}
 }

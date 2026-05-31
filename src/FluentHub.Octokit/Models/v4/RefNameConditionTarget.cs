@@ -1,6 +1,8 @@
 // Copyright (c) 2022-2024 0x5BFA
 // Licensed under the MIT License. See the LICENSE.
 
+#nullable enable
+
 namespace FluentHub.Octokit.Models.v4
 {
 	/// <summary>
@@ -11,11 +13,11 @@ namespace FluentHub.Octokit.Models.v4
 		/// <summary>
 		/// Array of ref names or patterns to exclude. The condition will not pass if any of these patterns match.
 		/// </summary>
-		public List<string> Exclude { get; set; }
+		public List<string> Exclude { get; set; } = default!;
 
 		/// <summary>
 		/// Array of ref names or patterns to include. One of these patterns must match for the condition to pass. Also accepts `~DEFAULT_BRANCH` to include the default branch or `~ALL` to include all branches.
 		/// </summary>
-		public List<string> Include { get; set; }
+		public List<string> Include { get; set; } = default!;
 	}
 }

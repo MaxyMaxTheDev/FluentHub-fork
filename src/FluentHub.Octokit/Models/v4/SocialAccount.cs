@@ -1,6 +1,8 @@
 // Copyright (c) 2022-2024 0x5BFA
 // Licensed under the MIT License. See the LICENSE.
 
+#nullable enable
+
 namespace FluentHub.Octokit.Models.v4
 {
 	/// <summary>
@@ -11,7 +13,7 @@ namespace FluentHub.Octokit.Models.v4
 		/// <summary>
 		/// Name of the social media account as it appears on the profile.
 		/// </summary>
-		public string DisplayName { get; set; }
+		public string DisplayName { get; set; } = default!;
 
 		/// <summary>
 		/// Software or company that hosts the social media account.
@@ -21,6 +23,6 @@ namespace FluentHub.Octokit.Models.v4
 		/// <summary>
 		/// URL of the social media account.
 		/// </summary>
-		public string Url { get; set; }
+		public string Url { get; set; } = default!;
 	}
 }

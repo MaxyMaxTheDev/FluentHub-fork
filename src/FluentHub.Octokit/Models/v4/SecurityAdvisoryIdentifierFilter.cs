@@ -1,6 +1,8 @@
 // Copyright (c) 2022-2024 0x5BFA
 // Licensed under the MIT License. See the LICENSE.
 
+#nullable enable
+
 namespace FluentHub.Octokit.Models.v4
 {
 	/// <summary>
@@ -16,6 +18,6 @@ namespace FluentHub.Octokit.Models.v4
 		/// <summary>
 		/// The identifier string. Supports exact or partial matching.
 		/// </summary>
-		public string Value { get; set; }
+		public string Value { get; set; } = default!;
 	}
 }

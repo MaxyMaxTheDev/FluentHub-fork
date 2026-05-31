@@ -1,6 +1,8 @@
 // Copyright (c) 2022-2024 0x5BFA
 // Licensed under the MIT License. See the LICENSE.
 
+#nullable enable
+
 namespace FluentHub.Octokit.Models.v4
 {
 	/// <summary>
@@ -11,7 +13,7 @@ namespace FluentHub.Octokit.Models.v4
 		/// <summary>
 		/// A unique identifier for the client performing the mutation.
 		/// </summary>
-		public string ClientMutationId { get; set; }
+		public string? ClientMutationId { get; set; }
 
 		/// <summary>
 		/// The global relay id of the source in which a new ruleset should be created in.
@@ -21,7 +23,7 @@ namespace FluentHub.Octokit.Models.v4
 		/// <summary>
 		/// The name of the ruleset.
 		/// </summary>
-		public string Name { get; set; }
+		public string Name { get; set; } = default!;
 
 		/// <summary>
 		/// The target of the ruleset.
@@ -31,12 +33,12 @@ namespace FluentHub.Octokit.Models.v4
 		/// <summary>
 		/// The list of rules for this ruleset
 		/// </summary>
-		public List<RepositoryRuleInput> Rules { get; set; }
+		public List<RepositoryRuleInput>? Rules { get; set; }
 
 		/// <summary>
 		/// The set of conditions for this ruleset
 		/// </summary>
-		public RepositoryRuleConditionsInput Conditions { get; set; }
+		public RepositoryRuleConditionsInput Conditions { get; set; } = default!;
 
 		/// <summary>
 		/// The enforcement level for this ruleset
@@ -46,6 +48,6 @@ namespace FluentHub.Octokit.Models.v4
 		/// <summary>
 		/// A list of actors that are allowed to bypass rules in this ruleset.
 		/// </summary>
-		public List<RepositoryRulesetBypassActorInput> BypassActors { get; set; }
+		public List<RepositoryRulesetBypassActorInput>? BypassActors { get; set; }
 	}
 }

@@ -1,6 +1,8 @@
 // Copyright (c) 2022-2024 0x5BFA
 // Licensed under the MIT License. See the LICENSE.
 
+#nullable enable
+
 namespace FluentHub.Octokit.Models.v4
 {
 	/// <summary>
@@ -16,12 +18,12 @@ namespace FluentHub.Octokit.Models.v4
 		/// <summary>
 		/// Humanized string of "Identifies the date and time when the object was created."
 		/// <summary>
-		public string CreatedAtHumanized { get; set; }
+		public string? CreatedAtHumanized { get; set; }
 
 		/// <summary>
 		/// The actor who created the item.
 		/// </summary>
-		public IActor Creator { get; set; }
+		public IActor? Creator { get; set; }
 
 		/// <summary>
 		/// Identifies the primary key from the database.
@@ -31,12 +33,12 @@ namespace FluentHub.Octokit.Models.v4
 		/// <summary>
 		/// Date value for the field
 		/// </summary>
-		public string Date { get; set; }
+		public string? Date { get; set; }
 
 		/// <summary>
 		/// The project field that contains this value.
 		/// </summary>
-		public ProjectV2FieldConfiguration Field { get; set; }
+		public ProjectV2FieldConfiguration Field { get; set; } = default!;
 
 		/// <summary>
 		/// The Node ID of the ProjectV2ItemFieldDateValue object
@@ -46,7 +48,7 @@ namespace FluentHub.Octokit.Models.v4
 		/// <summary>
 		/// The project item that contains this value.
 		/// </summary>
-		public ProjectV2Item Item { get; set; }
+		public ProjectV2Item Item { get; set; } = default!;
 
 		/// <summary>
 		/// Identifies the date and time when the object was last updated.
@@ -56,6 +58,6 @@ namespace FluentHub.Octokit.Models.v4
 		/// <summary>
 		/// Humanized string of "Identifies the date and time when the object was last updated."
 		/// <summary>
-		public string UpdatedAtHumanized { get; set; }
+		public string? UpdatedAtHumanized { get; set; }
 	}
 }

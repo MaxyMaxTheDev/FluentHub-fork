@@ -1,6 +1,8 @@
 // Copyright (c) 2022-2024 0x5BFA
 // Licensed under the MIT License. See the LICENSE.
 
+#nullable enable
+
 namespace FluentHub.Octokit.Models.v4
 {
 	/// <summary>
@@ -11,7 +13,7 @@ namespace FluentHub.Octokit.Models.v4
 		/// <summary>
 		/// Path to the file being commented on.
 		/// </summary>
-		public string Path { get; set; }
+		public string Path { get; set; } = default!;
 
 		/// <summary>
 		/// Position in the file to leave a comment on.
@@ -21,6 +23,6 @@ namespace FluentHub.Octokit.Models.v4
 		/// <summary>
 		/// Body of the comment to leave.
 		/// </summary>
-		public string Body { get; set; }
+		public string Body { get; set; } = default!;
 	}
 }

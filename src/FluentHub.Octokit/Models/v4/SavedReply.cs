@@ -1,6 +1,8 @@
 // Copyright (c) 2022-2024 0x5BFA
 // Licensed under the MIT License. See the LICENSE.
 
+#nullable enable
+
 namespace FluentHub.Octokit.Models.v4
 {
 	/// <summary>
@@ -11,12 +13,12 @@ namespace FluentHub.Octokit.Models.v4
 		/// <summary>
 		/// The body of the saved reply.
 		/// </summary>
-		public string Body { get; set; }
+		public string Body { get; set; } = default!;
 
 		/// <summary>
 		/// The saved reply body rendered to HTML.
 		/// </summary>
-		public string BodyHTML { get; set; }
+		public string BodyHTML { get; set; } = default!;
 
 		/// <summary>
 		/// Identifies the primary key from the database.
@@ -31,11 +33,11 @@ namespace FluentHub.Octokit.Models.v4
 		/// <summary>
 		/// The title of the saved reply.
 		/// </summary>
-		public string Title { get; set; }
+		public string Title { get; set; } = default!;
 
 		/// <summary>
 		/// The user that saved this reply.
 		/// </summary>
-		public IActor User { get; set; }
+		public IActor? User { get; set; }
 	}
 }

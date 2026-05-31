@@ -1,6 +1,8 @@
 // Copyright (c) 2022-2024 0x5BFA
 // Licensed under the MIT License. See the LICENSE.
 
+#nullable enable
+
 namespace FluentHub.Octokit.Models.v4
 {
 
@@ -17,12 +19,12 @@ namespace FluentHub.Octokit.Models.v4
 		/// <summary>
 		/// Humanized string of "Identifies the date and time when the object was created."
 		/// <summary>
-		string CreatedAtHumanized { get; set; }
+		string? CreatedAtHumanized { get; set; }
 
 		/// <summary>
 		/// The actor who created the item.
 		/// </summary>
-		IActor Creator { get; set; }
+		IActor? Creator { get; set; }
 
 		/// <summary>
 		/// Identifies the primary key from the database.
@@ -52,7 +54,7 @@ namespace FluentHub.Octokit.Models.v4
 		/// <summary>
 		/// Humanized string of "Identifies the date and time when the object was last updated."
 		/// <summary>
-		string UpdatedAtHumanized { get; set; }
+		string? UpdatedAtHumanized { get; set; }
 	}
 }
 
@@ -62,21 +64,21 @@ namespace FluentHub.Octokit.Models.v4
 	{
 		public DateTimeOffset CreatedAt { get; set; }
 
-		public string CreatedAtHumanized { get; set; }
+		public string? CreatedAtHumanized { get; set; }
 
-		public IActor Creator { get; set; }
+		public IActor? Creator { get; set; }
 
 		public int? DatabaseId { get; set; }
 
-		public ProjectV2FieldConfiguration Field { get; set; }
+		public ProjectV2FieldConfiguration Field { get; set; } = default!;
 
 		public ID Id { get; set; }
 
-		public ProjectV2Item Item { get; set; }
+		public ProjectV2Item Item { get; set; } = default!;
 
 		public DateTimeOffset UpdatedAt { get; set; }
 
-		public string UpdatedAtHumanized { get; set; }
+		public string? UpdatedAtHumanized { get; set; }
 	}
 }
 

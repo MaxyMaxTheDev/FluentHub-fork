@@ -1,6 +1,8 @@
 // Copyright (c) 2022-2024 0x5BFA
 // Licensed under the MIT License. See the LICENSE.
 
+#nullable enable
+
 namespace FluentHub.Octokit.Models.v4
 {
 	/// <summary>
@@ -11,11 +13,11 @@ namespace FluentHub.Octokit.Models.v4
 		/// <summary>
 		/// Field that contains this value.
 		/// </summary>
-		public ProjectV2FieldConfiguration Field { get; set; }
+		public ProjectV2FieldConfiguration Field { get; set; } = default!;
 
 		/// <summary>
 		/// Value of the Issue Field
 		/// </summary>
-		public ProjectV2IssueFieldValues IssueFieldValue { get; set; }
+		public ProjectV2IssueFieldValues? IssueFieldValue { get; set; }
 	}
 }

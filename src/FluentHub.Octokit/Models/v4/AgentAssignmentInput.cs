@@ -1,6 +1,8 @@
 // Copyright (c) 2022-2024 0x5BFA
 // Licensed under the MIT License. See the LICENSE.
 
+#nullable enable
+
 namespace FluentHub.Octokit.Models.v4
 {
 	/// <summary>
@@ -16,16 +18,16 @@ namespace FluentHub.Octokit.Models.v4
 		/// <summary>
 		/// The base ref/branch for the repository. Defaults to the default branch if not provided.
 		/// </summary>
-		public string BaseRef { get; set; }
+		public string? BaseRef { get; set; }
 
 		/// <summary>
 		/// Custom instructions for Copilot.
 		/// </summary>
-		public string CustomInstructions { get; set; }
+		public string? CustomInstructions { get; set; }
 
 		/// <summary>
 		/// Custom agent for Copilot.
 		/// </summary>
-		public string CustomAgent { get; set; }
+		public string? CustomAgent { get; set; }
 	}
 }

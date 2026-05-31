@@ -1,6 +1,8 @@
 // Copyright (c) 2022-2024 0x5BFA
 // Licensed under the MIT License. See the LICENSE.
 
+#nullable enable
+
 namespace FluentHub.Octokit.Models.v4
 {
 	/// <summary>
@@ -16,7 +18,7 @@ namespace FluentHub.Octokit.Models.v4
 		/// <summary>
 		/// Humanized string of "Identifies the date and time when the object was created."
 		/// <summary>
-		public string CreatedAtHumanized { get; set; }
+		public string? CreatedAtHumanized { get; set; }
 
 		/// <summary>
 		/// Identifies the primary key from the database.
@@ -26,12 +28,12 @@ namespace FluentHub.Octokit.Models.v4
 		/// <summary>
 		/// The DNS host name that should be used for verification.
 		/// </summary>
-		public string DnsHostName { get; set; }
+		public string? DnsHostName { get; set; }
 
 		/// <summary>
 		/// The unicode encoded domain.
 		/// </summary>
-		public string Domain { get; set; }
+		public string Domain { get; set; } = default!;
 
 		/// <summary>
 		/// Whether a TXT record for verification with the expected host name was found.
@@ -66,12 +68,12 @@ namespace FluentHub.Octokit.Models.v4
 		/// <summary>
 		/// The owner of the domain.
 		/// </summary>
-		public VerifiableDomainOwner Owner { get; set; }
+		public VerifiableDomainOwner Owner { get; set; } = default!;
 
 		/// <summary>
 		/// The punycode encoded domain.
 		/// </summary>
-		public string PunycodeEncodedDomain { get; set; }
+		public string PunycodeEncodedDomain { get; set; } = default!;
 
 		/// <summary>
 		/// The time that the current verification token will expire.
@@ -81,7 +83,7 @@ namespace FluentHub.Octokit.Models.v4
 		/// <summary>
 		/// Humanized string of "The time that the current verification token will expire."
 		/// <summary>
-		public string TokenExpirationTimeHumanized { get; set; }
+		public string? TokenExpirationTimeHumanized { get; set; }
 
 		/// <summary>
 		/// Identifies the date and time when the object was last updated.
@@ -91,11 +93,11 @@ namespace FluentHub.Octokit.Models.v4
 		/// <summary>
 		/// Humanized string of "Identifies the date and time when the object was last updated."
 		/// <summary>
-		public string UpdatedAtHumanized { get; set; }
+		public string? UpdatedAtHumanized { get; set; }
 
 		/// <summary>
 		/// The current verification token for the domain.
 		/// </summary>
-		public string VerificationToken { get; set; }
+		public string? VerificationToken { get; set; }
 	}
 }

@@ -1,6 +1,8 @@
 // Copyright (c) 2022-2024 0x5BFA
 // Licensed under the MIT License. See the LICENSE.
 
+#nullable enable
+
 namespace FluentHub.Octokit.Models.v4
 {
 	/// <summary>
@@ -11,16 +13,16 @@ namespace FluentHub.Octokit.Models.v4
 		/// <summary>
 		/// The error from a dependency update
 		/// </summary>
-		public DependabotUpdateError Error { get; set; }
+		public DependabotUpdateError? Error { get; set; }
 
 		/// <summary>
 		/// The associated pull request
 		/// </summary>
-		public PullRequest PullRequest { get; set; }
+		public PullRequest? PullRequest { get; set; }
 
 		/// <summary>
 		/// The repository associated with this node.
 		/// </summary>
-		public Repository Repository { get; set; }
+		public Repository Repository { get; set; } = default!;
 	}
 }

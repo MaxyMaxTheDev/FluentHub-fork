@@ -1,6 +1,8 @@
 // Copyright (c) 2022-2024 0x5BFA
 // Licensed under the MIT License. See the LICENSE.
 
+#nullable enable
+
 namespace FluentHub.Octokit.Models.v4
 {
 
@@ -20,7 +22,7 @@ namespace FluentHub.Octokit.Models.v4
 {
 	public class RepositoryNode : IRepositoryNode
 	{
-		public Repository Repository { get; set; }
+		public Repository Repository { get; set; } = default!;
 	}
 }
 

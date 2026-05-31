@@ -1,6 +1,8 @@
 // Copyright (c) 2022-2024 0x5BFA
 // Licensed under the MIT License. See the LICENSE.
 
+#nullable enable
+
 namespace FluentHub.Octokit.Models.v4
 {
 
@@ -22,7 +24,7 @@ namespace FluentHub.Octokit.Models.v4
 		/// <summary>
 		/// A list of reactions grouped by content left on the subject.
 		/// </summary>
-		List<ReactionGroup> ReactionGroups { get; set; }
+		List<ReactionGroup>? ReactionGroups { get; set; }
 
 		/// <summary>
 		/// A list of Reactions left on the Issue.
@@ -50,9 +52,9 @@ namespace FluentHub.Octokit.Models.v4
 
 		public ID Id { get; set; }
 
-		public List<ReactionGroup> ReactionGroups { get; set; }
+		public List<ReactionGroup>? ReactionGroups { get; set; }
 
-		public ReactionConnection Reactions { get; set; }
+		public ReactionConnection Reactions { get; set; } = default!;
 
 		public bool ViewerCanReact { get; set; }
 	}

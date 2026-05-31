@@ -1,6 +1,8 @@
 // Copyright (c) 2022-2024 0x5BFA
 // Licensed under the MIT License. See the LICENSE.
 
+#nullable enable
+
 namespace FluentHub.Octokit.Models.v4
 {
 
@@ -17,7 +19,7 @@ namespace FluentHub.Octokit.Models.v4
 		/// <summary>
 		/// Humanized string of "Identifies the date and time when the repository was archived."
 		/// <summary>
-		string ArchivedAtHumanized { get; set; }
+		string? ArchivedAtHumanized { get; set; }
 
 		/// <summary>
 		/// Identifies the date and time when the object was created.
@@ -27,12 +29,12 @@ namespace FluentHub.Octokit.Models.v4
 		/// <summary>
 		/// Humanized string of "Identifies the date and time when the object was created."
 		/// <summary>
-		string CreatedAtHumanized { get; set; }
+		string? CreatedAtHumanized { get; set; }
 
 		/// <summary>
 		/// The description of the repository.
 		/// </summary>
-		string Description { get; set; }
+		string? Description { get; set; }
 
 		/// <summary>
 		/// The description of the repository rendered to HTML.
@@ -77,7 +79,7 @@ namespace FluentHub.Octokit.Models.v4
 		/// <summary>
 		/// The repository's URL.
 		/// </summary>
-		string HomepageUrl { get; set; }
+		string? HomepageUrl { get; set; }
 
 		/// <summary>
 		/// Indicates if the repository is unmaintained.
@@ -117,7 +119,7 @@ namespace FluentHub.Octokit.Models.v4
 		/// <summary>
 		/// The license associated with the repository
 		/// </summary>
-		License LicenseInfo { get; set; }
+		License? LicenseInfo { get; set; }
 
 		/// <summary>
 		/// The reason the repository has been locked.
@@ -127,7 +129,7 @@ namespace FluentHub.Octokit.Models.v4
 		/// <summary>
 		/// The repository's original mirror URL.
 		/// </summary>
-		string MirrorUrl { get; set; }
+		string? MirrorUrl { get; set; }
 
 		/// <summary>
 		/// The name of the repository.
@@ -162,7 +164,7 @@ namespace FluentHub.Octokit.Models.v4
 		/// <summary>
 		/// Humanized string of "Identifies the date and time when the repository was last pushed to."
 		/// <summary>
-		string PushedAtHumanized { get; set; }
+		string? PushedAtHumanized { get; set; }
 
 		/// <summary>
 		/// The HTTP path for this repository
@@ -183,7 +185,7 @@ namespace FluentHub.Octokit.Models.v4
 		/// <summary>
 		/// Humanized string of "Identifies the date and time when the object was last updated."
 		/// <summary>
-		string UpdatedAtHumanized { get; set; }
+		string? UpdatedAtHumanized { get; set; }
 
 		/// <summary>
 		/// The HTTP URL for this repository
@@ -208,15 +210,15 @@ namespace FluentHub.Octokit.Models.v4
 	{
 		public DateTimeOffset? ArchivedAt { get; set; }
 
-		public string ArchivedAtHumanized { get; set; }
+		public string? ArchivedAtHumanized { get; set; }
 
 		public DateTimeOffset CreatedAt { get; set; }
 
-		public string CreatedAtHumanized { get; set; }
+		public string? CreatedAtHumanized { get; set; }
 
-		public string Description { get; set; }
+		public string? Description { get; set; }
 
-		public string DescriptionHTML { get; set; }
+		public string DescriptionHTML { get; set; } = default!;
 
 		public int ForkCount { get; set; }
 
@@ -232,7 +234,7 @@ namespace FluentHub.Octokit.Models.v4
 
 		public bool HasWikiEnabled { get; set; }
 
-		public string HomepageUrl { get; set; }
+		public string? HomepageUrl { get; set; }
 
 		public bool IsArchived { get; set; }
 
@@ -248,35 +250,35 @@ namespace FluentHub.Octokit.Models.v4
 
 		public bool IsTemplate { get; set; }
 
-		public License LicenseInfo { get; set; }
+		public License? LicenseInfo { get; set; }
 
 		public RepositoryLockReason? LockReason { get; set; }
 
-		public string MirrorUrl { get; set; }
+		public string? MirrorUrl { get; set; }
 
-		public string Name { get; set; }
+		public string Name { get; set; } = default!;
 
-		public string NameWithOwner { get; set; }
+		public string NameWithOwner { get; set; } = default!;
 
-		public string OpenGraphImageUrl { get; set; }
+		public string OpenGraphImageUrl { get; set; } = default!;
 
-		public IRepositoryOwner Owner { get; set; }
+		public IRepositoryOwner Owner { get; set; } = default!;
 
 		public PullRequestCreationPolicy? PullRequestCreationPolicy { get; set; }
 
 		public DateTimeOffset? PushedAt { get; set; }
 
-		public string PushedAtHumanized { get; set; }
+		public string? PushedAtHumanized { get; set; }
 
-		public string ResourcePath { get; set; }
+		public string ResourcePath { get; set; } = default!;
 
-		public string ShortDescriptionHTML { get; set; }
+		public string ShortDescriptionHTML { get; set; } = default!;
 
 		public DateTimeOffset UpdatedAt { get; set; }
 
-		public string UpdatedAtHumanized { get; set; }
+		public string? UpdatedAtHumanized { get; set; }
 
-		public string Url { get; set; }
+		public string Url { get; set; } = default!;
 
 		public bool UsesCustomOpenGraphImage { get; set; }
 

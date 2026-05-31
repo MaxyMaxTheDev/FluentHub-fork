@@ -1,6 +1,8 @@
 // Copyright (c) 2022-2024 0x5BFA
 // Licensed under the MIT License. See the LICENSE.
 
+#nullable enable
+
 namespace FluentHub.Octokit.Models.v4
 {
 	/// <summary>
@@ -11,7 +13,7 @@ namespace FluentHub.Octokit.Models.v4
 		/// <summary>
 		/// The configuration for this merge queue
 		/// </summary>
-		public MergeQueueConfiguration Configuration { get; set; }
+		public MergeQueueConfiguration? Configuration { get; set; }
 
 		/// <summary>
 		/// The entries in the queue
@@ -20,7 +22,7 @@ namespace FluentHub.Octokit.Models.v4
 		/// <param name="after">Returns the elements in the list that come after the specified cursor.</param>
 		/// <param name="last">Returns the last _n_ elements from the list.</param>
 		/// <param name="before">Returns the elements in the list that come before the specified cursor.</param>
-		public MergeQueueEntryConnection Entries { get; set; }
+		public MergeQueueEntryConnection? Entries { get; set; }
 
 		/// <summary>
 		/// The Node ID of the MergeQueue object
@@ -35,16 +37,16 @@ namespace FluentHub.Octokit.Models.v4
 		/// <summary>
 		/// The repository this merge queue belongs to
 		/// </summary>
-		public Repository Repository { get; set; }
+		public Repository? Repository { get; set; }
 
 		/// <summary>
 		/// The HTTP path for this merge queue
 		/// </summary>
-		public string ResourcePath { get; set; }
+		public string ResourcePath { get; set; } = default!;
 
 		/// <summary>
 		/// The HTTP URL for this merge queue
 		/// </summary>
-		public string Url { get; set; }
+		public string Url { get; set; } = default!;
 	}
 }

@@ -1,6 +1,8 @@
 // Copyright (c) 2022-2024 0x5BFA
 // Licensed under the MIT License. See the LICENSE.
 
+#nullable enable
+
 namespace FluentHub.Octokit.Models.v4
 {
 	/// <summary>
@@ -16,12 +18,12 @@ namespace FluentHub.Octokit.Models.v4
 		/// <param name="last">Returns the last _n_ elements from the list.</param>
 		/// <param name="before">Returns the elements in the list that come before the specified cursor.</param>
 		/// <param name="orderBy">Ordering options for organizations returned from the connection.</param>
-		public EnterpriseTeamAssignedOrganizationConnection AssignedOrganizations { get; set; }
+		public EnterpriseTeamAssignedOrganizationConnection AssignedOrganizations { get; set; } = default!;
 
 		/// <summary>
 		/// The human-readable, unique identifier for the enterprise and team.
 		/// </summary>
-		public string CombinedSlug { get; set; }
+		public string CombinedSlug { get; set; } = default!;
 
 		/// <summary>
 		/// Identifies the date and time when the object was created.
@@ -31,17 +33,17 @@ namespace FluentHub.Octokit.Models.v4
 		/// <summary>
 		/// Humanized string of "Identifies the date and time when the object was created."
 		/// <summary>
-		public string CreatedAtHumanized { get; set; }
+		public string? CreatedAtHumanized { get; set; }
 
 		/// <summary>
 		/// The description of the team.
 		/// </summary>
-		public string Description { get; set; }
+		public string? Description { get; set; }
 
 		/// <summary>
 		/// The enterprise this team belongs to.
 		/// </summary>
-		public Enterprise Enterprise { get; set; }
+		public Enterprise? Enterprise { get; set; }
 
 		/// <summary>
 		/// A list of users who are members of this enterprise team.
@@ -52,12 +54,12 @@ namespace FluentHub.Octokit.Models.v4
 		/// <param name="before">Returns the elements in the list that come before the specified cursor.</param>
 		/// <param name="orderBy">Order for the connection.</param>
 		/// <param name="query">The search string to look for.</param>
-		public EnterpriseTeamMemberConnection EnterpriseTeamMembers { get; set; }
+		public EnterpriseTeamMemberConnection EnterpriseTeamMembers { get; set; } = default!;
 
 		/// <summary>
 		/// Identifies the primary key from the database as a BigInt.
 		/// </summary>
-		public string FullDatabaseId { get; set; }
+		public string? FullDatabaseId { get; set; }
 
 		/// <summary>
 		/// The Node ID of the EnterpriseTeam object
@@ -72,7 +74,7 @@ namespace FluentHub.Octokit.Models.v4
 		/// <summary>
 		/// The name of the team.
 		/// </summary>
-		public string Name { get; set; }
+		public string Name { get; set; } = default!;
 
 		/// <summary>
 		/// Whether the team will receive notifications when mentioned.
@@ -92,7 +94,7 @@ namespace FluentHub.Octokit.Models.v4
 		/// <summary>
 		/// The slug corresponding to the team.
 		/// </summary>
-		public string Slug { get; set; }
+		public string Slug { get; set; } = default!;
 
 		/// <summary>
 		/// Identifies the date and time when the object was last updated.
@@ -102,7 +104,7 @@ namespace FluentHub.Octokit.Models.v4
 		/// <summary>
 		/// Humanized string of "Identifies the date and time when the object was last updated."
 		/// <summary>
-		public string UpdatedAtHumanized { get; set; }
+		public string? UpdatedAtHumanized { get; set; }
 
 		/// <summary>
 		/// Whether the viewer can administer this team.

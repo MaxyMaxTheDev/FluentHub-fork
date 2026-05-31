@@ -1,6 +1,8 @@
 // Copyright (c) 2022-2024 0x5BFA
 // Licensed under the MIT License. See the LICENSE.
 
+#nullable enable
+
 namespace FluentHub.Octokit.Models.v4
 {
 	/// <summary>
@@ -11,7 +13,7 @@ namespace FluentHub.Octokit.Models.v4
 		/// <summary>
 		/// Identifies the actor who performed the event.
 		/// </summary>
-		public IActor Actor { get; set; }
+		public IActor? Actor { get; set; }
 
 		/// <summary>
 		/// Identifies the date and time when the object was created.
@@ -21,12 +23,12 @@ namespace FluentHub.Octokit.Models.v4
 		/// <summary>
 		/// Humanized string of "Identifies the date and time when the object was created."
 		/// <summary>
-		public string CreatedAtHumanized { get; set; }
+		public string? CreatedAtHumanized { get; set; }
 
 		/// <summary>
 		/// The user who added this Pull Request to the merge queue
 		/// </summary>
-		public User Enqueuer { get; set; }
+		public User? Enqueuer { get; set; }
 
 		/// <summary>
 		/// The Node ID of the AddedToMergeQueueEvent object
@@ -36,11 +38,11 @@ namespace FluentHub.Octokit.Models.v4
 		/// <summary>
 		/// The merge queue where this pull request was added to.
 		/// </summary>
-		public MergeQueue MergeQueue { get; set; }
+		public MergeQueue? MergeQueue { get; set; }
 
 		/// <summary>
 		/// PullRequest referenced by event.
 		/// </summary>
-		public PullRequest PullRequest { get; set; }
+		public PullRequest? PullRequest { get; set; }
 	}
 }

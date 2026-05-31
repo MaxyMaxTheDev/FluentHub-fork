@@ -1,6 +1,8 @@
 // Copyright (c) 2022-2024 0x5BFA
 // Licensed under the MIT License. See the LICENSE.
 
+#nullable enable
+
 namespace FluentHub.Octokit.Models.v4
 {
 	/// <summary>
@@ -16,6 +18,6 @@ namespace FluentHub.Octokit.Models.v4
 		/// <summary>
 		/// Filters the check suites by this name.
 		/// </summary>
-		public string CheckName { get; set; }
+		public string? CheckName { get; set; }
 	}
 }

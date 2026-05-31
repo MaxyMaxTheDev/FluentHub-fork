@@ -1,6 +1,8 @@
 // Copyright (c) 2022-2024 0x5BFA
 // Licensed under the MIT License. See the LICENSE.
 
+#nullable enable
+
 namespace FluentHub.Octokit.Models.v4
 {
 	/// <summary>
@@ -11,21 +13,21 @@ namespace FluentHub.Octokit.Models.v4
 		/// <summary>
 		/// A unique identifier for the client performing the mutation.
 		/// </summary>
-		public string ClientMutationId { get; set; }
+		public string? ClientMutationId { get; set; }
 
 		/// <summary>
 		/// The updated enterprise.
 		/// </summary>
-		public Enterprise Enterprise { get; set; }
+		public Enterprise? Enterprise { get; set; }
 
 		/// <summary>
 		/// The user that was removed from the enterprise.
 		/// </summary>
-		public User User { get; set; }
+		public User? User { get; set; }
 
 		/// <summary>
 		/// The viewer performing the mutation.
 		/// </summary>
-		public User Viewer { get; set; }
+		public User? Viewer { get; set; }
 	}
 }

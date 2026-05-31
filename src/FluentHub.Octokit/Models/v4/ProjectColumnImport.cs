@@ -1,6 +1,8 @@
 // Copyright (c) 2022-2024 0x5BFA
 // Licensed under the MIT License. See the LICENSE.
 
+#nullable enable
+
 namespace FluentHub.Octokit.Models.v4
 {
 	/// <summary>
@@ -11,7 +13,7 @@ namespace FluentHub.Octokit.Models.v4
 		/// <summary>
 		/// The name of the column.
 		/// </summary>
-		public string ColumnName { get; set; }
+		public string ColumnName { get; set; } = default!;
 
 		/// <summary>
 		/// The position of the column, starting from 0.
@@ -21,6 +23,6 @@ namespace FluentHub.Octokit.Models.v4
 		/// <summary>
 		/// A list of issues and pull requests in the column.
 		/// </summary>
-		public List<ProjectCardImport> Issues { get; set; }
+		public List<ProjectCardImport>? Issues { get; set; }
 	}
 }

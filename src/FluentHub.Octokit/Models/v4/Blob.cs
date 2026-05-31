@@ -1,6 +1,8 @@
 // Copyright (c) 2022-2024 0x5BFA
 // Licensed under the MIT License. See the LICENSE.
 
+#nullable enable
+
 namespace FluentHub.Octokit.Models.v4
 {
 	/// <summary>
@@ -11,7 +13,7 @@ namespace FluentHub.Octokit.Models.v4
 		/// <summary>
 		/// An abbreviated version of the Git object ID
 		/// </summary>
-		public string AbbreviatedOid { get; set; }
+		public string AbbreviatedOid { get; set; } = default!;
 
 		/// <summary>
 		/// Byte size of Blob object
@@ -21,12 +23,12 @@ namespace FluentHub.Octokit.Models.v4
 		/// <summary>
 		/// The HTTP path for this Git object
 		/// </summary>
-		public string CommitResourcePath { get; set; }
+		public string CommitResourcePath { get; set; } = default!;
 
 		/// <summary>
 		/// The HTTP URL for this Git object
 		/// </summary>
-		public string CommitUrl { get; set; }
+		public string CommitUrl { get; set; } = default!;
 
 		/// <summary>
 		/// The Node ID of the Blob object
@@ -46,16 +48,16 @@ namespace FluentHub.Octokit.Models.v4
 		/// <summary>
 		/// The Git object ID
 		/// </summary>
-		public string Oid { get; set; }
+		public string Oid { get; set; } = default!;
 
 		/// <summary>
 		/// The Repository the Git object belongs to
 		/// </summary>
-		public Repository Repository { get; set; }
+		public Repository Repository { get; set; } = default!;
 
 		/// <summary>
 		/// UTF8 text data or null if the Blob is binary
 		/// </summary>
-		public string Text { get; set; }
+		public string? Text { get; set; }
 	}
 }

@@ -1,6 +1,8 @@
 // Copyright (c) 2022-2024 0x5BFA
 // Licensed under the MIT License. See the LICENSE.
 
+#nullable enable
+
 namespace FluentHub.Octokit.Models.v4
 {
 	/// <summary>
@@ -16,7 +18,7 @@ namespace FluentHub.Octokit.Models.v4
 		/// <summary>
 		/// The base revision of this comparison.
 		/// </summary>
-		public IGitObject BaseTarget { get; set; }
+		public IGitObject BaseTarget { get; set; } = default!;
 
 		/// <summary>
 		/// The number of commits behind the base branch.
@@ -30,12 +32,12 @@ namespace FluentHub.Octokit.Models.v4
 		/// <param name="after">Returns the elements in the list that come after the specified cursor.</param>
 		/// <param name="last">Returns the last _n_ elements from the list.</param>
 		/// <param name="before">Returns the elements in the list that come before the specified cursor.</param>
-		public ComparisonCommitConnection Commits { get; set; }
+		public ComparisonCommitConnection Commits { get; set; } = default!;
 
 		/// <summary>
 		/// The head revision of this comparison.
 		/// </summary>
-		public IGitObject HeadTarget { get; set; }
+		public IGitObject HeadTarget { get; set; } = default!;
 
 		/// <summary>
 		/// The Node ID of the Comparison object

@@ -1,6 +1,8 @@
 // Copyright (c) 2022-2024 0x5BFA
 // Licensed under the MIT License. See the LICENSE.
 
+#nullable enable
+
 namespace FluentHub.Octokit.Models.v4
 {
 	/// <summary>
@@ -16,7 +18,7 @@ namespace FluentHub.Octokit.Models.v4
 		/// <summary>
 		/// The migration source name.
 		/// </summary>
-		public string Name { get; set; }
+		public string Name { get; set; } = default!;
 
 		/// <summary>
 		/// The migration source type.
@@ -26,6 +28,6 @@ namespace FluentHub.Octokit.Models.v4
 		/// <summary>
 		/// The migration source URL, for example `https://github.com` or `https://monalisa.ghe.com`.
 		/// </summary>
-		public string Url { get; set; }
+		public string Url { get; set; } = default!;
 	}
 }

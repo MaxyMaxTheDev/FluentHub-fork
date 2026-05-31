@@ -1,6 +1,8 @@
 // Copyright (c) 2022-2024 0x5BFA
 // Licensed under the MIT License. See the LICENSE.
 
+#nullable enable
+
 namespace FluentHub.Octokit.Models.v4
 {
 	/// <summary>
@@ -16,7 +18,7 @@ namespace FluentHub.Octokit.Models.v4
 		/// <summary>
 		/// Humanized string of "Identifies the date and time when the pinned environment was created"
 		/// <summary>
-		public string CreatedAtHumanized { get; set; }
+		public string? CreatedAtHumanized { get; set; }
 
 		/// <summary>
 		/// Identifies the primary key from the database.
@@ -26,7 +28,7 @@ namespace FluentHub.Octokit.Models.v4
 		/// <summary>
 		/// Identifies the environment associated.
 		/// </summary>
-		public Environment Environment { get; set; }
+		public Environment Environment { get; set; } = default!;
 
 		/// <summary>
 		/// The Node ID of the PinnedEnvironment object
@@ -41,6 +43,6 @@ namespace FluentHub.Octokit.Models.v4
 		/// <summary>
 		/// The repository that this environment was pinned to.
 		/// </summary>
-		public Repository Repository { get; set; }
+		public Repository Repository { get; set; } = default!;
 	}
 }

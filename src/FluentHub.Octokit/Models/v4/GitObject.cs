@@ -1,6 +1,8 @@
 // Copyright (c) 2022-2024 0x5BFA
 // Licensed under the MIT License. See the LICENSE.
 
+#nullable enable
+
 namespace FluentHub.Octokit.Models.v4
 {
 
@@ -45,17 +47,17 @@ namespace FluentHub.Octokit.Models.v4
 {
 	public class GitObject : IGitObject
 	{
-		public string AbbreviatedOid { get; set; }
+		public string AbbreviatedOid { get; set; } = default!;
 
-		public string CommitResourcePath { get; set; }
+		public string CommitResourcePath { get; set; } = default!;
 
-		public string CommitUrl { get; set; }
+		public string CommitUrl { get; set; } = default!;
 
 		public ID Id { get; set; }
 
-		public string Oid { get; set; }
+		public string Oid { get; set; } = default!;
 
-		public Repository Repository { get; set; }
+		public Repository Repository { get; set; } = default!;
 	}
 }
 

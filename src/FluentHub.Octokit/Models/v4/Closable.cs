@@ -1,6 +1,8 @@
 // Copyright (c) 2022-2024 0x5BFA
 // Licensed under the MIT License. See the LICENSE.
 
+#nullable enable
+
 namespace FluentHub.Octokit.Models.v4
 {
 
@@ -22,7 +24,7 @@ namespace FluentHub.Octokit.Models.v4
 		/// <summary>
 		/// Humanized string of "Identifies the date and time when the object was closed."
 		/// <summary>
-		string ClosedAtHumanized { get; set; }
+		string? ClosedAtHumanized { get; set; }
 
 		/// <summary>
 		/// Indicates if the object can be closed by the viewer.
@@ -44,7 +46,7 @@ namespace FluentHub.Octokit.Models.v4
 
 		public DateTimeOffset? ClosedAt { get; set; }
 
-		public string ClosedAtHumanized { get; set; }
+		public string? ClosedAtHumanized { get; set; }
 
 		public bool ViewerCanClose { get; set; }
 

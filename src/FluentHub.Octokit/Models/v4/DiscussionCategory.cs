@@ -1,6 +1,8 @@
 // Copyright (c) 2022-2024 0x5BFA
 // Licensed under the MIT License. See the LICENSE.
 
+#nullable enable
+
 namespace FluentHub.Octokit.Models.v4
 {
 	/// <summary>
@@ -16,22 +18,22 @@ namespace FluentHub.Octokit.Models.v4
 		/// <summary>
 		/// Humanized string of "Identifies the date and time when the object was created."
 		/// <summary>
-		public string CreatedAtHumanized { get; set; }
+		public string? CreatedAtHumanized { get; set; }
 
 		/// <summary>
 		/// A description of this category.
 		/// </summary>
-		public string Description { get; set; }
+		public string? Description { get; set; }
 
 		/// <summary>
 		/// An emoji representing this category.
 		/// </summary>
-		public string Emoji { get; set; }
+		public string Emoji { get; set; } = default!;
 
 		/// <summary>
 		/// This category's emoji rendered as HTML.
 		/// </summary>
-		public string EmojiHTML { get; set; }
+		public string EmojiHTML { get; set; } = default!;
 
 		/// <summary>
 		/// The Node ID of the DiscussionCategory object
@@ -46,17 +48,17 @@ namespace FluentHub.Octokit.Models.v4
 		/// <summary>
 		/// The name of this category.
 		/// </summary>
-		public string Name { get; set; }
+		public string Name { get; set; } = default!;
 
 		/// <summary>
 		/// The repository associated with this node.
 		/// </summary>
-		public Repository Repository { get; set; }
+		public Repository Repository { get; set; } = default!;
 
 		/// <summary>
 		/// The slug of this category.
 		/// </summary>
-		public string Slug { get; set; }
+		public string Slug { get; set; } = default!;
 
 		/// <summary>
 		/// Identifies the date and time when the object was last updated.
@@ -66,6 +68,6 @@ namespace FluentHub.Octokit.Models.v4
 		/// <summary>
 		/// Humanized string of "Identifies the date and time when the object was last updated."
 		/// <summary>
-		public string UpdatedAtHumanized { get; set; }
+		public string? UpdatedAtHumanized { get; set; }
 	}
 }

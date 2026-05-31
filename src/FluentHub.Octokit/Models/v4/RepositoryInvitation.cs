@@ -1,6 +1,8 @@
 // Copyright (c) 2022-2024 0x5BFA
 // Licensed under the MIT License. See the LICENSE.
 
+#nullable enable
+
 namespace FluentHub.Octokit.Models.v4
 {
 	/// <summary>
@@ -11,7 +13,7 @@ namespace FluentHub.Octokit.Models.v4
 		/// <summary>
 		/// The email address that received the invitation.
 		/// </summary>
-		public string Email { get; set; }
+		public string? Email { get; set; }
 
 		/// <summary>
 		/// The Node ID of the RepositoryInvitation object
@@ -21,17 +23,17 @@ namespace FluentHub.Octokit.Models.v4
 		/// <summary>
 		/// The user who received the invitation.
 		/// </summary>
-		public User Invitee { get; set; }
+		public User? Invitee { get; set; }
 
 		/// <summary>
 		/// The user who created the invitation.
 		/// </summary>
-		public User Inviter { get; set; }
+		public User Inviter { get; set; } = default!;
 
 		/// <summary>
 		/// The permalink for this repository invitation.
 		/// </summary>
-		public string Permalink { get; set; }
+		public string Permalink { get; set; } = default!;
 
 		/// <summary>
 		/// The permission granted on this repository by this invitation.
@@ -41,6 +43,6 @@ namespace FluentHub.Octokit.Models.v4
 		/// <summary>
 		/// The Repository the user is invited to.
 		/// </summary>
-		public IRepositoryInfo Repository { get; set; }
+		public IRepositoryInfo? Repository { get; set; }
 	}
 }

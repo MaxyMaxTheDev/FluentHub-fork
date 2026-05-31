@@ -1,6 +1,8 @@
 // Copyright (c) 2022-2024 0x5BFA
 // Licensed under the MIT License. See the LICENSE.
 
+#nullable enable
+
 namespace FluentHub.Octokit.Models.v4
 {
 	/// <summary>
@@ -15,12 +17,12 @@ namespace FluentHub.Octokit.Models.v4
 		/// <param name="after">Returns the elements in the list that come after the specified cursor.</param>
 		/// <param name="last">Returns the last _n_ elements from the list.</param>
 		/// <param name="before">Returns the elements in the list that come before the specified cursor.</param>
-		public RepositoryRulesetBypassActorConnection BypassActors { get; set; }
+		public RepositoryRulesetBypassActorConnection? BypassActors { get; set; }
 
 		/// <summary>
 		/// The set of conditions that must evaluate to true for this ruleset to apply
 		/// </summary>
-		public RepositoryRuleConditions Conditions { get; set; }
+		public RepositoryRuleConditions Conditions { get; set; } = default!;
 
 		/// <summary>
 		/// Identifies the date and time when the object was created.
@@ -30,7 +32,7 @@ namespace FluentHub.Octokit.Models.v4
 		/// <summary>
 		/// Humanized string of "Identifies the date and time when the object was created."
 		/// <summary>
-		public string CreatedAtHumanized { get; set; }
+		public string? CreatedAtHumanized { get; set; }
 
 		/// <summary>
 		/// Identifies the primary key from the database.
@@ -50,7 +52,7 @@ namespace FluentHub.Octokit.Models.v4
 		/// <summary>
 		/// Name of the ruleset.
 		/// </summary>
-		public string Name { get; set; }
+		public string Name { get; set; } = default!;
 
 		/// <summary>
 		/// List of rules.
@@ -60,12 +62,12 @@ namespace FluentHub.Octokit.Models.v4
 		/// <param name="last">Returns the last _n_ elements from the list.</param>
 		/// <param name="before">Returns the elements in the list that come before the specified cursor.</param>
 		/// <param name="type">The type of rule.</param>
-		public RepositoryRuleConnection Rules { get; set; }
+		public RepositoryRuleConnection? Rules { get; set; }
 
 		/// <summary>
 		/// Source of ruleset.
 		/// </summary>
-		public RuleSource Source { get; set; }
+		public RuleSource Source { get; set; } = default!;
 
 		/// <summary>
 		/// Target of the ruleset.
@@ -80,6 +82,6 @@ namespace FluentHub.Octokit.Models.v4
 		/// <summary>
 		/// Humanized string of "Identifies the date and time when the object was last updated."
 		/// <summary>
-		public string UpdatedAtHumanized { get; set; }
+		public string? UpdatedAtHumanized { get; set; }
 	}
 }

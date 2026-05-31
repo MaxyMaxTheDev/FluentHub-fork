@@ -1,6 +1,8 @@
 // Copyright (c) 2022-2024 0x5BFA
 // Licensed under the MIT License. See the LICENSE.
 
+#nullable enable
+
 namespace FluentHub.Octokit.Models.v4
 {
 	/// <summary>
@@ -11,7 +13,7 @@ namespace FluentHub.Octokit.Models.v4
 		/// <summary>
 		/// Array of file patterns. Pull requests which change matching files must be approved by the specified team. File patterns use fnmatch syntax.
 		/// </summary>
-		public List<string> FilePatterns { get; set; }
+		public List<string> FilePatterns { get; set; } = default!;
 
 		/// <summary>
 		/// Minimum number of approvals required from the specified team. If set to zero, the team will be added to the pull request but approval is optional.

@@ -1,6 +1,8 @@
 // Copyright (c) 2022-2024 0x5BFA
 // Licensed under the MIT License. See the LICENSE.
 
+#nullable enable
+
 namespace FluentHub.Octokit.Models.v4
 {
 	/// <summary>
@@ -11,7 +13,7 @@ namespace FluentHub.Octokit.Models.v4
 		/// <summary>
 		/// A unique identifier for the client performing the mutation.
 		/// </summary>
-		public string ClientMutationId { get; set; }
+		public string? ClientMutationId { get; set; }
 
 		/// <summary>
 		/// The ID of the field to update.
@@ -21,16 +23,16 @@ namespace FluentHub.Octokit.Models.v4
 		/// <summary>
 		/// The name to update.
 		/// </summary>
-		public string Name { get; set; }
+		public string? Name { get; set; }
 
 		/// <summary>
 		/// Options for a field of type SINGLE_SELECT. Empty input is ignored, provided values overwrite existing options, and existing options should be fetched for partial updates.
 		/// </summary>
-		public List<ProjectV2SingleSelectFieldOptionInput> SingleSelectOptions { get; set; }
+		public List<ProjectV2SingleSelectFieldOptionInput>? SingleSelectOptions { get; set; }
 
 		/// <summary>
 		/// Configuration for a field of type ITERATION. Empty input is ignored, provided values overwrite the existing configuration, and existing configuration should be fetched for partial updates.
 		/// </summary>
-		public ProjectV2IterationFieldConfigurationInput IterationConfiguration { get; set; }
+		public ProjectV2IterationFieldConfigurationInput? IterationConfiguration { get; set; }
 	}
 }

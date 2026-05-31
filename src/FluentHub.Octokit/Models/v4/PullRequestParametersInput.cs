@@ -1,6 +1,8 @@
 // Copyright (c) 2022-2024 0x5BFA
 // Licensed under the MIT License. See the LICENSE.
 
+#nullable enable
+
 namespace FluentHub.Octokit.Models.v4
 {
 	/// <summary>
@@ -11,7 +13,7 @@ namespace FluentHub.Octokit.Models.v4
 		/// <summary>
 		/// Array of allowed merge methods. Allowed values include `merge`, `squash`, and `rebase`. At least one option must be enabled.
 		/// </summary>
-		public List<PullRequestAllowedMergeMethods> AllowedMergeMethods { get; set; }
+		public List<PullRequestAllowedMergeMethods>? AllowedMergeMethods { get; set; }
 
 		/// <summary>
 		/// New, reviewable commits pushed will dismiss previous pull request review approvals.
@@ -41,6 +43,6 @@ namespace FluentHub.Octokit.Models.v4
 		/// <summary>
 		/// This argument is in beta and subject to change. A collection of reviewers and associated file patterns. Each reviewer has a list of file patterns which determine the files that reviewer is required to review.
 		/// </summary>
-		public List<RequiredReviewerConfigurationInput> RequiredReviewers { get; set; }
+		public List<RequiredReviewerConfigurationInput>? RequiredReviewers { get; set; }
 	}
 }

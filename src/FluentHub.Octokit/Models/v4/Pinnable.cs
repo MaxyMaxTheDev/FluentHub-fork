@@ -1,6 +1,8 @@
 // Copyright (c) 2022-2024 0x5BFA
 // Licensed under the MIT License. See the LICENSE.
 
+#nullable enable
+
 namespace FluentHub.Octokit.Models.v4
 {
 
@@ -22,12 +24,12 @@ namespace FluentHub.Octokit.Models.v4
 		/// <summary>
 		/// Humanized string of "Identifies the date and time when this entity was pinned."
 		/// <summary>
-		string PinnedAtHumanized { get; set; }
+		string? PinnedAtHumanized { get; set; }
 
 		/// <summary>
 		/// The user who pinned this entity.
 		/// </summary>
-		User PinnedBy { get; set; }
+		User? PinnedBy { get; set; }
 
 		/// <summary>
 		/// Check if the current viewer can pin this entity.
@@ -49,9 +51,9 @@ namespace FluentHub.Octokit.Models.v4
 
 		public DateTimeOffset? PinnedAt { get; set; }
 
-		public string PinnedAtHumanized { get; set; }
+		public string? PinnedAtHumanized { get; set; }
 
-		public User PinnedBy { get; set; }
+		public User? PinnedBy { get; set; }
 
 		public bool ViewerCanPin { get; set; }
 

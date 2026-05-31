@@ -1,6 +1,8 @@
 // Copyright (c) 2022-2024 0x5BFA
 // Licensed under the MIT License. See the LICENSE.
 
+#nullable enable
+
 namespace FluentHub.Octokit.Models.v4
 {
 	/// <summary>
@@ -36,7 +38,7 @@ namespace FluentHub.Octokit.Models.v4
 		/// <summary>
 		/// Humanized string of "The time at which the current rate limit window resets in UTC epoch seconds."
 		/// <summary>
-		public string ResetAtHumanized { get; set; }
+		public string? ResetAtHumanized { get; set; }
 
 		/// <summary>
 		/// The number of points used in the current rate limit window.

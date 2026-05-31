@@ -1,6 +1,8 @@
 // Copyright (c) 2022-2024 0x5BFA
 // Licensed under the MIT License. See the LICENSE.
 
+#nullable enable
+
 namespace FluentHub.Octokit.Models.v4
 {
 
@@ -36,13 +38,13 @@ namespace FluentHub.Octokit.Models.v4
 {
 	public class Actor : IActor
 	{
-		public string AvatarUrl { get; set; }
+		public string AvatarUrl { get; set; } = default!;
 
-		public string Login { get; set; }
+		public string Login { get; set; } = default!;
 
-		public string ResourcePath { get; set; }
+		public string ResourcePath { get; set; } = default!;
 
-		public string Url { get; set; }
+		public string Url { get; set; } = default!;
 	}
 }
 

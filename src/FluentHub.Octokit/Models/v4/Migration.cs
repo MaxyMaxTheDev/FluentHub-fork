@@ -1,6 +1,8 @@
 // Copyright (c) 2022-2024 0x5BFA
 // Licensed under the MIT License. See the LICENSE.
 
+#nullable enable
+
 namespace FluentHub.Octokit.Models.v4
 {
 
@@ -22,17 +24,17 @@ namespace FluentHub.Octokit.Models.v4
 		/// <summary>
 		/// Humanized string of "Identifies the date and time when the object was created."
 		/// <summary>
-		string CreatedAtHumanized { get; set; }
+		string? CreatedAtHumanized { get; set; }
 
 		/// <summary>
 		/// Identifies the primary key from the database.
 		/// </summary>
-		string DatabaseId { get; set; }
+		string? DatabaseId { get; set; }
 
 		/// <summary>
 		/// The reason the migration failed.
 		/// </summary>
-		string FailureReason { get; set; }
+		string? FailureReason { get; set; }
 
 		/// <summary>
 		/// The Node ID of the Migration object
@@ -42,7 +44,7 @@ namespace FluentHub.Octokit.Models.v4
 		/// <summary>
 		/// The URL for the migration log (expires 1 day after migration completes).
 		/// </summary>
-		string MigrationLogUrl { get; set; }
+		string? MigrationLogUrl { get; set; }
 
 		/// <summary>
 		/// The migration source.
@@ -79,21 +81,21 @@ namespace FluentHub.Octokit.Models.v4
 
 		public DateTimeOffset CreatedAt { get; set; }
 
-		public string CreatedAtHumanized { get; set; }
+		public string? CreatedAtHumanized { get; set; }
 
-		public string DatabaseId { get; set; }
+		public string? DatabaseId { get; set; }
 
-		public string FailureReason { get; set; }
+		public string? FailureReason { get; set; }
 
 		public ID Id { get; set; }
 
-		public string MigrationLogUrl { get; set; }
+		public string? MigrationLogUrl { get; set; }
 
-		public MigrationSource MigrationSource { get; set; }
+		public MigrationSource MigrationSource { get; set; } = default!;
 
-		public string RepositoryName { get; set; }
+		public string RepositoryName { get; set; } = default!;
 
-		public string SourceUrl { get; set; }
+		public string SourceUrl { get; set; } = default!;
 
 		public MigrationState State { get; set; }
 

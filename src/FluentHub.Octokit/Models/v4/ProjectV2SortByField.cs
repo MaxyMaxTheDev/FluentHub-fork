@@ -1,6 +1,8 @@
 // Copyright (c) 2022-2024 0x5BFA
 // Licensed under the MIT License. See the LICENSE.
 
+#nullable enable
+
 namespace FluentHub.Octokit.Models.v4
 {
 	/// <summary>
@@ -16,6 +18,6 @@ namespace FluentHub.Octokit.Models.v4
 		/// <summary>
 		/// The field by which items are sorted.
 		/// </summary>
-		public ProjectV2FieldConfiguration Field { get; set; }
+		public ProjectV2FieldConfiguration Field { get; set; } = default!;
 	}
 }

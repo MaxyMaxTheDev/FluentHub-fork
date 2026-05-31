@@ -1,6 +1,8 @@
 // Copyright (c) 2022-2024 0x5BFA
 // Licensed under the MIT License. See the LICENSE.
 
+#nullable enable
+
 namespace FluentHub.Octokit.Models.v4
 {
 
@@ -12,7 +14,7 @@ namespace FluentHub.Octokit.Models.v4
 		/// <summary>
 		/// The actor who authored the comment.
 		/// </summary>
-		IActor Author { get; set; }
+		IActor? Author { get; set; }
 
 		/// <summary>
 		/// Author's association with the subject of the comment.
@@ -42,7 +44,7 @@ namespace FluentHub.Octokit.Models.v4
 		/// <summary>
 		/// Humanized string of "Identifies the date and time when the object was created."
 		/// <summary>
-		string CreatedAtHumanized { get; set; }
+		string? CreatedAtHumanized { get; set; }
 
 		/// <summary>
 		/// Check if this comment was created via an email reply.
@@ -52,7 +54,7 @@ namespace FluentHub.Octokit.Models.v4
 		/// <summary>
 		/// The actor who edited the comment.
 		/// </summary>
-		IActor Editor { get; set; }
+		IActor? Editor { get; set; }
 
 		/// <summary>
 		/// The Node ID of the Comment object
@@ -72,7 +74,7 @@ namespace FluentHub.Octokit.Models.v4
 		/// <summary>
 		/// Humanized string of "The moment the editor made the last edit"
 		/// <summary>
-		string LastEditedAtHumanized { get; set; }
+		string? LastEditedAtHumanized { get; set; }
 
 		/// <summary>
 		/// Identifies when the comment was published at.
@@ -82,7 +84,7 @@ namespace FluentHub.Octokit.Models.v4
 		/// <summary>
 		/// Humanized string of "Identifies when the comment was published at."
 		/// <summary>
-		string PublishedAtHumanized { get; set; }
+		string? PublishedAtHumanized { get; set; }
 
 		/// <summary>
 		/// Identifies the date and time when the object was last updated.
@@ -92,7 +94,7 @@ namespace FluentHub.Octokit.Models.v4
 		/// <summary>
 		/// Humanized string of "Identifies the date and time when the object was last updated."
 		/// <summary>
-		string UpdatedAtHumanized { get; set; }
+		string? UpdatedAtHumanized { get; set; }
 
 		/// <summary>
 		/// A list of edits to this content.
@@ -101,7 +103,7 @@ namespace FluentHub.Octokit.Models.v4
 		/// <param name="after">Returns the elements in the list that come after the specified cursor.</param>
 		/// <param name="last">Returns the last _n_ elements from the list.</param>
 		/// <param name="before">Returns the elements in the list that come before the specified cursor.</param>
-		UserContentEditConnection UserContentEdits { get; set; }
+		UserContentEditConnection? UserContentEdits { get; set; }
 
 		/// <summary>
 		/// Did the viewer author this comment.
@@ -114,23 +116,23 @@ namespace FluentHub.Octokit.Models.v4
 {
 	public class Comment : IComment
 	{
-		public IActor Author { get; set; }
+		public IActor? Author { get; set; }
 
 		public CommentAuthorAssociation AuthorAssociation { get; set; }
 
-		public string Body { get; set; }
+		public string Body { get; set; } = default!;
 
-		public string BodyHTML { get; set; }
+		public string BodyHTML { get; set; } = default!;
 
-		public string BodyText { get; set; }
+		public string BodyText { get; set; } = default!;
 
 		public DateTimeOffset CreatedAt { get; set; }
 
-		public string CreatedAtHumanized { get; set; }
+		public string? CreatedAtHumanized { get; set; }
 
 		public bool CreatedViaEmail { get; set; }
 
-		public IActor Editor { get; set; }
+		public IActor? Editor { get; set; }
 
 		public ID Id { get; set; }
 
@@ -138,17 +140,17 @@ namespace FluentHub.Octokit.Models.v4
 
 		public DateTimeOffset? LastEditedAt { get; set; }
 
-		public string LastEditedAtHumanized { get; set; }
+		public string? LastEditedAtHumanized { get; set; }
 
 		public DateTimeOffset? PublishedAt { get; set; }
 
-		public string PublishedAtHumanized { get; set; }
+		public string? PublishedAtHumanized { get; set; }
 
 		public DateTimeOffset UpdatedAt { get; set; }
 
-		public string UpdatedAtHumanized { get; set; }
+		public string? UpdatedAtHumanized { get; set; }
 
-		public UserContentEditConnection UserContentEdits { get; set; }
+		public UserContentEditConnection? UserContentEdits { get; set; }
 
 		public bool ViewerDidAuthor { get; set; }
 	}

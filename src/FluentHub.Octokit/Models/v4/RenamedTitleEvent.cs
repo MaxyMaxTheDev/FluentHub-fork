@@ -1,6 +1,8 @@
 // Copyright (c) 2022-2024 0x5BFA
 // Licensed under the MIT License. See the LICENSE.
 
+#nullable enable
+
 namespace FluentHub.Octokit.Models.v4
 {
 	/// <summary>
@@ -11,7 +13,7 @@ namespace FluentHub.Octokit.Models.v4
 		/// <summary>
 		/// Identifies the actor who performed the event.
 		/// </summary>
-		public IActor Actor { get; set; }
+		public IActor? Actor { get; set; }
 
 		/// <summary>
 		/// Identifies the date and time when the object was created.
@@ -21,12 +23,12 @@ namespace FluentHub.Octokit.Models.v4
 		/// <summary>
 		/// Humanized string of "Identifies the date and time when the object was created."
 		/// <summary>
-		public string CreatedAtHumanized { get; set; }
+		public string? CreatedAtHumanized { get; set; }
 
 		/// <summary>
 		/// Identifies the current title of the issue or pull request.
 		/// </summary>
-		public string CurrentTitle { get; set; }
+		public string CurrentTitle { get; set; } = default!;
 
 		/// <summary>
 		/// The Node ID of the RenamedTitleEvent object
@@ -36,11 +38,11 @@ namespace FluentHub.Octokit.Models.v4
 		/// <summary>
 		/// Identifies the previous title of the issue or pull request.
 		/// </summary>
-		public string PreviousTitle { get; set; }
+		public string PreviousTitle { get; set; } = default!;
 
 		/// <summary>
 		/// Subject that was renamed.
 		/// </summary>
-		public RenamedTitleSubject Subject { get; set; }
+		public RenamedTitleSubject Subject { get; set; } = default!;
 	}
 }

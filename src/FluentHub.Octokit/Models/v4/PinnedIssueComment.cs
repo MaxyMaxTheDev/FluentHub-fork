@@ -1,6 +1,8 @@
 // Copyright (c) 2022-2024 0x5BFA
 // Licensed under the MIT License. See the LICENSE.
 
+#nullable enable
+
 namespace FluentHub.Octokit.Models.v4
 {
 	/// <summary>
@@ -16,7 +18,7 @@ namespace FluentHub.Octokit.Models.v4
 		/// <summary>
 		/// Identifies the primary key from the database as a BigInt.
 		/// </summary>
-		public string FullDatabaseId { get; set; }
+		public string? FullDatabaseId { get; set; }
 
 		/// <summary>
 		/// The Node ID of the PinnedIssueComment object
@@ -26,12 +28,12 @@ namespace FluentHub.Octokit.Models.v4
 		/// <summary>
 		/// The issue that this comment belongs to.
 		/// </summary>
-		public Issue Issue { get; set; }
+		public Issue Issue { get; set; } = default!;
 
 		/// <summary>
 		/// The comment that was pinned.
 		/// </summary>
-		public IssueComment IssueComment { get; set; }
+		public IssueComment IssueComment { get; set; } = default!;
 
 		/// <summary>
 		/// Identifies when the comment was pinned.
@@ -41,11 +43,11 @@ namespace FluentHub.Octokit.Models.v4
 		/// <summary>
 		/// Humanized string of "Identifies when the comment was pinned."
 		/// <summary>
-		public string PinnedAtHumanized { get; set; }
+		public string? PinnedAtHumanized { get; set; }
 
 		/// <summary>
 		/// The actor that pinned this comment.
 		/// </summary>
-		public IActor PinnedBy { get; set; }
+		public IActor PinnedBy { get; set; } = default!;
 	}
 }

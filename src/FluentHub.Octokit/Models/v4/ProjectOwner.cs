@@ -1,6 +1,8 @@
 // Copyright (c) 2022-2024 0x5BFA
 // Licensed under the MIT License. See the LICENSE.
 
+#nullable enable
+
 namespace FluentHub.Octokit.Models.v4
 {
 
@@ -18,7 +20,7 @@ namespace FluentHub.Octokit.Models.v4
 		/// Find project by number.
 		/// </summary>
 		/// <param name="number">The project number to find.</param>
-		Project Project { get; set; }
+		Project? Project { get; set; }
 
 		/// <summary>
 		/// A list of projects under the owner.
@@ -56,15 +58,15 @@ namespace FluentHub.Octokit.Models.v4
 		[Obsolete(@"Projects (classic) is being deprecated in favor of the new Projects experience, see: https://github.blog/changelog/2024-05-23-sunset-notice-projects-classic/. Removal on 2025-04-01 UTC.")]
 		public ID Id { get; set; }
 
-		public Project Project { get; set; }
+		public Project? Project { get; set; }
 
-		public ProjectConnection Projects { get; set; }
-
-		[Obsolete(@"Projects (classic) is being deprecated in favor of the new Projects experience, see: https://github.blog/changelog/2024-05-23-sunset-notice-projects-classic/. Removal on 2025-04-01 UTC.")]
-		public string ProjectsResourcePath { get; set; }
+		public ProjectConnection Projects { get; set; } = default!;
 
 		[Obsolete(@"Projects (classic) is being deprecated in favor of the new Projects experience, see: https://github.blog/changelog/2024-05-23-sunset-notice-projects-classic/. Removal on 2025-04-01 UTC.")]
-		public string ProjectsUrl { get; set; }
+		public string ProjectsResourcePath { get; set; } = default!;
+
+		[Obsolete(@"Projects (classic) is being deprecated in favor of the new Projects experience, see: https://github.blog/changelog/2024-05-23-sunset-notice-projects-classic/. Removal on 2025-04-01 UTC.")]
+		public string ProjectsUrl { get; set; } = default!;
 
 		[Obsolete(@"Projects (classic) is being deprecated in favor of the new Projects experience, see: https://github.blog/changelog/2024-05-23-sunset-notice-projects-classic/. Removal on 2025-04-01 UTC.")]
 		public bool ViewerCanCreateProjects { get; set; }

@@ -1,6 +1,8 @@
 // Copyright (c) 2022-2024 0x5BFA
 // Licensed under the MIT License. See the LICENSE.
 
+#nullable enable
+
 namespace FluentHub.Octokit.Models.v4
 {
 
@@ -32,7 +34,7 @@ namespace FluentHub.Octokit.Models.v4
 		/// <summary>
 		/// GitHub user corresponding to the email signing this commit.
 		/// </summary>
-		User Signer { get; set; }
+		User? Signer { get; set; }
 
 		/// <summary>
 		/// The state of this signature. `VALID` if signature is valid and verified by GitHub, otherwise represents reason why signature is considered invalid.
@@ -47,7 +49,7 @@ namespace FluentHub.Octokit.Models.v4
 		/// <summary>
 		/// Humanized string of "The date the signature was verified, if valid"
 		/// <summary>
-		string VerifiedAtHumanized { get; set; }
+		string? VerifiedAtHumanized { get; set; }
 
 		/// <summary>
 		/// True if the signature was made with GitHub's signing key.
@@ -60,21 +62,21 @@ namespace FluentHub.Octokit.Models.v4
 {
 	public class GitSignature : IGitSignature
 	{
-		public string Email { get; set; }
+		public string Email { get; set; } = default!;
 
 		public bool IsValid { get; set; }
 
-		public string Payload { get; set; }
+		public string Payload { get; set; } = default!;
 
-		public string Signature { get; set; }
+		public string Signature { get; set; } = default!;
 
-		public User Signer { get; set; }
+		public User? Signer { get; set; }
 
 		public GitSignatureState State { get; set; }
 
 		public DateTimeOffset? VerifiedAt { get; set; }
 
-		public string VerifiedAtHumanized { get; set; }
+		public string? VerifiedAtHumanized { get; set; }
 
 		public bool WasSignedByGitHub { get; set; }
 	}

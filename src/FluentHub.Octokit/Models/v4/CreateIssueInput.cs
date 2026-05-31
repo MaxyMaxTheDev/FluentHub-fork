@@ -1,6 +1,8 @@
 // Copyright (c) 2022-2024 0x5BFA
 // Licensed under the MIT License. See the LICENSE.
 
+#nullable enable
+
 namespace FluentHub.Octokit.Models.v4
 {
 	/// <summary>
@@ -11,7 +13,7 @@ namespace FluentHub.Octokit.Models.v4
 		/// <summary>
 		/// A unique identifier for the client performing the mutation.
 		/// </summary>
-		public string ClientMutationId { get; set; }
+		public string? ClientMutationId { get; set; }
 
 		/// <summary>
 		/// The Node ID of the repository.
@@ -21,17 +23,17 @@ namespace FluentHub.Octokit.Models.v4
 		/// <summary>
 		/// The title for the issue.
 		/// </summary>
-		public string Title { get; set; }
+		public string Title { get; set; } = default!;
 
 		/// <summary>
 		/// The body for the issue description.
 		/// </summary>
-		public string Body { get; set; }
+		public string? Body { get; set; }
 
 		/// <summary>
 		/// The Node ID of assignees for this issue.
 		/// </summary>
-		public List<ID> AssigneeIds { get; set; }
+		public List<ID>? AssigneeIds { get; set; }
 
 		/// <summary>
 		/// The Node ID of the milestone for this issue.
@@ -41,22 +43,22 @@ namespace FluentHub.Octokit.Models.v4
 		/// <summary>
 		/// An array of Node IDs of labels for this issue.
 		/// </summary>
-		public List<ID> LabelIds { get; set; }
+		public List<ID>? LabelIds { get; set; }
 
 		/// <summary>
 		/// An array of Node IDs for projects associated with this issue.
 		/// </summary>
-		public List<ID> ProjectIds { get; set; }
+		public List<ID>? ProjectIds { get; set; }
 
 		/// <summary>
 		/// An array of Node IDs for Projects V2 associated with this issue.
 		/// </summary>
-		public List<ID> ProjectV2Ids { get; set; }
+		public List<ID>? ProjectV2Ids { get; set; }
 
 		/// <summary>
 		/// The name of an issue template in the repository, assigns labels and assignees from the template to the issue
 		/// </summary>
-		public string IssueTemplate { get; set; }
+		public string? IssueTemplate { get; set; }
 
 		/// <summary>
 		/// The Node ID of the issue type for this issue
@@ -71,11 +73,11 @@ namespace FluentHub.Octokit.Models.v4
 		/// <summary>
 		/// An array of issue fields to set on the issue during creation
 		/// </summary>
-		public List<IssueFieldCreateOrUpdateInput> IssueFields { get; set; }
+		public List<IssueFieldCreateOrUpdateInput>? IssueFields { get; set; }
 
 		/// <summary>
 		/// Configuration for assigning Copilot to this issue.
 		/// </summary>
-		public AgentAssignmentInput AgentAssignment { get; set; }
+		public AgentAssignmentInput? AgentAssignment { get; set; }
 	}
 }

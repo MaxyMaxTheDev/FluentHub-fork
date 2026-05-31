@@ -1,6 +1,8 @@
 // Copyright (c) 2022-2024 0x5BFA
 // Licensed under the MIT License. See the LICENSE.
 
+#nullable enable
+
 namespace FluentHub.Octokit.Models.v4
 {
 	/// <summary>
@@ -11,7 +13,7 @@ namespace FluentHub.Octokit.Models.v4
 		/// <summary>
 		/// The GUID for this identity
 		/// </summary>
-		public string Guid { get; set; }
+		public string Guid { get; set; } = default!;
 
 		/// <summary>
 		/// The Node ID of the ExternalIdentity object
@@ -21,21 +23,21 @@ namespace FluentHub.Octokit.Models.v4
 		/// <summary>
 		/// Organization invitation for this SCIM-provisioned external identity
 		/// </summary>
-		public OrganizationInvitation OrganizationInvitation { get; set; }
+		public OrganizationInvitation? OrganizationInvitation { get; set; }
 
 		/// <summary>
 		/// SAML Identity attributes
 		/// </summary>
-		public ExternalIdentitySamlAttributes SamlIdentity { get; set; }
+		public ExternalIdentitySamlAttributes? SamlIdentity { get; set; }
 
 		/// <summary>
 		/// SCIM Identity attributes
 		/// </summary>
-		public ExternalIdentityScimAttributes ScimIdentity { get; set; }
+		public ExternalIdentityScimAttributes? ScimIdentity { get; set; }
 
 		/// <summary>
 		/// User linked to this external identity. Will be NULL if this identity has not been claimed by an organization member.
 		/// </summary>
-		public User User { get; set; }
+		public User? User { get; set; }
 	}
 }

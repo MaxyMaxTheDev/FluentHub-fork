@@ -1,6 +1,8 @@
 // Copyright (c) 2022-2024 0x5BFA
 // Licensed under the MIT License. See the LICENSE.
 
+#nullable enable
+
 namespace FluentHub.Octokit.Models.v4
 {
 	/// <summary>
@@ -11,7 +13,7 @@ namespace FluentHub.Octokit.Models.v4
 		/// <summary>
 		/// A unique identifier for the client performing the mutation.
 		/// </summary>
-		public string ClientMutationId { get; set; }
+		public string? ClientMutationId { get; set; }
 
 		/// <summary>
 		/// The ID of the organization where the issue field will be created.
@@ -21,12 +23,12 @@ namespace FluentHub.Octokit.Models.v4
 		/// <summary>
 		/// The name of the issue field.
 		/// </summary>
-		public string Name { get; set; }
+		public string Name { get; set; } = default!;
 
 		/// <summary>
 		/// A description of the issue field.
 		/// </summary>
-		public string Description { get; set; }
+		public string? Description { get; set; }
 
 		/// <summary>
 		/// The data type of the issue field.
@@ -36,7 +38,7 @@ namespace FluentHub.Octokit.Models.v4
 		/// <summary>
 		/// The options for the issue field if applicable.
 		/// </summary>
-		public List<IssueFieldSingleSelectOptionInput> Options { get; set; }
+		public List<IssueFieldSingleSelectOptionInput>? Options { get; set; }
 
 		/// <summary>
 		/// The visibility of the issue field.

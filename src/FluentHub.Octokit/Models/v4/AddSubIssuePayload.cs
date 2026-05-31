@@ -1,6 +1,8 @@
 // Copyright (c) 2022-2024 0x5BFA
 // Licensed under the MIT License. See the LICENSE.
 
+#nullable enable
+
 namespace FluentHub.Octokit.Models.v4
 {
 	/// <summary>
@@ -11,16 +13,16 @@ namespace FluentHub.Octokit.Models.v4
 		/// <summary>
 		/// A unique identifier for the client performing the mutation.
 		/// </summary>
-		public string ClientMutationId { get; set; }
+		public string? ClientMutationId { get; set; }
 
 		/// <summary>
 		/// The parent issue that the sub-issue was added to.
 		/// </summary>
-		public Issue Issue { get; set; }
+		public Issue? Issue { get; set; }
 
 		/// <summary>
 		/// The sub-issue of the parent.
 		/// </summary>
-		public Issue SubIssue { get; set; }
+		public Issue? SubIssue { get; set; }
 	}
 }

@@ -1,6 +1,8 @@
 // Copyright (c) 2022-2024 0x5BFA
 // Licensed under the MIT License. See the LICENSE.
 
+#nullable enable
+
 namespace FluentHub.Octokit.Models.v4
 {
 	/// <summary>
@@ -16,7 +18,7 @@ namespace FluentHub.Octokit.Models.v4
 		/// <summary>
 		/// Humanized string of "Identifies the date and time when the object was created."
 		/// <summary>
-		public string CreatedAtHumanized { get; set; }
+		public string? CreatedAtHumanized { get; set; }
 
 		/// <summary>
 		/// The field's type.
@@ -36,18 +38,18 @@ namespace FluentHub.Octokit.Models.v4
 		/// <summary>
 		/// The project field's name.
 		/// </summary>
-		public string Name { get; set; }
+		public string Name { get; set; } = default!;
 
 		/// <summary>
 		/// Options for the single select field
 		/// </summary>
 		/// <param name="names">Filter returned options to only those matching these names, case insensitive.</param>
-		public List<ProjectV2SingleSelectFieldOption> Options { get; set; }
+		public List<ProjectV2SingleSelectFieldOption> Options { get; set; } = default!;
 
 		/// <summary>
 		/// The project that contains this field.
 		/// </summary>
-		public ProjectV2 Project { get; set; }
+		public ProjectV2 Project { get; set; } = default!;
 
 		/// <summary>
 		/// Identifies the date and time when the object was last updated.
@@ -57,6 +59,6 @@ namespace FluentHub.Octokit.Models.v4
 		/// <summary>
 		/// Humanized string of "Identifies the date and time when the object was last updated."
 		/// <summary>
-		public string UpdatedAtHumanized { get; set; }
+		public string? UpdatedAtHumanized { get; set; }
 	}
 }

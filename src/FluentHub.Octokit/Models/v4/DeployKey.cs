@@ -1,6 +1,8 @@
 // Copyright (c) 2022-2024 0x5BFA
 // Licensed under the MIT License. See the LICENSE.
 
+#nullable enable
+
 namespace FluentHub.Octokit.Models.v4
 {
 	/// <summary>
@@ -16,7 +18,7 @@ namespace FluentHub.Octokit.Models.v4
 		/// <summary>
 		/// Humanized string of "Identifies the date and time when the object was created."
 		/// <summary>
-		public string CreatedAtHumanized { get; set; }
+		public string? CreatedAtHumanized { get; set; }
 
 		/// <summary>
 		/// Whether or not the deploy key is enabled by policy at the Enterprise or Organization level.
@@ -31,7 +33,7 @@ namespace FluentHub.Octokit.Models.v4
 		/// <summary>
 		/// The deploy key.
 		/// </summary>
-		public string Key { get; set; }
+		public string Key { get; set; } = default!;
 
 		/// <summary>
 		/// Whether or not the deploy key is read only.
@@ -41,7 +43,7 @@ namespace FluentHub.Octokit.Models.v4
 		/// <summary>
 		/// The deploy key title.
 		/// </summary>
-		public string Title { get; set; }
+		public string Title { get; set; } = default!;
 
 		/// <summary>
 		/// Whether or not the deploy key has been verified.

@@ -1,6 +1,8 @@
 // Copyright (c) 2022-2024 0x5BFA
 // Licensed under the MIT License. See the LICENSE.
 
+#nullable enable
+
 namespace FluentHub.Octokit.Models.v4
 {
 	/// <summary>
@@ -11,12 +13,12 @@ namespace FluentHub.Octokit.Models.v4
 		/// <summary>
 		/// The path to the workflow file
 		/// </summary>
-		public string Path { get; set; }
+		public string Path { get; set; } = default!;
 
 		/// <summary>
 		/// The ref (branch or tag) of the workflow file to use
 		/// </summary>
-		public string Ref { get; set; }
+		public string? Ref { get; set; }
 
 		/// <summary>
 		/// The ID of the repository where the workflow is defined
@@ -26,6 +28,6 @@ namespace FluentHub.Octokit.Models.v4
 		/// <summary>
 		/// The commit SHA of the workflow file to use
 		/// </summary>
-		public string Sha { get; set; }
+		public string? Sha { get; set; }
 	}
 }

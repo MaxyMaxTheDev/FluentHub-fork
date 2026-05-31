@@ -1,6 +1,8 @@
 // Copyright (c) 2022-2024 0x5BFA
 // Licensed under the MIT License. See the LICENSE.
 
+#nullable enable
+
 namespace FluentHub.Octokit.Models.v4
 {
 	/// <summary>
@@ -16,7 +18,7 @@ namespace FluentHub.Octokit.Models.v4
 		/// <summary>
 		/// The issue type's description.
 		/// </summary>
-		public string Description { get; set; }
+		public string? Description { get; set; }
 
 		/// <summary>
 		/// The Node ID of the IssueType object
@@ -46,16 +48,16 @@ namespace FluentHub.Octokit.Models.v4
 		/// <param name="labels">A list of label names to filter the pull requests by.</param>
 		/// <param name="orderBy">Ordering options for issues returned from the connection.</param>
 		/// <param name="states">A list of states to filter the issues by.</param>
-		public IssueConnection Issues { get; set; }
+		public IssueConnection Issues { get; set; } = default!;
 
 		/// <summary>
 		/// The issue type's name.
 		/// </summary>
-		public string Name { get; set; }
+		public string Name { get; set; } = default!;
 
 		/// <summary>
 		/// An ordered list of issue fields pinned to this type.
 		/// </summary>
-		public List<IssueFields> PinnedFields { get; set; }
+		public List<IssueFields>? PinnedFields { get; set; }
 	}
 }

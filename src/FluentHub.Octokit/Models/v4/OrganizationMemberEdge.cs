@@ -1,6 +1,8 @@
 // Copyright (c) 2022-2024 0x5BFA
 // Licensed under the MIT License. See the LICENSE.
 
+#nullable enable
+
 namespace FluentHub.Octokit.Models.v4
 {
 	/// <summary>
@@ -11,7 +13,7 @@ namespace FluentHub.Octokit.Models.v4
 		/// <summary>
 		/// A cursor for use in pagination.
 		/// </summary>
-		public string Cursor { get; set; }
+		public string Cursor { get; set; } = default!;
 
 		/// <summary>
 		/// Whether the organization member has two factor enabled or not. Returns null if information is not available to viewer.
@@ -21,7 +23,7 @@ namespace FluentHub.Octokit.Models.v4
 		/// <summary>
 		/// The item at the end of the edge.
 		/// </summary>
-		public User Node { get; set; }
+		public User? Node { get; set; }
 
 		/// <summary>
 		/// The role this user has in the organization.

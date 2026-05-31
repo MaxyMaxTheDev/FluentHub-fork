@@ -1,6 +1,8 @@
 // Copyright (c) 2022-2024 0x5BFA
 // Licensed under the MIT License. See the LICENSE.
 
+#nullable enable
+
 namespace FluentHub.Octokit.Models.v4
 {
 	/// <summary>
@@ -11,17 +13,17 @@ namespace FluentHub.Octokit.Models.v4
 		/// <summary>
 		/// The allowed values for the custom property. Required if `value_type` is `single_select` or `multi_select`.
 		/// </summary>
-		public List<string> AllowedValues { get; set; }
+		public List<string>? AllowedValues { get; set; }
 
 		/// <summary>
 		/// The default value of the custom property, if the property is `required`.
 		/// </summary>
-		public string DefaultValue { get; set; }
+		public string? DefaultValue { get; set; }
 
 		/// <summary>
 		/// The description of the custom property.
 		/// </summary>
-		public string Description { get; set; }
+		public string? Description { get; set; }
 
 		/// <summary>
 		/// The Node ID of the RepositoryCustomProperty object
@@ -31,12 +33,12 @@ namespace FluentHub.Octokit.Models.v4
 		/// <summary>
 		/// The name of the custom property.
 		/// </summary>
-		public string PropertyName { get; set; }
+		public string PropertyName { get; set; } = default!;
 
 		/// <summary>
 		/// The regex pattern that the value of the custom property must match, if the `value_type` is `string`.
 		/// </summary>
-		public string Regex { get; set; }
+		public string? Regex { get; set; }
 
 		/// <summary>
 		/// Whether this repository custom property requires explicit values.
@@ -51,7 +53,7 @@ namespace FluentHub.Octokit.Models.v4
 		/// <summary>
 		/// The source type of the custom property.
 		/// </summary>
-		public CustomPropertySource Source { get; set; }
+		public CustomPropertySource Source { get; set; } = default!;
 
 		/// <summary>
 		/// The value type of the custom property.

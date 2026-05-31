@@ -1,6 +1,8 @@
 // Copyright (c) 2022-2024 0x5BFA
 // Licensed under the MIT License. See the LICENSE.
 
+#nullable enable
+
 namespace FluentHub.Octokit.Models.v4
 {
 
@@ -18,7 +20,7 @@ namespace FluentHub.Octokit.Models.v4
 		/// Find a project by number.
 		/// </summary>
 		/// <param name="number">The project number.</param>
-		ProjectV2 ProjectV2 { get; set; }
+		ProjectV2? ProjectV2 { get; set; }
 
 		/// <summary>
 		/// A list of projects under the owner.
@@ -40,9 +42,9 @@ namespace FluentHub.Octokit.Models.v4
 	{
 		public ID Id { get; set; }
 
-		public ProjectV2 ProjectV2 { get; set; }
+		public ProjectV2? ProjectV2 { get; set; }
 
-		public ProjectV2Connection ProjectsV2 { get; set; }
+		public ProjectV2Connection ProjectsV2 { get; set; } = default!;
 	}
 }
 

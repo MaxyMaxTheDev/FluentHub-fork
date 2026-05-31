@@ -1,6 +1,8 @@
 // Copyright (c) 2022-2024 0x5BFA
 // Licensed under the MIT License. See the LICENSE.
 
+#nullable enable
+
 namespace FluentHub.Octokit.Models.v4
 {
 	/// <summary>
@@ -11,21 +13,21 @@ namespace FluentHub.Octokit.Models.v4
 		/// <summary>
 		/// A unique identifier for the client performing the mutation.
 		/// </summary>
-		public string ClientMutationId { get; set; }
+		public string? ClientMutationId { get; set; }
 
 		/// <summary>
 		/// The edge from the subject's comment connection.
 		/// </summary>
-		public IssueCommentEdge CommentEdge { get; set; }
+		public IssueCommentEdge? CommentEdge { get; set; }
 
 		/// <summary>
 		/// The subject
 		/// </summary>
-		public INode Subject { get; set; }
+		public INode? Subject { get; set; }
 
 		/// <summary>
 		/// The edge from the subject's timeline connection.
 		/// </summary>
-		public IssueTimelineItemEdge TimelineEdge { get; set; }
+		public IssueTimelineItemEdge? TimelineEdge { get; set; }
 	}
 }

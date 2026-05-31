@@ -1,6 +1,8 @@
 // Copyright (c) 2022-2024 0x5BFA
 // Licensed under the MIT License. See the LICENSE.
 
+#nullable enable
+
 namespace FluentHub.Octokit.Models.v4
 {
 	/// <summary>
@@ -11,12 +13,12 @@ namespace FluentHub.Octokit.Models.v4
 		/// <summary>
 		/// The path of the file to add an annotation to.
 		/// </summary>
-		public string Path { get; set; }
+		public string Path { get; set; } = default!;
 
 		/// <summary>
 		/// The location of the annotation
 		/// </summary>
-		public CheckAnnotationRange Location { get; set; }
+		public CheckAnnotationRange Location { get; set; } = default!;
 
 		/// <summary>
 		/// Represents an annotation's information level
@@ -26,16 +28,16 @@ namespace FluentHub.Octokit.Models.v4
 		/// <summary>
 		/// A short description of the feedback for these lines of code.
 		/// </summary>
-		public string Message { get; set; }
+		public string Message { get; set; } = default!;
 
 		/// <summary>
 		/// The title that represents the annotation.
 		/// </summary>
-		public string Title { get; set; }
+		public string? Title { get; set; }
 
 		/// <summary>
 		/// Details about this annotation.
 		/// </summary>
-		public string RawDetails { get; set; }
+		public string? RawDetails { get; set; }
 	}
 }

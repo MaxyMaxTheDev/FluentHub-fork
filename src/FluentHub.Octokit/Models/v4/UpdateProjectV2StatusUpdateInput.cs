@@ -1,6 +1,8 @@
 // Copyright (c) 2022-2024 0x5BFA
 // Licensed under the MIT License. See the LICENSE.
 
+#nullable enable
+
 namespace FluentHub.Octokit.Models.v4
 {
 	/// <summary>
@@ -11,7 +13,7 @@ namespace FluentHub.Octokit.Models.v4
 		/// <summary>
 		/// A unique identifier for the client performing the mutation.
 		/// </summary>
-		public string ClientMutationId { get; set; }
+		public string? ClientMutationId { get; set; }
 
 		/// <summary>
 		/// The ID of the status update to be updated.
@@ -21,12 +23,12 @@ namespace FluentHub.Octokit.Models.v4
 		/// <summary>
 		/// The start date of the status update.
 		/// </summary>
-		public string StartDate { get; set; }
+		public string? StartDate { get; set; }
 
 		/// <summary>
 		/// The target date of the status update.
 		/// </summary>
-		public string TargetDate { get; set; }
+		public string? TargetDate { get; set; }
 
 		/// <summary>
 		/// The status of the status update.
@@ -36,6 +38,6 @@ namespace FluentHub.Octokit.Models.v4
 		/// <summary>
 		/// The body of the status update.
 		/// </summary>
-		public string Body { get; set; }
+		public string? Body { get; set; }
 	}
 }

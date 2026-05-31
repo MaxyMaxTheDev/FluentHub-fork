@@ -1,6 +1,8 @@
 // Copyright (c) 2022-2024 0x5BFA
 // Licensed under the MIT License. See the LICENSE.
 
+#nullable enable
+
 namespace FluentHub.Octokit.Models.v4
 {
 	/// <summary>
@@ -11,16 +13,16 @@ namespace FluentHub.Octokit.Models.v4
 		/// <summary>
 		/// The alternative text for the image.
 		/// </summary>
-		public string Alt { get; set; }
+		public string Alt { get; set; } = default!;
 
 		/// <summary>
 		/// The full URL of the image.
 		/// </summary>
-		public string ImageUrl { get; set; }
+		public string ImageUrl { get; set; } = default!;
 
 		/// <summary>
 		/// A short image description.
 		/// </summary>
-		public string Caption { get; set; }
+		public string? Caption { get; set; }
 	}
 }

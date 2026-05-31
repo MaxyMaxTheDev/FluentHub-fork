@@ -1,6 +1,8 @@
 // Copyright (c) 2022-2024 0x5BFA
 // Licensed under the MIT License. See the LICENSE.
 
+#nullable enable
+
 namespace FluentHub.Octokit.Models.v4
 {
 
@@ -24,7 +26,7 @@ namespace FluentHub.Octokit.Models.v4
 		/// <summary>
 		/// Humanized string of "When this contribution was made."
 		/// <summary>
-		string OccurredAtHumanized { get; set; }
+		string? OccurredAtHumanized { get; set; }
 
 		/// <summary>
 		/// The HTTP path for this contribution.
@@ -51,13 +53,13 @@ namespace FluentHub.Octokit.Models.v4
 
 		public DateTimeOffset OccurredAt { get; set; }
 
-		public string OccurredAtHumanized { get; set; }
+		public string? OccurredAtHumanized { get; set; }
 
-		public string ResourcePath { get; set; }
+		public string ResourcePath { get; set; } = default!;
 
-		public string Url { get; set; }
+		public string Url { get; set; } = default!;
 
-		public User User { get; set; }
+		public User User { get; set; } = default!;
 	}
 }
 

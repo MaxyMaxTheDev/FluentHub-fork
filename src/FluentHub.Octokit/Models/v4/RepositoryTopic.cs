@@ -1,6 +1,8 @@
 // Copyright (c) 2022-2024 0x5BFA
 // Licensed under the MIT License. See the LICENSE.
 
+#nullable enable
+
 namespace FluentHub.Octokit.Models.v4
 {
 	/// <summary>
@@ -16,16 +18,16 @@ namespace FluentHub.Octokit.Models.v4
 		/// <summary>
 		/// The HTTP path for this repository-topic.
 		/// </summary>
-		public string ResourcePath { get; set; }
+		public string ResourcePath { get; set; } = default!;
 
 		/// <summary>
 		/// The topic.
 		/// </summary>
-		public Topic Topic { get; set; }
+		public Topic Topic { get; set; } = default!;
 
 		/// <summary>
 		/// The HTTP URL for this repository-topic.
 		/// </summary>
-		public string Url { get; set; }
+		public string Url { get; set; } = default!;
 	}
 }

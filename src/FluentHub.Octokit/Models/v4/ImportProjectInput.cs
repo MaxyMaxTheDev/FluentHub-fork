@@ -1,6 +1,8 @@
 // Copyright (c) 2022-2024 0x5BFA
 // Licensed under the MIT License. See the LICENSE.
 
+#nullable enable
+
 namespace FluentHub.Octokit.Models.v4
 {
 	/// <summary>
@@ -11,22 +13,22 @@ namespace FluentHub.Octokit.Models.v4
 		/// <summary>
 		/// A unique identifier for the client performing the mutation.
 		/// </summary>
-		public string ClientMutationId { get; set; }
+		public string? ClientMutationId { get; set; }
 
 		/// <summary>
 		/// The name of the Organization or User to create the Project under.
 		/// </summary>
-		public string OwnerName { get; set; }
+		public string OwnerName { get; set; } = default!;
 
 		/// <summary>
 		/// The name of Project.
 		/// </summary>
-		public string Name { get; set; }
+		public string Name { get; set; } = default!;
 
 		/// <summary>
 		/// The description of Project.
 		/// </summary>
-		public string Body { get; set; }
+		public string? Body { get; set; }
 
 		/// <summary>
 		/// Whether the Project is public or not.
@@ -36,6 +38,6 @@ namespace FluentHub.Octokit.Models.v4
 		/// <summary>
 		/// A list of columns containing issues and pull requests.
 		/// </summary>
-		public List<ProjectColumnImport> ColumnImports { get; set; }
+		public List<ProjectColumnImport> ColumnImports { get; set; } = default!;
 	}
 }

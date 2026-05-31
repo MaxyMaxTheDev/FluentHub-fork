@@ -1,6 +1,8 @@
 // Copyright (c) 2022-2024 0x5BFA
 // Licensed under the MIT License. See the LICENSE.
 
+#nullable enable
+
 namespace FluentHub.Octokit.Models.v4
 {
 	/// <summary>
@@ -12,13 +14,13 @@ namespace FluentHub.Octokit.Models.v4
 		/// The project's description body.
 		/// </summary>
 		[Obsolete(@"Projects (classic) is being deprecated in favor of the new Projects experience, see: https://github.blog/changelog/2024-05-23-sunset-notice-projects-classic/. Removal on 2025-04-01 UTC.")]
-		public string Body { get; set; }
+		public string? Body { get; set; }
 
 		/// <summary>
 		/// The projects description body rendered to HTML.
 		/// </summary>
 		[Obsolete(@"Projects (classic) is being deprecated in favor of the new Projects experience, see: https://github.blog/changelog/2024-05-23-sunset-notice-projects-classic/. Removal on 2025-04-01 UTC.")]
-		public string BodyHTML { get; set; }
+		public string BodyHTML { get; set; } = default!;
 
 		/// <summary>
 		/// Indicates if the object is closed (definition of closed may depend on type)
@@ -33,7 +35,7 @@ namespace FluentHub.Octokit.Models.v4
 		/// <summary>
 		/// Humanized string of "Identifies the date and time when the object was closed."
 		/// <summary>
-		public string ClosedAtHumanized { get; set; }
+		public string? ClosedAtHumanized { get; set; }
 
 		/// <summary>
 		/// List of columns in the project
@@ -42,7 +44,7 @@ namespace FluentHub.Octokit.Models.v4
 		/// <param name="after">Returns the elements in the list that come after the specified cursor.</param>
 		/// <param name="last">Returns the last _n_ elements from the list.</param>
 		/// <param name="before">Returns the elements in the list that come before the specified cursor.</param>
-		public ProjectColumnConnection Columns { get; set; }
+		public ProjectColumnConnection Columns { get; set; } = default!;
 
 		/// <summary>
 		/// Identifies the date and time when the object was created.
@@ -53,13 +55,13 @@ namespace FluentHub.Octokit.Models.v4
 		/// <summary>
 		/// Humanized string of "Identifies the date and time when the object was created."
 		/// <summary>
-		public string CreatedAtHumanized { get; set; }
+		public string? CreatedAtHumanized { get; set; }
 
 		/// <summary>
 		/// The actor who originally created the project.
 		/// </summary>
 		[Obsolete(@"Projects (classic) is being deprecated in favor of the new Projects experience, see: https://github.blog/changelog/2024-05-23-sunset-notice-projects-classic/. Removal on 2025-04-01 UTC.")]
-		public IActor Creator { get; set; }
+		public IActor? Creator { get; set; }
 
 		/// <summary>
 		/// Identifies the primary key from the database.
@@ -77,7 +79,7 @@ namespace FluentHub.Octokit.Models.v4
 		/// The project's name.
 		/// </summary>
 		[Obsolete(@"Projects (classic) is being deprecated in favor of the new Projects experience, see: https://github.blog/changelog/2024-05-23-sunset-notice-projects-classic/. Removal on 2025-04-01 UTC.")]
-		public string Name { get; set; }
+		public string Name { get; set; } = default!;
 
 		/// <summary>
 		/// The project's number.
@@ -89,7 +91,7 @@ namespace FluentHub.Octokit.Models.v4
 		/// The project's owner. Currently limited to repositories, organizations, and users.
 		/// </summary>
 		[Obsolete(@"Projects (classic) is being deprecated in favor of the new Projects experience, see: https://github.blog/changelog/2024-05-23-sunset-notice-projects-classic/. Removal on 2025-04-01 UTC.")]
-		public IProjectOwner Owner { get; set; }
+		public IProjectOwner Owner { get; set; } = default!;
 
 		/// <summary>
 		/// List of pending cards in this project
@@ -99,19 +101,19 @@ namespace FluentHub.Octokit.Models.v4
 		/// <param name="last">Returns the last _n_ elements from the list.</param>
 		/// <param name="before">Returns the elements in the list that come before the specified cursor.</param>
 		/// <param name="archivedStates">A list of archived states to filter the cards by</param>
-		public ProjectCardConnection PendingCards { get; set; }
+		public ProjectCardConnection PendingCards { get; set; } = default!;
 
 		/// <summary>
 		/// Project progress details.
 		/// </summary>
 		[Obsolete(@"Projects (classic) is being deprecated in favor of the new Projects experience, see: https://github.blog/changelog/2024-05-23-sunset-notice-projects-classic/. Removal on 2025-04-01 UTC.")]
-		public ProjectProgress Progress { get; set; }
+		public ProjectProgress Progress { get; set; } = default!;
 
 		/// <summary>
 		/// The HTTP path for this project
 		/// </summary>
 		[Obsolete(@"Projects (classic) is being deprecated in favor of the new Projects experience, see: https://github.blog/changelog/2024-05-23-sunset-notice-projects-classic/. Removal on 2025-04-01 UTC.")]
-		public string ResourcePath { get; set; }
+		public string ResourcePath { get; set; } = default!;
 
 		/// <summary>
 		/// Whether the project is open or closed.
@@ -128,13 +130,13 @@ namespace FluentHub.Octokit.Models.v4
 		/// <summary>
 		/// Humanized string of "Identifies the date and time when the object was last updated."
 		/// <summary>
-		public string UpdatedAtHumanized { get; set; }
+		public string? UpdatedAtHumanized { get; set; }
 
 		/// <summary>
 		/// The HTTP URL for this project
 		/// </summary>
 		[Obsolete(@"Projects (classic) is being deprecated in favor of the new Projects experience, see: https://github.blog/changelog/2024-05-23-sunset-notice-projects-classic/. Removal on 2025-04-01 UTC.")]
-		public string Url { get; set; }
+		public string Url { get; set; } = default!;
 
 		/// <summary>
 		/// Indicates if the object can be closed by the viewer.

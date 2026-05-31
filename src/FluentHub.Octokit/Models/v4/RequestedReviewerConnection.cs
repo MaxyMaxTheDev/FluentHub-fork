@@ -1,6 +1,8 @@
 // Copyright (c) 2022-2024 0x5BFA
 // Licensed under the MIT License. See the LICENSE.
 
+#nullable enable
+
 namespace FluentHub.Octokit.Models.v4
 {
 	/// <summary>
@@ -11,17 +13,17 @@ namespace FluentHub.Octokit.Models.v4
 		/// <summary>
 		/// A list of edges.
 		/// </summary>
-		public List<RequestedReviewerEdge> Edges { get; set; }
+		public List<RequestedReviewerEdge?>? Edges { get; set; }
 
 		/// <summary>
 		/// A list of nodes.
 		/// </summary>
-		public List<RequestedReviewer> Nodes { get; set; }
+		public List<RequestedReviewer?>? Nodes { get; set; }
 
 		/// <summary>
 		/// Information to aid in pagination.
 		/// </summary>
-		public PageInfo PageInfo { get; set; }
+		public PageInfo PageInfo { get; set; } = default!;
 
 		/// <summary>
 		/// Identifies the total count of items in the connection.

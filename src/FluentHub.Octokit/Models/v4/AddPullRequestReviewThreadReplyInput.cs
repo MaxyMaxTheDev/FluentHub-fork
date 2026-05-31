@@ -1,6 +1,8 @@
 // Copyright (c) 2022-2024 0x5BFA
 // Licensed under the MIT License. See the LICENSE.
 
+#nullable enable
+
 namespace FluentHub.Octokit.Models.v4
 {
 	/// <summary>
@@ -11,7 +13,7 @@ namespace FluentHub.Octokit.Models.v4
 		/// <summary>
 		/// A unique identifier for the client performing the mutation.
 		/// </summary>
-		public string ClientMutationId { get; set; }
+		public string? ClientMutationId { get; set; }
 
 		/// <summary>
 		/// The Node ID of the pending review to which the reply will belong.
@@ -26,6 +28,6 @@ namespace FluentHub.Octokit.Models.v4
 		/// <summary>
 		/// The text of the reply.
 		/// </summary>
-		public string Body { get; set; }
+		public string Body { get; set; } = default!;
 	}
 }

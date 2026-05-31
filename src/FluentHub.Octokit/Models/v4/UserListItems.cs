@@ -1,6 +1,8 @@
 // Copyright (c) 2022-2024 0x5BFA
 // Licensed under the MIT License. See the LICENSE.
 
+#nullable enable
+
 namespace FluentHub.Octokit.Models.v4
 {
 	/// <summary>
@@ -11,6 +13,6 @@ namespace FluentHub.Octokit.Models.v4
 		/// <summary>
 		/// A repository contains the content for a project.
 		/// </summary>
-		public Repository Repository { get; set; }
+		public Repository? Repository { get; set; }
 	}
 }

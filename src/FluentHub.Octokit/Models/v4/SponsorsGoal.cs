@@ -1,6 +1,8 @@
 // Copyright (c) 2022-2024 0x5BFA
 // Licensed under the MIT License. See the LICENSE.
 
+#nullable enable
+
 namespace FluentHub.Octokit.Models.v4
 {
 	/// <summary>
@@ -11,7 +13,7 @@ namespace FluentHub.Octokit.Models.v4
 		/// <summary>
 		/// A description of the goal from the maintainer.
 		/// </summary>
-		public string Description { get; set; }
+		public string? Description { get; set; }
 
 		/// <summary>
 		/// What the objective of this goal is.
@@ -31,6 +33,6 @@ namespace FluentHub.Octokit.Models.v4
 		/// <summary>
 		/// A brief summary of the kind and target value of this goal.
 		/// </summary>
-		public string Title { get; set; }
+		public string Title { get; set; } = default!;
 	}
 }

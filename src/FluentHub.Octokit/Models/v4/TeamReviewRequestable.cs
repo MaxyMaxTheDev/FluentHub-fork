@@ -1,6 +1,8 @@
 // Copyright (c) 2022-2024 0x5BFA
 // Licensed under the MIT License. See the LICENSE.
 
+#nullable enable
+
 namespace FluentHub.Octokit.Models.v4
 {
 
@@ -32,9 +34,9 @@ namespace FluentHub.Octokit.Models.v4
 	{
 		public ID Id { get; set; }
 
-		public string Name { get; set; }
+		public string Name { get; set; } = default!;
 
-		public string Slug { get; set; }
+		public string Slug { get; set; } = default!;
 	}
 }
 

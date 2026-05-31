@@ -1,6 +1,8 @@
 // Copyright (c) 2022-2024 0x5BFA
 // Licensed under the MIT License. See the LICENSE.
 
+#nullable enable
+
 namespace FluentHub.Octokit.Models.v4
 {
 	/// <summary>
@@ -12,7 +14,7 @@ namespace FluentHub.Octokit.Models.v4
 		/// A URL pointing to the GitHub App's public avatar.
 		/// </summary>
 		/// <param name="size">The size of the resulting square image.</param>
-		public string AvatarUrl { get; set; }
+		public string AvatarUrl { get; set; } = default!;
 
 		/// <summary>
 		/// Identifies the date and time when the object was created.
@@ -22,7 +24,7 @@ namespace FluentHub.Octokit.Models.v4
 		/// <summary>
 		/// Humanized string of "Identifies the date and time when the object was created."
 		/// <summary>
-		public string CreatedAtHumanized { get; set; }
+		public string? CreatedAtHumanized { get; set; }
 
 		/// <summary>
 		/// Identifies the primary key from the database.
@@ -37,12 +39,12 @@ namespace FluentHub.Octokit.Models.v4
 		/// <summary>
 		/// The username of the actor.
 		/// </summary>
-		public string Login { get; set; }
+		public string Login { get; set; } = default!;
 
 		/// <summary>
 		/// The HTTP path for this bot
 		/// </summary>
-		public string ResourcePath { get; set; }
+		public string ResourcePath { get; set; } = default!;
 
 		/// <summary>
 		/// Identifies the date and time when the object was last updated.
@@ -52,11 +54,11 @@ namespace FluentHub.Octokit.Models.v4
 		/// <summary>
 		/// Humanized string of "Identifies the date and time when the object was last updated."
 		/// <summary>
-		public string UpdatedAtHumanized { get; set; }
+		public string? UpdatedAtHumanized { get; set; }
 
 		/// <summary>
 		/// The HTTP URL for this bot
 		/// </summary>
-		public string Url { get; set; }
+		public string Url { get; set; } = default!;
 	}
 }

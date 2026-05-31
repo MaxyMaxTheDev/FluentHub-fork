@@ -1,6 +1,8 @@
 // Copyright (c) 2022-2024 0x5BFA
 // Licensed under the MIT License. See the LICENSE.
 
+#nullable enable
+
 namespace FluentHub.Octokit.Models.v4
 {
 	/// <summary>
@@ -20,18 +22,18 @@ namespace FluentHub.Octokit.Models.v4
 		/// <param name="labels">A list of label names to filter the pull requests by.</param>
 		/// <param name="orderBy">Ordering options for pull requests returned from the connection.</param>
 		/// <param name="states">A list of states to filter the pull requests by.</param>
-		public PullRequestConnection AssociatedPullRequests { get; set; }
+		public PullRequestConnection AssociatedPullRequests { get; set; } = default!;
 
 		/// <summary>
 		/// Branch protection rules for this ref
 		/// </summary>
-		public BranchProtectionRule BranchProtectionRule { get; set; }
+		public BranchProtectionRule? BranchProtectionRule { get; set; }
 
 		/// <summary>
 		/// Compares the current ref as a base ref to another head ref, if the comparison can be made.
 		/// </summary>
 		/// <param name="headRef">The head ref to compare against.</param>
-		public Comparison Compare { get; set; }
+		public Comparison? Compare { get; set; }
 
 		/// <summary>
 		/// The Node ID of the Ref object
@@ -41,22 +43,22 @@ namespace FluentHub.Octokit.Models.v4
 		/// <summary>
 		/// The ref name.
 		/// </summary>
-		public string Name { get; set; }
+		public string Name { get; set; } = default!;
 
 		/// <summary>
 		/// The ref's prefix, such as `refs/heads/` or `refs/tags/`.
 		/// </summary>
-		public string Prefix { get; set; }
+		public string Prefix { get; set; } = default!;
 
 		/// <summary>
 		/// Branch protection rules that are viewable by non-admins
 		/// </summary>
-		public RefUpdateRule RefUpdateRule { get; set; }
+		public RefUpdateRule? RefUpdateRule { get; set; }
 
 		/// <summary>
 		/// The repository the ref belongs to.
 		/// </summary>
-		public Repository Repository { get; set; }
+		public Repository Repository { get; set; } = default!;
 
 		/// <summary>
 		/// A list of rules from active Repository and Organization rulesets that apply to this ref.
@@ -66,11 +68,11 @@ namespace FluentHub.Octokit.Models.v4
 		/// <param name="last">Returns the last _n_ elements from the list.</param>
 		/// <param name="before">Returns the elements in the list that come before the specified cursor.</param>
 		/// <param name="orderBy">Ordering options for repository rules.</param>
-		public RepositoryRuleConnection Rules { get; set; }
+		public RepositoryRuleConnection? Rules { get; set; }
 
 		/// <summary>
 		/// The object the ref points to. Returns null when object does not exist.
 		/// </summary>
-		public IGitObject Target { get; set; }
+		public IGitObject? Target { get; set; }
 	}
 }

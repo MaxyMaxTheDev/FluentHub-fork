@@ -1,6 +1,8 @@
 // Copyright (c) 2022-2024 0x5BFA
 // Licensed under the MIT License. See the LICENSE.
 
+#nullable enable
+
 namespace FluentHub.Octokit.Models.v4
 {
 	/// <summary>
@@ -16,17 +18,17 @@ namespace FluentHub.Octokit.Models.v4
 		/// <summary>
 		/// Humanized string of "Identifies the date and time when the object was created."
 		/// <summary>
-		public string CreatedAtHumanized { get; set; }
+		public string? CreatedAtHumanized { get; set; }
 
 		/// <summary>
 		/// The email of the person who was invited to the enterprise.
 		/// </summary>
-		public string Email { get; set; }
+		public string? Email { get; set; }
 
 		/// <summary>
 		/// The enterprise the invitation is for.
 		/// </summary>
-		public Enterprise Enterprise { get; set; }
+		public Enterprise Enterprise { get; set; } = default!;
 
 		/// <summary>
 		/// The Node ID of the EnterpriseAdministratorInvitation object
@@ -36,12 +38,12 @@ namespace FluentHub.Octokit.Models.v4
 		/// <summary>
 		/// The user who was invited to the enterprise.
 		/// </summary>
-		public User Invitee { get; set; }
+		public User? Invitee { get; set; }
 
 		/// <summary>
 		/// The user who created the invitation.
 		/// </summary>
-		public User Inviter { get; set; }
+		public User? Inviter { get; set; }
 
 		/// <summary>
 		/// The invitee's pending role in the enterprise (owner or billing_manager).

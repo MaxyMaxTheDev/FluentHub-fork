@@ -1,6 +1,8 @@
 // Copyright (c) 2022-2024 0x5BFA
 // Licensed under the MIT License. See the LICENSE.
 
+#nullable enable
+
 namespace FluentHub.Octokit.Models.v4
 {
 	/// <summary>
@@ -11,7 +13,7 @@ namespace FluentHub.Octokit.Models.v4
 		/// <summary>
 		/// A unique identifier for the client performing the mutation.
 		/// </summary>
-		public string ClientMutationId { get; set; }
+		public string? ClientMutationId { get; set; }
 
 		/// <summary>
 		/// The Node ID of the pull request.
@@ -22,17 +24,17 @@ namespace FluentHub.Octokit.Models.v4
 		/// The name of the branch you want your changes pulled into. This should be an existing branch
 		/// on the current repository.
 		/// </summary>
-		public string BaseRefName { get; set; }
+		public string? BaseRefName { get; set; }
 
 		/// <summary>
 		/// The title of the pull request.
 		/// </summary>
-		public string Title { get; set; }
+		public string? Title { get; set; }
 
 		/// <summary>
 		/// The contents of the pull request.
 		/// </summary>
-		public string Body { get; set; }
+		public string? Body { get; set; }
 
 		/// <summary>
 		/// The target state of the pull request.
@@ -47,7 +49,7 @@ namespace FluentHub.Octokit.Models.v4
 		/// <summary>
 		/// An array of Node IDs of users for this pull request.
 		/// </summary>
-		public List<ID> AssigneeIds { get; set; }
+		public List<ID>? AssigneeIds { get; set; }
 
 		/// <summary>
 		/// The Node ID of the milestone for this pull request.
@@ -57,11 +59,11 @@ namespace FluentHub.Octokit.Models.v4
 		/// <summary>
 		/// An array of Node IDs of labels for this pull request.
 		/// </summary>
-		public List<ID> LabelIds { get; set; }
+		public List<ID>? LabelIds { get; set; }
 
 		/// <summary>
 		/// An array of Node IDs for projects associated with this pull request.
 		/// </summary>
-		public List<ID> ProjectIds { get; set; }
+		public List<ID>? ProjectIds { get; set; }
 	}
 }

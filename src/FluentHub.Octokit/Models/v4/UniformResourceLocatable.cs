@@ -1,6 +1,8 @@
 // Copyright (c) 2022-2024 0x5BFA
 // Licensed under the MIT License. See the LICENSE.
 
+#nullable enable
+
 namespace FluentHub.Octokit.Models.v4
 {
 
@@ -25,9 +27,9 @@ namespace FluentHub.Octokit.Models.v4
 {
 	public class UniformResourceLocatable : IUniformResourceLocatable
 	{
-		public string ResourcePath { get; set; }
+		public string ResourcePath { get; set; } = default!;
 
-		public string Url { get; set; }
+		public string Url { get; set; } = default!;
 	}
 }
 

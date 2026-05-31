@@ -1,6 +1,8 @@
 // Copyright (c) 2022-2024 0x5BFA
 // Licensed under the MIT License. See the LICENSE.
 
+#nullable enable
+
 namespace FluentHub.Octokit.Models.v4
 {
 	/// <summary>
@@ -23,26 +25,26 @@ namespace FluentHub.Octokit.Models.v4
 		/// <summary>
 		/// Humanized string of "When this contribution was made."
 		/// <summary>
-		public string OccurredAtHumanized { get; set; }
+		public string? OccurredAtHumanized { get; set; }
 
 		/// <summary>
 		/// The repository that was created.
 		/// </summary>
-		public Repository Repository { get; set; }
+		public Repository Repository { get; set; } = default!;
 
 		/// <summary>
 		/// The HTTP path for this contribution.
 		/// </summary>
-		public string ResourcePath { get; set; }
+		public string ResourcePath { get; set; } = default!;
 
 		/// <summary>
 		/// The HTTP URL for this contribution.
 		/// </summary>
-		public string Url { get; set; }
+		public string Url { get; set; } = default!;
 
 		/// <summary>
 		/// The user who made this contribution.
 		/// </summary>
-		public User User { get; set; }
+		public User User { get; set; } = default!;
 	}
 }

@@ -1,6 +1,8 @@
 // Copyright (c) 2022-2024 0x5BFA
 // Licensed under the MIT License. See the LICENSE.
 
+#nullable enable
+
 namespace FluentHub.Octokit.Models.v4
 {
 	/// <summary>
@@ -11,11 +13,11 @@ namespace FluentHub.Octokit.Models.v4
 		/// <summary>
 		/// The name of the custom property.
 		/// </summary>
-		public string PropertyName { get; set; }
+		public string PropertyName { get; set; } = default!;
 
 		/// <summary>
 		/// The value of the custom property.
 		/// </summary>
-		public string Value { get; set; }
+		public string Value { get; set; } = default!;
 	}
 }

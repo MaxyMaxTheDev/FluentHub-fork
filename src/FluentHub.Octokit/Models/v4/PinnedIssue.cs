@@ -1,6 +1,8 @@
 // Copyright (c) 2022-2024 0x5BFA
 // Licensed under the MIT License. See the LICENSE.
 
+#nullable enable
+
 namespace FluentHub.Octokit.Models.v4
 {
 	/// <summary>
@@ -16,7 +18,7 @@ namespace FluentHub.Octokit.Models.v4
 		/// <summary>
 		/// Identifies the primary key from the database as a BigInt.
 		/// </summary>
-		public string FullDatabaseId { get; set; }
+		public string? FullDatabaseId { get; set; }
 
 		/// <summary>
 		/// The Node ID of the PinnedIssue object
@@ -26,16 +28,16 @@ namespace FluentHub.Octokit.Models.v4
 		/// <summary>
 		/// The issue that was pinned.
 		/// </summary>
-		public Issue Issue { get; set; }
+		public Issue Issue { get; set; } = default!;
 
 		/// <summary>
 		/// The actor that pinned this issue.
 		/// </summary>
-		public IActor PinnedBy { get; set; }
+		public IActor PinnedBy { get; set; } = default!;
 
 		/// <summary>
 		/// The repository that this issue was pinned to.
 		/// </summary>
-		public Repository Repository { get; set; }
+		public Repository Repository { get; set; } = default!;
 	}
 }

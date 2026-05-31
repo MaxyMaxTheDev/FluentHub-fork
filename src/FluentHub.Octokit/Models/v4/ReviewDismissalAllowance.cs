@@ -1,6 +1,8 @@
 // Copyright (c) 2022-2024 0x5BFA
 // Licensed under the MIT License. See the LICENSE.
 
+#nullable enable
+
 namespace FluentHub.Octokit.Models.v4
 {
 	/// <summary>
@@ -11,12 +13,12 @@ namespace FluentHub.Octokit.Models.v4
 		/// <summary>
 		/// The actor that can dismiss.
 		/// </summary>
-		public ReviewDismissalAllowanceActor Actor { get; set; }
+		public ReviewDismissalAllowanceActor? Actor { get; set; }
 
 		/// <summary>
 		/// Identifies the branch protection rule associated with the allowed user, team, or app.
 		/// </summary>
-		public BranchProtectionRule BranchProtectionRule { get; set; }
+		public BranchProtectionRule? BranchProtectionRule { get; set; }
 
 		/// <summary>
 		/// The Node ID of the ReviewDismissalAllowance object

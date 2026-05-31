@@ -1,6 +1,8 @@
 // Copyright (c) 2022-2024 0x5BFA
 // Licensed under the MIT License. See the LICENSE.
 
+#nullable enable
+
 namespace FluentHub.Octokit.Models.v4
 {
 
@@ -12,17 +14,17 @@ namespace FluentHub.Octokit.Models.v4
 		/// <summary>
 		/// The name of the OAuth application.
 		/// </summary>
-		string OauthApplicationName { get; set; }
+		string? OauthApplicationName { get; set; }
 
 		/// <summary>
 		/// The HTTP path for the OAuth application
 		/// </summary>
-		string OauthApplicationResourcePath { get; set; }
+		string? OauthApplicationResourcePath { get; set; }
 
 		/// <summary>
 		/// The HTTP URL for the OAuth application
 		/// </summary>
-		string OauthApplicationUrl { get; set; }
+		string? OauthApplicationUrl { get; set; }
 	}
 }
 
@@ -30,11 +32,11 @@ namespace FluentHub.Octokit.Models.v4
 {
 	public class OauthApplicationAuditEntryData : IOauthApplicationAuditEntryData
 	{
-		public string OauthApplicationName { get; set; }
+		public string? OauthApplicationName { get; set; }
 
-		public string OauthApplicationResourcePath { get; set; }
+		public string? OauthApplicationResourcePath { get; set; }
 
-		public string OauthApplicationUrl { get; set; }
+		public string? OauthApplicationUrl { get; set; }
 	}
 }
 

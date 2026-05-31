@@ -1,6 +1,8 @@
 // Copyright (c) 2022-2024 0x5BFA
 // Licensed under the MIT License. See the LICENSE.
 
+#nullable enable
+
 namespace FluentHub.Octokit.Models.v4
 {
 	/// <summary>
@@ -16,21 +18,21 @@ namespace FluentHub.Octokit.Models.v4
 		/// <summary>
 		/// The iteration's ID.
 		/// </summary>
-		public string Id { get; set; }
+		public string Id { get; set; } = default!;
 
 		/// <summary>
 		/// The iteration's start date
 		/// </summary>
-		public string StartDate { get; set; }
+		public string StartDate { get; set; } = default!;
 
 		/// <summary>
 		/// The iteration's title.
 		/// </summary>
-		public string Title { get; set; }
+		public string Title { get; set; } = default!;
 
 		/// <summary>
 		/// The iteration's html title.
 		/// </summary>
-		public string TitleHTML { get; set; }
+		public string TitleHTML { get; set; } = default!;
 	}
 }
