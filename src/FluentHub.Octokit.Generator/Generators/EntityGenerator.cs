@@ -32,6 +32,8 @@ namespace FluentHub.Octokit.ModelGenerator.Generators
 				licenseNotice = @"// Copyright (c) 2022-2024 0x5BFA
 // Licensed under the MIT License. See the LICENSE.
 
+#nullable enable
+
 ";
 			}
 
@@ -52,7 +54,9 @@ namespace FluentHub.Octokit.ModelGenerator.Generators
 	using {entityNamespace};";
 
 			var licenseNotice = @"// Copyright (c) 2022-2024 0x5BFA
-// Licensed under the MIT License. See the LICENSE.";
+// Licensed under the MIT License. See the LICENSE.
+
+#nullable enable";
 
 			return $@"{licenseNotice}
 
@@ -98,20 +102,20 @@ namespace {rootNamespace}
 			if (TypeUtilities.IsCSharpPrimitive(reduced))
 			{
 				result += method ?
-					GenerateScalarMethod(field, reduced) :
-					GenerateScalarField(field, reduced, generateDocComments);
+					GenerateScalarMethod(field, field.Type) :
+					GenerateScalarField(field, field.Type, generateDocComments);
 			}
 			else if (reduced.Kind == TypeKind.List)
 			{
 				result += method ?
-					GenerateListMethod(field, reduced) :
-					GenerateListField(field, reduced);
+					GenerateListMethod(field, field.Type) :
+					GenerateListField(field, field.Type);
 			}
 			else
 			{
 				result += method ?
-					GenerateObjectMethod(field, reduced, entityNamespace) :
-					GenerateObjectField(field, reduced, rootNamespace, entityNamespace, queryType);
+					GenerateObjectMethod(field, field.Type, entityNamespace) :
+					GenerateObjectField(field, field.Type, rootNamespace, entityNamespace, queryType);
 			}
 
 			return result;
@@ -179,8 +183,9 @@ namespace {rootNamespace}
 
 			var name = TypeUtilities.PascalCase(field.Name);
 			var typeName = TypeUtilities.GetCSharpReturnType(type);
+			var initializer = TypeUtilities.RequiresDefaultInitializer(type) ? " = default!;" : string.Empty;
 
-			string result = $"{obsoleteAttribute}		public {typeName} {name} {{ get; set; }}";
+			string result = $"{obsoleteAttribute}		public {typeName} {name} {{ get; set; }}{initializer}";
 
 			if (TypeUtilities.GetCSharpReturnType(type) == "DateTimeOffset"
 				|| TypeUtilities.GetCSharpReturnType(type) == "DateTimeOffset?")
@@ -192,7 +197,7 @@ namespace {rootNamespace}
 					result += $"		/// Humanized string of \"{field.Description}\"\r\n";
 					result += $"		/// <summary>\r\n";
 				}
-				result += $"		public string {name}Humanized {{ get; set; }}";
+				result += $"		public string? {name}Humanized {{ get; set; }}";
 			}
 
 			return result;
@@ -206,8 +211,9 @@ namespace {rootNamespace}
 
 			var name = TypeUtilities.PascalCase(field.Name);
 			var typeName = TypeUtilities.GetCSharpReturnType(type);
+			var initializer = TypeUtilities.RequiresDefaultInitializer(type) ? " = default!;" : string.Empty;
 
-			return $"{obsoleteAttribute}		public {typeName} {name} {{ get; set; }}";
+			return $"{obsoleteAttribute}		public {typeName} {name} {{ get; set; }}{initializer}";
 		}
 
 		private static string GenerateScalarMethod(FieldModel field, TypeModel type)
@@ -218,16 +224,18 @@ namespace {rootNamespace}
 
 			var name = TypeUtilities.PascalCase(field.Name);
 			var csharpType = TypeUtilities.GetCSharpReturnType(type);
+			var initializer = TypeUtilities.RequiresDefaultInitializer(type) ? " = default!;" : string.Empty;
 
-			return $"{obsoleteAttribute}		public {csharpType} {name} {{ get; set; }}";
+			return $"{obsoleteAttribute}		public {csharpType} {name} {{ get; set; }}{initializer}";
 		}
 
 		private static string GenerateObjectMethod(FieldModel field, TypeModel type, string entityNamespace)
 		{
 			var name = TypeUtilities.PascalCase(field.Name);
 			var typeName = TypeUtilities.GetCSharpReturnType(type);
+			var initializer = TypeUtilities.RequiresDefaultInitializer(type) ? " = default!;" : string.Empty;
 
-			return $"		public {typeName} {name} {{ get; set; }}";
+			return $"		public {typeName} {name} {{ get; set; }}{initializer}";
 		}
 
 		private static string GenerateListField(FieldModel field, TypeModel type)
@@ -238,16 +246,18 @@ namespace {rootNamespace}
 
 			var name = TypeUtilities.PascalCase(field.Name);
 			var typeName = TypeUtilities.GetCSharpReturnType(type);
+			var initializer = TypeUtilities.RequiresDefaultInitializer(type) ? " = default!;" : string.Empty;
 
-			return $"{obsoleteAttribute}		public {typeName} {name} {{ get; set; }}";
+			return $"{obsoleteAttribute}		public {typeName} {name} {{ get; set; }}{initializer}";
 		}
 
 		private static string GenerateListMethod(FieldModel field, TypeModel type)
 		{
 			var name = TypeUtilities.PascalCase(field.Name);
 			var typeName = TypeUtilities.GetCSharpReturnType(type);
+			var initializer = TypeUtilities.RequiresDefaultInitializer(type) ? " = default!;" : string.Empty;
 
-			return $"		public {typeName} {name} {{ get; set; }}";
+			return $"		public {typeName} {name} {{ get; set; }}{initializer}";
 		}
 
 		private static string GenerateImplementedInterfaces(TypeModel type, TypeModel pagingConnectionNodeType)

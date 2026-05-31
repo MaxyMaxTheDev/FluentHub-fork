@@ -16,7 +16,9 @@ namespace FluentHub.Octokit.ModelGenerator.Generators
 			var className = TypeUtilities.GetClassName(type);
 
 			var licenseNotice = @"// Copyright (c) 2022-2024 0x5BFA
-// Licensed under the MIT License. See the LICENSE.";
+// Licensed under the MIT License. See the LICENSE.
+
+#nullable enable";
 
 			return $@"{licenseNotice}
 
@@ -60,7 +62,8 @@ namespace {entityNamespace}
 			var result = GenerateDocComments(field);
 			var name = TypeUtilities.PascalCase(field.Name);
 			var typeName = TypeUtilities.GetCSharpArgType(field.Type);
-			return result + $"		public {typeName} {name} {{ get; set; }}";
+			var initializer = TypeUtilities.RequiresDefaultInitializer(field.Type) ? " = default!;" : string.Empty;
+			return result + $"		public {typeName} {name} {{ get; set; }}{initializer}";
 		}
 
 		private static string GenerateDocComments(TypeModel type)

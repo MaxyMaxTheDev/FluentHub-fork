@@ -17,7 +17,9 @@ namespace FluentHub.Octokit.ModelGenerator.Generators
 			{
 				if (!type.Name.StartsWith("__") && type.Kind != TypeKind.Scalar)
 				{
-					yield return Generate(type, rootNamespace, schema.QueryType, entityNamespace);
+					var file = Generate(type, rootNamespace, schema.QueryType, entityNamespace);
+					if (file != null)
+						yield return file;
 				}
 			}
 		}
@@ -32,7 +34,7 @@ namespace FluentHub.Octokit.ModelGenerator.Generators
 				case TypeKind.Object:
 					if (type.Name == queryType || type.Name == "Mutation")
 					{
-						// Mutation.cs and Query.cs is not needed
+						return null;
 					}
 					else
 					{

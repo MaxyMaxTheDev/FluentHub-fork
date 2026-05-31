@@ -17,7 +17,9 @@ namespace FluentHub.Octokit.ModelGenerator.Generators
 			var className = TypeUtilities.GetClassName(type);
 
 			var licenseNotice = @"// Copyright (c) 2022-2024 0x5BFA
-// Licensed under the MIT License. See the LICENSE.";
+// Licensed under the MIT License. See the LICENSE.
+
+#nullable enable";
 
 			return $@"{licenseNotice}
 
@@ -60,7 +62,7 @@ namespace {entityNamespace}
 			var comments = GenerateDocComments(possibleType);
 			var typeName = TypeUtilities.GetClassName(possibleType);
 			var name = possibleType.Name;
-			return comments + $"		public {name} {name} {{ get; set; }}";
+			return comments + $"		public {typeName}? {name} {{ get; set; }}";
 		}
 
 		private static string GenerateUnionDocComments(TypeModel type)

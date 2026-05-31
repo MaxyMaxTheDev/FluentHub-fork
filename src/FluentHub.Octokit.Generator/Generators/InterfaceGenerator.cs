@@ -16,7 +16,9 @@ namespace FluentHub.Octokit.ModelGenerator.Generators
 			var className = TypeUtilities.GetInterfaceName(type);
 
 			var licenseNotice = @"// Copyright (c) 2022-2024 0x5BFA
-// Licensed under the MIT License. See the LICENSE.";
+// Licensed under the MIT License. See the LICENSE.
+
+#nullable enable";
 
 			return $@"{licenseNotice}
 
@@ -67,20 +69,20 @@ namespace {entityNamespace}
 			if (TypeUtilities.IsCSharpPrimitive(reduced))
 			{
 				result += method ?
-					GenerateScalarMethod(field, reduced) :
-					GenerateScalarField(field, reduced);
+					GenerateScalarMethod(field, field.Type) :
+					GenerateScalarField(field, field.Type);
 			}
 			else if (reduced.Kind == TypeKind.List)
 			{
 				result += method ?
-					GenerateListMethod(field, reduced) :
-					GenerateListField(field, reduced);
+					GenerateListMethod(field, field.Type) :
+					GenerateListField(field, field.Type);
 			}
 			else
 			{
 				result += method ?
-					GenerateObjectMethod(field, reduced) :
-					GenerateObjectField(field, reduced);
+					GenerateObjectMethod(field, field.Type) :
+					GenerateObjectField(field, field.Type);
 			}
 
 			return result;
@@ -140,7 +142,7 @@ namespace {entityNamespace}
 				result += $"		/// <summary>\r\n";
 				result += $"		/// Humanized string of \"{field.Description}\"\r\n";
 				result += $"		/// <summary>\r\n";
-				result += $"		string {name}Humanized {{ get; set; }}";
+				result += $"		string? {name}Humanized {{ get; set; }}";
 			}
 
 			return result;

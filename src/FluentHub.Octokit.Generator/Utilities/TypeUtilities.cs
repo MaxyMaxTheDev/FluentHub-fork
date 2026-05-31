@@ -37,17 +37,17 @@ namespace FluentHub.Octokit.ModelGenerator.Utilities
 
 		public static string GetCSharpReturnType(TypeModel type)
 		{
-			return GetCSharpType(ReduceType(type), type.Kind != TypeKind.NonNull, true);
+			return GetCSharpType(type, true);
 		}
 
 		public static string GetCSharpArgType(TypeModel type)
 		{
-			return GetCSharpType(ReduceType(type), type.Kind != TypeKind.NonNull, false);
+			return GetCSharpType(type, true);
 		}
 
 		public static string GetWrappedArgType(TypeModel type)
 		{
-			var csharpType = GetCSharpType(ReduceType(type), false, false);
+			var csharpType = GetCSharpType(type, false);
 			var nullable = type.Kind != TypeKind.NonNull ? "?" : string.Empty;
 			return "Arg<" + csharpType + '>' + nullable;
 		}
@@ -72,6 +72,11 @@ namespace FluentHub.Octokit.ModelGenerator.Utilities
 			return type.Kind == TypeKind.Scalar || 
 				type.Kind == TypeKind.Enum ||
 				(type.Kind == TypeKind.NonNull && IsCSharpPrimitive(type.OfType));
+		}
+
+		public static bool RequiresDefaultInitializer(TypeModel type)
+		{
+			return type.Kind == TypeKind.NonNull && IsReferenceType(type.OfType);
 		}
 
 		public static string PascalCase(string value)
@@ -117,37 +122,43 @@ namespace FluentHub.Octokit.ModelGenerator.Utilities
 			return type;
 		}
 
-		private static string GetCSharpType(TypeModel type, bool nullableType, bool returnType)
+		private static string GetCSharpType(TypeModel type, bool nullable)
 		{
 			switch (type.Kind)
 			{
 				case TypeKind.Scalar:
-					var question = nullableType ? "?" : "";
-					switch (type.Name)
-					{
-						case "Int": return "int" + question;
-						case "Float": return "double" + question;
-						case "String": return "string";
-						case "Boolean": return "bool" + question;
-						case "ID": return "ID" + question;
-						case "GitTimeStamp": return "DateTimeOffset" + question;
-						case "DateTime": return "DateTimeOffset" + question;
-						default: return "string";
-					}
+					return GetCSharpScalarType(type.Name, nullable);
 				case TypeKind.Enum:
-					return type.Name + (nullableType ? "?" : "");
+					return type.Name + (nullable ? "?" : "");
 				case TypeKind.Interface:
-					return "I" + type.Name;
+					return "I" + type.Name + (nullable ? "?" : "");
 				case TypeKind.Object:
 				case TypeKind.InputObject:
 				case TypeKind.Union:
-					return type.Name;
+					return type.Name + (nullable ? "?" : "");
 				case TypeKind.NonNull:
-					return GetCSharpType(type.OfType, false, returnType);
+					return GetCSharpType(type.OfType, false);
 				case TypeKind.List:
-					return "List" + $"<{GetCSharpType(type.OfType, type.Kind != TypeKind.NonNull, false)}>";
+					return $"List<{GetCSharpType(type.OfType, true)}>" + (nullable ? "?" : "");
 				default:
 					throw new NotSupportedException();
+			}
+		}
+
+		private static string GetCSharpScalarType(string name, bool nullable)
+		{
+			var question = nullable ? "?" : string.Empty;
+
+			switch (name)
+			{
+				case "Int": return "int" + question;
+				case "Float": return "double" + question;
+				case "String": return "string" + question;
+				case "Boolean": return "bool" + question;
+				case "ID": return "ID" + question;
+				case "GitTimeStamp": return "DateTimeOffset" + question;
+				case "DateTime": return "DateTimeOffset" + question;
+				default: return "string" + question;
 			}
 		}
 
@@ -160,6 +171,30 @@ namespace FluentHub.Octokit.ModelGenerator.Utilities
 					type.Name == "Boolean" || 
 					type.Name == "DateTime" ||
 					type.Name == "ID"));
+		}
+
+		private static bool IsReferenceType(TypeModel type)
+		{
+			switch (type.Kind)
+			{
+				case TypeKind.NonNull:
+					return IsReferenceType(type.OfType);
+				case TypeKind.List:
+				case TypeKind.Interface:
+				case TypeKind.Object:
+				case TypeKind.InputObject:
+				case TypeKind.Union:
+					return true;
+				case TypeKind.Scalar:
+					return type.Name != "Int" &&
+						type.Name != "Float" &&
+						type.Name != "Boolean" &&
+						type.Name != "DateTime" &&
+						type.Name != "GitTimeStamp" &&
+						type.Name != "ID";
+				default:
+					return false;
+			}
 		}
 	}
 }

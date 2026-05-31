@@ -17,7 +17,9 @@ namespace FluentHub.Octokit.ModelGenerator.Generators
 			var enumName = TypeUtilities.GetClassName(type);
 
 			var licenseNotice = @"// Copyright (c) 2022-2024 0x5BFA
-// Licensed under the MIT License. See the LICENSE.";
+// Licensed under the MIT License. See the LICENSE.
+
+#nullable enable";
 
 			return $@"{licenseNotice}
 
