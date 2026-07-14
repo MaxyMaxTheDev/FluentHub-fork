@@ -61,7 +61,7 @@ namespace FluentHub.Octokit.Mutations
 			{
 				graphInput.Branch = new OctokitGraphQLModel.CommittableBranch
 				{
-					Id = input.Branch.Id?.Value,
+					Id = input.Branch.Id,
 					RepositoryNameWithOwner = input.Branch.RepositoryNameWithOwner,
 					BranchName = input.Branch.BranchName,
 				};

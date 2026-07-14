@@ -77,6 +77,7 @@ jobs:
           -p:GenerateAppxPackageOnBuild=false `
           -p:AppxBundle=Never `
           -p:PublishSingleFile=true `
+          -p:WindowsAppSDKSelfContained=true `
           -p:IncludeNativeLibrariesForSelfExtract=true `
           -p:EnableCompressionInSingleFile=true `
           -p:PublishAot=false `
