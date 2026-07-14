@@ -1,0 +1,106 @@
+# Copyright (c) 2024 0x5BFA
+# Licensed under the MIT License. See the LICENSE.
+
+name: Build Executable
+
+on:
+  push:
+    tags:
+      - 'v*'
+  workflow_dispatch:
+    inputs:
+      platform:
+        description: 'Target platform'
+        required: true
+        default: 'x64'
+        type: choice
+        options:
+          - x64
+          - arm64
+          - x86
+
+run-name: "Build FluentHub.exe (${{ github.event.inputs.platform || 'x64' }})"
+
+env:
+  WORKING_DIR:       '${{ github.workspace }}'
+  APP_PROJECT_PATH:  '${{ github.workspace }}\src\FluentHub.App\FluentHub.App.csproj'
+  APP_CREDENTIALS_PATH: '${{ github.workspace }}\src\FluentHub.App\AppCredentials.config'
+  PUBLISH_DIR:       '${{ github.workspace }}\publish'
+  ARTIFACT_NAME:     'FluentHub'
+
+jobs:
+  build:
+    runs-on: windows-latest
+    strategy:
+      fail-fast: false
+      matrix:
+        platform: [x64, arm64]
+    env:
+      PLATFORM: ${{ matrix.platform }}
+
+    steps:
+    - name: Checkout the repository
+      uses: actions/checkout@v4
+
+    - name: Setup .NET
+      uses: actions/setup-dotnet@v4
+      with:
+        dotnet-version: '10.0.x'
+
+    - name: Install Windows App SDK
+      run: |
+        dotnet workload install maui-windows --skip-manifest-update
+        dotnet workload install winforms --skip-manifest-update
+
+    - name: Restore dependencies
+      run: dotnet restore ${{ env.APP_PROJECT_PATH }} -r win-${{ env.PLATFORM }}
+
+    - name: Publish FluentHub
+      run: |
+        $bytes = [Convert]::FromBase64String($env:GH_CREDENTIALS_SECRET)
+        [IO.File]::WriteAllBytes($env:APP_CREDENTIALS_PATH, $bytes)
+
+        dotnet publish ${{ env.APP_PROJECT_PATH }} `
+          -r win-${{ env.PLATFORM }} `
+          -c Release `
+          --self-contained true `
+          -p:PublishSingleFile=true `
+          -p:IncludeNativeLibrariesForSelfExtract=true `
+          -p:EnableCompressionInSingleFile=true `
+          -p:PublishAot=false `
+          -o ${{ env.PUBLISH_DIR }}\${{ env.PLATFORM }}
+      env:
+        GH_CREDENTIALS_SECRET: '${{ secrets.GH_CREDENTIALS_JSON_BASE64 }}'
+
+    - name: Create portable zip
+      run: |
+        $zipName = "FluentHub-${{ env.PLATFORM }}.zip"
+        Compress-Archive -Path "${{ env.PUBLISH_DIR }}\${{ env.PLATFORM }}\*" -DestinationPath "${{ env.PUBLISH_DIR }}\$zipName"
+        Write-Host "Created: $zipName"
+
+    - name: Upload exe artifact
+      uses: actions/upload-artifact@v4
+      with:
+        name: '${{ env.ARTIFACT_NAME }}-${{ env.PLATFORM }}'
+        path: '${{ env.PUBLISH_DIR }}\FluentHub-${{ env.PLATFORM }}.zip'
+
+  release:
+    needs: build
+    runs-on: ubuntu-latest
+    if: startsWith(github.ref, 'refs/tags/v')
+    permissions:
+      contents: write
+
+    steps:
+    - name: Download all artifacts
+      uses: actions/download-artifact@v4
+      with:
+        path: artifacts
+
+    - name: Create Release
+      uses: softprops/action-gh-release@v2
+      with:
+        generate_release_notes: true
+        files: |
+          artifacts/FluentHub-x64.zip
+          artifacts/FluentHub-arm64.zip

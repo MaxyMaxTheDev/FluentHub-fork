@@ -44,5 +44,13 @@ namespace FluentHub.App.Views.SignIn
 
 			_ = await dialog.ShowAsync();
 		}
+
+		private void OnManualTokenPasswordChanged(object sender, RoutedEventArgs e)
+		{
+			if (sender is PasswordBox passwordBox)
+			{
+				ViewModel.ManualAccessToken = passwordBox.Password;
+			}
+		}
 	}
 }

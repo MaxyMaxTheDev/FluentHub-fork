@@ -52,6 +52,7 @@ namespace FluentHub.App.Helpers
 					.AddTransient<ViewModels.Organizations.RepositoriesViewModel>()
 					.AddTransient<ViewModels.Repositories.Codes.DetailsLayoutViewModel>()
 					.AddTransient<ViewModels.Repositories.Codes.TreeLayoutViewModel>()
+					.AddTransient<ViewModels.Repositories.Codes.FileEditorViewModel>()
 					.AddTransient<ViewModels.Repositories.Commits.CommitsViewModel>()
 					.AddTransient<ViewModels.Repositories.Commits.CommitViewModel>()
 					.AddTransient<ViewModels.Repositories.Discussions.DiscussionsViewModel>()

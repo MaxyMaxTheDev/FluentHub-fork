@@ -1,0 +1,178 @@
+<views:LocatablePage
+	x:Class="FluentHub.App.Views.Repositories.Code.FileEditorPage"
+	xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+	xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+	xmlns:converters="using:FluentHub.App.Converters"
+	xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+	xmlns:helpers="using:FluentHub.App.Helpers"
+	xmlns:local="using:FluentHub.App.Views.Repositories.Code"
+	xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+	xmlns:primer="using:FluentHub.App.UserControls.PrimerControls"
+	xmlns:uc="using:FluentHub.App.UserControls"
+	xmlns:views="using:FluentHub.App.Views"
+	mc:Ignorable="d">
+
+	<views:LocatablePage.Resources>
+		<ResourceDictionary>
+			<converters:ObjectToBoolConverter x:Key="ObjectToBoolConverter" />
+		</ResourceDictionary>
+	</views:LocatablePage.Resources>
+
+	<Grid>
+
+		<Grid x:Name="RootContentGrid" x:Load="{x:Bind ViewModel.IsTaskFaulted, Converter={StaticResource ObjectToBoolConverter}, ConverterParameter=Invert, Mode=OneWay}">
+			<Grid.RowDefinitions>
+				<RowDefinition Height="Auto" />
+				<RowDefinition Height="Auto" />
+				<RowDefinition Height="*" />
+				<RowDefinition Height="Auto" />
+			</Grid.RowDefinitions>
+
+			<!-- Header -->
+			<Grid Grid.Row="0" Padding="32,24,32,8" RowSpacing="8">
+				<Grid.RowDefinitions>
+					<RowDefinition Height="Auto" />
+					<RowDefinition Height="Auto" />
+				</Grid.RowDefinitions>
+
+				<StackPanel Orientation="Horizontal" Spacing="8">
+					<primer:Avatar
+						x:Name="RepositoryOwnerAvatar"
+						x:Load="{x:Bind ViewModel.Repository.Owner.AvatarUrl, Converter={StaticResource ObjectToBoolConverter}, Mode=OneWay}"
+						IsSquare="{x:Bind ViewModel.Repository.IsInOrganization, Mode=OneWay}"
+						Size="24"
+						Source="{x:Bind ViewModel.Repository.Owner.AvatarUrl, Mode=OneWay}" />
+
+					<TextBlock
+						VerticalAlignment="Center"
+						Style="{StaticResource SubtitleTextBlockStyle}"
+						Text="{x:Bind ViewModel.Repository.Name, Mode=OneWay}" />
+
+					<TextBlock
+						VerticalAlignment="Center"
+						Foreground="{ThemeResource TextFillColorSecondaryBrush}"
+						Style="{StaticResource SubtitleTextBlockStyle}"
+						Text="/" />
+
+					<TextBlock
+						VerticalAlignment="Center"
+						Foreground="{ThemeResource TextFillColorSecondaryBrush}"
+						Style="{StaticResource SubtitleTextBlockStyle}"
+						Text="{x:Bind ViewModel.FilePath, Mode=OneWay}" />
+				</StackPanel>
+
+				<!-- Status Message -->
+				<InfoBar
+					Grid.Row="1"
+					x:Name="StatusInfoBar"
+					x:Load="{x:Bind ViewModel.HasStatusMessage, Mode=OneWay}"
+					IsClosable="True"
+					IsOpen="True"
+					Severity="Informational"
+					Title="{x:Bind ViewModel.StatusMessage, Mode=OneWay}" />
+			</Grid>
+
+			<!-- Commit Message -->
+			<Grid Grid.Row="1" Padding="32,8,32,8" RowSpacing="8">
+				<Grid.RowDefinitions>
+					<RowDefinition Height="Auto" />
+					<RowDefinition Height="Auto" />
+				</Grid.RowDefinitions>
+
+				<TextBox
+					x:Name="CommitMessageTextBox"
+					Grid.Row="0"
+					Header="Commit message"
+					PlaceholderText="Update file (required)"
+					Text="{x:Bind ViewModel.CommitMessage, Mode=TwoWay}" />
+
+				<TextBox
+					x:Name="CommitDescriptionTextBox"
+					Grid.Row="1"
+					Header="Commit description (optional)"
+					PlaceholderText="Add an optional extended description"
+					Text="{x:Bind ViewModel.CommitDescription, Mode=TwoWay}" />
+			</Grid>
+
+			<!-- File Content Editor -->
+			<Grid Grid.Row="2" Padding="32,8,32,8">
+				<TextBox
+					x:Name="FileContentTextBox"
+					AcceptsReturn="True"
+					FontFamily="Consolas"
+					FontSize="14"
+					Header="File content"
+					IsReadOnly="False"
+					PlaceholderText="Enter file content here..."
+					Text="{x:Bind ViewModel.FileContent, Mode=TwoWay}"
+					TextWrapping="NoWrap"
+					VerticalScrollBarVisibility="Auto"
+					VerticalAlignment="Stretch" />
+			</Grid>
+
+			<!-- Action Buttons -->
+			<Grid Grid.Row="3" Padding="32,8,32,24" ColumnSpacing="8">
+				<Grid.ColumnDefinitions>
+					<ColumnDefinition Width="Auto" />
+					<ColumnDefinition Width="*" />
+					<ColumnDefinition Width="Auto" />
+					<ColumnDefinition Width="Auto" />
+				</Grid.ColumnDefinitions>
+
+				<TextBlock
+					Grid.Column="0"
+					VerticalAlignment="Center"
+					Foreground="{ThemeResource TextFillColorSecondaryBrush}"
+					Style="{StaticResource CaptionTextBlockStyle}"
+					x:Load="{x:Bind ViewModel.IsDirty, Mode=OneWay}"
+					Text="Unsaved changes" />
+
+				<Button
+					Grid.Column="2"
+					x:Name="DeleteFileButton"
+					VerticalAlignment="Center"
+					Click="OnDeleteFileClick"
+					Visibility="{x:Bind ViewModel.IsNewFile, Converter={StaticResource ObjectToBoolConverter}, ConverterParameter=Invert, Mode=OneWay}">
+					<StackPanel Orientation="Horizontal" Spacing="6">
+						<FontIcon FontSize="14" Glyph="&#xE74D;" />
+						<TextBlock Text="Delete" />
+					</StackPanel>
+				</Button>
+
+				<Button
+					Grid.Column="3"
+					x:Name="SaveFileButton"
+					VerticalAlignment="Center"
+					Click="OnSaveFileClick"
+					Style="{StaticResource AccentButtonStyle}">
+					<StackPanel Orientation="Horizontal" Spacing="6">
+						<FontIcon FontSize="14" Glyph="&#xE74E;" />
+						<TextBlock Text="Save" />
+					</StackPanel>
+				</Button>
+			</Grid>
+		</Grid>
+
+		<Grid x:Name="ErrorDisplayingContentGrid" x:Load="{x:Bind ViewModel.IsTaskFaulted, Mode=OneWay}">
+			<uc:LoadErrorDisplay
+				HorizontalAlignment="Stretch"
+				VerticalAlignment="Stretch"
+				TaskException="{x:Bind ViewModel.TaskException, Mode=OneWay}">
+				<uc:LoadErrorDisplay.Action>
+					<Grid>
+						<Button
+							Margin="0,24,0,0"
+							HorizontalAlignment="Center"
+							Command="{x:Bind ViewModel.LoadFileCommand}">
+							<StackPanel Orientation="Horizontal" Spacing="8">
+								<FontIcon FontSize="16" Glyph="&#xE149;" />
+								<TextBlock Text="Retry" />
+							</StackPanel>
+						</Button>
+					</Grid>
+				</uc:LoadErrorDisplay.Action>
+			</uc:LoadErrorDisplay>
+		</Grid>
+
+	</Grid>
+</views:LocatablePage>
