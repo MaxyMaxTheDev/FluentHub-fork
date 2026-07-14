@@ -5,8 +5,13 @@ name: Build Executable
 
 on:
   push:
+    branches:
+      - main
     tags:
       - 'v*'
+  pull_request:
+    branches:
+      - main
   workflow_dispatch:
     inputs:
       platform:
@@ -17,16 +22,13 @@ on:
         options:
           - x64
           - arm64
-          - x86
+          - all
 
-run-name: "Build FluentHub.exe (${{ github.event.inputs.platform || 'x64' }})"
+run-name: "Build FluentHub.exe (${{ github.event.inputs.platform || 'all' }})"
 
 env:
-  WORKING_DIR:       '${{ github.workspace }}'
-  APP_PROJECT_PATH:  '${{ github.workspace }}\src\FluentHub.App\FluentHub.App.csproj'
-  APP_CREDENTIALS_PATH: '${{ github.workspace }}\src\FluentHub.App\AppCredentials.config'
-  PUBLISH_DIR:       '${{ github.workspace }}\publish'
-  ARTIFACT_NAME:     'FluentHub'
+  APP_PROJECT_PATH:  '${{ github.workspace }}/src/FluentHub.App/FluentHub.App.csproj'
+  PUBLISH_DIR:       '${{ github.workspace }}/publish'
 
 jobs:
   build:
@@ -35,8 +37,8 @@ jobs:
       fail-fast: false
       matrix:
         platform: [x64, arm64]
-    env:
-      PLATFORM: ${{ matrix.platform }}
+        exclude:
+          - platform: ${{ (github.event.inputs.platform != 'all' && github.event.inputs.platform != '') && github.event.inputs.platform || 'NEEDLE' }}
 
     steps:
     - name: Checkout the repository
@@ -45,44 +47,46 @@ jobs:
     - name: Setup .NET
       uses: actions/setup-dotnet@v4
       with:
-        dotnet-version: '10.0.x'
-
-    - name: Install Windows App SDK
-      run: |
-        dotnet workload install maui-windows --skip-manifest-update
-        dotnet workload install winforms --skip-manifest-update
+        dotnet-version: '9.0.x'
 
     - name: Restore dependencies
-      run: dotnet restore ${{ env.APP_PROJECT_PATH }} -r win-${{ env.PLATFORM }}
+      run: dotnet restore ${{ env.APP_PROJECT_PATH }} -r win-${{ matrix.platform }}
+
+    - name: Setup AppCredentials.config
+      if: ${{ env.HAS_CREDENTIALS == 'true' }}
+      shell: pwsh
+      run: |
+        $bytes = [Convert]::FromBase64String("${{ secrets.GH_CREDENTIALS_JSON_BASE64 }}")
+        [IO.File]::WriteAllBytes("${{ github.workspace }}/src/FluentHub.App/AppCredentials.config", $bytes)
+      env:
+        HAS_CREDENTIALS: ${{ secrets.GH_CREDENTIALS_JSON_BASE64 != '' }}
 
     - name: Publish FluentHub
+      shell: pwsh
       run: |
-        $bytes = [Convert]::FromBase64String($env:GH_CREDENTIALS_SECRET)
-        [IO.File]::WriteAllBytes($env:APP_CREDENTIALS_PATH, $bytes)
-
-        dotnet publish ${{ env.APP_PROJECT_PATH }} `
-          -r win-${{ env.PLATFORM }} `
+        dotnet publish "${{ env.APP_PROJECT_PATH }}" `
+          -r "win-${{ matrix.platform }}" `
           -c Release `
           --self-contained true `
           -p:PublishSingleFile=true `
           -p:IncludeNativeLibrariesForSelfExtract=true `
           -p:EnableCompressionInSingleFile=true `
           -p:PublishAot=false `
-          -o ${{ env.PUBLISH_DIR }}\${{ env.PLATFORM }}
-      env:
-        GH_CREDENTIALS_SECRET: '${{ secrets.GH_CREDENTIALS_JSON_BASE64 }}'
+          -o "${{ env.PUBLISH_DIR }}/${{ matrix.platform }}"
 
     - name: Create portable zip
+      shell: pwsh
       run: |
-        $zipName = "FluentHub-${{ env.PLATFORM }}.zip"
-        Compress-Archive -Path "${{ env.PUBLISH_DIR }}\${{ env.PLATFORM }}\*" -DestinationPath "${{ env.PUBLISH_DIR }}\$zipName"
-        Write-Host "Created: $zipName"
+        $zipName = "FluentHub-${{ matrix.platform }}.zip"
+        Compress-Archive -Path "${{ env.PUBLISH_DIR }}/${{ matrix.platform }}/*" -DestinationPath "${{ env.PUBLISH_DIR }}/$zipName"
+        $size = [math]::Round((Get-Item "${{ env.PUBLISH_DIR }}/$zipName").Length / 1MB, 2)
+        Write-Host "Created: $zipName ($size MB)"
 
-    - name: Upload exe artifact
+    - name: Upload artifact
       uses: actions/upload-artifact@v4
       with:
-        name: '${{ env.ARTIFACT_NAME }}-${{ env.PLATFORM }}'
-        path: '${{ env.PUBLISH_DIR }}\FluentHub-${{ env.PLATFORM }}.zip'
+        name: FluentHub-${{ matrix.platform }}
+        path: ${{ env.PUBLISH_DIR }}/FluentHub-${{ matrix.platform }}.zip
 
   release:
     needs: build
@@ -97,7 +101,10 @@ jobs:
       with:
         path: artifacts
 
-    - name: Create Release
+    - name: List downloaded files
+      run: ls -la artifacts/
+
+    - name: Create GitHub Release
       uses: softprops/action-gh-release@v2
       with:
         generate_release_notes: true
