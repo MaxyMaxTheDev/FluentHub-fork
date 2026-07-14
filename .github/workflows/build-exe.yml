@@ -55,20 +55,11 @@ jobs:
       run: |
         $clientId = "${{ secrets.OAUTH_CLIENT_ID }}"
         $clientSecret = "${{ secrets.OAUTH_CLIENT_SECRET }}"
-
         if ([string]::IsNullOrEmpty($clientId)) {
-          Write-Error "OAUTH_CLIENT_ID secret is not set. Go to repo Settings > Secrets and add your GitHub OAuth App credentials."
+          Write-Error "OAUTH_CLIENT_ID secret is not set."
           exit 1
         }
-
-        $xml = @"
-<root>
-  <client>
-    <type key="id" value="$clientId" />
-    <type key="secret" value="$clientSecret" />
-  </client>
-</root>
-"@
+        $xml = "<root><client><type key=""id"" value=""$clientId"" /><type key=""secret"" value=""$clientSecret"" /></client></root>"
         [IO.File]::WriteAllText("${{ env.APP_CREDENTIALS }}", $xml)
         Write-Host "AppCredentials.config written."
 
