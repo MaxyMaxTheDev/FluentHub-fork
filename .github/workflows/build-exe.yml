@@ -66,6 +66,9 @@ jobs:
     - name: Restore dependencies
       run: dotnet restore ${{ env.APP_PROJECT_PATH }} -r win-${{ matrix.platform }}
 
+    - name: Build FluentHub
+      run: dotnet build ${{ env.APP_PROJECT_PATH }} -r win-${{ matrix.platform }} -c Release --self-contained true -p:WindowsPackageType=None
+
     - name: Publish FluentHub
       shell: pwsh
       run: |
@@ -73,6 +76,7 @@ jobs:
           -r "win-${{ matrix.platform }}" `
           -c Release `
           --self-contained true `
+          --no-build `
           -p:WindowsPackageType=None `
           -p:GenerateAppxPackageOnBuild=false `
           -p:AppxBundle=Never `
