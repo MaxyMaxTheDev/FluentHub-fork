@@ -15,11 +15,10 @@ namespace FluentHub.Octokit.Queries.Repositories
 			var client = App.Client
 				?? throw new InvalidOperationException("Octokit GitHub client has not been initialized.");
 
-			var committer = new OctokitV3.Committer
-			{
-				Name = committerName ?? "FluentHub",
-				Email = committerEmail ?? "fluenthub@users.noreply.github.com",
-			};
+			var committer = new OctokitV3.Committer(
+				committerName ?? "FluentHub",
+				committerEmail ?? "fluenthub@users.noreply.github.com",
+				DateTimeOffset.UtcNow);
 
 			var createRequest = new OctokitV3.CreateFileRequest(message, content, branch)
 			{
@@ -62,11 +61,10 @@ namespace FluentHub.Octokit.Queries.Repositories
 			var client = App.Client
 				?? throw new InvalidOperationException("Octokit GitHub client has not been initialized.");
 
-			var committer = new OctokitV3.Committer
-			{
-				Name = committerName ?? "FluentHub",
-				Email = committerEmail ?? "fluenthub@users.noreply.github.com",
-			};
+			var committer = new OctokitV3.Committer(
+				committerName ?? "FluentHub",
+				committerEmail ?? "fluenthub@users.noreply.github.com",
+				DateTimeOffset.UtcNow);
 
 			var updateRequest = new OctokitV3.UpdateFileRequest(message, content, fileSha, branch)
 			{
@@ -108,11 +106,10 @@ namespace FluentHub.Octokit.Queries.Repositories
 			var client = App.Client
 				?? throw new InvalidOperationException("Octokit GitHub client has not been initialized.");
 
-			var committer = new OctokitV3.Committer
-			{
-				Name = committerName ?? "FluentHub",
-				Email = committerEmail ?? "fluenthub@users.noreply.github.com",
-			};
+			var committer = new OctokitV3.Committer(
+				committerName ?? "FluentHub",
+				committerEmail ?? "fluenthub@users.noreply.github.com",
+				DateTimeOffset.UtcNow);
 
 			var deleteRequest = new OctokitV3.DeleteFileRequest(message, fileSha, branch)
 			{
