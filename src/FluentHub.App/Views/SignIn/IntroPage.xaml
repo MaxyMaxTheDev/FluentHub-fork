@@ -244,8 +244,6 @@
 							<Grid.RowDefinitions>
 								<RowDefinition Height="Auto" />
 								<RowDefinition Height="Auto" />
-								<RowDefinition Height="Auto" />
-								<RowDefinition Height="Auto" />
 							</Grid.RowDefinitions>
 
 							<Button
@@ -265,66 +263,6 @@
 								Click="OnGoToMainPageButtonWhenAuthorizedClick"
 								Content="Here we go!"
 								Style="{StaticResource AccentButtonStyle}" />
-
-							<!--  Manual Token Login  -->
-							<Button
-								Grid.Row="2"
-								HorizontalAlignment="Stretch"
-								Command="{x:Bind ViewModel.ToggleManualTokenInputCommand}"
-								Content="Use Personal Access Token"
-								Style="{StaticResource SubtleButtonStyle}" />
-
-							<Grid
-								Grid.Row="3"
-								Margin="0,8,0,0"
-								Padding="12"
-								x:Load="{x:Bind ViewModel.ShowManualTokenInput, Mode=OneWay}"
-								Background="{ThemeResource CardBackgroundFillColorDefaultBrush}"
-								BorderBrush="{ThemeResource CardStrokeColorDefaultBrush}"
-								BorderThickness="1"
-								CornerRadius="8"
-								RowSpacing="8">
-								<Grid.RowDefinitions>
-									<RowDefinition Height="Auto" />
-									<RowDefinition Height="Auto" />
-									<RowDefinition Height="Auto" />
-								</Grid.RowDefinitions>
-
-								<TextBlock
-									Style="{StaticResource BodyStrongTextBlockStyle}"
-									Text="Sign in with Personal Access Token" />
-
-								<TextBlock
-									Grid.Row="1"
-									Foreground="{ThemeResource TextFillColorSecondaryBrush}"
-									Style="{StaticResource CaptionTextBlockStyle}"
-									Text="Enter a GitHub personal access token with repo, user, and admin:org scopes."
-									TextWrapping="Wrap" />
-
-								<Grid Grid.Row="2" ColumnSpacing="8">
-									<Grid.ColumnDefinitions>
-										<ColumnDefinition Width="*" />
-										<ColumnDefinition Width="Auto" />
-									</Grid.ColumnDefinitions>
-
-									<PasswordBox
-										x:Name="ManualTokenPasswordBox"
-										Grid.Column="0"
-										PlaceholderText="ghp_xxxxxxxxxxxx"
-										PasswordChanged="OnManualTokenPasswordChanged" />
-
-									<Button
-										Grid.Column="1"
-										VerticalAlignment="Center"
-										Command="{x:Bind ViewModel.AuthorizeWithTokenCommand}"
-										Style="{StaticResource AccentButtonStyle}">
-										<StackPanel Orientation="Horizontal" Spacing="6">
-											<FontIcon FontSize="14" Glyph="&#xE72E;" />
-											<TextBlock Text="Sign in" />
-										</StackPanel>
-									</Button>
-								</Grid>
-							</Grid>
 
 						</Grid>
 

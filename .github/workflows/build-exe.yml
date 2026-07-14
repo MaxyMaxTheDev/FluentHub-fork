@@ -28,6 +28,7 @@ run-name: "Build FluentHub.exe (${{ github.event.inputs.platform || 'all' }})"
 
 env:
   APP_PROJECT_PATH:  '${{ github.workspace }}/src/FluentHub.App/FluentHub.App.csproj'
+  APP_CREDENTIALS:   '${{ github.workspace }}/src/FluentHub.App/AppCredentials.config'
   PUBLISH_DIR:       '${{ github.workspace }}/publish'
 
 jobs:
@@ -49,17 +50,30 @@ jobs:
       with:
         dotnet-version: '9.0.x'
 
-    - name: Restore dependencies
-      run: dotnet restore ${{ env.APP_PROJECT_PATH }} -r win-${{ matrix.platform }}
-
-    - name: Setup AppCredentials.config
-      if: ${{ env.HAS_CREDENTIALS == 'true' }}
+    - name: Write AppCredentials.config
       shell: pwsh
       run: |
-        $bytes = [Convert]::FromBase64String("${{ secrets.GH_CREDENTIALS_JSON_BASE64 }}")
-        [IO.File]::WriteAllBytes("${{ github.workspace }}/src/FluentHub.App/AppCredentials.config", $bytes)
-      env:
-        HAS_CREDENTIALS: ${{ secrets.GH_CREDENTIALS_JSON_BASE64 != '' }}
+        $clientId = "${{ secrets.OAUTH_CLIENT_ID }}"
+        $clientSecret = "${{ secrets.OAUTH_CLIENT_SECRET }}"
+
+        if ([string]::IsNullOrEmpty($clientId)) {
+          Write-Error "OAUTH_CLIENT_ID secret is not set. Go to repo Settings > Secrets and add your GitHub OAuth App credentials."
+          exit 1
+        }
+
+        $xml = @"
+<root>
+  <client>
+    <type key="id" value="$clientId" />
+    <type key="secret" value="$clientSecret" />
+  </client>
+</root>
+"@
+        [IO.File]::WriteAllText("${{ env.APP_CREDENTIALS }}", $xml)
+        Write-Host "AppCredentials.config written."
+
+    - name: Restore dependencies
+      run: dotnet restore ${{ env.APP_PROJECT_PATH }} -r win-${{ matrix.platform }}
 
     - name: Publish FluentHub
       shell: pwsh
@@ -68,6 +82,7 @@ jobs:
           -r "win-${{ matrix.platform }}" `
           -c Release `
           --self-contained true `
+          -p:WindowsPackageType=None `
           -p:PublishSingleFile=true `
           -p:IncludeNativeLibrariesForSelfExtract=true `
           -p:EnableCompressionInSingleFile=true `
@@ -100,9 +115,6 @@ jobs:
       uses: actions/download-artifact@v4
       with:
         path: artifacts
-
-    - name: List downloaded files
-      run: ls -la artifacts/
 
     - name: Create GitHub Release
       uses: softprops/action-gh-release@v2

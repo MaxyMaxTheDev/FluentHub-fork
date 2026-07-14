@@ -67,20 +67,6 @@ namespace FluentHub.App.ViewModels.SignIn
 		public bool IsDeviceAuthorizationAvailable
 			=> string.IsNullOrEmpty(DeviceUserCode) is false;
 
-		private string _manualAccessToken = default!;
-		public string ManualAccessToken
-		{
-			get => _manualAccessToken;
-			set => SetProperty(ref _manualAccessToken, value);
-		}
-
-		private bool _showManualTokenInput;
-		public bool ShowManualTokenInput
-		{
-			get => _showManualTokenInput;
-			set => SetProperty(ref _showManualTokenInput, value);
-		}
-
 		public string Version
 		{
 			get
@@ -99,8 +85,6 @@ namespace FluentHub.App.ViewModels.SignIn
 
 		public ICommand AuthorizeWithBrowserCommand { get; set; }
 		public ICommand OpenDeviceVerificationUriCommand { get; set; }
-		public ICommand AuthorizeWithTokenCommand { get; set; }
-		public ICommand ToggleManualTokenInputCommand { get; set; }
 
 		public IntroViewModel()
 		{
@@ -109,68 +93,6 @@ namespace FluentHub.App.ViewModels.SignIn
 
 			AuthorizeWithBrowserCommand = new AsyncRelayCommand(AuthorizeWithBrowserAsync);
 			OpenDeviceVerificationUriCommand = new AsyncRelayCommand(OpenDeviceVerificationUriAsync);
-			AuthorizeWithTokenCommand = new AsyncRelayCommand(AuthorizeWithTokenAsync);
-			ToggleManualTokenInputCommand = new RelayCommand(ToggleManualTokenInput);
-		}
-
-		private void ToggleManualTokenInput()
-		{
-			ShowManualTokenInput = !ShowManualTokenInput;
-		}
-
-		private async Task AuthorizeWithTokenAsync()
-		{
-			try
-			{
-				IsTaskLoading = true;
-				IsTaskFaulted = false;
-				AuthorizedSuccessfully = false;
-
-				if (string.IsNullOrWhiteSpace(ManualAccessToken))
-				{
-					TaskException = new ArgumentException("Please enter a personal access token.");
-					IsTaskFaulted = true;
-					return;
-				}
-
-				DeviceAuthorizationStatus = "Validating token...";
-
-				// Initialize the API connections with the provided token
-				InitializeOctokit.InitializeApiConnections(ManualAccessToken.Trim());
-
-				// Try to get user info to validate the token
-				Octokit.Queries.Users.UserQueries queries = new();
-				string login = await queries.GetViewerLogin();
-
-				if (string.IsNullOrEmpty(login))
-				{
-					throw new InvalidOperationException("Failed to retrieve user information with the provided token.");
-				}
-
-				_logger?.Info("FluentHub is authorized successfully via personal access token.");
-
-				// Set token and login to App Settings Container
-				await SetAccountInfo(ManualAccessToken.Trim());
-
-				AuthorizedSuccessfully = true;
-				DeviceAuthorizationStatus = "FluentHub is authorized successfully.";
-
-				// Setup was completed successfully
-				App.AppSettings.SetupProgress = true;
-				App.AppSettings.SetupCompleted = true;
-			}
-			catch (Exception ex)
-			{
-				TaskException = ex;
-				IsTaskFaulted = true;
-				App.AppSettings.SetupProgress = false;
-
-				_logger?.Error(nameof(AuthorizeWithTokenAsync), ex);
-			}
-			finally
-			{
-				IsTaskLoading = false;
-			}
 		}
 
 		private async Task AuthorizeWithBrowserAsync()
