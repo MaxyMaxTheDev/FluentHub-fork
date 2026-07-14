@@ -66,6 +66,25 @@ jobs:
     - name: Restore dependencies
       run: dotnet restore ${{ env.APP_PROJECT_PATH }} -r win-${{ matrix.platform }}
 
+    - name: Diagnose XAML compiler
+      shell: pwsh
+      run: |
+        $xamlDir = "C:\Users\runneradmin\.nuget\packages\microsoft.windowsappsdk.winui\2.0.12\tools\net472"
+        if (Test-Path $xamlDir) {
+          Write-Host "XAML compiler directory contents:"
+          Get-ChildItem $xamlDir | ForEach-Object { Write-Host "  $($_.Name)" }
+          $exe = Join-Path $xamlDir "XamlCompiler.exe"
+          if (Test-Path $exe) {
+            Write-Host "`nTrying XamlCompiler.exe --help..."
+            try { & $exe --help 2>&1 | ForEach-Object { Write-Host $_ } }
+            catch { Write-Host "Error: $_" }
+          }
+        } else {
+          Write-Host "XAML compiler directory not found at: $xamlDir"
+          Write-Host "`nSearching for XamlCompiler.exe..."
+          Get-ChildItem "${{ envrunneradmin }}\.nuget\packages\microsoft.windowsappsdk.winui" -Recurse -Filter "XamlCompiler.exe" -ErrorAction SilentlyContinue | ForEach-Object { Write-Host "  Found: $($_.FullName)" }
+        }
+
     - name: Build FluentHub
       run: dotnet build ${{ env.APP_PROJECT_PATH }} -r win-${{ matrix.platform }} -c Release --self-contained true -p:WindowsPackageType=None
 
