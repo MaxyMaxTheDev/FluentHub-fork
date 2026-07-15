@@ -96,18 +96,19 @@
 
 			<!-- File Content Editor -->
 			<Grid Grid.Row="2" Padding="32,8,32,8">
-				<TextBox
-					x:Name="FileContentTextBox"
-					AcceptsReturn="True"
-					FontFamily="Consolas"
-					FontSize="14"
-					Header="File content"
-					IsReadOnly="False"
-					PlaceholderText="Enter file content here..."
-					Text="{x:Bind ViewModel.FileContent, Mode=TwoWay}"
-					TextWrapping="NoWrap"
-					VerticalScrollBarVisibility="Auto"
-					VerticalAlignment="Stretch" />
+				<ScrollViewer VerticalScrollBarVisibility="Auto">
+					<TextBox
+						x:Name="FileContentTextBox"
+						AcceptsReturn="True"
+						FontFamily="Consolas"
+						FontSize="14"
+						Header="File content"
+						IsReadOnly="False"
+						PlaceholderText="Enter file content here..."
+						Text="{x:Bind ViewModel.FileContent, Mode=TwoWay}"
+						TextWrapping="NoWrap"
+						VerticalAlignment="Stretch" />
+				</ScrollViewer>
 			</Grid>
 
 			<!-- Action Buttons -->
@@ -120,6 +121,7 @@
 				</Grid.ColumnDefinitions>
 
 				<TextBlock
+					x:Name="UnsavedChangesText"
 					Grid.Column="0"
 					VerticalAlignment="Center"
 					Foreground="{ThemeResource TextFillColorSecondaryBrush}"
