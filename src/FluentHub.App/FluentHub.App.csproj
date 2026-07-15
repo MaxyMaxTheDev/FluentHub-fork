@@ -21,7 +21,7 @@
 		<ApplicationManifest>app.manifest</ApplicationManifest>
 
 		<!--  MSIX packaging properties  -->
-		<EnableMsixTooling Condition="'$(WindowsPackageType)' != 'None'">true</EnableMsixTooling>
+		<EnableMsixTooling>true</EnableMsixTooling>
 		<DefaultLanguage>en-US</DefaultLanguage>
 		<AppxPackageSigningTimestampDigestAlgorithm>sha256</AppxPackageSigningTimestampDigestAlgorithm>
 		<AppxAutoIncrementPackageRevision>true</AppxAutoIncrementPackageRevision>
