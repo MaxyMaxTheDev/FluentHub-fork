@@ -73,7 +73,6 @@ jobs:
           -r "win-${{ matrix.platform }}" `
           -c Release `
           --self-contained true `
-          -v normal `
           -p:WindowsPackageType=None `
           -p:GenerateAppxPackageOnBuild=false `
           -p:AppxBundle=Never `
