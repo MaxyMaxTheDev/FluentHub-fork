@@ -66,26 +66,6 @@ jobs:
     - name: Restore dependencies
       run: dotnet restore ${{ env.APP_PROJECT_PATH }} -r win-${{ matrix.platform }}
 
-    - name: Diagnose XAML compiler
-      shell: pwsh
-      run: |
-        $nugetDir = "${env:USERPROFILE}\.nuget\packages\microsoft.windowsappsdk.winui"
-        Write-Host "Searching for XamlCompiler.exe under $nugetDir ..."
-        $exe = Get-ChildItem $nugetDir -Recurse -Filter "XamlCompiler.exe" -ErrorAction SilentlyContinue | Select-Object -First 1
-        if ($exe) {
-          Write-Host "Found: $($exe.FullName)"
-          & $exe.FullName 2>&1 | ForEach-Object { Write-Host $_ }
-          Write-Host "Exit code: $LASTEXITCODE"
-        } else {
-          Write-Host "XamlCompiler.exe not found"
-        }
-        # Show available .NET Framework
-        Write-Host "`n.NET Framework versions installed:"
-        Get-ChildItem "HKLM:\SOFTWARE\Microsoft\NET Framework Setup\NDP" -Recurse -ErrorAction SilentlyContinue |
-          Get-ItemProperty -Name Version -ErrorAction SilentlyContinue |
-          Select-Object PSChildName, Version |
-          ForEach-Object { Write-Host "  $($_.PSChildName): $($_.Version)" }
-
     - name: Publish FluentHub
       shell: pwsh
       run: |
@@ -93,6 +73,7 @@ jobs:
           -r "win-${{ matrix.platform }}" `
           -c Release `
           --self-contained true `
+          -v normal `
           -p:WindowsPackageType=None `
           -p:GenerateAppxPackageOnBuild=false `
           -p:AppxBundle=Never `
