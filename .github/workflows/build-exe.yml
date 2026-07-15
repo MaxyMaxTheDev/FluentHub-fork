@@ -75,6 +75,7 @@ jobs:
           --self-contained true `
           -p:WindowsPackageType=None `
           -p:GenerateAppxPackageOnBuild=false `
+          -p:EnableMsixTooling=false `
           -p:AppxBundle=Never `
           -p:PublishSingleFile=true `
           -p:WindowsAppSDKSelfContained=true `
